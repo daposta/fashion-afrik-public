@@ -10,6 +10,16 @@ export class LandingComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  	this.fetchNewArrivals();
+  	this.fetchTopFiveStores();
+  }
+
+  fetchTopFiveStores(){
+
+  }
+
+  fetchNewArrivals(){
+
   }
 
 }

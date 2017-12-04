@@ -10,6 +10,21 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  	this.fetchProductsByCategory();
+  	this.fetchProductsByStore();
+  	this.fetchClearanceSales();
   }
+
+  fetchProductsByCategory(){
+
+  };
+
+  fetchProductsByStore(){
+
+  };
+
+  fetchClearanceSales(){
+
+  };
 
 }

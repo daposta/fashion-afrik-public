@@ -10,6 +10,12 @@ export class ClearanceSalesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  	this.fetchClearance();
+  }
+
+
+  fetchClearance(){
+
   }
 
 }
