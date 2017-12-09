@@ -1,0 +1,10 @@
+@import '~bootstrap/scss/bootstrap', './sass/variables', './sass/main';
+body {
+    font-family: $primary-font;
+}
+
+.big-dot {
+	color: $site-accent;
+	font-size: 30px;
+    line-height: 0;
+}

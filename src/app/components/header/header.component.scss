@@ -1,0 +1,40 @@
+@import '../../../sass/variables';
+header {
+    background: #fff;
+    height: 50px;
+    width: 100%;
+    &#top-header {
+        height: 30px;
+        background-color: $site-blue;
+    }
+    &#primary-header {
+        height: 60px;
+    }
+}
+.navbar-brand {
+    font-weight: bolder;
+    letter-spacing: -1px;
+    text-transform: lowercase;
+}
+.navbar {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    .nav-link {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 14px;
+    }
+    [type=search] {
+        font-family: $primary-font;
+        font-size: 14px;
+        padding: 7px 20px;
+        text-transform: lowercase;
+        outline: 0;
+        border-radius: 50px;
+        background: #e0e0e0;
+        border: 0;
+        &:focus {
+            outline: 0;
+            box-shadow: 0 0 3px darken(#f1f1f1, 10%)
+        }
+    }
+}
