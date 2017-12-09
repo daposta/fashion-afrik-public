@@ -21,10 +21,13 @@ const appRoutes: Routes = [
   
     { path: '', component: LandingComponent   },
     { path: 'product-detail', component: ProductDetailComponent },
-    { path: 'store-detail', component: StoreDetailComponent },
-    { path: 'category-detail', component: CategoryDetailComponent },
+    { path: 'store', component: StoreDetailComponent },
+    { path: 'category', component: CategoryDetailComponent },
     { path: 'cart', component: ShoppingCartComponent },
      { path: 'user-profile', component: UserProfileComponent },
+    { path: 'clearance', component: ClearanceSalesComponent },
+    { path: 'product', component: ProductDetailComponent },
+     { path: 'me', component: UserProfileComponent },
 
 ]
 
