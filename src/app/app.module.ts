@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {HttpModule,  Http } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -15,7 +19,7 @@ import { ClearanceSalesComponent } from './components/clearance-sales/clearance-
 
 const appRoutes: Routes = [
   
-    { path: '', component: DashboardComponent   },
+    { path: '', component: LandingComponent   },
     { path: 'product-detail', component: ProductDetailComponent },
     { path: 'store-detail', component: StoreDetailComponent },
     { path: 'category-detail', component: CategoryDetailComponent },
@@ -40,7 +44,7 @@ const appRoutes: Routes = [
     ClearanceSalesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
