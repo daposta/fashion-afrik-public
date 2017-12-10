@@ -1,0 +1,22 @@
+@import '../../../sass/variables';
+footer {
+	font-family: $primary-font;
+	background: $site-blue;
+	min-height: 200px;
+	padding: 40px 0;
+
+	.title {
+		font-weight: 700;
+		color: #fff;
+		margin-bottom: 25px;
+	}
+	.nav {
+		a {
+			font-weight: 400;
+			font-size: 12px;
+			padding: 0;
+			margin-bottom: 15px;
+			color: $site-accent;
+		}
+	}
+}
