@@ -1,4 +1,14 @@
-<header id="top-header"></header>
+<header id="top-header">
+  <div style="padding: 0.4rem 5rem">
+      <nav class="nav justify-content-end">
+
+        <span><b>Phone : </b> 0806 139 3457</span>
+        <span><b>@ : </b> admin@vogueafriq.com</span> &nbsp; &nbsp;
+        <a class="nav-link active" href="#">Sell on <b>VogueAfriq</b></a>
+        
+      </nav>
+  </div>
+</header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">VogueAfriq<span class="big-dot">.</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,16 +16,24 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto main-nav">
       <li class="nav-item active">
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
+          Store
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#">Action</a>
@@ -25,13 +43,34 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+        <a class="nav-link" href="#">Clearance Sales</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Blog</a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+
+   
+    <form class="form-inline search-form">
+      <div class="search-group">
+      	<input class="form-control mr-sm-2" type="search" placeholder="Search Products..." aria-label="Search">
+      <button class=""><i class="ion-ios-search-strong"></i></button>
+      </div>
     </form>
+
+    <ul class="navbar-nav pull-right">
+   	<li class="nav-item">
+        <a class="nav-link" href="#">
+        	<img src="/assets/img/avatar.png" width="30" alt="avatar">
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+        	<img src="/assets/img/cart.png" width="30" alt="cart">
+        </a>
+      </li>
+   </ul>
   </div>
 </nav>
 

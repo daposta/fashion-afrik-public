@@ -11,11 +11,40 @@ header {
         height: 60px;
     }
 }
+
+#top-header {
+    nav {
+        a, span {
+            font-size: 14px;
+            padding: 0 20px;
+            color: $body-color;
+
+            &:last-of-type {
+                padding-right: 0;
+            }
+        }
+    }
+}
 .navbar-brand {
     font-weight: bolder;
     letter-spacing: -1px;
     text-transform: lowercase;
 }
+.main-nav {
+    li {
+        margin-right: 15px;
+    }
+}
+// 
+.dropdown-toggle {
+    &::after {
+        content: "\F3D0";
+        font-family: 'ionicons';
+        border: 0;
+        vertical-align: 0;
+    }
+}
+// 
 .navbar {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -27,15 +56,31 @@ header {
     [type=search] {
         font-family: $primary-font;
         font-size: 14px;
-        padding: 7px 20px;
+        font-weight: 600;
+        padding: 8px 20px;
         text-transform: lowercase;
         outline: 0;
         border-radius: 50px;
         background: #e0e0e0;
         border: 0;
+        transition: 0.2s ease-in;
         &:focus {
-            outline: 0;
-            box-shadow: 0 0 3px darken(#f1f1f1, 10%)
+            box-shadow: 0 0 0 1px #d35400;
+            background: #fff;
         }
+    }
+}
+.search-form {
+    .search-group {
+        position: relative;
+    }
+    button {
+        border: 0;
+        position: absolute;
+        top: 4px;
+        right: 20px;
+        font-size: 20px;
+        color: #7a8999;
+        background: transparent;
     }
 }
