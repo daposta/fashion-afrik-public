@@ -1,6 +1,89 @@
  <app-header></app-header>
+<section id="product-detail" class="padded">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5">
+				<!-- slider -->
+				<div class="slider-element">
+					<div class="slider-nav">
+					<div class="slider-item" style="background: url('/assets/img/denim1.jpg')  ; "></div>
+					<div class="slider-item" style="background: url('/assets/img/denim2.jpg')  ; "></div>
+					<div class="slider-item" style="background: url('/assets/img/denim1.jpg')  ; "></div>
+				</div>
+				<div class="slider-for">
+					<div class="slider-item" style="background: url('/assets/img/denim1.jpg')  ; "></div>
+					<div class="slider-item" style="background: url('/assets/img/denim2.jpg')  ;"></div>
+					<div class="slider-item" style="background: url('/assets/img/denim1.jpg')  ; "></div>
+				</div>
+				</div>
+			</div>
 
-<p>
-  product-detail works!
-</p>
+			<div class="col-md-6 offset-md-1">
+				<div class="product-details">
+					<div class="title">
+						Ebukar Agbada
+					</div>
+					<div class="price">
+						<span class="" style="margin-right: 50px">
+							<del>N</del> 20,000
+						</span>
+
+						<span class="" style="text-decoration: line-through; opacity: 0.2">
+							<del>N</del> 50,000
+						</span>
+					</div> <br>
+
+					<p class="">
+						This is our own african ipsum. It is nice and very delicious
+					</p>
+
+					<form action="#">
+						<div class="row">
+							<div class="form-group col-md-4">
+							<input type="number" class="form-control" placeholder="Quantity">
+						</div>
+
+						<div class="form-group col-md-3">
+							<input type="number" class="form-control" placeholder="Size">
+						</div>
+
+						<div class="form-group col-md-4">
+							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+						        <option selected>Color</option>
+						        <option value="1">Red</option>
+						        <option value="2">Blue</option>
+						        <option value="3">Green</option>
+						     </select>
+						</div>
+						</div>
+					</form>
+
+					<div class="actions">
+						<button class="btn btn-block btn-accent pull-left">Add to Cart</button>
+						<button class="btn btn-block pull-right">Save for Later</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="product-description" class="padded">
+	<div class="container">
+		<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews</a>
+  </li>
+</ul>
+<div class="tab-content text-center" id="myTabContent" style="padding: 20px">
+  <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+  	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus natus vitae dicta facilis velit ut nobis delectus ipsa temporibus explicabo ab accusantium dolorem nam, sed deleniti consequatur quibusdam quae et.
+  </div>
+  <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">2</div>
+</div>
+	</div>
+</section>
 <app-footer></app-footer>

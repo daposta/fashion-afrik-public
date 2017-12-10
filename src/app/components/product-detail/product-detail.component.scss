@@ -1,0 +1,87 @@
+@import '../../../sass/variables';
+.slider-nav {
+	// display: flex;
+	// flex-direction: row;
+	// float: left;
+    .slider-item {
+    	width: 50px !important;
+    	height: 50px !important;
+    	margin-right: 20px;
+        background-size: cover !important;
+        background-repeat: no-repeat;
+    }
+}
+.slider-for {
+    .slider-item {
+        height: 400px;
+        background-size: cover !important;
+        background-repeat: no-repeat;
+        margin-bottom: 20px;
+    }
+}
+
+
+.slider-element {
+	display: flex;
+	flex-direction: column-reverse;
+}
+// general to slider-item
+.slider-item {
+	border-radius: 7px;
+}
+
+.slick-track {
+transform: none
+}
+
+.slick-list {
+	transform: none
+}
+
+
+.product-details {
+	.title {
+		font-size: 25px;
+		font-weight: 700;
+		color: $site-accent;
+		margin-bottom: 10px;
+	}
+
+	.price {
+		font-size: 25px
+	}
+
+	input {
+		border: 0;
+		font-family: 'Arial', sans-serif;
+	}
+
+	.actions {
+		margin-top: 30px;
+		button {
+		font-weight: 700;
+		padding: 15px 25px;
+		border: 0;
+
+		&.btn-accent {
+			color: #fff;
+			background: $site-accent;
+		}
+	}
+	}
+}
+
+section#product-description {
+	background: #fff;
+	.nav {
+		.nav-item {
+			font-weight: 700;
+			.nav-link {
+				color: $site-blue;
+				&.active {
+					color: $site-accent;
+				}
+			}
+		}
+	}
+}
