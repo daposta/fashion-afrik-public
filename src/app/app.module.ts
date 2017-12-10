@@ -4,6 +4,8 @@ import {HttpModule,  Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 
+import { Globals } from './shared/api';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -26,7 +28,7 @@ const appRoutes: Routes = [
     { path: 'cart', component: ShoppingCartComponent },
      { path: 'user-profile', component: UserProfileComponent },
     { path: 'clearance', component: ClearanceSalesComponent },
-    { path: 'product', component: ProductDetailComponent },
+  //  { path: 'product', component: ProductDetailComponent },
      { path: 'me', component: UserProfileComponent },
 
 ]
@@ -49,7 +51,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {})
   ],
-  providers: [],
+  providers: [Globals,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
