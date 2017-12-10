@@ -20,3 +20,36 @@ footer {
 		}
 	}
 }
+
+#partners {
+	img {
+		width: 40px;
+		height: 40px;
+		margin-right: 50px;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+}
+
+#subscription {
+	padding: 60px;
+	.title {
+		font-weight: 700;
+		font-size: 20px;
+		margin-bottom: 20px;
+	}
+
+	input {
+		border: 0;
+		padding: 12px 20px;
+	}
+	button {
+		background: $site-accent;
+		font-weight: 700;
+		color: #fff;
+		border: 0;
+		padding: 12px 20px;
+	}
+}
