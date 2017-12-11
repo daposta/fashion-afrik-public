@@ -18,6 +18,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 import { StoreDetailComponent } from './components/store-detail/store-detail.component';
 import { ClearanceSalesComponent } from './components/clearance-sales/clearance-sales.component';
+import { LoginComponent } from './components/login/login.component';
 
 const appRoutes: Routes = [
   
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
     { path: 'cart', component: ShoppingCartComponent },
      { path: 'user-profile', component: UserProfileComponent },
     { path: 'clearance', component: ClearanceSalesComponent },
-  //  { path: 'product', component: ProductDetailComponent },
+    { path: 'login', component: LoginComponent },
      { path: 'me', component: UserProfileComponent },
 
 ]
@@ -46,7 +47,8 @@ const appRoutes: Routes = [
     UserProfileComponent,
     CategoryDetailComponent,
     StoreDetailComponent,
-    ClearanceSalesComponent
+    ClearanceSalesComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {})
