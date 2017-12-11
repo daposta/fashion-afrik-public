@@ -13,9 +13,7 @@ export class Globals{
     REGISTER_URL =  this.HOST_URL + '/stores/api/register/';
     //CREATE_PROFILE_URL =  this.HOST_URL + '/client/api/create_profile/';
     CURRENT_PROFILE_URL = this.HOST_URL + '/stores/api/me/'; //current_profile
-   // PROFILE_DETAIL_URL = this.HOST_URL + '/client/api/profile_detail/';
-    //FORGOT_PASS_URL = this.HOST_URL + '/client/api/forgot_password/';
-    //RESET_PASS_URL = this.HOST_URL + '/client/api/reset_password/';
+  
     ACCOUNT_ACTIVATION_URL =  this.HOST_URL + '/stores/api/activate/';
 
     
