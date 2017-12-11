@@ -13,7 +13,8 @@
 }
 .slider-for {
     .slider-item {
-        height: 400px;
+        height: 500px;
+        // max-width: 350px;
         background-size: cover !important;
         background-repeat: no-repeat;
         margin-bottom: 20px;
@@ -43,7 +44,7 @@ transform: none
 	.title {
 		font-size: 25px;
 		font-weight: 700;
-		color: $site-accent;
+		color: $site-blue;
 		margin-bottom: 10px;
 	}
 
@@ -65,7 +66,7 @@ transform: none
 
 		&.btn-accent {
 			color: #fff;
-			background: $site-accent;
+			background: darken($site-accent, 5%);
 		}
 	}
 	}
@@ -84,4 +85,21 @@ section#product-description {
 			}
 		}
 	}
+}
+
+
+section#related-products {
+	.load-more {
+		    padding: 7px 30px;
+		    font-weight: 700;
+		    &:hover {
+		    	color: #fff;
+		    }
+	}
+}
+
+
+// 
+button.slick-next:before {
+		color: $site-blue !important;
 }

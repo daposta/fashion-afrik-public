@@ -199,3 +199,12 @@
     opacity: .75;
     color: black;
 }
+
+
+button.slick-next:before, button.slick-prev:before {
+            color: #222!important;
+   /* font-size: 12px;
+    padding: 2px;
+    background: #222;
+    border-radius: 50%;*/
+}
