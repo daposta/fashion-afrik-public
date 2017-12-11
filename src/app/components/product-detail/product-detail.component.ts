@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import * as $ from 'jquery';
+// import * as $ from 'jquery';
+declare var $: any;
+
 import  'slick-carousel';
+
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
