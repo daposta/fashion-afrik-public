@@ -25,7 +25,7 @@
           Category
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#"  *ngFor="let item of categorys">
+          <a class="dropdown-item" href="/category/{{item.slug}}"  *ngFor="let item of categorys">
             {{item.name}}
           </a>
           
@@ -37,7 +37,7 @@
           Store
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" href="#"  *ngFor="let item of stores">
+           <a class="dropdown-item" href="/store/{{item.slug}}"  *ngFor="let item of stores">
             {{item.name}}
           </a>
           

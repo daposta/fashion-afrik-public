@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 // import * as $ from 'jquery';
 declare var $: any;
 
-import  'slick-carousel';
+// import  'slick-carousel';
 
 @Component({
   selector: 'app-product-detail',
@@ -15,13 +15,13 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
   // $(function(){
-   	$('.responsive').slick({
-   		 dots: true,
-      infinite: false,
-      speed: 300,
-      slidesToShow: 5,
-      slidesToScroll: 5
-       	});
+   	// $('.responsive').slick({
+   	// 	 dots: true,
+    //   infinite: false,
+    //   speed: 300,
+    //   slidesToShow: 5,
+    //   slidesToScroll: 5
+    //    	});
   // })
   }
 
