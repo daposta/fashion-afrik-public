@@ -1,10 +1,26 @@
 @import '~bootstrap/scss/bootstrap', './sass/variables', './sass/main';
+html {
+	zoom: 90%;
+}
 body {
     font-family: $primary-font;
+
 }
 
 .big-dot {
 	color: $site-accent;
 	font-size: 30px;
     line-height: 0;
+}
+
+.btn-rounded {
+	border-radius: 50px;
+}
+
+.btn-outline-accent {
+	border-color: $site-accent;
+	background: transparent;
+	&:hover {
+		background-color: $site-accent;
+	}
 }
