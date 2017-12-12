@@ -16,8 +16,6 @@ export class ProductService {
 
   fetchProductsByStore(data: string){
 
-  	console.log('store....'+ data);
-
   	 return this.http.get(this.productsByStoreUrl + data +'/')
               .toPromise()
               .then(response => response.json())

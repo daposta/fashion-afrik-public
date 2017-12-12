@@ -2,8 +2,8 @@
 
 <div class="jumbotron text-center" style="background-image: url('/assets/img/banner/women-category-banner.jpg')">
 	<div class="inner-content">
-		<h3 class="boldest">Women Category</h3>
-	<p>Category description if necessary</p>
+		<h3 class="boldest">{{category|uppercase}} Category</h3>
+	<!-- <p>Category description if necessary</p> -->
 	</div>
 </div>
 
@@ -17,65 +17,20 @@
 
 		<section id="products" class="padded">
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-3" *ngFor="let item of products">
 					<div class="product-item">
-						<img src="/assets/img/moon-dress.jpg" alt="">
+						<img src="{{host_address + item.feature_image}}" alt="">
 						<div class="product-details">
-							<div class="product-title">Sample Title</div>
+							<div class="product-title">{{item.name}}</div>
 							<div class="product-price boldest">
-								<del>N</del> 20,000
+								<del>N</del> {{item.regular_price}}
 							</div>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-sm-3">
-					<div class="product-item">
-						<img src="/assets/img/orange-dress.jpg" alt="">
-						<div class="product-details">
-							<div class="product-title">Sample Title</div>
-							<div class="product-price boldest">
-								<del>N</del> 20,000
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-3">
-					<div class="product-item">
-						<img src="/assets/img/brown-dress.jpg" alt="">
-						<div class="product-details">
-							<div class="product-title">Sample Title</div>
-							<div class="product-price boldest">
-								<del>N</del> 20,000
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-3">
-					<div class="product-item">
-						<img src="/assets/img/short-dress.jpg" alt="">
-						<div class="product-details">
-							<div class="product-title">Sample Title</div>
-							<div class="product-price boldest">
-								<del>N</del> 20,000
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-sm-3">
-					<div class="product-item">
-						<img src="/assets/img/denim-dress.jpg" alt="">
-						<div class="product-details">
-							<div class="product-title">Sample Title</div>
-							<div class="product-price boldest">
-								<del>N</del> 20,000
-							</div>
-						</div>
-					</div>
-				</div>
+			
+				
 			</div>			
 		</section>
 	</div>
