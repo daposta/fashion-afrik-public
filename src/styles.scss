@@ -24,3 +24,25 @@ body {
 		background-color: $site-accent;
 	}
 }
+
+
+.boldest {
+	font-weight: 700;
+}
+
+// general styling for jumbotron
+.jumbotron {
+	margin-bottom: 0;
+}
+
+
+// opacity
+.fade-7 {
+	opacity: .7;
+}
+
+
+// colors
+.color-accent {
+	color: $site-accent;
+}

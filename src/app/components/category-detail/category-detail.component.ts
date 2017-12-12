@@ -9,7 +9,7 @@ import 'rxjs/add/operator/switchMap';
 @Component({
   selector: 'app-category-detail',
   templateUrl: './category-detail.component.html',
-  styleUrls: ['./category-detail.component.css'],
+  styleUrls: ['./category-detail.component.scss'],
    providers: [ ProductService]
 })
 export class CategoryDetailComponent implements OnInit {
