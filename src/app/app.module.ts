@@ -23,7 +23,7 @@ import { LoginComponent } from './components/login/login.component';
 const appRoutes: Routes = [
   
     { path: '', component: LandingComponent   },
-    { path: 'product-detail', component: ProductDetailComponent },
+    { path: 'product/:id/:slug', component: ProductDetailComponent },
     { path: 'store/:store', component: StoreDetailComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'category/:category', component: CategoryDetailComponent },

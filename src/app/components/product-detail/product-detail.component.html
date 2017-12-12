@@ -21,20 +21,20 @@
 			<div class="col-md-5 offset-md-1">
 				<div class="product-details">
 					<div class="title">
-						Emanda Ankara wear
+						{{product.name}}
 					</div>
 					<div class="price">
 						<span class="" style="margin-right: 50px">
-							<del>N</del> 20,000
+							<del>N</del> {{product.regular_price |number}}
 						</span>
 
 						<span class="" style="text-decoration: line-through; opacity: 0.2">
-							<del>N</del> 50,000
+							<del>N</del> {{product.discount_price |number}}
 						</span>
 					</div> <br>
 
 					<p class="">
-						This is our own african ipsum. It is nice and very delicious
+						{{product.description}}
 					</p>
 
 					<form action="#">

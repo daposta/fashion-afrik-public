@@ -21,9 +21,9 @@
 					<div class="product-item">
 						<img src="{{host_address + item.feature_image}}" alt="">
 						<div class="product-details">
-							<div class="product-title">{{item.name}}</div>
+							<div class="product-title"><a href="product/{{item.id}}/{{item.slug}}">{{item.name}}</a></div>
 							<div class="product-price boldest">
-								<del>N</del> {{item.regular_price}}
+								<del>N</del> {{item.regular_price |number}}
 							</div>
 						</div>
 					</div>

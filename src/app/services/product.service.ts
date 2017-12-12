@@ -34,4 +34,13 @@ export class ProductService {
 
   }
 
+  findProductByUUID(data: string){
+   
+     return this.http.get(this.productsUrl + data +'/')
+              .toPromise()
+              .then(response => response.json())
+             // .catch(this.handleError);
+  };
+
+
 }
