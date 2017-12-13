@@ -90,3 +90,17 @@ header {
         background: transparent;
     }
 }
+
+// cart bubble
+.cart-bubble {
+    width: 20px;
+    text-align: center;
+    line-height: 20px;
+    background: #E91E63;
+    position: absolute;
+    top: 5px;
+    right: 0;
+    border-radius: 50%;
+    height: 20px;
+    color: #fff;
+}
