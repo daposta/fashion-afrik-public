@@ -14,15 +14,15 @@ export class ProductDetailComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-  // $(function(){
-   	// $('.responsive').slick({
-   	// 	 dots: true,
-    //   infinite: false,
-    //   speed: 300,
-    //   slidesToShow: 5,
-    //   slidesToScroll: 5
-    //    	});
-  // })
+  $(function(){
+   	$('.responsive').slick({
+   		 dots: true,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 5,
+      slidesToScroll: 5
+       	});
+  })
   }
 
 }
