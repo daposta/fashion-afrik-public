@@ -68,8 +68,63 @@
                     </td>
                 </tr>
             </tbody>
+
+            <tfoot>
+            	<tr>
+            		<td colspan="3">
+            			<button class="btn btn-secondary boldest">Continue Shopping</button>
+            			<button class="btn btn-light boldest">&times; Clear Shopping Cart</button>
+            		</td>
+            		
+            		<td class="boldest" style="vertical-align: middle;"></td>
+            		<td>
+            			
+            		</td>
+            	</tr>
+            </tfoot>
         </table>
+        <div class="float-right">
+        	<button class="btn btn-light boldest">Update Cart</button>
+            			<button class="btn btn-accent boldest">Proceed To Checkout &raquo;</button>
+        </div>
+        <div class="clearfix"></div>
     </div>
+</section>
+
+<section id="shipping" class="padded">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6">
+				<h3 class="boldest">Calculate Shipping</h3> <br>
+				<form>
+  
+
+  <div class="form-group">
+  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+        <option selected>Country</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+  </div>
+
+  <div class="form-group">
+  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+        <option selected>City</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+  </div>
+
+  <div class="form-group">
+    <input type="email" class="form-control" placeholder="PostCode / Zip">
+  </div>
+  <button type="submit" class="btn btn-accent">Submit</button>
+</form>
+			</div>
+		</div>
+	</div>
 </section>
 <app-footer>
 </app-footer>

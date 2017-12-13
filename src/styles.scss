@@ -75,3 +75,13 @@ body {
 		background-image:linear-gradient(24deg, #530620, #1b1918);
 	} 
 }
+
+.btn-accent {
+	background-color: $site-accent;
+	border-color: $site-accent;
+	color: #fff;
+
+	&:hover {
+		opacity: .8;
+	}
+}

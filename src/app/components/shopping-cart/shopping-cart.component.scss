@@ -1,5 +1,9 @@
 @import '../../../sass/variables';
 #shopping-list {
+	button {
+			padding: 10px 20px;
+			margin-right: 15px;
+		}
     table {
         thead {
         	color: $site-blue;
@@ -30,6 +34,22 @@
                 }
             }
         }
+
+        tfoot {
+tr {
+	height: 120px;
+
+	td {
+		vertical-align: bottom;
+
+		button {
+			padding: 10px 20px;
+			margin-right: 15px;
+		}
+	}
+}
+
+        }
         .product-image {
             width: 100px;
             img {
@@ -42,4 +62,13 @@
             margin-left: 15px;
         }
     }
+}
+
+#shipping {
+	.form-control, .custom-select {
+		    padding: 10px 20px;
+    border: 0;
+    width: 100%;
+    height: 45px;
+	}
 }
