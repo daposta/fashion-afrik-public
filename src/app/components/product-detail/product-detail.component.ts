@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
 
+import {FormBuilder,FormGroup, Validators} from '@angular/forms'
+
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Globals } from '../../shared/api';
@@ -22,9 +24,15 @@ export class ProductDetailComponent implements OnInit {
   product: Object= {};
   host_address: string =  this.globals.HOST_URL; 
   productItem: Object= {};
+  cartForm:FormGroup;
+  private formSubmitAttempt: boolean;
 
   constructor(private productSrv :ProductService, private route: ActivatedRoute, private globals: Globals,
-    private cartSrv: CartService) { }
+    private cartSrv: CartService, fb: FormBuilder) { 
+      this.cartForm = fb.group({
+        'qty':['', Validators.required],
+      });
+  }
 
   ngOnInit() {
       this.route.params.switchMap((params: Params) => 
@@ -39,9 +47,13 @@ export class ProductDetailComponent implements OnInit {
 
 
   addToCart(){
+      this.formSubmitAttempt = true;
+     if(this.cartForm.valid  && this.product){
+        let data = {'product':this.product, 'qty':this.productItem['qty'] } 
+      
+        this.cartSrv.addToCart(data);
+     }
      
-      console.log(this.productItem)
-      //this.cartSrv.addToCart();
   }
 
 }

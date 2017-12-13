@@ -55,8 +55,8 @@
    
     <form class="form-inline search-form">
       <div class="search-group">
-      	<input class="form-control mr-sm-2" type="search" placeholder="Search Products..." aria-label="Search">
-      <button class=""><i class="ion-ios-search-strong"></i></button>
+      	<input class="form-control mr-sm-2" #search type="search" placeholder="Search Products..." aria-label="Search">
+      <button class="" (click)="searchProduct(search.value)"><i class="ion-ios-search-strong"></i></button>
       </div>
     </form>
 
@@ -69,7 +69,9 @@
 
       <li class="nav-item">
         <a class="nav-link" href="/cart">
+
         	<img src="/assets/img/cart.png" width="30" alt="cart">
+          <span>{{cart.length}}</span>
         </a>
       </li>
    </ul>
