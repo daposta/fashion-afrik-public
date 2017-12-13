@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-
+import { Globals } from '../../shared/api';
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -10,7 +10,8 @@ import { CartService } from '../../services/cart.service';
 export class ShoppingCartComponent implements OnInit {
  
   cart: any[];
-  constructor(private cartSrv: CartService) { }
+   host_address: string =  this.globals.HOST_URL;
+  constructor(private cartSrv: CartService,private globals: Globals) { }
 
   ngOnInit() {
   		this.getCart();

@@ -29,19 +29,21 @@
             <tbody>
                
 
-                <tr>
+                <tr *ngFor="let item of cart">
                     <td class="d-flex align-items-center">
                         <div class="product-image">
-                            <img alt="" src="/assets/img/denim2.jpg">
+                           <!--  <img alt="" src="/assets/img/denim2.jpg"> -->
+                            <img alt="" src="{{host_address + item.product.feature_image}}">
                                 <div class="product-name">
                                     <!-- Liya Dress -->
+                                    {{item.product.name}}
                                 </div>
                         </div>
                     </td>
                     <td style="font-size: 20px;">
                         <del>N</del>
                         <span class="boldest">
-                            50,000
+                            {{item.price |number}}
                         </span>
                     </td>
                     <td>
@@ -49,7 +51,7 @@
                             <span class="input-group-addon">
                                 +
                             </span>
-                            <input class="form-control" type="text" value="3">
+                            <input class="form-control" type="text" value="{{item.qty}}">
                                 <span class="input-group-addon">
                                     −
                                 </span>
@@ -58,7 +60,7 @@
                     <td style="font-size: 20px;">
                         <del>N</del>
                         <span class="boldest">
-                            150,000
+                            {{item.cost}}
                         </span>
                     </td>
                     <td>

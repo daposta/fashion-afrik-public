@@ -16,7 +16,7 @@ export class CartService {
       });
 
     }
-    console.log(items);
+
     return items;
   }
 
@@ -82,7 +82,7 @@ export class CartService {
 
 
   clearCart(){
-
+    localStorage.removeItem('cart');
   }
 
 }
