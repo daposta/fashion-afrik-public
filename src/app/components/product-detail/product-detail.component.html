@@ -21,34 +21,36 @@
 			<div class="col-md-5 offset-md-1">
 				<div class="product-details">
 					<div class="title">
-						Emanda Ankara wear
+						{{product.name}}
 					</div>
 					<div class="price">
 						<span class="" style="margin-right: 50px">
-							<del>N</del> 20,000
+							<del>N</del> {{product.regular_price |number}}
 						</span>
 
 						<span class="" style="text-decoration: line-through; opacity: 0.2">
-							<del>N</del> 50,000
+							<del>N</del> {{product.discount_price |number}}
 						</span>
 					</div> <br>
 
 					<p class="">
-						This is our own african ipsum. It is nice and very delicious
+						{{product.description}}
 					</p>
 
-					<form action="#">
+					<form  [formGroup]="cartForm" (ngSubmit)="addToCart()"   novalidate>
 						<div class="row">
 							<div class="form-group col-md-4">
-							<input type="number" class="form-control" placeholder="Quantity">
+							<input type="number" class="form-control" [(ngModel)]="productItem.qty" [formControl]="cartForm.controls['qty']" required>
+
+							 <div *ngIf="cartForm.controls['qty'].hasError('required') && formSubmitAttempt" style="color: red">Quantity is required</div>
 						</div>
 
 						<div class="form-group col-md-3">
-							<input type="number" class="form-control" placeholder="Size">
+							<input type="number" class="form-control" placeholder="Size" required>
 						</div>
 
 						<div class="form-group col-md-4">
-							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" >
 						        <option selected>Color</option>
 						        <option value="1">Red</option>
 						        <option value="2">Blue</option>
@@ -56,12 +58,14 @@
 						     </select>
 						</div>
 						</div>
-					</form>
 
-					<div class="actions">
-						<button class="btn btn-block btn-accent pull-left">Add to Cart</button>
+						<div class="actions">
+						<button type="submit" class="btn btn-block btn-accent pull-left">Add to Cart</button>
 						<button class="btn btn-block pull-right">Save for Later</button>
 					</div>
+					</form>
+
+					
 				</div>
 			</div>
 		</div>

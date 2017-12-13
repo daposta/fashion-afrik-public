@@ -19,11 +19,12 @@ import { CategoryDetailComponent } from './components/category-detail/category-d
 import { StoreDetailComponent } from './components/store-detail/store-detail.component';
 import { ClearanceSalesComponent } from './components/clearance-sales/clearance-sales.component';
 import { LoginComponent } from './components/login/login.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const appRoutes: Routes = [
   
     { path: '', component: LandingComponent   },
-    { path: 'product-detail', component: ProductDetailComponent },
+    { path: 'product/:id/:slug', component: ProductDetailComponent },
     { path: 'store/:store', component: StoreDetailComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'category/:category', component: CategoryDetailComponent },
@@ -49,7 +50,8 @@ const appRoutes: Routes = [
     CategoryDetailComponent,
     StoreDetailComponent,
     ClearanceSalesComponent,
-    LoginComponent
+    LoginComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {})
