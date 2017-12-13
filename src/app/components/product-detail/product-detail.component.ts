@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ProductService } from '../../services/product.service';
+import { CartService } from '../../services/cart.service';
 
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
@@ -14,14 +15,16 @@ declare var $: any;
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
-  providers: [ ProductService]
+  providers: [ ProductService, CartService]
 })
 export class ProductDetailComponent implements OnInit {
   
   product: Object= {};
   host_address: string =  this.globals.HOST_URL; 
+  productItem: Object= {};
 
-  constructor(private productSrv :ProductService, private route: ActivatedRoute, private globals: Globals) { }
+  constructor(private productSrv :ProductService, private route: ActivatedRoute, private globals: Globals,
+    private cartSrv: CartService) { }
 
   ngOnInit() {
       this.route.params.switchMap((params: Params) => 
@@ -32,6 +35,13 @@ export class ProductDetailComponent implements OnInit {
               
           
          });
+  }
+
+
+  addToCart(){
+     
+      console.log(this.productItem)
+      //this.cartSrv.addToCart();
   }
 
 }

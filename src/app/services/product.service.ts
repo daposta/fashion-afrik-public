@@ -11,6 +11,8 @@ export class ProductService {
  private productsUrl = this.globals.PRODUCTS_URL; 
  private productsByStoreUrl = this.globals.PRODUCTS_BY_STORE_URL; 
  private productsByCategoryUrl = this.globals.PRODUCTS_BY_CATEGORY_URL; 
+ private productsClearanceUrl = this.globals.CLEARANCES_URL; 
+ private newArrivalsUrl = this.globals.NEW_ARRIVALS_URL; 
 
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
@@ -42,5 +44,19 @@ export class ProductService {
              // .catch(this.handleError);
   };
 
+
+   fetchClearance(){
+         return this.http.get(this.productsClearanceUrl)
+                .toPromise()
+                .then(response => response.json())
+   }
+
+   fetchNewArrivals(){
+
+       return this.http.get(this.newArrivalsUrl )
+              .toPromise()
+              .then(response => response.json())
+
+   }
 
 }
