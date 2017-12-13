@@ -12,4 +12,9 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  removeFromCart(){
+  	
+  }
+
 }
