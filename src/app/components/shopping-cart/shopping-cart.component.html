@@ -1,3 +1,75 @@
-<p>
-  shopping-cart works!
-</p>
+<app-header>
+</app-header>
+<section class="jumbotron">
+    <div class="inner-content">
+        <div class="h2 boldest text-center">
+            Cart
+        </div>
+    </div>
+</section>
+<section class="padded" id="shopping-list">
+    <div class="container">
+        <table class="table">
+            <thead>
+                <th>
+                    Product Name
+                </th>
+                <th>
+                    Unit Price
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Total
+                </th>
+                <th>
+                </th>
+            </thead>
+            <tbody>
+               
+
+                <tr>
+                    <td class="d-flex align-items-center">
+                        <div class="product-image">
+                            <img alt="" src="/assets/img/denim2.jpg">
+                                <div class="product-name">
+                                    <!-- Liya Dress -->
+                                </div>
+                        </div>
+                    </td>
+                    <td style="font-size: 20px;">
+                        <del>N</del>
+                        <span class="boldest">
+                            50,000
+                        </span>
+                    </td>
+                    <td>
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                +
+                            </span>
+                            <input class="form-control" type="text" value="3">
+                                <span class="input-group-addon">
+                                    −
+                                </span>
+                        </div>
+                    </td>
+                    <td style="font-size: 20px;">
+                        <del>N</del>
+                        <span class="boldest">
+                            150,000
+                        </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-light boldest">
+                            ×
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+<app-footer>
+</app-footer>
