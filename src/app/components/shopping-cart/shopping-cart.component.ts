@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { Globals } from '../../shared/api';
+
+declare var $: any;
+
 @Component({
   selector: 'app-shopping-cart',
   templateUrl: './shopping-cart.component.html',
@@ -14,12 +17,15 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private cartSrv: CartService,private globals: Globals) { }
 
   ngOnInit() {
+    
   		this.getCart();
   }
 
 
-  removeFromCart(){
-  	
+  remove(data){
+  	this.cartSrv.removeFromCart(data);
+      this.getCart();
+
   }
 
   getCart(){
@@ -28,7 +34,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   clear(){
-    console.log('poooo');
     this.cartSrv.clearCart();
     this.getCart();
   }

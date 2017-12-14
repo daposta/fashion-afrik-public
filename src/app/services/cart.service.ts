@@ -17,7 +17,7 @@ export class CartService {
               });
 
             }
-            console.log(items);
+          
             return items;
          }
    
@@ -42,11 +42,6 @@ export class CartService {
           }
       }
       if(index == -1){
-        //  cart.push(JSON.stringify(data));
-        console.log('1');
-        console.log('price..' + data['product']['regular_price'])
-       console.log('qty..' + data['qty'])
-
         let item = data;
         item.price = data['product']['regular_price'];
         item.qty  = data['qty'];
@@ -57,9 +52,7 @@ export class CartService {
          
       }
       else{
-          console.log('2');
-          console.log('price..' + data['product']['regular_price'])
-       console.log('qty..' + data['qty'])
+         
         let item =  cart[index] //JSON.parse(cart[index]);
         item.price = item['product']['regular_price'];
         item.qty += data['qty'];
@@ -74,18 +67,43 @@ export class CartService {
 
   	}
   	else{
-     // console
+     
+       let item = data;
+        item.price = data['product']['regular_price'];
+        item.qty  = data['qty'];
+        item.cost = item.qty * item.price;
+
   		 let cart =[];
-  		 cart.push(data);
+  		 cart.push(item);
   		 localStorage.setItem('cart', JSON.stringify(cart));
   	}
    
   };
 
-  removeFromCart(productId:any){
+  removeFromCart(data:any){
 
+     let productId = data['product'].id;
       if(localStorage.getItem('cart')){
          let cart:any = JSON.parse(localStorage.getItem('cart'));
+         let index:number = -1;
+         for(var i= 0; i < cart.length; i++){
+        
+          let item = cart[i];//JSON.parse(cart[i]);
+        
+            if(item['product']['id'] == productId){
+             
+              index = i;
+              break;
+            }
+        }
+        if(index != -1){
+         
+           let item =  cart[index]
+           cart.pop(item);
+         
+           localStorage.setItem('cart', JSON.stringify(cart));
+        }
+       
       }
 
 
