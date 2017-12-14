@@ -9,15 +9,18 @@ export class CartService {
   loadCart(){
     let items = [];
     let cart = JSON.parse(localStorage.getItem('cart'));
-    for(var i=0; i < cart.length ; i++){
-      let t = JSON.parse(cart[i]);
-      items.push({
-        product: t.product, qty:t.qty, cost: t.cost, price: t.price
-      });
+    if(cart){
+         for(var i=0; i < cart.length ; i++){
+              let t = cart[i]; //JSON.parse(cart[i]);
+              items.push({
+                product: t.product, qty:t.qty, cost: t.cost, price: t.price
+              });
 
-    }
-
-    return items;
+            }
+            console.log(items);
+            return items;
+         }
+   
   }
 
 
@@ -30,7 +33,7 @@ export class CartService {
         let index:number = -1;
         for(var i= 0; i < cart.length; i++){
         
-          let item = JSON.parse(cart[i]);
+          let item = cart[i];//JSON.parse(cart[i]);
         
           if(item['product']['id'] == productId){
            
@@ -40,21 +43,29 @@ export class CartService {
       }
       if(index == -1){
         //  cart.push(JSON.stringify(data));
-       
+        console.log('1');
+        console.log('price..' + data['product']['regular_price'])
+       console.log('qty..' + data['qty'])
+
         let item = data;
         item.price = data['product']['regular_price'];
-        item.qty += data['qty'];
+        item.qty  = data['qty'];
         item.cost = item.qty * item.price;
-        cart[index] = JSON.stringify(item);
+       // cart[index] = item;//JSON.stringify(item);
+       cart.push(item);
           localStorage.setItem('cart', JSON.stringify(cart));
+         
       }
       else{
-    
-        let item = JSON.parse(cart[index]);
+          console.log('2');
+          console.log('price..' + data['product']['regular_price'])
+       console.log('qty..' + data['qty'])
+        let item =  cart[index] //JSON.parse(cart[index]);
         item.price = item['product']['regular_price'];
         item.qty += data['qty'];
         item.cost = item.qty * item.price;
-        cart[index] = JSON.stringify(item);
+        cart[index] = item; //JSON.stringify(item);
+        
         localStorage.setItem('cart', JSON.stringify(cart));
       }
 
