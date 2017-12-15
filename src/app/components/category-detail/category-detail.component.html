@@ -11,7 +11,7 @@
 	<div class="container">
 		<div class="text-left">
 		<div class="boldest title text-left" style="padding: 40px 0; font-weight: 600; font-size: 25px;  text-transform: capitalize;">
-			<span class="">200 items</span> <span class="fade-7">matched this</span> category <span class="big-dot">...</span>
+			<span class="">{{products?.length || '0'}} item(s)</span> <span class="fade-7">matched this</span> category <span class="big-dot">...</span>
 		</div>
 		</div>
 
@@ -19,7 +19,7 @@
 			<div class="row">
 				<div class="col-sm-3" *ngFor="let item of products">
 					<div class="product-item">
-						<img src="{{host_address + item.feature_image}}" alt="">
+						<img src="{{item.feature_image}}" alt="">
 						<div class="product-details">
 							<div class="product-title"><a href="product/{{item.id}}/{{item.slug}}">{{item.name}}</a></div>
 							<div class="product-price boldest">

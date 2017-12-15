@@ -1,21 +1,27 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-clearance-sales',
   templateUrl: './clearance-sales.component.html',
-  styleUrls: ['./clearance-sales.component.css']
+  styleUrls: ['./clearance-sales.component.css'],
+    providers: [ ProductService]
 })
 export class ClearanceSalesComponent implements OnInit {
 
-  constructor() { }
+  sales:any[];
+  constructor(private productSrv :ProductService) { }
 
   ngOnInit() {
   	this.fetchClearance();
   }
 
 
-  fetchClearance(){
 
+
+   fetchClearance(){
+      this.productSrv.fetchNewArrivals().then(response => this.sales = response.results)
+    //.catch(err => this.error = err)
   }
 
 }

@@ -45,7 +45,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Clearance Sales</a>
+        <a class="nav-link" href="/clearance">Clearance Sales</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Blog</a>
@@ -71,7 +71,7 @@
         <a class="nav-link" href="/cart" style="position: relative;">
 
         	<img src="/assets/img/cart.png" width="30" alt="cart">
-          <span class="cart-bubble">{{cart.length}}</span>
+          <span *ngIf="cart" class="cart-bubble">{{cart?.length}}</span>
         </a>
       </li>
    </ul>
