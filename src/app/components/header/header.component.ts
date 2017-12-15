@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { StoreService } from '../../services/store.service';
 import { CartService } from '../../services/cart.service';
+import { ProductService } from '../../services/product.service';
 
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers: [ CategoryService , StoreService, CartService]
+  providers: [ CategoryService , StoreService, CartService, ProductService]
 })
 export class HeaderComponent implements OnInit {
 
@@ -16,7 +17,8 @@ export class HeaderComponent implements OnInit {
   stores:any[];
    error: any;
    cart: any[];
-  constructor(private categorySrv:CategoryService, private storeSrv: StoreService, private cartSrv: CartService) { }
+  constructor(private categorySrv:CategoryService, private storeSrv: StoreService,
+   private cartSrv: CartService, private productSrv :ProductService) { }
 
   ngOnInit() {
   	this.fetchProductsByCategory();
@@ -47,8 +49,9 @@ export class HeaderComponent implements OnInit {
    this.storeSrv.fetchStores().then(response => this.stores = response.results)
   }
 
-  searchProduct(){
-    
+  searchProduct(x){
+    console.log(x);
+    this.productSrv.searchProduct(x);
   }
 
   getCart(){

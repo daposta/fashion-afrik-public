@@ -22,7 +22,7 @@ export class StoreDetailComponent implements OnInit {
 			 	this.productSrv.fetchProductsByStore(params['store']))
 			 .subscribe(
 			 	data => {
-               this.products = data;
+               this.products = data.results;
           
          });
   }
