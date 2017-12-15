@@ -81,15 +81,10 @@
     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
       <ul class="nav flex-column">
-		  <li class="nav-item">
-		    <a class="nav-link active" href="#">Women <span class="float-right disabled">3</span></a>
+		  <li class="nav-item"  *ngFor="let item of categorys">
+		    <a class="nav-link active" href="#">{{item.name}} <span class="float-right disabled"></span></a>
 		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="#">Link <span class="float-right disabled">2</span></a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="#">Link <span class="float-right disabled">4</span></a>
-		  </li>
+		  
 		</ul>
       </div>
     </div>
