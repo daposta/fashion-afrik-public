@@ -8,7 +8,7 @@ import 'rxjs/add/operator/switchMap';
 @Component({
   selector: 'app-store-detail',
   templateUrl: './store-detail.component.html',
-  styleUrls: ['./store-detail.component.css'],
+  styleUrls: ['./store-detail.component.scss'],
    providers: [ ProductService]
 })
 export class StoreDetailComponent implements OnInit {

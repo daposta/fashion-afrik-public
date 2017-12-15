@@ -1,0 +1,48 @@
+@import '../../../sass/variables';
+.avatar {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    background: $site-blue;
+    color: $site-accent;
+    font-size: 25px; // font-weight: 700;
+}
+.progress {
+    margin-bottom: 15px;
+}
+.product-component {
+    img {
+        width: 100%;
+    }
+    .product-title {
+        margin-top: 10px;
+    }
+}
+.card {
+	border: 0;
+	margin-bottom: 15px;
+}
+
+.card-body {
+	    padding: 1.25rem 5px;
+	    a {
+	    	font-weight: 100;
+	    	color: $site-accent;
+	    }
+}
+.card-header {
+	border: 0;
+	padding: 20px;
+    h5 {
+        font-family: $primary-font;
+        color: $site-blue;
+        font-size: 15px;
+
+        a{
+        	color: $site-blue;
+        	text-decoration: none;
+        }
+    }
+}

@@ -12,6 +12,14 @@ header {
     }
 }
 
+.navbar-nav .dropdown {
+    cursor: pointer;    
+}
+
+.navbar-nav .dropdown:hover > .dropdown-menu {
+    display: block;    
+}
+
 #top-header {
     nav {
         a, span {

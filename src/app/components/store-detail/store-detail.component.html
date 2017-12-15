@@ -1,7 +1,171 @@
 <app-header></app-header>
-<p>
-  store-detail works!
-</p>
+<section class="jumbotron">
+	<div class="container inner-content">
+		<div class="row align-items-center">
+			<div class="col-sm port">
+				<div class="avatar">
+			<!-- If no avatar use Initials -->
+			<span class="initials">
+				DF
+			</span>
+
+			<!-- <img src="http://placehold.it/100x100" alt="avatar"> -->
+		</div>
+		<span class="store-name boldest h5" style="margin-top: 10px; display: inline-block">Dot Fashion</span>
+			</div>
+			<div class="col-sm port">
+				<h5 class="boldest mb-0 uppercase">
+					Seller since
+				</h5>
+				<span class="uppercase">
+					Dec 25, 2017
+				</span>
+			</div>
+			<div class="col-sm port">
+				<h5 class="boldest mb-0 uppercase">
+					Successful Sales
+				</h5>
+				<span class="uppercase">
+					25 sales
+				</span>
+			</div>
+			<div class="col-sm port">
+				<div>
+					<div class="title" style="margin-bottom: 5px; font-size: 12px; text-transform: uppercase; font-weight: 700">
+						Product quality
+					</div>
+					<div class="progress" style="height: 5px">
+				  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+				</div>
+
+				<div>
+					<div class="title" style="margin-bottom: 5px; font-size: 12px; text-transform: uppercase; font-weight: 700">
+						Product quality
+					</div>
+					<div class="progress" style="height: 5px">
+				  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+				</div>
+
+				<div>
+					<div class="title" style="margin-bottom: 5px; font-size: 12px; text-transform: uppercase; font-weight: 700">
+						Negative Feedbacks
+					</div>
+					<div class="progress" style="height: 5px">
+				  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 
 
+<section class="padded">
+	<div class="container">
+		<!-- display products and their respective filters -->
+		<div class="row">
+			<div class="col-sm-4">
+				<!-- filter section -->
+				<div id="accordion" role="tablist">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a class="boldest" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         Categories
+        </a>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+      <ul class="nav flex-column">
+		  <li class="nav-item">
+		    <a class="nav-link active" href="#">Women <span class="float-right disabled">3</span></a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">Link <span class="float-right disabled">2</span></a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="#">Link <span class="float-right disabled">4</span></a>
+		  </li>
+		</ul>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        </a>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingThree">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          #3
+        </a>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+</div>
+			</div>
+
+			<div class="col-sm-7 offset-md-1">
+				<!-- Listings for products -->
+				<div class="row">
+					<div class="col-sm-4">
+					<div class="product-component">
+						<div class="product-image">
+							<img src="/assets/img/short-dress.jpg" alt="product image">
+						</div>
+						<div class="product-title">
+							<h5 class="">Liya Dress</h5>
+							<del>N</del><b>25,000</b>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-4">
+					<div class="product-component">
+						<div class="product-image">
+							<img src="/assets/img/orange-dress.jpg" alt="product image">
+						</div>
+							<div class="product-title">
+							<h5 class="">Orange Dress</h5>
+							<del>N</del><b>35,000</b>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-sm-4">
+					<div class="product-component">
+						<div class="product-image">
+							<img src="/assets/img/moon-dress.jpg" alt="product image">
+						</div>
+							<div class="product-title">
+							<h5 class="">Moon Dress</h5>
+							<del>N</del><b>22,000</b>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 <app-footer></app-footer>
