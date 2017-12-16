@@ -1,0 +1,23 @@
+@import '../../../sass/variables';
+.nav-pills .nav-link {
+    border-radius: 0.25rem;
+    color: #011c27;
+    transition: 0.2s ease-in;
+    // font-weight: 600;
+
+    &:hover {
+    	color: $site-accent;
+    }
+
+    &.active {
+    	background-color: $site-accent;
+    	color: #fff;
+    }
+}
+label {
+	font-size: 13px;
+	font-weight: 700;
+}
+input {
+	border: 0
+}
