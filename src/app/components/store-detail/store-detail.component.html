@@ -81,15 +81,10 @@
     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
       <ul class="nav flex-column">
-		  <li class="nav-item">
-		    <a class="nav-link active" href="#">Women <span class="float-right disabled">3</span></a>
+		  <li class="nav-item"  *ngFor="let item of categorys">
+		    <a class="nav-link active" href="#">{{item.name}} <span class="float-right disabled"></span></a>
 		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="#">Link <span class="float-right disabled">2</span></a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="#">Link <span class="float-right disabled">4</span></a>
-		  </li>
+		  
 		</ul>
       </div>
     </div>
@@ -127,42 +122,22 @@
 			<div class="col-sm-7 offset-md-1">
 				<!-- Listings for products -->
 				<div class="row">
-					<div class="col-sm-4">
+					<div class="col-sm-4" *ngFor="let item of products">
 					<div class="product-component">
 						<div class="product-image">
-							<img src="/assets/img/short-dress.jpg" alt="product image">
+							<img src="{{item.feature_image}}" alt="product image">
 						</div>
 						<div class="product-title">
-							<h5 class="">Liya Dress</h5>
-							<del>N</del><b>25,000</b>
+							<h5 class="">{{item.name}}</h5>
+							<del>N</del><b>{{item.regular_price |number}}</b>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-sm-4">
-					<div class="product-component">
-						<div class="product-image">
-							<img src="/assets/img/orange-dress.jpg" alt="product image">
-						</div>
-							<div class="product-title">
-							<h5 class="">Orange Dress</h5>
-							<del>N</del><b>35,000</b>
-						</div>
-					</div>
-				</div>
+				
 
 
-				<div class="col-sm-4">
-					<div class="product-component">
-						<div class="product-image">
-							<img src="/assets/img/moon-dress.jpg" alt="product image">
-						</div>
-							<div class="product-title">
-							<h5 class="">Moon Dress</h5>
-							<del>N</del><b>22,000</b>
-						</div>
-					</div>
-				</div>
+				
 				</div>
 			</div>
 		</div>

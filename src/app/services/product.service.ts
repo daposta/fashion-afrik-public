@@ -13,6 +13,7 @@ export class ProductService {
  private productsByCategoryUrl = this.globals.PRODUCTS_BY_CATEGORY_URL; 
  private productsClearanceUrl = this.globals.CLEARANCES_URL; 
  private newArrivalsUrl = this.globals.NEW_ARRIVALS_URL; 
+ private searchUrl = this.globals.SEARCH_URL; 
 
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
@@ -54,6 +55,14 @@ export class ProductService {
    fetchNewArrivals(){
 
        return this.http.get(this.newArrivalsUrl )
+              .toPromise()
+              .then(response => response.json())
+
+   }
+
+  searchProduct(data:string){
+
+       return this.http.get(this.searchUrl +'?search=' +data )
               .toPromise()
               .then(response => response.json())
 
