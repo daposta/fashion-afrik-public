@@ -26,4 +26,12 @@ export class LandingComponent implements OnInit {
     //.catch(err => this.error = err)
   }
 
+  fetchWomen(){
+
+  }
+
+  fetchMen(){
+    
+  }
+
 }

@@ -25,6 +25,8 @@ export class ProductDetailComponent implements OnInit {
   host_address: string =  this.globals.HOST_URL; 
   productItem: Object= {};
   cartForm:FormGroup;
+  reps: any[];
+
   private formSubmitAttempt: boolean;
 
   constructor(private productSrv :ProductService, private route: ActivatedRoute, private globals: Globals,
@@ -51,8 +53,14 @@ $(function(){
        .subscribe(
          data => {
                this.product = data;
-              
-          
+               let product_imgs = [];
+               product_imgs.push(this.product['feature_image']);
+
+               for(let i =0; i < this.product['other_product_images'].length; i++){
+                      product_imgs.push(this.product['other_product_images'][i].doc);
+                }
+              this.reps = product_imgs
+           
          });
   }
 

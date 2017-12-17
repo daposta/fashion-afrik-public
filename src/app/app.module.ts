@@ -21,6 +21,7 @@ import { ClearanceSalesComponent } from './components/clearance-sales/clearance-
 import { LoginComponent } from './components/login/login.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { NewArrivalsComponent } from './components/new-arrivals/new-arrivals.component';
 
 const appRoutes: Routes = [
   
@@ -32,6 +33,7 @@ const appRoutes: Routes = [
     { path: 'cart', component: ShoppingCartComponent },
      { path: 'user-profile', component: UserProfileComponent },
     { path: 'clearance', component: ClearanceSalesComponent },
+    { path: 'new-arrivals', component: NewArrivalsComponent },
     { path: 'login', component: LoginComponent },
      { path: 'me', component: UserProfileComponent },
       { path: 'search-results', component: SearchResultsComponent },
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
     ClearanceSalesComponent,
     LoginComponent,
     CheckoutComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    NewArrivalsComponent
   ],
   imports: [
     BrowserModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {})
