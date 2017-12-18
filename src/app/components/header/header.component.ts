@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit {
   }
 
   searchProduct(x){
-    console.log(x);
+  
     this.productSrv.searchProduct(x);
   }
 
