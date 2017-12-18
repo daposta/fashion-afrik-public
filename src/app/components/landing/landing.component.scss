@@ -90,7 +90,8 @@ $toppers-height: $top-ranked-height/3.2;
         font-family: $primary-font;
     }
     .rank-3, .rank-4, .rank-5 {
-        height: $top-ranked-height - ($toppers-height * 2);
+        // height: $top-ranked-height - ($toppers-height * 2);
+        height: 96.75px;
         width: (100/3)+%;
         float: left;
         display: flex;
