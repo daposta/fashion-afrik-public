@@ -1,17 +1,4 @@
 @import '../../../sass/variables';
-.avatar {
-    width: 100px;
-    height: 100px;
-    line-height: 100px;
-    border-radius: 50%;
-    text-align: center;
-    background: $site-blue;
-    color: $site-accent;
-    font-size: 25px; // font-weight: 700;
-}
-.progress {
-    margin-bottom: 15px;
-}
 .product-component {
     img {
         width: 100%;

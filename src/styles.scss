@@ -85,3 +85,41 @@ body {
 		opacity: .8;
 	}
 }
+
+.card {
+    border: 0;
+    margin-bottom: 15px;
+    margin-bottom: 15px;
+    box-shadow: 2px 2px 5px #ddd;
+}
+.card-body {
+    padding: 10px 0;
+    a {
+        font-weight: 700;
+        color: $site-blue !important;
+        font-size: 14px;
+        line-height: 1;
+        transition: .2s ease-in;
+
+        &:hover {
+        	 color: $site-accent !important;
+        }
+    }
+}
+.card-header {
+    border: 0;
+    padding: 15px 20px !important;
+    text-transform: uppercase;
+    letter-spacing: 0px;
+    border-bottom: 1px solid #ddd !important;
+
+    h5 {
+        font-family: $primary-font;
+        color: $site-blue;
+        font-size: 15px;
+        a {
+            color: $site-blue;
+            text-decoration: none;
+        }
+    }
+}

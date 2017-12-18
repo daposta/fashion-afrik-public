@@ -21,28 +21,32 @@
     }
 }
 .card {
-	border: 0;
-	margin-bottom: 15px;
+    border: 0;
+    margin-bottom: 15px;
+    margin-bottom: 15px;
+    box-shadow: 2px 2px 5px #ddd;
 }
-
 .card-body {
-	    padding: 1.25rem 5px;
-	    a {
-	    	font-weight: 100;
-	    	color: $site-accent;
-	    }
+    padding: 10px 0;
+    a {
+        font-weight: 700;
+        color: $site-accent;
+        font-size: 14px;
+        line-height: 1;
+    }
 }
 .card-header {
-	border: 0;
-	padding: 20px;
+    border: 0;
+    padding: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0px;
     h5 {
         font-family: $primary-font;
         color: $site-blue;
         font-size: 15px;
-
-        a{
-        	color: $site-blue;
-        	text-decoration: none;
+        a {
+            color: $site-blue;
+            text-decoration: none;
         }
     }
 }

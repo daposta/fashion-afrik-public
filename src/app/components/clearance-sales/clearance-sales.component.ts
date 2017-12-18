@@ -4,7 +4,7 @@ import { ProductService } from '../../services/product.service';
 @Component({
   selector: 'app-clearance-sales',
   templateUrl: './clearance-sales.component.html',
-  styleUrls: ['./clearance-sales.component.css'],
+  styleUrls: ['./clearance-sales.component.scss'],
     providers: [ ProductService]
 })
 export class ClearanceSalesComponent implements OnInit {

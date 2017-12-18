@@ -89,6 +89,7 @@ $toppers-height: $top-ranked-height/3.2;
         font-weight: 700;
         font-family: $primary-font;
     }
+
     .rank-3, .rank-4, .rank-5 {
         // height: $top-ranked-height - ($toppers-height * 2);
         height: 96.75px;
@@ -100,9 +101,11 @@ $toppers-height: $top-ranked-height/3.2;
         font-weight: 700;
         font-family: $primary-font;
     }
+    
     .rank-1 {
         background: #ccc;
     }
+
     .rank-2 {
         background: #ddd;
     }

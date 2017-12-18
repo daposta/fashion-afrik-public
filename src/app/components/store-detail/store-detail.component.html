@@ -75,6 +75,7 @@
         <a class="boldest" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
          Categories
         </a>
+        <span class="icon float-right"><i class="ion-plus-round"></i></span>
       </h5>
     </div>
 
@@ -123,21 +124,16 @@
 				<!-- Listings for products -->
 				<div class="row">
 					<div class="col-sm-4" *ngFor="let item of products">
-					<div class="product-component">
-						<div class="product-image">
-							<img src="{{item.feature_image}}" alt="product image">
-						</div>
-						<div class="product-title">
-							<h5 class="">{{item.name}}</h5>
-							<del>N</del><b>{{item.regular_price |number}}</b>
+						<div class="product-component">
+							<div class="product-image">
+								<img src="{{item.feature_image}}" alt="product image">
+							</div>
+							<div class="product-title">
+								<h5 class="">{{item.name}}</h5>
+								<del>N</del><b>{{item.regular_price |number}}</b>
+							</div>
 						</div>
 					</div>
-				</div>
-
-				
-
-
-				
 				</div>
 			</div>
 		</div>

@@ -8,3 +8,9 @@ import * as $ from 'jquery';
 export class AppComponent {
   title = 'app';
 }
+
+$(function(){
+	$('#headingOne').on('shown.bs.collapse', function () {
+			alert('aye')
+	});
+})

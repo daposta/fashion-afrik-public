@@ -1,5 +1,84 @@
  <app-header></app-header>
- <p>
-  clearance-sales works!
-</p>
+ <section class="jumbotron">
+ 	<div class="inner-content">
+ 		<h3 class="text-center boldest">Clearance Sales</h3>
+ 	</div>
+ </section>
+<section class="padded">
+	<div class="container">
+		<!-- display products and their respective filters -->
+		<div class="row">
+			<div class="col-sm-4">
+				<!-- filter section -->
+				<div id="accordion" role="tablist">
+  <div class="card">
+    <div class="card-header" role="tab" id="headingOne">
+      <h5 class="mb-0">
+        <a class="boldest" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         Categories
+        </a>
+        <span class="icon float-right"><i class="ion-plus-round"></i></span>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+      <ul class="nav flex-column">
+		  <li class="nav-item"  *ngFor="let item of categorys">
+		    <a class="nav-link active" href="#">{{item.name}} <span class="float-right disabled"></span></a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingTwo">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        </a>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" role="tab" id="headingThree">
+      <h5 class="mb-0">
+        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          #3
+        </a>
+      </h5>
+    </div>
+    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+</div>
+			</div>
+
+			<div class="col-sm-7 offset-md-1">
+				<!-- Listings for products -->
+				<div class="row">
+					<div class="col-sm-4" *ngFor="let item of products">
+						<div class="product-component">
+							<div class="product-image">
+								<img src="{{item.feature_image}}" alt="product image">
+							</div>
+							<div class="product-title">
+								<h5 class="">{{item.name}}</h5>
+								<del>N</del><b>{{item.regular_price |number}}</b>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
 <app-footer></app-footer>
