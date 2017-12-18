@@ -10,11 +10,15 @@ import { ProductService } from '../../services/product.service';
 export class LandingComponent implements OnInit {
   
   newArrivals:any[];
+  hers:any[];
+  his:any[];
   constructor(private productSrv :ProductService) { }
 
   ngOnInit() {
   	this.fetchNewArrivals();
   	this.fetchTopFiveStores();
+    this.fetchMen();
+    this.fetchWomen();
   }
 
   fetchTopFiveStores(){
@@ -27,11 +31,11 @@ export class LandingComponent implements OnInit {
   }
 
   fetchWomen(){
-
+    this.productSrv.fetchHer().then(response => this.hers = response.results)
   }
 
   fetchMen(){
-    
+    this.productSrv.fetchHim().then(response => this.his = response.results)
   }
 
 }

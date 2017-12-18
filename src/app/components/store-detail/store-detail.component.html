@@ -125,12 +125,12 @@
 				<div class="row">
 					<div class="col-sm-4" *ngFor="let item of products">
 						<div class="product-component">
-							<div class="product-image">
-								<img src="{{item.feature_image}}" alt="product image">
-							</div>
-							<div class="product-title">
-								<h5 class="">{{item.name}}</h5>
-								<del>N</del><b>{{item.regular_price |number}}</b>
+						<div class="product-image">
+							<img src="{{item.feature_image}}" alt="product image">
+						</div>
+						<div class="product-title">
+							<h5 class=""><a href="product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h5>
+							<del>N</del><b>{{item.regular_price |number}}</b>
 							</div>
 						</div>
 					</div>
