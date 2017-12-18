@@ -85,311 +85,66 @@
         </div>
     </div>
 </section>
-<section class="padded" id="for-her">
-    <div class="container">
+
+
+
+<section class="padded" id="new-arrivals">
+
+    <div class="section-header text-center font-2">
+        # For her
+        <span class="big-dot">
+            ...
+        </span>
+    </div>
+
+     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-sm-12">
-                <div class="section-header text-left font-2">
-                    # For her
-                    <span class="big-dot">
-                        ...
-                    </span>
+            <div class="col-sm-3" *ngFor="let item of hers">
+                <div class="item">
+
+                <img src="{{item.feature_image}}" class="img-fluid">
+
+               <figcaption>
+                    <a href="product/{{item.id}}/{{item.slug}}" class="">{{item.name}}</a> 
+               </figcaption>
+                        
                 </div>
-                <div class="row">
-                    <div class="col-8">
-                        <div class="item" style="height: 500px; overflow: hidden;">
-                            <img src="/assets/img/short-dress.jpg" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="item" style="height: 235px">
-                            <img src="/assets/img/orange-dress.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="item" style="height: 235px">
-                            <img src="/assets/img/moon-dress.jpg" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
+               
             </div>
-            <div class="col-md-5 offset-md-1">
-                <nav class="nav filter-nav justify-content-end">
-                    <a class="nav-link active" href="#">
-                        All
-                    </a>
-                    <a class="nav-link" href="# filter-nav">
-                        Woman
-                    </a>
-                    <a class="nav-link" href="#">
-                        Sweatshirt
-                    </a>
-                    <a class="nav-link" href="#">
-                        Shirt
-                    </a>
-                    <a class="nav-link" href="#">
-                        Jean
-                    </a>
-                </nav>
-                <div class="row mini-products">
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/deola1.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product one
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/deola2.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product two
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/deola3.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product three
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mini-products">
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/deola4.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product four
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/deola5.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product five
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/deola6.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product six
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            <!-- <div class="w-100"></div> -->
+          
+           
         </div>
     </div>
 </section>
-<section class="padded" id="for-him">
-    <div class="container">
+<section class="padded" id="new-arrivals">
+
+    <div class="section-header text-center font-2">
+        # For him
+        <span class="big-dot">
+            ...
+        </span>
+    </div>
+
+     <div class="container">
         <div class="row">
-            <div class="col-md-5">
-                <nav class="nav filter-nav justify-content-start">
-                    <a class="nav-link active" href="#">
-                        All
-                    </a>
-                    <a class="nav-link" href="# filter-nav">
-                        Man
-                    </a>
-                    <a class="nav-link" href="#">
-                        Sweatshirt
-                    </a>
-                    <a class="nav-link" href="#">
-                        Shirt
-                    </a>
-                    <a class="nav-link" href="#">
-                        Jean
-                    </a>
-                </nav>
-                <div class="row mini-products">
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/men1.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product one
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/men2.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product two
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/men3.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product three
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-sm-3" *ngFor="let item of his">
+                <div class="item">
+
+                <img src="{{item.feature_image}}" class="img-fluid">
+
+               <figcaption>
+                    <a href="product/{{item.id}}/{{item.slug}}" class="">{{item.name}}</a> 
+               </figcaption>
+                        
                 </div>
-                <div class="row mini-products">
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/men4.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product four
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/men5.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product five
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="item" style="height: 235px">
-                            <!-- image -->
-                            <div class="mini-products-image" style="overflow: hidden;">
-                                <img src="/assets/img/men6.jpg" class="img-fluid" alt="">
-                            </div>
-                            <!-- caption -->
-                            <div class="mini-products-details">
-                                <h5 class="title">
-                                    Product six
-                                </h5>
-                                <span class="price">
-                                    N30,000
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
-            <div class="col-md-6 offset-md-1 col-sm-12">
-                <div class="section-header text-left font-2">
-                    # For him
-                    <span class="big-dot">
-                        ...
-                    </span>
-                </div>
-                <div class="row">
-                    <div class="col-8">
-                        <div class="item" style="height: 500px; overflow: hidden;">
-                            <img src="/assets/img/menbig.jpg" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                    <div class="col-sm">
-                        <div class="item" style="height: 235px">
-                            <img src="/assets/img/men7.jpg" class="img-fluid" alt="">
-                        </div>
-                        <div class="item" style="height: 235px">
-                            <img src="/assets/img/men8.jpg" class="img-fluid" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            <!-- <div class="w-100"></div> -->
+          
+           
         </div>
     </div>
 </section>
