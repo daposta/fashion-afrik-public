@@ -5,10 +5,22 @@
 }
 #new-arrivals {
     .item {
+        position: relative;
         background: #e2e8ef;
         margin-bottom: 30px;
         max-width: 270px;
         height: 300px;
+        overflow-y: hidden;
+
+        figcaption {
+            position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-image: linear-gradient(#cdcdcd, #bcb7b7);
+    padding: 20px;
+    opacity: .9;
+        }
     }
 }
 #for-her, #for-him {

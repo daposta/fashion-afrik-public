@@ -65,9 +65,11 @@
             <div class="col-sm-3" *ngFor="let item of newArrivals">
                 <div class="item">
 
-                <img src="{{item.feature_image}}">
+                <img src="/assets/img/moon-dress.jpg" class="img-fluid">
 
-                <a href="product/{{item.id}}/{{item.slug}}">{{item.name}}</a> 
+               <figcaption>
+                    <a href="product/{{item.id}}/{{item.slug}}" class="">{{item.name}}</a> 
+               </figcaption>
                         
                 </div>
                
