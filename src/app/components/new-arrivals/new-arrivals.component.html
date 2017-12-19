@@ -1,7 +1,7 @@
  <app-header></app-header>
  <section class="jumbotron">
  	<div class="inner-content">
- 		<h3 class="text-center boldest">New In</h3>
+ 		<h3 class="text-center boldest">New Arrivals</h3>
  	</div>
  </section>
 <section class="padded">
@@ -13,13 +13,13 @@
 			<div class="col-sm-12">
 				<!-- Listings for products -->
 				<div class="row">
-					<div class="col-sm-4" *ngFor="let item of products">
+					<div class="col-sm-4" *ngFor="let item of arrivals">
 						<div class="product-component">
 							<div class="product-image">
 								<img src="{{item.feature_image}}" alt="product image">
 							</div>
 							<div class="product-title">
-								<h5 class="">{{item.name}}</h5>
+								<h5 class=""><a href="product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h5>
 								<del>N</del><b>{{item.regular_price |number}}</b>
 							</div>
 						</div>
