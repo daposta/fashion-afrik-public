@@ -36,6 +36,7 @@ const appRoutes: Routes = [
     { path: 'new-arrivals', component: NewArrivalsComponent },
     { path: 'login', component: LoginComponent },
      { path: 'me', component: UserProfileComponent },
+     { path: 'checkout', component: CheckoutComponent },
       { path: 'search-results', component: SearchResultsComponent },
 
 ]
