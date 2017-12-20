@@ -11,15 +11,18 @@
         max-width: 270px;
         height: 300px;
         overflow-y: hidden;
-
         figcaption {
             position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-    background-image: linear-gradient(#cdcdcd, #bcb7b7);
-    padding: 20px;
-    opacity: .9;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-image: linear-gradient(#0f1432, #323232);
+            color: #fff;
+            padding: 20px;
+            opacity: .9;
+            a {
+                font-weight: bold;
+            }
         }
     }
 }
@@ -89,7 +92,6 @@ $toppers-height: $top-ranked-height/3.2;
         font-weight: 700;
         font-family: $primary-font;
     }
-
     .rank-3, .rank-4, .rank-5 {
         // height: $top-ranked-height - ($toppers-height * 2);
         height: 96.75px;
@@ -101,24 +103,19 @@ $toppers-height: $top-ranked-height/3.2;
         font-weight: 700;
         font-family: $primary-font;
     }
-    
     .rank-1 {
         background: #ccc;
     }
-
     .rank-2 {
         background: #ddd;
     }
-
     .rank-3 {
         background: lighten(#666, 50%);
     }
-
     .rank-4 {
-        background:lighten(#666, 40%);
+        background: lighten(#666, 40%);
     }
-
     .rank-5 {
-        background:lighten(#666, 50%);
+        background: lighten(#666, 50%);
     }
 }
