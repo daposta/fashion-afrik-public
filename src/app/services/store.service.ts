@@ -21,6 +21,12 @@ export class StoreService {
               .catch(this.handleError);
   };
 
+
+  getStore(x:any){
+
+
+  }
+
  
 
    private handleError(error: any) {
