@@ -24,7 +24,7 @@ export class ClearanceSalesComponent implements OnInit {
   	//this.fetchClearance();
     let t = this.route;
     this.route.params.switchMap((params: Params) => 
-         this.productSrv.fetchProductsByCategory(params['category'], params['productType'] ))
+         this.productSrv.fetchClearance(params['category'], params['productType'] ))
        .subscribe(
          data => {
                this.sales = data.results;

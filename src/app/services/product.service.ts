@@ -49,6 +49,7 @@ export class ProductService {
 
 
    fetchClearance(x: string, y:string){
+    
          return this.http.get(this.productsClearanceUrl + x +'/' +y +'/')
                 .toPromise()
                 .then(response => response.json())
