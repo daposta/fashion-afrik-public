@@ -29,9 +29,26 @@
             {{item.name}}
           </a>
           
+          <ul>  
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" (mouseover)="fetchCategories()"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Category
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/category/{{item.slug}}"  *ngFor="let item of categorys">
+            {{item.name}}
+          </a>
+          
           
         </div>
+
       </li>
+          </ul>
+          
+        </div>
+
+      </li>
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" (mouseover)="fetchStores()"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Store

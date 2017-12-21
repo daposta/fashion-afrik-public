@@ -26,3 +26,15 @@ section {
     	 display: block;
     }
 }
+ul {
+    ul {
+        padding-left: 15px;
+    }
+}
+li {
+    li {
+        list-style: none;
+        padding: 0;
+        margin: 0
+    }
+}

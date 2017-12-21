@@ -68,13 +68,13 @@
         <div class="row">
             <div class="col-sm-3" *ngFor="let item of newArrivals">
                 <div class="item">
-
+<a href="product/{{item.id}}/{{item.slug}}" class="">
                 <img src="{{ item.feature_image}}" class="img-fluid">
 
                <figcaption>
-                    <a href="product/{{item.id}}/{{item.slug}}" class="">{{item.name}}</a> 
+                    {{item.name}}
                </figcaption>
-                        
+                    </a>    
                 </div>
                
             </div>

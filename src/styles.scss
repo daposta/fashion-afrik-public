@@ -4,6 +4,18 @@ html {
 }
 body {
     font-family: $primary-font;
+    a {
+    	color: $site-accent;
+    font-weight: 700;
+    text-decoration: none;
+    transition: .2 ease-in;
+
+    &:hover {
+    	color: darken($site-accent, 5%);
+    	opacity: .7;
+    	  text-decoration: none;
+    }
+    }
 
 }
 
