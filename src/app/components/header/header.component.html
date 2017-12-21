@@ -35,10 +35,10 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
              
-                <a href="/category/{{pt.slug}}" *ngFor="let pt of productTypes">
+                <a href="/category/{{selectedCategory}}/{{selectedProductType}}"  (click)="setProductType(pt.slug)"  *ngFor="let pt of productTypes">
                 {{pt.name}}
                 </a>
-                
+               <!--  href="/category/?category" -->
                 
               </div>
 
@@ -80,7 +80,7 @@
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
              
-                <a href="/clearance/{{pt.slug}}" *ngFor="let pt of productTypes">
+                <a href="/clearance/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)"  *ngFor="let pt of productTypes">
                 {{pt.name}}
                 </a>
                 

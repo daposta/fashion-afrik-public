@@ -18,16 +18,18 @@ export class CategoryDetailComponent implements OnInit {
   products:any[];
   host_address: string =  this.globals.HOST_URL; 
   category:string;
+  productType:string;
   constructor(private productSrv :ProductService, private route: ActivatedRoute, private globals: Globals) { }
 
   ngOnInit() {
     let t = this.route;
   	this.route.params.switchMap((params: Params) => 
-			 	this.productSrv.fetchProductsByCategory(params['category']))
+			 	this.productSrv.fetchProductsByCategory(params['category'], params['productType'] ))
 			 .subscribe(
 			 	data => {
                this.products = data.results;
                this.category = t.snapshot.params['category'];
+               this.productType = t.snapshot.params['productType'];
           
          });
   }

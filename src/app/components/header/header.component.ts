@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
   stores:any[];
   productTypes:any[];
   selectedCategory:any;
+  selectedProductType:any;
    error: any;
    cart: any[];
   constructor(private categorySrv:CategoryService, private storeSrv: StoreService,
@@ -72,6 +73,9 @@ export class HeaderComponent implements OnInit {
 
  setCategory(x){
    this.selectedCategory = x;
-   console.log(this.selectedCategory);
+ }
+
+ setProductType(x){
+   this.selectedProductType = x;
  }
 }
