@@ -21,7 +21,7 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" (mouseover)="fetchCategories()"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle"   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Category
         </a>
          <ul class="dropdown-menu">
@@ -56,22 +56,54 @@
 
         </div> -->
 
+
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" (mouseover)="fetchStores()"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Store
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
            <a class="dropdown-item" href="/store/{{item.slug}}"  *ngFor="let item of stores">
             {{item.name}}
           </a>
+
+
           
        
         </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/clearance">Clearance Sales</a>
+      <li class="nav-item dropdown">
+          <!-- <a class="nav-link" href="/clearance">Clearance Sales</a> -->
+          <a class="nav-link dropdown-toggle"   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Clearance Sales
+        </a>
+
+         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+       
+          
+          <ul>  
+      
+            <li class="nav-item dropdown"  *ngFor="let item of categorys">
+              <a class="nav-link dropdown-toggle" (mouseover)="setCategory(item.slug)"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                {{item.name}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+             
+                <a href="/clearance/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)"  *ngFor="let pt of productTypes">
+                {{pt.name}}
+                </a>
+                
+                
+              </div>
+
+            </li>
+          </ul>
+          
+        </div>
+
+
+
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/new-arrivals">New Arrivals</a>

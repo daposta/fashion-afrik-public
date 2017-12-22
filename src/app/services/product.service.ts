@@ -29,10 +29,10 @@ export class ProductService {
   }
 
 
-  fetchProductsByCategory(data: string){
+  fetchProductsByCategory(x: string, y:string){
 
   	
-     return this.http.get(this.productsByCategoryUrl + data +'/')
+     return this.http.get(this.productsByCategoryUrl + x +'/' +y +'/')
               .toPromise()
               .then(response => response.json())
               //.catch(this.handleError);
@@ -48,8 +48,9 @@ export class ProductService {
   };
 
 
-   fetchClearance(){
-         return this.http.get(this.productsClearanceUrl)
+   fetchClearance(x: string, y:string){
+    
+         return this.http.get(this.productsClearanceUrl + x +'/' +y +'/')
                 .toPromise()
                 .then(response => response.json())
    }

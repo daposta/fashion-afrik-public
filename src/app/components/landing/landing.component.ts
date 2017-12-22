@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import { Globals } from '../../shared/api';
 
 
 @Component({
@@ -14,9 +13,8 @@ export class LandingComponent implements OnInit {
   newArrivals:any[];
   hers:any[];
   his:any[];
-  host_address: string =  this.globals.HOST_URL; 
 
-  constructor(private globals: Globals, private productSrv :ProductService) { }
+  constructor( private productSrv :ProductService) { }
 
   ngOnInit() {
   	this.fetchNewArrivals();
