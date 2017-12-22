@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import {HttpModule,  Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
 
 import { Globals } from './shared/api';
 
@@ -61,7 +63,8 @@ const appRoutes: Routes = [
     NewArrivalsComponent
   ],
   imports: [
-    BrowserModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {})
+    BrowserModule, HttpClientModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
+   
   ],
   providers: [Globals,],
   bootstrap: [AppComponent]

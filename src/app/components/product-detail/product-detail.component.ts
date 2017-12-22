@@ -9,6 +9,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Globals } from '../../shared/api';
 // import * as $ from 'jquery';
+
 declare var $: any;
 
 // import  'slick-carousel';
@@ -26,6 +27,10 @@ export class ProductDetailComponent implements OnInit {
   productItem: Object= {};
   cartForm:FormGroup;
   reps: any[];
+  title:any;
+  description:any;
+  img_url:any;
+  url: any;
 
   private formSubmitAttempt: boolean;
 
@@ -59,7 +64,12 @@ $(function(){
                for(let i =0; i < this.product['other_product_images'].length; i++){
                       product_imgs.push(this.product['other_product_images'][i].doc);
                 }
-              this.reps = product_imgs
+              this.reps = product_imgs;
+              this.title = this.product['name'];
+              this.description = this.product['description'];
+              this.img_url = this.product['feature_image'];
+              console.log(document.location.href);
+              this.url = document.location.href;
            
          });
   }
