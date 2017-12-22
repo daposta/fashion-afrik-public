@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { StoreService } from '../../services/store.service';
 import { CartService } from '../../services/cart.service';
@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
   selectedCategory:any;
   selectedProductType:any;
    error: any;
+   @Input()
    cart: any[];
   constructor(private categorySrv:CategoryService, private storeSrv: StoreService,
    private cartSrv: CartService, private productSrv :ProductService, private productTypeSrv: ProductTypesService) { }
@@ -62,6 +63,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getCart(){
+
     this.cart = this.cartSrv.loadCart()//.then(response => this.cart = response)
     
   }

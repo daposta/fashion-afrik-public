@@ -31,6 +31,8 @@ export class ProductDetailComponent implements OnInit {
   description:any;
   img_url:any;
   url: any;
+  
+  cart: any[];
 
   private formSubmitAttempt: boolean;
 
@@ -81,8 +83,16 @@ $(function(){
         let data = {'product':this.product, 'qty':this.productItem['qty'] } 
       
         this.cartSrv.addToCart(data);
+        this.getCart();
      }
      
+  };
+
+  getCart(){
+    
+    this.cart = this.cartSrv.loadCart()//.then(response => this.cart = response)
+  
+    
   }
 
 }
