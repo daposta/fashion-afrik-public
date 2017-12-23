@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/assets/raty/jquery.raty.css">
   <link rel="stylesheet" href="/assets/css/slick-theme.css">
   <link rel="stylesheet" href="/assets/ladda/ladda-themeless.min.css">
+  <link rel="stylesheet" href="/assets/iCheck/square/red.css">
   <link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.2/bootstrap-float-label.min.css"/>
 
 </head>
@@ -32,6 +33,7 @@
   <script src="/assets/js/slick.min.js"></script>
   <script src="/assets/ladda/spin.js"></script>
   <script src="/assets/ladda/ladda.js"></script>
+  <script src="/assets/iCheck/icheck.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/goodshare.js@4/goodshare.min.js"></script>
   
@@ -43,6 +45,9 @@
 
 	<script>
 		$(function(){
+      $('.icheck').iCheck({
+    checkboxClass: 'icheckbox_square-red'
+  });
        $('div.raty').raty({
         starType : 'img'  
        });
@@ -70,8 +75,10 @@ $('.slider-nav').slick({
     
 
 		})
-
+ 
 	</script>
+
+
 
 </body>
 </html>
