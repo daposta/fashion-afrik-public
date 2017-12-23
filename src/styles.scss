@@ -68,6 +68,7 @@ body {
 	background-position: center center;
 	border-radius: 0;
 	color: #fff;
+	padding: 40px 0;
 
 	.inner-content {
 		z-index: 999;
@@ -108,7 +109,7 @@ body {
 }
 .card-body {
         padding: 10px 0;
-        padding-left: 15px;
+        padding-left: 15px !important;
     background: #ecf0f1;
     a {
         font-weight: 700;
@@ -152,4 +153,15 @@ body {
     font-weight: 600;
         }
     }
+}
+
+// producs
+.product-title {
+		margin-bottom: 10px !important;
+	text-align: center;margin: 0;padding: 10px 0 0;
+	a {
+		color: $site-blue !important;
+		font-size: 15px !important;
+		padding: 0 10px;
+	}
 }

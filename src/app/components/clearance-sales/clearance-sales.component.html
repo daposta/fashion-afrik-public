@@ -1,16 +1,15 @@
  <app-header></app-header>
  <section class="jumbotron">
- 	<div class="inner-content">
- 		<h3 class="text-center boldest">Clearance Sales</h3>
- 	</div>
+   <div class="inner-content text-center">
+     <h3 class="boldest">Clearance sales</h3>
+   </div>
  </section>
-<section class="padded">
-	<div class="container">
-		<!-- display products and their respective filters -->
-		<div class="row">
-			<div class="col-sm-4">
-				<!-- filter section -->
-				<div id="accordion" role="tablist">
+<section class="padded" style="">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <!-- filter section -->
+        <div id="accordion" role="tablist">
   <div class="card">
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
@@ -24,24 +23,82 @@
     <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
       <div class="card-body">
       <ul class="nav flex-column">
-		  <li class="nav-item"  *ngFor="let item of categorys">
-		    <a class="nav-link active" href="#">{{item.name}} <span class="float-right disabled"></span></a>
-		  </li>
-		  
-		</ul>
+      <li class="nav-item" >
+        <div>
+          <label for="women">
+          <input type="checkbox" id="women" class="icheck" checked> &nbsp;
+          Women's Fashion
+        </label>
+        </div>
+
+        <div>
+          <label for="men">
+          <input type="checkbox" id="men" class="icheck"> &nbsp;
+          Men's Fashion
+        </label>
+        </div>
+
+        <div>
+          <label for="kids">
+          <input type="checkbox" id="kids" class="icheck"> &nbsp;
+          Children's Wear
+        </label>
+        </div>
+
+        <div>
+          <label for="unisex">
+          <input type="checkbox" id="unisex" class="icheck"> &nbsp;
+          Bags and Accesories
+        </label>
+        </div>
+      </li>
+      
+    </ul>
       </div>
     </div>
   </div>
   <div class="card">
     <div class="card-header" role="tab" id="headingTwo">
       <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          Colour
         </a>
       </h5>
     </div>
-    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+    <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
-        
+        <ul class="nav flex-column">
+      <li class="nav-item" >
+        <div>
+          <label for="women">
+          <input type="checkbox" id="women" class="icheck" checked> &nbsp;
+          Multi-colored
+        </label>
+        </div>
+
+        <div>
+          <label for="men">
+          <input type="checkbox" id="men" class="icheck"> &nbsp;
+          Red
+        </label>
+        </div>
+
+        <div>
+          <label for="kids">
+          <input type="checkbox" id="kids" class="icheck"> &nbsp;
+          Children's Wear
+        </label>
+        </div>
+
+        <div>
+          <label for="unisex">
+          <input type="checkbox" id="unisex" class="icheck"> &nbsp;
+          Bags and Accesories
+        </label>
+        </div>
+      </li>
+      
+    </ul>
       </div>
     </div>
   </div>
@@ -60,25 +117,29 @@
     </div>
   </div>
 </div>
-			</div>
-
-			<div class="col-sm-7 offset-md-1">
-				<!-- Listings for products -->
-				<div class="row">
-					<div class="col-sm-4" *ngFor="let item of sales">
-						<div class="product-component">
-							<div class="product-image">
-								<img src="{{item.feature_image}}" alt="product image">
-							</div>
-							<div class="product-title">
-								<h5 class="">{{item.name}}</h5>
-								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+      </div>
+      <div class="col-sm-8 offset-md-1">
+        <!--  -->
+        <div class="row">
+          <div class="col-sm-4" *ngFor="let item of sales">
+            <!-- overall link for product and title -->
+            <a href="">
+              <div class="product-component text-center">
+            <div class="product-image">
+              <img src="/assets/img/orange-dress.jpg" alt="product image" class="img-fluid">
+            </div>
+            <div class="product-title">
+              <h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;"><a style="color: #011936" href="">Moon Dress</a></h6>
+              <span class="text-center">
+                <del>N</del><b>50,000</b>
+              </span>
+              </div>
+            </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <app-footer></app-footer>
