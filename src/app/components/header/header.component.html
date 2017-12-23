@@ -24,33 +24,10 @@
         <a class="nav-link dropdown-toggle"   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Category
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-       
-          
-          <ul>  
-      
-            <li class="nav-item dropdown"  *ngFor="let item of categorys">
-              <a class="nav-link dropdown-toggle" (mouseover)="setCategory(item.slug)"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                {{item.name}}
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-             
-                <a href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)"  *ngFor="let pt of productTypes">
-                {{pt.name}}
-                </a>
-                
-                
-              </div>
-
-            </li>
-          </ul>
-          
-        </div>
-       <!--   <ul class="dropdown-menu">
-                                <li class="dropdown-submenu" *ngFor="let item of categorys">
-                                <a href="#">{{item.name}}  </a>
-                                </li>
-                                
+         <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
                                 <li class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                                 <li class="divider"></li>
@@ -71,7 +48,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                            </ul> -->
+                            </ul>
         <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/category/{{item.slug}}"  *ngFor="let item of categorys">
             {{item.name}}
