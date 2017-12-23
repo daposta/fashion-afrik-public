@@ -109,7 +109,7 @@ header {
 .dropdown-menu {
     border: 0;
     box-shadow: 0 0 3px #c1cedd;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 600;
         padding: 10px 20px;
 li {
@@ -117,10 +117,19 @@ li {
 }
 
         a {
-            font-weight: 400;
+            font-weight: 700;
             color: $site-blue;
             line-height: 1.2;
         }
+}
+
+.dropdown-submenu {
+    a {
+        font-size: 12px;
+        &::after {
+        margin-top: 10px;
+    }
+    }
 }
 // 
 .navbar {
