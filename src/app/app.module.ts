@@ -24,6 +24,7 @@ import { LoginComponent } from './components/login/login.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { NewArrivalsComponent } from './components/new-arrivals/new-arrivals.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 const appRoutes: Routes = [
   
@@ -60,7 +61,8 @@ const appRoutes: Routes = [
     LoginComponent,
     CheckoutComponent,
     SearchResultsComponent,
-    NewArrivalsComponent
+    NewArrivalsComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
