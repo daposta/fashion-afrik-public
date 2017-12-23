@@ -121,22 +121,28 @@ $toppers-height: $top-ranked-height/3.2;
         align-items: center;
         justify-content: center;
         font-weight: 700;
+        font-size: 12px;
         font-family: $primary-font;
     }
     .rank-1 {
-        background: #ccc;
+            background: #303548;
+    color: #fff;
     }
     .rank-2 {
-        background: #ddd;
+            background: #1f2332;
+    color: #f8f9fa;
     }
     .rank-3 {
-        background: lighten(#666, 50%);
+        background: #303548;
+    color: #fff;
     }
     .rank-4 {
-        background: lighten(#666, 40%);
+            background: #1f2332;
+    color: #f8f9fa;
     }
     .rank-5 {
-        background: lighten(#666, 50%);
+       background: #303548;
+    color: #fff;
     }
 }
 .dropdown-submenu {
