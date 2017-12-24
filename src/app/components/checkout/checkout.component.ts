@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 
 @Component({
   selector: 'app-checkout',
@@ -6,8 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-
-  constructor() { }
+  
+  loginForm:FormGroup;
+  product : any = {};
+  constructor(fb: FormBuilder) { 
+  	this.loginForm = fb.group({
+  			
+  			'email':['', Validators.required],
+  			'sizes':['', Validators.required],
+  			'price':['', Validators.required],
+  			'productCategory':['', Validators.required],
+       
+      });
+   }
 
   ngOnInit() {
   }

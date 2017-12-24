@@ -75,33 +75,14 @@
       <div class="card-body">
       <ul class="nav flex-column">
       <li class="nav-item" >
-        <div>
-          <label for="women">
-          <input type="checkbox" id="women" class="icheck" checked> &nbsp;
-          Women's Fashion
-        </label>
+        <div *ngFor="let item of categorys">
+          <label for="{{item.slug}}">
+            <input type="checkbox" id="{{item.slug}}" class="icheck" > &nbsp;
+                  {{item.name}}
+            </label>
         </div>
 
-        <div>
-          <label for="men">
-          <input type="checkbox" id="men" class="icheck"> &nbsp;
-          Men's Fashion
-        </label>
-        </div>
-
-        <div>
-          <label for="kids">
-          <input type="checkbox" id="kids" class="icheck"> &nbsp;
-          Children's Wear
-        </label>
-        </div>
-
-        <div>
-          <label for="unisex">
-          <input type="checkbox" id="unisex" class="icheck"> &nbsp;
-          Bags and Accesories
-        </label>
-        </div>
+     
       </li>
       
     </ul>
@@ -112,61 +93,31 @@
     <div class="card-header" role="tab" id="headingTwo">
       <h5 class="mb-0">
         <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          Colour
+          Product Type
         </a>
+        <span class="icon float-right"><i class="ion-plus-round"></i></span>
       </h5>
     </div>
     <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
       <div class="card-body">
         <ul class="nav flex-column">
       <li class="nav-item" >
-        <div>
-          <label for="women">
-          <input type="checkbox" id="women" class="icheck" checked> &nbsp;
-          Multi-colored
+        <div *ngFor="let item of productTypes">
+          <label for="{{item.slug}}">
+          <input type="checkbox" id="{{item.slug}}" class="icheck"> &nbsp;
+          {{item.name}}
         </label>
         </div>
 
-        <div>
-          <label for="men">
-          <input type="checkbox" id="men" class="icheck"> &nbsp;
-          Red
-        </label>
-        </div>
-
-        <div>
-          <label for="kids">
-          <input type="checkbox" id="kids" class="icheck"> &nbsp;
-          Children's Wear
-        </label>
-        </div>
-
-        <div>
-          <label for="unisex">
-          <input type="checkbox" id="unisex" class="icheck"> &nbsp;
-          Bags and Accesories
-        </label>
-        </div>
+       
+      
       </li>
       
     </ul>
       </div>
     </div>
   </div>
-  <div class="card">
-    <div class="card-header" role="tab" id="headingThree">
-      <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          #3
-        </a>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-        
-      </div>
-    </div>
-  </div>
+ 
 </div>
       </div>
       <div class="col-sm-8 offset-md-1">
@@ -182,7 +133,7 @@
 						</div>
 						<div class="product-title">
 							<h5 class=""><a href="product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h5>
-							<del>N</del><b>{{item.regular_price |number}}</b>
+							<span>&#163;</span><b>{{item.regular_price |number}}</b>
 							</div>
 						</div>
             </a>

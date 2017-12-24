@@ -69,7 +69,6 @@ export class HeaderComponent implements OnInit {
   }
 
   fetchProductTypes(){
-    //this.productTypes = this.productTypeSrv.fetchProductTypes();
     this.productTypeSrv.fetchProductTypes().then(response => this.productTypes = response.results)
   }
 
