@@ -76,6 +76,25 @@ $(function(){
          });
   }
 
+  ngAfterViewInit() {
+    $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: true,
+        centerMode: true,
+        asNavFor: '.slider-nav'
+      });
+      $('.slider-nav').slick({
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        asNavFor: '.slider-for',
+        // centerMode: true,
+        arrows: true,
+        focusOnSelect: true
+      });
+    }
+
 
   addToCart(){
       this.formSubmitAttempt = true;

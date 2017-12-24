@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="/assets/css/slick-theme.css">
   <link rel="stylesheet" href="/assets/ladda/ladda-themeless.min.css">
   <link rel="stylesheet" href="/assets/iCheck/square/_all.css">
+  <link rel="stylesheet" href="/assets/awsel/awselect.min.css">
   <link rel="stylesheet" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.2/bootstrap-float-label.min.css"/>
 
 </head>
@@ -34,6 +35,7 @@
   <script src="/assets/ladda/spin.js"></script>
   <script src="/assets/ladda/ladda.js"></script>
   <script src="/assets/iCheck/icheck.min.js"></script>
+  <script src="/assets/awsel/awselect.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/goodshare.js@4/goodshare.min.js"></script>
   
@@ -45,36 +47,43 @@
 
 	<script>
 		$(function(){
+
+      // awesome select
+      // $('select').awselect();
+
+      // icheck for checkboxes
       $('.icheck').iCheck({
-    checkboxClass: 'icheckbox_square'
-  });
+        checkboxClass: 'icheckbox_square'
+      });
+
+      // raty for ratings
        $('div.raty').raty({
         starType : 'img'  
        });
-			 $('.slider-for').slick({
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: false,
-  fade: true,
-  centerMode: true,
-  asNavFor: '.slider-nav'
-});
-$('.slider-nav').slick({
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  asNavFor: '.slider-for',
-  // centerMode: true,
-  arrows: true,
-  focusOnSelect: true
-});
 
-    var l = Ladda.create( document.querySelector( '.ladda-button' ) );
-    // l.start()
-    Ladda.bind( 'button[type=button]' );
+       // product sliders and few carousels
+			 // $('.slider-for').slick({
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     arrows: false,
+    //     fade: true,
+    //     centerMode: true,
+    //     asNavFor: '.slider-nav'
+    //   });
+    //   $('.slider-nav').slick({
+    //     slidesToShow: 3,
+    //     slidesToScroll: 1,
+    //     asNavFor: '.slider-for',
+    //     // centerMode: true,
+    //     arrows: true,
+    //     focusOnSelect: true
+    //   });
 
-    
+  //   var l = Ladda.create( document.querySelector( '.ladda-button' ) );
+  //   // l.start()
+  //   Ladda.bind( 'button[type=button]' );
 
-		})
+		});
  
 	</script>
 
