@@ -8,7 +8,7 @@ import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Globals } from '../../shared/api';
-// import * as $ from 'jquery';
+import  'jquery-zoom';
 
 declare var $: any;
 
@@ -93,6 +93,9 @@ $(function(){
         arrows: true,
         focusOnSelect: true
       });
+
+      // product slider zoom
+      $('.slider-nav .slider-item').zoom({url: $(this).data('url')});
     }
 
 
