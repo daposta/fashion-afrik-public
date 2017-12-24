@@ -127,7 +127,7 @@
         <a class="nav-link" href="/cart" style="position: relative;">
 
         	<img src="/assets/img/cart.png" width="30" alt="cart">
-          <span *ngIf="cart" class="cart-bubble">{{cart?.length}}</span>
+          <span *ngIf="cart?.length > 0" class="cart-bubble">{{cart?.length}}</span>
         </a>
       </li>
    </ul>
