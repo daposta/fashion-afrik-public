@@ -103,8 +103,10 @@
         <div class="row">
             <div class="col-sm-3" *ngFor="let item of hers">
                 <div class="item">
+                <a href="product/{{item.id}}/{{item.slug}}" class="">
 
                 <img src="{{  item.feature_image}}" class="img-fluid">
+                </a>
 
                <figcaption class="invisible">
                     <a href="product/{{item.id}}/{{item.slug}}" class="">{{item.name}}</a> 
@@ -133,8 +135,10 @@
         <div class="row">
             <div class="col-sm-3" *ngFor="let item of his">
                 <div class="item">
+                <a href="product/{{item.id}}/{{item.slug}}" class="">
 
                 <img src="{{ item.feature_image}}" class="img-fluid">
+                </a>
 
                <figcaption class="invisible">
                     <a href="product/{{item.id}}/{{item.slug}}" class="">{{item.name}}</a> 
