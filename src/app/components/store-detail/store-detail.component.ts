@@ -60,4 +60,8 @@ export class StoreDetailComponent implements OnInit {
 
   }
 
+
+ searchInStore(){
+
+ }
 }
