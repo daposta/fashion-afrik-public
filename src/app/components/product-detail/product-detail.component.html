@@ -89,36 +89,145 @@
 
 <section id="product-description" class="padded">
 	<div class="container">
-		<ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
-  <li class="nav-item">
-    <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Reviews</a>
-  </li>
-</ul>
-<div class="tab-content text-center" id="myTabContent" style="padding: 20px">
-  <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-  	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus natus vitae dicta facilis velit ut nobis delectus ipsa temporibus explicabo ab accusantium dolorem nam, sed deleniti consequatur quibusdam quae et.
-  </div>
-  <div class="tab-pane fade text-left" id="review" role="tabpanel" aria-labelledby="review-tab">
-				<form>
-  <h4 class="boldest">Submit a Review</h4>
-	<div class="raty" data-score="1"></div>
-	<br>
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Review Title">
-  </div>
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Review Description">
-  </div>
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="Tell Us Your Name">
-  </div>
-  <button type="submit" class="btn btn-accent">Submit Review</button>
-</form>
-  </div>
-</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<form style="">
+				  <h4 class="boldest">Submit a Review</h4>
+					<div class="raty" data-score="1"></div>
+					<br>
+				  <div class="form-group">
+				  	<label for="">Review Title</label>
+				    <input type="text" class="form-control" placeholder="Review Title">
+				  </div>
+				  <div class="form-group">
+				  	<label for="">Description</label>
+				    <input type="text" class="form-control" placeholder="Review Description">
+				  </div>
+				  <div class="form-group">
+				  	<label for="">Your Name</label>
+				    <input type="text" class="form-control" placeholder="Tell Us Your Name">
+				  </div>
+				  <div class="form-actions">
+				  	<button type="submit" class="btn btn-accent">Submit Review</button>
+				  </div>
+				</form>
+			</div>
+
+			<div class="col-sm-6">
+				<div class="rating-block float-right">
+					<h5>Average rating</h5>
+					<h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
+					<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+					</button>
+				</div>
+			</div>
+		</div>  <!-- .row -->		
+		
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="review-block">
+					<div class="row">
+						<div class="col-sm-3">
+							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+							<div class="review-block-name"><a href="#">nktailor</a></div>
+							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
+						</div>
+						<div class="col-sm-9">
+							<div class="review-block-rate">
+								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+							</div>
+							<div class="review-block-title">this was nice in buy</div>
+							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
+						</div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-sm-3">
+							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+							<div class="review-block-name"><a href="#">nktailor</a></div>
+							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
+						</div>
+						<div class="col-sm-9">
+							<div class="review-block-rate">
+								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+							</div>
+							<div class="review-block-title">this was nice in buy</div>
+							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
+						</div>
+					</div>
+					<hr/>
+					<div class="row">
+						<div class="col-sm-3">
+							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+							<div class="review-block-name"><a href="#">nktailor</a></div>
+							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
+						</div>
+						<div class="col-sm-9">
+							<div class="review-block-rate">
+								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+								</button>
+							</div>
+							<div class="review-block-title">this was nice in buy</div>
+							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
 

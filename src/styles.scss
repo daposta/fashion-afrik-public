@@ -148,7 +148,7 @@ body {
         color: $site-accent;
         text-transform: uppercase;
     }
-form {
+// form {
 
     label, .custom-select {
         display: inline-block;
@@ -183,7 +183,7 @@ form {
         padding: 11px 20px;
         font-weight: 600;
         border-radius: 2px;
-        border: 0;
+        // border: 0;
     }
 
     input.form-control::placeholder {
@@ -195,4 +195,4 @@ form {
 .form-actions {
     margin-top: 15px;
 }
-}
+// }
