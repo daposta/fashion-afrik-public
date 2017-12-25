@@ -41,18 +41,8 @@ export class ProductDetailComponent implements OnInit {
       this.cartForm = fb.group({
         'qty':['', Validators.required],
       });
-     
-   
-  }
 
-
-
-
-  
-
-  ngOnInit() {
-
-$(function(){
+      $(function(){
     $('.responsive').slick({
        dots: true,
       infinite: false,
@@ -78,6 +68,18 @@ $(function(){
         focusOnSelect: true
       });
   });
+     
+   
+  }
+
+
+
+
+  
+
+  ngOnInit() {
+
+
  
       this.route.params.switchMap((params: Params) => 
          this.productSrv.findProductByUUID(params['id']))
