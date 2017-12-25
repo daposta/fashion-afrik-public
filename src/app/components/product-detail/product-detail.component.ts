@@ -23,9 +23,12 @@ declare var $: any;
 export class ProductDetailComponent implements OnInit {
   
   product: Object= {};
+  review: Object= {};
   host_address: string =  this.globals.HOST_URL; 
   productItem: Object= {};
   cartForm:FormGroup;
+  reviewForm:FormGroup;
+  private reviewSubmitAttempt: boolean;
   reps: any[];
   title:any;
   description:any;
@@ -40,6 +43,12 @@ export class ProductDetailComponent implements OnInit {
     private cartSrv: CartService, fb: FormBuilder) { 
       this.cartForm = fb.group({
         'qty':['', Validators.required],
+      });
+
+       this.reviewForm = fb.group({
+           'name':['', Validators.required],
+          'email':['', Validators.required],
+          'comment':['', Validators.required],
       });
 
       $(function(){
@@ -122,6 +131,14 @@ export class ProductDetailComponent implements OnInit {
     this.cart = this.cartSrv.loadCart()//.then(response => this.cart = response)
   
     
+  }
+
+  saveReview(){
+    this.reviewSubmitAttempt = true;
+    if (this.reviewForm.valid){
+        this.review['product'] = this.product['id'];
+        this.productSrv.saveNewReview(this.review, this.product);
+       }
   }
 
 }

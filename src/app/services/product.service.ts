@@ -4,6 +4,9 @@ import {Router} from '@angular/router';
 import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
 
+declare var $: any;
+
+
 @Injectable()
 export class ProductService {
 
@@ -16,6 +19,7 @@ export class ProductService {
  private forHerUrl = this.globals.FOR_HER_URL; 
  private forHimUrl = this.globals.FOR_HIM_URL; 
  private searchUrl = this.globals.SEARCH_URL; 
+ private reviewsUrl = this.globals.REVIEWS_URL;
 
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
@@ -85,6 +89,41 @@ export class ProductService {
               .toPromise()
               .then(response => response.json())
 
+   }
+
+   saveNewReview(review:any, product:any){
+     
+    //  headers.append('Content-Type', 'multipart/form-data');
+     let formData = new FormData();
+        formData.append("reviewer_email", review['email']);
+        formData.append('reviewer_name', review['name']);
+        formData.append('comment', review['comment']);
+         formData.append('product', review['product']);
+     
+       
+
+     this.http.post(this.reviewsUrl, formData).subscribe(
+         res => {
+             let msg = JSON.parse(res['_body'])['message'];
+              // $.toast({
+              //     text: msg,
+              //      position: 'top-center',
+              //      'icon': 'success',
+              //     showHideTransition: 'slide',
+              // });
+               product.reviews.push(JSON.parse(res['_body']));
+             //this.router.navigateByUrl('products');
+         },
+         error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        // $.toast({
+        //     text: msg,
+        //      position: 'top-center',
+        //      icon: 'error',
+        //      showHideTransition: 'slide',
+        // });
+      })
    }
 
 }

@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-import { FormWizardModule } from 'angular2-wizard';
+import { MomentModule } from 'angular2-moment';
 
 
 import { Globals } from './shared/api';
@@ -68,7 +68,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule, HttpClientModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
-     FormWizardModule,
+    MomentModule,
   ],
   providers: [Globals,],
   bootstrap: [AppComponent]
