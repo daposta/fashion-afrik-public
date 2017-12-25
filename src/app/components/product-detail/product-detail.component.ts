@@ -8,7 +8,7 @@ import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Globals } from '../../shared/api';
-// import * as $ from 'jquery';
+import  'jquery-zoom';
 
 declare var $: any;
 
@@ -67,6 +67,9 @@ export class ProductDetailComponent implements OnInit {
         arrows: true,
         focusOnSelect: true
       });
+
+      // product slider zoom
+      $('.slider-nav .slider-item').zoom({url:  '/assets/img/denim1.jpg'});
   });
      
    
@@ -101,7 +104,6 @@ export class ProductDetailComponent implements OnInit {
          });
   }
 
-  
 
 
   addToCart(){

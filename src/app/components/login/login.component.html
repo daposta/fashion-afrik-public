@@ -1,5 +1,112 @@
 <app-header></app-header>
+<section class="jumbotron">
+	<div class="inner-content text-center">
+		<h4 class="boldest">
+			Account
+		</h4>
+	</div>
+</section>
 <section class="padded">
-	
+	<div class="container">
+		<div class="row">
+		<div class="col-md-5">
+			<h4 class="form-title">SIGN IN WITH EMAIL</h4>
+			<form action="#" method="post">
+				<div class="row">
+					<div class="form-group col-md-12">
+						<label for="email">Email Address</label>
+						<input type="text" class="form-control" name="email" placeholder="e.g johndoe@gmail.com">
+					</div>
+
+					<div class="form-group col-md-12">
+						<label for="password">Password</label>
+						<input type="password" class="form-control" name="password" placeholder="e.g ●●●●●●●●">
+						<p class="float-right">
+							<a href="#" style="    font-size: 12px;
+    margin: 10px 0;
+    display: inline-block;
+    color: #011936;">
+								Forgot your Password?
+							</a>
+						</p>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-block btn-accent">Login</button>
+			</form>			
+		</div>
+
+		<div class="col-md-5 offset-md-1">
+			<h4 class="form-title">Create An Account</h4>
+			<form action="#" method="post">
+				<div class="row">
+					<div class="form-group col-md-6">
+						<label for="email">First Name</label>
+						<input type="text" class="form-control" name="firstname" placeholder="e.g Jon">
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="email">Last Name</label>
+						<input type="text" class="form-control" name="lastname" placeholder="e.g Doe">
+					</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+						<label for="email">Email Address</label>
+						<input type="email" class="form-control" name="email" placeholder="e.g johndoe@gmail.com">
+					</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+						<label for="password">Password</label>
+						<input type="password" class="form-control" name="password" placeholder="e.g ●●●●●●●●">
+					</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-6">
+						<label for="email">Address 1</label>
+						<input type="text" class="form-control" name="address1" placeholder="e.g 123 Allen Ave">
+					</div>
+
+					<div class="form-group col-md-6">
+						<label for="email">Address 2</label>
+						<input type="text" class="form-control" name="address2" placeholder="e.g 234 Allen Ave">
+					</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label for="male" style="display: inline-block;margin-right: 10px">
+							<input type="radio" class="icheck" name="gender" id="male">
+							Male
+						</label>
+
+						<label for="female">
+							<input type="radio" class="icheck" name="gender" id="female">
+							Female
+						</label>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+							<select class="custom-select " name="country" style="width: 100%">
+							  <option selected>Pick Country</option>
+							  <option value="1">One</option>
+							  <option value="2">Two</option>
+							  <option value="3">Three</option>
+							</select>
+						</div>
+					</div>
+				
+				<div class="form-actions">
+					<button type="submit" class="btn btn-block btn-accent">Create an account</button>
+				</div>
+			</form>			
+		</div>
+	</div>
+	</div>
 </section>
 <app-footer></app-footer>
