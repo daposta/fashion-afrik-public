@@ -8,6 +8,12 @@ import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 })
 export class CheckoutComponent implements OnInit {
   
+
+  registered:Boolean;
+  loggedIn:Boolean;
+  shipping:Boolean;
+  paid:Boolean;
+
   loginForm:FormGroup;
   product : any = {};
   constructor(fb: FormBuilder) { 
@@ -22,6 +28,22 @@ export class CheckoutComponent implements OnInit {
    }
 
   ngOnInit() {
+  }
+
+  loginUser(){
+
+  }
+
+  registerUser(){
+
+  }
+
+  saveShippingForOrder(){
+
+  }
+
+  makePaymentForOrder(){
+
   }
 
 }

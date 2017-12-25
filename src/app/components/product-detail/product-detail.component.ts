@@ -41,7 +41,14 @@ export class ProductDetailComponent implements OnInit {
       this.cartForm = fb.group({
         'qty':['', Validators.required],
       });
+     
+   
   }
+
+
+
+
+  
 
   ngOnInit() {
 
@@ -53,30 +60,7 @@ $(function(){
       slidesToShow: 5,
       slidesToScroll: 5
         });
-  });
 
-      this.route.params.switchMap((params: Params) => 
-         this.productSrv.findProductByUUID(params['id']))
-       .subscribe(
-         data => {
-               this.product = data;
-               let product_imgs = [];
-               product_imgs.push(this.product['feature_image']);
-
-               for(let i =0; i < this.product['other_product_images'].length; i++){
-                      product_imgs.push(this.product['other_product_images'][i].doc);
-                }
-              this.reps = product_imgs;
-              this.title = this.product['name'];
-              this.description = this.product['description'];
-              this.img_url = this.product['feature_image'];
-              console.log(document.location.href);
-              this.url = document.location.href;
-           
-         });
-  }
-
-  ngAfterViewInit() {
     $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -95,8 +79,29 @@ $(function(){
       });
 
       // product slider zoom
-      $('.slider-nav .slider-item').zoom({url: $(this).data('url')});
-    }
+      $('.slider-nav .slider-item').zoom({url:  '/assets/img/denim1.jpg'});
+  });
+ 
+      this.route.params.switchMap((params: Params) => 
+         this.productSrv.findProductByUUID(params['id']))
+       .subscribe(
+         data => {
+               this.product = data;
+               let product_imgs = [];
+               product_imgs.push(this.product['feature_image']);
+
+               for(let i =0; i < this.product['other_product_images'].length; i++){
+                      product_imgs.push(this.product['other_product_images'][i].doc);
+                }
+              this.reps = product_imgs;
+              this.title = this.product['name'];
+              this.description = this.product['description'];
+              this.img_url = this.product['feature_image'];
+              this.url = document.location.href;
+           
+         });
+  }
+
 
 
   addToCart(){
