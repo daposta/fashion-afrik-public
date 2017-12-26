@@ -10,6 +10,7 @@
             th {
                 text-transform: uppercase;
                 letter-spacing: 2px;
+                font-size: 12px;
                 font-weight: 600;
                 border-bottom: 1px solid darken($body-color, 20%);
                 padding-bottom: 20px;
@@ -64,11 +65,11 @@ tr {
     }
 }
 
-#shipping {
-	.form-control, .custom-select {
-		    padding: 10px 20px;
-    border: 0;
-    width: 100%;
-    height: 45px;
-	}
-}
+// #shipping {
+// 	.form-control, .custom-select {
+// 		    padding: 10px 20px;
+//     border: 0;
+//     width: 100%;
+//     height: 45px;
+// 	}
+// }

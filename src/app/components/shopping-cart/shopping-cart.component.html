@@ -105,14 +105,14 @@
 <section id="shipping" class="padded">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6">
-				<h3 class="boldest">Calculate Shipping</h3> <br>
+			<div class="col-sm-5">
+				<h4 class="boldest">Calculate Shipping</h4> <br>
 				<form>
   
 
   <div class="form-group">
-  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
-        <option selected>Country</option>
+    <!-- <label for="">Choose Country</label> -->
+  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0">
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
@@ -120,7 +120,8 @@
   </div>
 
   <div class="form-group">
-  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+    <!-- <label for="">Choose City</label> -->
+  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0">
         <option selected>City</option>
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -129,11 +130,53 @@
   </div>
 
   <div class="form-group">
-    <input type="email" class="form-control" placeholder="PostCode / Zip">
+    <label for="">Enter PostCode</label>
+    <input type="text" class="form-control" placeholder="PostCode / Zip">
   </div>
-  <button type="submit" class="btn btn-accent">Submit</button>
+ <div class="form-actions">
+      <button type="submit" class="btn btn-accent">Submit</button>
+ </div>
 </form>
 			</div>
+
+
+            <!-- Cart Totals -->
+                <div class="col-sm-5 offset-md-2">
+                <h4 class="boldest">Cart Totals</h4> <br>
+               <table class="table table-striped">
+                   <tbody>
+                       <tr>
+                           <td>Subtotal</td>
+                           <td>$20.00</td>
+                       </tr>
+
+                       <tr>
+                           <td>Shipping</td>
+                           <td>
+                               <ul id="shipping_method" class="list-unstyled">
+<li>
+<input type="radio" name="shipping_method" id="shipping_method_flat_rate1" value="1" class="shipping_method" checked="checked">
+<label for="shipping_method_flat_rate1">Flat rate: <span class="amount">$5.00</span></label> </li>
+<li>
+<input type="radio" name="shipping_method" id="shipping_method_free_shipping2" value="2" class="shipping_method">
+<label for="shipping_method_free_shipping2">Free shipping</label> </li>
+</ul>
+                           </td>
+                       </tr>
+
+
+                   </tbody>
+
+                   <tfoot>
+                       <tr>
+                           <th>Subtotal</th>
+                           <th class="color-accent">$425.00</th>
+                       </tr>
+                   </tfoot>
+               </table>
+                    </div>
+            <!-- End Cart Totals -->
+
 		</div>
 	</div>
 </section>
