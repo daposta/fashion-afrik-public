@@ -95,22 +95,30 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6">
-				<form style="">
+				<form style="" [formGroup]="reviewForm" (ngSubmit)="saveReview()" novalidate>
 				  <h4 class="boldest">Submit a Review</h4>
 					<div class="raty" data-score="1"></div>
 					<br>
 				  <div class="form-group">
-				  	<label for="">Review Title</label>
-				    <input type="text" class="form-control" placeholder="Review Title">
-				  </div>
-				  <div class="form-group">
-				  	<label for="">Description</label>
-				    <textarea class="form-control" placeholder="Review Description"></textarea>
-				  </div>
-				  <div class="form-group">
 				  	<label for="">Your Name</label>
-				    <input type="text" class="form-control" placeholder="Tell Us Your Name">
+				    <input type="text" class="form-control" [(ngModel)]="review.name" [formControl]="reviewForm.controls['name']" required>
+
+				     <div *ngIf="reviewForm.controls['name'].hasError('required') && reviewSubmitAttempt" style="color: red">Name is required</div>
 				  </div>
+
+				   <div class="form-group">
+				  	<label for="">Your Email</label>
+				    <input type="text" class="form-control" [(ngModel)]="review.email" [formControl]="reviewForm.controls['email']" required>
+
+				     <div *ngIf="reviewForm.controls['email'].hasError('required') && reviewSubmitAttempt" style="color: red">Email is required</div>
+				  </div>
+				  <div class="form-group">
+				  	<label for="">Comment</label>
+				    <textarea  class="form-control" [(ngModel)]="review.comment" [formControl]="reviewForm.controls['comment']" required></textarea>
+
+				     <div *ngIf="reviewForm.controls['comment'].hasError('required') && reviewSubmitAttempt" style="color: red">Comment is required</div>
+				  </div>
+				 
 				  <div class="form-actions">
 				  	<button type="submit" class="btn btn-accent">Submit Review</button>
 				  </div>
@@ -143,11 +151,11 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="review-block">
-					<div class="row">
+					<div class="row"  *ngFor="let review of product.reviews">
 						<div class="col-sm-3">
 							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-							<div class="review-block-name"><a href="#">nktailor</a></div>
-							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
+							<div class="review-block-name"><a href="#">{{review.reviewer_name}}</a></div>
+							<div class="review-block-date">{{review.timestamp | date}}<br/>{{review.timestamp | amTimeAgo}}</div>
 						</div>
 						<div class="col-sm-9">
 							<div class="review-block-rate">
@@ -167,68 +175,13 @@
 								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
 							</div>
-							<div class="review-block-title">this was nice in buy</div>
-							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
+							<!-- <div class="review-block-title">this was nice in buy</div> -->
+							<div class="review-block-description">{{review.comment}}</div>
 						</div>
 					</div>
 					<hr/>
-					<div class="row">
-						<div class="col-sm-3">
-							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-							<div class="review-block-name"><a href="#">nktailor</a></div>
-							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-						</div>
-						<div class="col-sm-9">
-							<div class="review-block-rate">
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-							</div>
-							<div class="review-block-title">this was nice in buy</div>
-							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-						</div>
-					</div>
-					<hr/>
-					<div class="row">
-						<div class="col-sm-3">
-							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-							<div class="review-block-name"><a href="#">nktailor</a></div>
-							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-						</div>
-						<div class="col-sm-9">
-							<div class="review-block-rate">
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-								</button>
-							</div>
-							<div class="review-block-title">this was nice in buy</div>
-							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-						</div>
-					</div>
+					
+					
 				</div>
 			</div>
 		</div>

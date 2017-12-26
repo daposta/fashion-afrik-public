@@ -23,9 +23,12 @@ declare var $: any;
 export class ProductDetailComponent implements OnInit {
   
   product: Object= {};
+  review: Object= {};
   host_address: string =  this.globals.HOST_URL; 
   productItem: Object= {};
   cartForm:FormGroup;
+  reviewForm:FormGroup;
+  private reviewSubmitAttempt: boolean;
   reps: any[];
   title:any;
   description:any;
@@ -41,18 +44,14 @@ export class ProductDetailComponent implements OnInit {
       this.cartForm = fb.group({
         'qty':['', Validators.required],
       });
-     
-   
-  }
 
+       this.reviewForm = fb.group({
+           'name':['', Validators.required],
+          'email':['', Validators.required],
+          'comment':['', Validators.required],
+      });
 
-
-
-  
-
-  ngOnInit() {
-
-$(function(){
+      $(function(){
     $('.responsive').slick({
        dots: true,
       infinite: false,
@@ -81,6 +80,18 @@ $(function(){
       // product slider zoom
       $('.slider-nav .slider-item').zoom({url:  '/assets/img/denim1.jpg'});
   });
+     
+   
+  }
+
+
+
+
+  
+
+  ngOnInit() {
+
+
  
       this.route.params.switchMap((params: Params) => 
          this.productSrv.findProductByUUID(params['id']))
@@ -120,6 +131,14 @@ $(function(){
     this.cart = this.cartSrv.loadCart()//.then(response => this.cart = response)
   
     
+  }
+
+  saveReview(){
+    this.reviewSubmitAttempt = true;
+    if (this.reviewForm.valid){
+        this.review['product'] = this.product['id'];
+        this.productSrv.saveNewReview(this.review, this.product);
+       }
   }
 
 }
