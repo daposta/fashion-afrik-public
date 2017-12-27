@@ -78,6 +78,8 @@
 						<input type="password" class="form-control" [(ngModel)]="registerUser.password" [formControl]="registerForm.controls['password']" required>
 
 						 <div *ngIf="registerForm.controls['password'].hasError('required') && registerAttempt" style="color: red">Password is required</div>
+
+						  <div *ngIf="registerForm.controls['password'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
 					</div>
 					</div>
 
@@ -87,6 +89,10 @@
 						<input type="password" class="form-control" [(ngModel)]="registerUser.confirmPassword" [formControl]="registerForm.controls['confirmPassword']" required>
 
 						 <div *ngIf="registerForm.controls['confirmPassword'].hasError('required') && registerAttempt" style="color: red">Confirm Password is required</div>
+
+						 <div *ngIf="registerForm.hasError('notSame') && registerAttempt" style="color: red">Password fields should match</div>
+
+						  <div *ngIf="registerForm.controls['confirmPassword'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
 					</div>
 					</div>
 

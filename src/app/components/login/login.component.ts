@@ -31,11 +31,20 @@ export class LoginComponent implements OnInit {
           'firstName':['', Validators.required],
           'lastName':['', Validators.required],
           'email':['', Validators.required, ],
-          'password':['', Validators.required],
-          'confirmPassword':['', Validators.required],
+          'password':['', [Validators.required, Validators.minLength(8)]],
+          'confirmPassword':['', [Validators.required, Validators.minLength(8)]],
           'mobile':['', Validators.required],
-      });
+      },  {validator: this.checkPasswords});
   }
+
+
+  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+
+  let pass = group.controls['password'].value;
+  let confirmPass = group.controls['confirmPassword'].value;
+
+  return pass === confirmPass ? null : { notSame: true }     
+	}
 
 
 
