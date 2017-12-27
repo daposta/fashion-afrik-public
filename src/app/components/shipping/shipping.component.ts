@@ -19,6 +19,8 @@ export class ShippingComponent implements OnInit {
         'country':['', Validators.required,],
          'city':['', Validators.required,],
         'state':['', Validators.required,],
+        'zipCode':['', Validators.required,],
+         'name':['', Validators.required,],
       });
    }
 

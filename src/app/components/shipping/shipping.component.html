@@ -4,6 +4,38 @@
 			<div class="col-sm-6">
 				<h5 style="margin-bottom: 20px" class="boldest">Shipping/Delivery Details</h5>
 				<form [formGroup]="shippingForm" (ngSubmit)="saveShipping()"   novalidate>
+
+				   	<div class="row">
+						<div class="form-group col-md-12">
+							<label for="">Name/Company</label>
+							<input type="text" class="form-control" [(ngModel)]="shipping.name" [formControl]="shippingForm.controls['name']" required>
+
+							 <div *ngIf="shippingForm.controls['name'].hasError('required') && shippingAttempt" style="color: red">Name/Company is required</div>
+						</div>
+					</div>
+
+				    <div class="row">
+						<div class="form-group col-md-12">
+						    <label for="">Choose Country</label>
+						  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.country" [formControl]="shippingForm.controls['country']" required>
+						        <option value="1">One</option>
+						        <option value="2">Two</option>
+						        <option value="3">Three</option>
+						    </select>
+
+						     <div *ngIf="shippingForm.controls['country'].hasError('required') && shippingAttempt" style="color: red">Country is required</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label for="">Zip Code</label>
+							<input type="text" class="form-control" [(ngModel)]="shipping.zipCode" [formControl]="shippingForm.controls['zipCode']" required>
+
+							 <div *ngIf="shippingForm.controls['zipCode'].hasError('required') && shippingAttempt" style="color: red">Zip code is required</div>
+						</div>
+					</div>
+
 					<div class="row">
 						<div class="form-group col-md-12">
 							<label for="">Address Line 1</label>
@@ -25,42 +57,24 @@
 					<div class="row">
 						<div class="form-group col-md-12">
 							<label for="">City</label>
-							<input type="text" class="form-control" [(ngModel)]="shipping.address1" [formControl]="shippingForm.controls['address1']" required>
-							
-							 <div *ngIf="shippingForm.controls['addressLine1'].hasError('required') && shippingAttempt" style="color: red">Address1 is required</div>
+							<input type="text" class="form-control" [(ngModel)]="shipping.city" [formControl]="shippingForm.controls['city']" required>
+
+							 <div *ngIf="shippingForm.controls['city'].hasError('required') && shippingAttempt" style="color: red">City is required</div>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-12">
 							<label for="">State/Region/Province</label>
-							<input type="text" class="form-control" [(ngModel)]="shipping.address1" [formControl]="shippingForm.controls['address1']" required>
+							<input type="text" class="form-control" [(ngModel)]="shipping.state" [formControl]="shippingForm.controls['state']" required>
 
-							 <div *ngIf="shippingForm.controls['addressLine1'].hasError('required') && shippingAttempt" style="color: red">Address1 is required</div>
+							 <div *ngIf="shippingForm.controls['state'].hasError('required') && shippingAttempt" style="color: red">State is required</div>
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="form-group col-md-12">
-							<label for="">Postal Code/Zip</label>
-							<input type="text" class="form-control" [(ngModel)]="shipping.address1" [formControl]="shippingForm.controls['address1']" required>
+					
 
-							 <div *ngIf="shippingForm.controls['addressLine1'].hasError('required') && shippingAttempt" style="color: red">Address1 is required</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-12">
-						    <label for="">Choose Country</label>
-						  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.country" [formControl]="shippingForm.controls['country']" required>
-						        <option value="1">One</option>
-						        <option value="2">Two</option>
-						        <option value="3">Three</option>
-						    </select>
-
-						     <div *ngIf="shippingForm.controls['country'].hasError('required') && shippingAttempt" style="color: red">Country is required</div>
-						</div>
-					</div>
+					
 
 					
 
