@@ -27,6 +27,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { NewArrivalsComponent } from './components/new-arrivals/new-arrivals.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { ShippingComponent } from './components/shipping/shipping.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 const appRoutes: Routes = [
   
@@ -64,7 +66,9 @@ const appRoutes: Routes = [
     CheckoutComponent,
     SearchResultsComponent,
     NewArrivalsComponent,
-    PaymentComponent
+    PaymentComponent,
+    ShippingComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),

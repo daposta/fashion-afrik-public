@@ -19,6 +19,8 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
     
   		this.getCart();
+      console.log(this.cart);
+      console.log(typeof(this.cart));
   }
 
 
@@ -36,6 +38,10 @@ export class ShoppingCartComponent implements OnInit {
   clear(){
     this.cartSrv.clearCart();
     this.getCart();
+  }
+
+  proceed(){
+    console.log('tttt');
   }
 
   openCheckout(){

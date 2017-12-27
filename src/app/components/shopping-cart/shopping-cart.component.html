@@ -96,7 +96,7 @@
         </table>
         <div class="float-right"> 
         	<button class="btn btn-light boldest">Update Cart</button>
-            			<button type="button" class="btn btn-accent boldest ladda-button" data-style="expand-right"><span class="ladda-label">Proceed To Checkout &raquo;</span></button>
+            			<button type="button" (click)="proceed()" (disabled)="cart != undefined" class="btn btn-accent boldest ladda-button" data-style="expand-right"><span class="ladda-label">Proceed To Checkout &raquo;</span></button>
         </div>
         <div class="clearfix"></div>
     </div>

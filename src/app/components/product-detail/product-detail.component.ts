@@ -51,6 +51,9 @@ export class ProductDetailComponent implements OnInit {
           'comment':['', Validators.required],
       });
 
+
+
+
       $(function(){
     $('.responsive').slick({
        dots: true,
@@ -140,5 +143,7 @@ export class ProductDetailComponent implements OnInit {
         this.productSrv.saveNewReview(this.review, this.product);
        }
   }
+
+
 
 }
