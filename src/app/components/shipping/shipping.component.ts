@@ -14,8 +14,11 @@ export class ShippingComponent implements OnInit {
 
   constructor(fb: FormBuilder) {
   	 this.shippingForm = fb.group({
-        'address1':['', Validators.required,],
-        'address2':['', ],
+        'addressLine1':['', Validators.required,],
+        'addressLine2':['', ],
+        'country':['', Validators.required,],
+         'city':['', Validators.required,],
+        'state':['', Validators.required,],
       });
    }
 
@@ -23,7 +26,11 @@ export class ShippingComponent implements OnInit {
   }
 
   saveShipping(){
-
+    this.shippingAttempt = true;
+    if (this.shippingForm.valid){
+      
+     //  this.userSrv.register(this.registerUser, this.registerForm);
+     }
   }
 
 }
