@@ -25,9 +25,12 @@ export class PaymentComponent implements OnInit {
     });
 
     handler.open({
-      name: 'Demo Site',
-      description: '2 widgets',
-      amount: 2000
+      name: 'VogueAfriq',
+      description: 'Payment For Items in Cart',
+      currency: 'GBP',
+      amount: 2000,
+      image: 'http://vogueafriq.com/favicon.ico',
+      //label: 'Pay with Card'
     });
 
   }

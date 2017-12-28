@@ -18,9 +18,8 @@
 						<div class="form-group col-md-12">
 						    <label for="">Choose Country</label>
 						  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.country" [formControl]="shippingForm.controls['country']" required>
-						        <option value="1">One</option>
-						        <option value="2">Two</option>
-						        <option value="3">Three</option>
+
+						       <option *ngFor="let item of countrys" [value]="item.slug">{{item.name}}</option>
 						    </select>
 
 						     <div *ngIf="shippingForm.controls['country'].hasError('required') && shippingAttempt" style="color: red">Country is required</div>
