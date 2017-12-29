@@ -59,7 +59,8 @@ export class HeaderComponent implements OnInit {
 
   searchProduct(x){
   
-    this.productSrv.searchProduct(x);
+   // this.productSrv.searchProduct(x);
+   window.location.href = '/search/?q=' + x;
   }
 
   getCart(){

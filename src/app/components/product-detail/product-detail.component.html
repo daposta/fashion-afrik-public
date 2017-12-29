@@ -6,14 +6,16 @@
 				<!-- slider -->
 				<div class="slider-element">
 					<div class="slider-nav">
-					<!-- <div   *ngFor="let rp of reps" class="slider-item" [ngStyle]="{'background-image': 'url(' +   rp + ')'}"></div> -->
-					<div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim2.jpg')  ; "></div>
-					<div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim1.jpg')  ; "></div>
+					<div   *ngFor="let rp of reps" class="slider-item" attr.data-url="{{rp}}"  [ngStyle]="{ 'background-image': 'url(' + rp + ')'}"></div>
+				<!-- 	<div   *ngFor="let rp of reps" class="slider-item" attr.data-url="{{rp}}" [ngStyle]="{'background-image': 'url(' +   rp + ')'}"></div> -->
+					<!-- <div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim2.jpg')  ; "></div>
+					<div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim1.jpg')  ; "></div> -->
 				</div>
 				<div class="slider-for">
-					<!-- <div  *ngFor="let item of reps" class="slider-item" [ngStyle]="{'background-image': 'url(' + item + ')'}"></div> -->
-					<div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim2.jpg')  ;"></div>
-					<div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim1.jpg')  ; "></div>
+					<div  *ngFor="let item of reps" class="slider-item" attr.data-url="{{item}}" [style.background-image]="'url(' + item + ')'"></div>
+				<!-- 	<div  *ngFor="let item of reps" class="slider-item" attr.data-url="{{item}}" [ngStyle]="{'background-image': 'url(' + item + ')'}"></div> -->
+					<!-- <div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim2.jpg')  ;"></div>
+					<div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim1.jpg')  ; "></div> -->
 				</div>
 				</div>
 			</div>
@@ -36,7 +38,7 @@
 					<section>
 						<div class="raty float-left"  data-score="3" readonly></div> 
 						<span class="review float-left " style="margin-left: 15px; display: inline-block; margin-top: 5px; text-transform: uppercase; font-size: 12px; font-weight: 600;">
-							<a href="#product-description"> <i class="ion-plus"></i> Add Review</a>
+							<!-- <a  (click)="onAnchorClick()"> <i class="ion-plus"></i> Add Review</a> -->
 					</span>
 						<div class="clearfix"></div>
 					</section> <br>
@@ -108,10 +110,13 @@
 
 				   <div class="form-group">
 				  	<label for="">Your Email</label>
-				    <input type="text" class="form-control" [(ngModel)]="review.email" [formControl]="reviewForm.controls['email']" required>
+				    <input type="text" class="form-control" [(ngModel)]="review.email" [formControl]="reviewForm.controls['email']" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" required>
 
 				     <div *ngIf="reviewForm.controls['email'].hasError('required') && reviewSubmitAttempt" style="color: red">Email is required</div>
+
+				     <div *ngIf="reviewForm.controls['email'].hasError('pattern')  && reviewSubmitAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
 				  </div>
+				  
 				  <div class="form-group">
 				  	<label for="">Comment</label>
 				    <textarea  class="form-control" [(ngModel)]="review.comment" [formControl]="reviewForm.controls['comment']" required></textarea>

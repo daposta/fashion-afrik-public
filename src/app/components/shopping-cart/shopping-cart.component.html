@@ -96,12 +96,12 @@
         </table>
         <div class="float-right"> 
         	<button class="btn btn-light boldest">Update Cart</button>
-            			<button type="button" class="btn btn-accent boldest ladda-button" data-style="expand-right"><span class="ladda-label">Proceed To Checkout &raquo;</span></button>
+            			<button type="button" (click)="proceed()" [disabled]="!cart" class="btn btn-accent boldest ladda-button" data-style="expand-right"><span class="ladda-label">Proceed To Checkout &raquo;</span></button>
         </div>
         <div class="clearfix"></div>
     </div>
 </section>
-
+<!--
 <section id="shipping" class="padded">
 	<div class="container">
 		<div class="row">
@@ -111,7 +111,7 @@
   
 
   <div class="form-group">
-    <!-- <label for="">Choose Country</label> -->
+    
   	<select class="custom-select mb-2 mr-sm-2 mb-sm-0">
         <option value="1">One</option>
         <option value="2">Two</option>
@@ -120,7 +120,7 @@
   </div>
 
   <div class="form-group">
-    <!-- <label for="">Choose City</label> -->
+   
   	<select class="custom-select mb-2 mr-sm-2 mb-sm-0">
         <option selected>City</option>
         <option value="1">One</option>
@@ -140,7 +140,7 @@
 			</div>
 
 
-            <!-- Cart Totals -->
+          
                 <div class="col-sm-5 offset-md-2">
                 <h4 class="boldest">Cart Totals</h4> <br>
                <table class="table table-striped">
@@ -175,10 +175,11 @@
                    </tfoot>
                </table>
                     </div>
-            <!-- End Cart Totals -->
+           
 
 		</div>
 	</div>
 </section>
+ End Cart Totals -->
 <app-footer>
 </app-footer>

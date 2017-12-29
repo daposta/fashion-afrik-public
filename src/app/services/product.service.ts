@@ -84,7 +84,7 @@ export class ProductService {
    }
 
   searchProduct(data:string){
-
+      
        return this.http.get(this.searchUrl +'?search=' +data )
               .toPromise()
               .then(response => response.json())

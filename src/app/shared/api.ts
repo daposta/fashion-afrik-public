@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 
 Injectable()
 export class Globals{
-	HOST_URL = 'https://vogueafriq.com/api'; // 'http://127.0.0.1:8000';//    
+	HOST_URL =  'https://vogueafriq.com/api'; //   'http://127.0.0.1:8000'; //   
 	LOGIN_URL =  this.HOST_URL + '/stores/api/login/';
     LOGOUT_URL = this.HOST_URL + '/stores/api/logout/';
     CATEGORYS_URL =  this.HOST_URL + '/customers/api/categorys/';
@@ -26,6 +26,10 @@ export class Globals{
     FOR_HER_URL =  this.HOST_URL + '/customers/api/for_her/';
 
     REVIEWS_URL =  this.HOST_URL + '/customers/api/reviews/';
+    COUNTRYS_URL =  this.HOST_URL + '/customers/api/countrys/';
+    SHIPPING_URL =  this.HOST_URL + '/customers/api/shipping/';
+
+
 
     
 }

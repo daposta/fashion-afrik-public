@@ -19,6 +19,7 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
     
   		this.getCart();
+    
   }
 
 
@@ -38,8 +39,13 @@ export class ShoppingCartComponent implements OnInit {
     this.getCart();
   }
 
+  proceed(){
+    
+    window.location.href = '/checkout';
+  }
+
   openCheckout(){
-    console.log('checkout...');
+   
     var handler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_oi0sKPJYLGjdvOXOM8tE8cMa',
       locale: 'auto',
@@ -51,7 +57,7 @@ export class ShoppingCartComponent implements OnInit {
     });
 
     handler.open({
-      name: 'VogueAfrqi',
+      name: 'VogueAfriq',
       description: 'VogueAfriq Purchase',
       amount: 2000
     });
