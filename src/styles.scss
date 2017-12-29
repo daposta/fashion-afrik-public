@@ -1,5 +1,12 @@
 @import '~bootstrap/scss/bootstrap', './sass/variables', './sass/main';
 // loaders
+.customloader {
+    position: absolute;
+    z-index: 99999;
+    left: 0;
+    right: 0;
+    top: 50%;
+}
 .sk-fading-circle {
   margin: 100px auto;
   width: 40px;

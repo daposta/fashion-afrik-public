@@ -1,7 +1,10 @@
 @import '../../../sass/variables';
 .carousel-item {
-    background: darken(#e2e8ef, 10%);
-    height: 450px;
+    background-color: darken(#e2e8ef, 10%)  !important;
+    background-position: center center;
+    background-size: cover !important;
+    min-height: 400px;
+    max-height: 400px;
 }
 #new-arrivals {
     .item {
@@ -98,7 +101,7 @@
         font-weight: 700;
     }
 }
-$top-ranked-height: 450px;
+$top-ranked-height: 400px;
 $toppers-height: $top-ranked-height/3.2;
 .top-ranked {
     height: $top-ranked-height;
@@ -143,6 +146,39 @@ $toppers-height: $top-ranked-height/3.2;
     .rank-5 {
        background: #303548;
     color: #fff;
+    }
+}
+
+.rank {
+    // max-height: 50px;
+    padding: 10px 15px;
+    background: $site-accent;
+    color: #fff;
+    font-weight: 100;
+        font-size: 18px;
+    padding-left: 40px;
+    display: flex;
+    align-items: center;
+    // word-spacing: 100vw;
+    overflow: hidden;
+    &:nth-child(2) {
+        background: #303548;
+    }
+
+    &:nth-child(3) {
+        background: #1f2332;
+    }
+
+    &:nth-child(4) {
+        background: #303548;
+    }
+
+    &:nth-child(5) {
+        background: #1f2332;
+    }
+
+    &:nth-child(6) {
+        background: #303548;
     }
 }
 .dropdown-submenu {
