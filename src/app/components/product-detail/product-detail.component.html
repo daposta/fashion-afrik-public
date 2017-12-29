@@ -110,10 +110,13 @@
 
 				   <div class="form-group">
 				  	<label for="">Your Email</label>
-				    <input type="text" class="form-control" [(ngModel)]="review.email" [formControl]="reviewForm.controls['email']" required>
+				    <input type="text" class="form-control" [(ngModel)]="review.email" [formControl]="reviewForm.controls['email']" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" required>
 
 				     <div *ngIf="reviewForm.controls['email'].hasError('required') && reviewSubmitAttempt" style="color: red">Email is required</div>
+
+				     <div *ngIf="reviewForm.controls['email'].hasError('pattern')  && reviewSubmitAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
 				  </div>
+				  
 				  <div class="form-group">
 				  	<label for="">Comment</label>
 				    <textarea  class="form-control" [(ngModel)]="review.comment" [formControl]="reviewForm.controls['comment']" required></textarea>
