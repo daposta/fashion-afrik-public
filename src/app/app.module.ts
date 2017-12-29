@@ -44,7 +44,7 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
      { path: 'me', component: UserProfileComponent },
      { path: 'checkout', component: CheckoutComponent },
-      { path: 'search-results', component: SearchResultsComponent },
+      { path: 'search', component: SearchResultsComponent },
 
 ]
 
