@@ -154,12 +154,13 @@ $toppers-height: $top-ranked-height/3.2;
     padding: 10px 15px;
     background: $site-accent;
     color: #fff;
-    font-weight: 100;
-        font-size: 18px;
+    font-weight: 400;
+        font-size: 14px;
+        text-transform: uppercase;
     padding-left: 40px;
     display: flex;
     align-items: center;
-    // word-spacing: 100vw;
+    word-spacing: 5px;
     overflow: hidden;
     &:nth-child(2) {
         background: #303548;

@@ -42,8 +42,9 @@
     
   </app-root>
 
-  	<script src="/assets/js/jquery-3.2.1.slim.min.js" 
-  	integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  	
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<script src="/assets/js/popper.min.js" 
 	integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
@@ -52,13 +53,14 @@
 	integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
   <script src="/assets/raty/jquery.raty.js"></script>
+  <script src="/assets/toast/jquery.toast.js"></script>
   <script src="/assets/js/slick.min.js"></script>
   <script src="/assets/ladda/spin.js"></script>
   <script src="/assets/ladda/ladda.js"></script>
   <script src="/assets/iCheck/icheck.min.js"></script>
   <script src="/assets/awsel/awselect.min.js"></script>
 
-  <script src="/assets/toast/jquery.toast.js"></script>
+  
 
 
   <script src="https://cdn.jsdelivr.net/npm/goodshare.js@4/goodshare.min.js"></script>
@@ -70,7 +72,7 @@
  -->
 
 	<script>
-    
+    // $.toast('Here you can put the text of the toast')
 		$(function(){
 
       // page loader
@@ -90,6 +92,8 @@
        $('div.raty').raty({
         starType : 'img'  
        });
+
+       $.toast('Here you can put the text of the toast');
 
        // product sliders and few carousels
 			 // $('.slider-for').slick({
