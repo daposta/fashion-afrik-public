@@ -25,7 +25,7 @@ export class ShoppingCartComponent implements OnInit {
 
   remove(data){
   	this.cartSrv.removeFromCart(data);
-      this.getCart();
+    this.getCart();
 
   }
 
@@ -40,7 +40,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   proceed(){
-    
+   
     window.location.href = '/checkout';
   }
 
