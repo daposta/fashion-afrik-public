@@ -44,6 +44,11 @@ export class ShoppingCartComponent implements OnInit {
     window.location.href = '/checkout';
   }
 
+  goHome(){
+
+    window.location.href = '/';
+  }
+
   openCheckout(){
    
     var handler = (<any>window).StripeCheckout.configure({
