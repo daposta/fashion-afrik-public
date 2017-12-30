@@ -94,7 +94,6 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
 
-
  
       this.route.params.switchMap((params: Params) => 
          this.productSrv.findProductByUUID(params['id']))
