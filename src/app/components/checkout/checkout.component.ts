@@ -17,33 +17,27 @@ export class CheckoutComponent implements OnInit {
   loginForm:FormGroup;
   product : any = {};
   constructor(fb: FormBuilder) { 
-  	this.loginForm = fb.group({
+  	// this.loginForm = fb.group({
   			
-  			'email':['', Validators.required],
-  			'sizes':['', Validators.required],
-  			'price':['', Validators.required],
-  			'productCategory':['', Validators.required],
+  	// 		'email':['', Validators.required],
+  	// 		'sizes':['', Validators.required],
+  	// 		'price':['', Validators.required],
+  	// 		'productCategory':['', Validators.required],
        
-      });
+   //    });
    }
 
   ngOnInit() {
-  }
 
-  loginUser(){
 
   }
 
-  registerUser(){
-
+  saveOrder(){
+     //if user is logged in, save cart as order in db
   }
 
-  saveShippingForOrder(){
 
-  }
 
-  makePaymentForOrder(){
-
-  }
+  
 
 }

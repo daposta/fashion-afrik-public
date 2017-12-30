@@ -125,6 +125,7 @@ export class ProductDetailComponent implements OnInit {
       
         this.cartSrv.addToCart(data);
         this.getCart();
+        $("html, body").animate({ scrollTop: 0 }, "slow");
      }
      
   };

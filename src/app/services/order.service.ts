@@ -13,18 +13,14 @@ export class OrderService {
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
 
-  saveNewReview(review:any, product:any){
+  saveOrder(cart:any){
      
     //  headers.append('Content-Type', 'multipart/form-data');
-     let formData = new FormData();
-        formData.append("reviewer_email", review['email']);
-        formData.append('reviewer_name', review['name']);
-        formData.append('comment', review['comment']);
-         formData.append('product', review['product']);
+   
      
        
 
-     this.http.post(this.ordersUrl, formData).subscribe(
+     this.http.post(this.ordersUrl, cart).subscribe(
          res => {
              let msg = JSON.parse(res['_body'])['message'];
               // $.toast({
@@ -33,7 +29,7 @@ export class OrderService {
               //      'icon': 'success',
               //     showHideTransition: 'slide',
               // });
-               product.reviews.push(JSON.parse(res['_body']));
+              // product.reviews.push(JSON.parse(res['_body']));
              //this.router.navigateByUrl('products');
          },
          error =>{
