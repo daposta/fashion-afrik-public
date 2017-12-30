@@ -146,6 +146,12 @@ export class ProductDetailComponent implements OnInit {
   };
 
 
+ goToAddReview(){
+    $('html, body').animate({
+        scrollTop: $("#product-description").offset().top
+    }, 2000);
+ }
+
   
 
 
