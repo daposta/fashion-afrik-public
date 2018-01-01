@@ -152,6 +152,16 @@ export class ProductDetailComponent implements OnInit {
     }, 2000);
  }
 
+
+
+ checkItemInCart(){
+
+ }
+
+
+ checkItemInWishList(){
+   
+ }
   
 
 

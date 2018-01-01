@@ -29,6 +29,7 @@ import { NewArrivalsComponent } from './components/new-arrivals/new-arrivals.com
 import { PaymentComponent } from './components/payment/payment.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 const appRoutes: Routes = [
   
@@ -68,7 +69,8 @@ const appRoutes: Routes = [
     NewArrivalsComponent,
     PaymentComponent,
     ShippingComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    WishlistComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
