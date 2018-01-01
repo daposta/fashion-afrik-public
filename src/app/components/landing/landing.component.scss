@@ -217,3 +217,25 @@ $toppers-height: $top-ranked-height/3.2;
     left: -100%;
     margin-left: 10px;
 }
+
+@media (max-width: 420px) { 
+
+#partners {
+    img {
+        width: 25px !important;
+        height: 25px !important;
+    }
+}
+
+#promo-banner{
+    .label {
+        padding: 20px;
+    font-size: 80%; 
+    }
+}
+
+#top-header  .inner {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+}

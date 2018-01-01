@@ -356,3 +356,22 @@ body {
 .color-accent {
     color: $site-accent;
 }
+
+// responsiveness
+@media (max-width: 420px) { 
+
+#partners {
+    img {
+        width: 25px !important;
+        height: 25px !important;
+    }
+}
+
+#promo-banner{
+    .label {
+        background: red;
+        padding: 20px;
+    font-size: 80%; 
+    }
+}
+}

@@ -184,3 +184,12 @@ li {
     height: 20px;
     color: #fff;
 }
+
+@media (max-width: 420px) { 
+
+
+#top-header  .inner {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+}
