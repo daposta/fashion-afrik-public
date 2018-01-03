@@ -51,22 +51,43 @@
 					<form  [formGroup]="cartForm" (ngSubmit)="addToCart()"   novalidate>
 						<div class="row">
 							<div class="form-group col-md-4">
-							<input type="number" class="form-control" [(ngModel)]="productItem.qty" [formControl]="cartForm.controls['qty']" required>
+							<label for="email">Quantity</label>
+							<input type="text" class="form-control" [(ngModel)]="productItem.qty" [formControl]="cartForm.controls['qty']" required>
 
 							 <div *ngIf="cartForm.controls['qty'].hasError('required') && formSubmitAttempt" style="color: red">Quantity is required</div>
 						</div>
 
-						<div class="form-group col-md-3">
-							<input type="number" class="form-control" placeholder="Size" required>
+						<div class="form-group col-md-4">
+							<label for="email">Measurement Type</label>
+							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="productItem.measurementType" [formControl]="cartForm.controls['measurementType']" required>
+						        <option selected></option>
+						        <option value="uk">UK</option>
+						        <option value="us">US</option>
+						     </select>
+
+						      <div *ngIf="cartForm.controls['measurementType'].hasError('required') && formSubmitAttempt" style="color: red">Measurement Type is required</div>
 						</div>
 
 						<div class="form-group col-md-4">
-							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" >
-						        <option selected>Color</option>
+							<label for="email">Size</label>
+							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="productItem.size" [formControl]="cartForm.controls['size']" required>
+						        <option selected></option>
 						        <option value="1">Red</option>
 						        <option value="2">Blue</option>
 						        <option value="3">Green</option>
 						     </select>
+						      <div *ngIf="cartForm.controls['size'].hasError('required') && formSubmitAttempt" style="color: red">Quantity is required</div>
+						</div>
+
+						<div class="form-group col-md-4">
+							<label for="email">Color</label>
+							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" [(ngModel)]="productItem.color" [formControl]="cartForm.controls['color']" required>
+						        <option selected></option>
+						        <option value="1">Red</option>
+						        <option value="2">Blue</option>
+						        <option value="3">Green</option>
+						     </select>
+						      <div *ngIf="cartForm.controls['color'].hasError('required') && formSubmitAttempt" style="color: red">Color is required</div>
 						</div>
 						</div>
 
