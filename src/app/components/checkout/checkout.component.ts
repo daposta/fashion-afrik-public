@@ -9,10 +9,10 @@ import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 export class CheckoutComponent implements OnInit {
   
 
-  registered:Boolean;
-  loggedIn:Boolean;
-  shipping:Boolean;
-  paid:Boolean;
+  registered:Boolean=true;
+  loggedIn:Boolean=true;
+  shipping:Boolean=true;
+  paid:Boolean=true;
 
   loginForm:FormGroup;
   product : any = {};

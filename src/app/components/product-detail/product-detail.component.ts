@@ -43,6 +43,9 @@ export class ProductDetailComponent implements OnInit {
     private cartSrv: CartService, fb: FormBuilder) { 
       this.cartForm = fb.group({
         'qty':['', Validators.required],
+        'measurementType':['', Validators.required],
+        'size':['', Validators.required],
+        'color':['', Validators.required],
       });
 
        this.reviewForm = fb.group({
