@@ -21,6 +21,12 @@ export class LandingComponent implements OnInit {
   	this.fetchTopFiveStores();
     this.fetchMen();
     this.fetchWomen();
+    // localStorage.removeItem('cart');
+    // localStorage.removeItem('auth_token');
+    // localStorage.removeItem('checkout');
+    // localStorage.removeItem('customer');
+
+
   }
 
   fetchTopFiveStores(){

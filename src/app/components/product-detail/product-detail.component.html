@@ -1,4 +1,4 @@
- <app-header [cart] ="cart"></app-header>
+ <app-header [cart] ="cart" ></app-header>
 <section id="product-detail" class="padded">
 	<div class="container">
 		<div class="row">
@@ -72,9 +72,15 @@
 							<label for="email">Size</label>
 							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="productItem.size" [formControl]="cartForm.controls['size']" required>
 						        <option selected></option>
-						        <option value="1">Red</option>
-						        <option value="2">Blue</option>
-						        <option value="3">Green</option>
+						        <option value="4">4</option>
+						        <option value="6">6</option>
+						        <option value="8">8</option>
+						        <option value="10">10</option>
+						        <option value="12">12</option>
+						        <option value="14">14</option>
+						        <option value="16">16</option>
+						        <option value="18">18</option>
+						        <option value="20">20</option>
 						     </select>
 						      <div *ngIf="cartForm.controls['size'].hasError('required') && formSubmitAttempt" style="color: red">Quantity is required</div>
 						</div>

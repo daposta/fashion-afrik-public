@@ -8,7 +8,7 @@
 				   	<div class="row">
 						<div class="form-group col-md-12">
 							<label for="">Name/Company</label>
-							<input type="text" class="form-control" [(ngModel)]="shipping.name" [formControl]="shippingForm.controls['name']" required>
+							<input type="text" class="form-control" [(ngModel)]="shipping.recipient" [formControl]="shippingForm.controls['name']" required>
 
 							 <div *ngIf="shippingForm.controls['name'].hasError('required') && shippingAttempt" style="color: red">Name/Company is required</div>
 						</div>
@@ -19,7 +19,7 @@
 						    <label for="">Choose Country</label>
 						  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.country" [formControl]="shippingForm.controls['country']" required>
 
-						       <option *ngFor="let item of countrys" [value]="item.slug">{{item.name}}</option>
+						       <option *ngFor="let item of countrys" [value]="item.country_code">{{item.name}}</option>
 						    </select>
 
 						     <div *ngIf="shippingForm.controls['country'].hasError('required') && shippingAttempt" style="color: red">Country is required</div>

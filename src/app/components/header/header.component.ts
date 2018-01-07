@@ -19,9 +19,11 @@ export class HeaderComponent implements OnInit {
   productTypes:any[];
   selectedCategory:any;
   selectedProductType:any;
-   error: any;
-   @Input()
-   cart: any[];
+  error: any;
+  @Input()
+  cart: any[];
+  @Input()
+  customer: Object= {};
   constructor(private categorySrv:CategoryService, private storeSrv: StoreService,
    private cartSrv: CartService, private productSrv :ProductService, private productTypeSrv: ProductTypesService) { }
 
@@ -33,6 +35,7 @@ export class HeaderComponent implements OnInit {
     this.fetchCategories();
     this.fetchStores();
     this.fetchProductTypes();
+    this.getCustomer();
   }
 
   fetchProductsByCategory(){
@@ -69,6 +72,11 @@ export class HeaderComponent implements OnInit {
     
   }
 
+  getCustomer(){
+    this.customer =  JSON.parse( localStorage.getItem('customer'));
+   
+  }
+
   fetchProductTypes(){
     this.productTypeSrv.fetchProductTypes().then(response => this.productTypes = response.results)
   }
@@ -80,4 +88,9 @@ export class HeaderComponent implements OnInit {
  setProductType(x){
    this.selectedProductType = x;
  }
+
+ setCustomerFromLogin(_customer:Object){
+   
+     this.customer = _customer;
+   }
 }

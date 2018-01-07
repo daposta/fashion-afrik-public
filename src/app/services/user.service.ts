@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {Router} from '@angular/router';
 import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
 import {FormBuilder,FormGroup, Validators} from '@angular/forms';
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
 
 declare var $: any;
 
@@ -20,7 +22,7 @@ export class UserService {
   constructor(private http: Http, private router:Router, private globals: Globals) { }
 
 
-  login(data:any, form:FormGroup){
+  login(data:any){
 		//this.logout();
 		let headers = new Headers();
 		headers.append('Content-Type', 'application/json');
@@ -28,35 +30,42 @@ export class UserService {
 		let email = data["email"];
 		let password = data['password'];
 		return this.http.post(this.loginUrl,  JSON.stringify({email, password}), {headers})
-		.subscribe(res =>{
-				let data = res.json();
+		.map(this.extractData)
+        .catch(this.handleErrorObservable);
+		// .subscribe(res =>{
+		// 		let data = res.json();
 
-			 		form.reset();
-				if (data.token){
-					localStorage.setItem('auth_token', data.token);
-					localStorage.setItem('customer', JSON.stringify(data.user));
-					//window.location.href= '/';
+		// 	 		form.reset();
+		// 		if (data.token){
+		// 			localStorage.setItem('auth_token', data.token);
+		// 			localStorage.setItem('customer', JSON.stringify(data.user));
+		// 			//window.location.href= '/';
+					
+		// 			 form.reset();
+		// 			 this.router.navigate([this.router.url]);
 				
-					}
-					else{
-						this.router.navigateByUrl('/login');
-					}
-
-		}, error =>{
-
-			let msg = JSON.parse(error._body)['message'];
-			// form.reset();
+					
 				
-			$.toast({
-		        text: msg,
-		         position: 'top-center',
-		         'icon': 'error'
-		    })
+		// 			}
+		// 			// else{
+		// 			// 	this.router.navigateByUrl('/login');
+		// 			// }
+
+		// }, error =>{
+
+		// 	let msg = JSON.parse(error._body)['message'];
+		// 	// form.reset();
+				
+		// 	$.toast({
+		//         text: msg,
+		//          position: 'top-center',
+		//          'icon': 'error'
+		//     })
 		   
 			
 		
 			
-		})
+		// })
 
 		
 	};
@@ -108,6 +117,17 @@ export class UserService {
 		})
 
 	};
+
+	  private extractData(res: Response) {
+        let body = res.json();
+        return body || {};
+    }
+
+
+     private handleErrorObservable (error: Response | any) {
+      console.error(error.message || error);
+      return Observable.throw(error.message || error);
+    }
 
 
 	private page_header(){

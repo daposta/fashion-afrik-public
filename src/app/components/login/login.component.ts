@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {FormBuilder,FormGroup, Validators} from '@angular/forms';
 import {UserService} from '../../services/user.service';
 import { PasswordValidation } from '../../validators/password-confirm-validator';
+declare var $: any;
 
 
 @Component({
@@ -17,6 +18,11 @@ export class LoginComponent implements OnInit {
   registerForm:FormGroup;
   loginUser: Object= {};
   registerUser: Object= {};
+  customer: Object= {};
+  loggedIn:Boolean=false;
+  @Output() notifyLogin: EventEmitter<Boolean> = new EventEmitter<Boolean>();
+
+
   private loginAttempt: boolean;
   private registerAttempt: boolean;
 
@@ -54,7 +60,27 @@ export class LoginComponent implements OnInit {
   login(){
   	this.loginAttempt = true;
     if (this.loginForm.valid){
-        this.userSrv.login(this.loginUser, this.loginForm)
+        this.userSrv.login(this.loginUser).subscribe(data=>{
+         
+            if(data){
+                localStorage.setItem('auth_token', data.token);
+              localStorage.setItem('customer', JSON.stringify(data.customer));
+              this.customer = data.customer;
+              this.loggedIn = true;
+             this.notifyLogin.emit(this.loggedIn);
+
+            }
+            this.loginForm.reset();
+        },  error=>{
+            let msg = JSON.parse(error._body)['message'];
+
+        
+              $.toast({
+                    text: msg,
+                     position: 'top-center',
+                     'icon': 'error'
+                })
+        });
        }
   }
 

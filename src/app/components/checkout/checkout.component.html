@@ -1,19 +1,22 @@
-<app-header></app-header>
+<app-header ></app-header>
 <section class="jumbotron">
 	<div class="inner-content text-center">
 		<h3 class="boldest">Checkout</h3>
 	</div>
 </section>
-
-
-	<app-login></app-login>
-<div style="background-color: #fff;" class="padded">
-	<app-shipping></app-shipping>
+<div id="login" *ngIf='anonymous && loggedIn==false' >
+	<app-login (notifyLogin)= userLoggedIn($event) ></app-login>
+</div>
+<div id="shipping" *ngIf='loggedIn===true && shipping===false'  style="background-color: #fff;" class="padded"> 
+   <div>Hello {{customer.first_name}}</div>
+	<app-shipping (notifyShipping)= orderShippingFilled($event) ></app-shipping>
 </div>
 
-<app-payment></app-payment>
 
-<div style="background-color: #fff;" class="padded">
-<app-confirmation></app-confirmation>
+<div id="payment" *ngIf='loggedIn==true && shipping==true && paid==false'>
+<app-payment></app-payment>
+</div>
+<div id="confirmation" *ngIf='paid==true && shipping==true && loggedIn==true ' style="background-color: #fff;" class="padded">
+<app-confirmation ></app-confirmation>
 </div>
 <app-footer></app-footer>
