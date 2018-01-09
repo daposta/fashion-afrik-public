@@ -28,7 +28,7 @@ export class ShippingService {
          formData.append('country', shipping['country']);
       formData.append('zipcode', shipping['zipCode']);
       formData.append('recipient', shipping['recipient']);
-      let order = JSON.parse(localStorage.getItem('checkout'))['order'];
+      let order = JSON.parse(localStorage.getItem('checkout'))['order'].id;
     
        formData.append('order', order);
 

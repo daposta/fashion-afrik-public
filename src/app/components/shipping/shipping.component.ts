@@ -14,6 +14,7 @@ export class ShippingComponent implements OnInit {
   
   shippingForm:FormGroup;
   shipping: Object= {};
+  order: Object= {};
   countrys:any[];
   shippingField: Boolean=false;
   private shippingAttempt: boolean;
@@ -34,6 +35,11 @@ export class ShippingComponent implements OnInit {
 
   ngOnInit() {
     this.loadCountries();
+    if(localStorage.getItem('checkout')){
+       this.order = JSON.parse(localStorage.getItem('checkout'))['order'];
+    }
+   
+ 
   }
 
   loadCountries(){
@@ -42,6 +48,7 @@ export class ShippingComponent implements OnInit {
 
   saveShipping(){
     this.shippingAttempt = true;
+
     if (this.shippingForm.valid){
       
        this.shippingSrv.saveShippingInfo(this.shipping).subscribe(shipping=>{
@@ -51,12 +58,10 @@ export class ShippingComponent implements OnInit {
               }
               let data = JSON.parse(localStorage.getItem('checkout'));
               data['shipping'] = shipping.id
-              // let checkout = {"shipping": shipping.id};
               localStorage.setItem('checkout',JSON.stringify(data));
              this.shippingField = true;
              this.notifyShipping.emit(this.shippingField);
-             console.log(this.shippingField);
-
+          
 
 
         },  error=>{

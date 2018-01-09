@@ -14,7 +14,7 @@
 
 
 <div id="payment" *ngIf='loggedIn==true && shipping==true && paid==false'>
-<app-payment></app-payment>
+<app-payment (notifyPayment)= paymentComplete($event)></app-payment>
 </div>
 <div id="confirmation" *ngIf='paid==true && shipping==true && loggedIn==true ' style="background-color: #fff;" class="padded">
 <app-confirmation ></app-confirmation>

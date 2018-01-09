@@ -1,5 +1,5 @@
- <app-header></app-header>
- <section class="jumbotron">
+<!--  <app-header></app-header>
+ --> <section class="jumbotron">
    <div class="inner-content text-center">
      <h3 class="boldest">Clearance sales</h3>
    </div>
@@ -129,7 +129,8 @@
               <img src="{{item.feature_image}}" alt="product image" class="img-fluid">
             </div>
             <div class="product-title">
-              <h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;"><a style="color: #011936" href="/product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h6>
+              <h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;">
+              <a style="color: #011936" href="/product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h6>
               <span class="text-center">
                 <span>&#163;</span><b>{{item.regular_price |number}}</b>
               </span>
@@ -142,4 +143,4 @@
     </div>
   </div>
 </section>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

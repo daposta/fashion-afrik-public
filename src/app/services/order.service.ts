@@ -17,34 +17,13 @@ export class OrderService {
 
 
   saveOrder(cart:any){
-     
-    //  headers.append('Content-Type', 'multipart/form-data');
-   
-     
+    
        
       let v = this.page_header();
      return  this.http.post(this.ordersUrl, cart, v)
        .map(this.extractData)
         .catch(this.handleErrorObservable);
-      // .subscribe(
-      //    res => {
-      //        let msg = JSON.parse(res['_body'])['message'];
-      //          //remove cart
-      //          localStorage.removeItem('cart');
-      //          return res;
-
-
-      //    },
-      //    error =>{
-        
-      //   let msg = JSON.parse(error._body)['message'];
-      //   $.toast({
-      //       text: msg,
-      //        position: 'top-center',
-      //        icon: 'error',
-      //        showHideTransition: 'slide',
-      //   });
-      // })
+      
    }
 
      private extractData(res: Response) {

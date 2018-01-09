@@ -33,7 +33,7 @@ export class CheckoutComponent implements OnInit {
     //  localStorage.removeItem('auth_token');
     // localStorage.removeItem('checkout');
    
-  // console.log(localStorage)
+   
    if(localStorage.getItem('customer')){
      this.loggedIn = true;
      this.anonymous = false;
@@ -53,6 +53,11 @@ export class CheckoutComponent implements OnInit {
      if(checkout['shipping']){
        this.shipping = true;
      }
+     if(checkout['paid']){
+       this.paid = true;
+       localStorage.removeItem('checkout');
+       location.href= '/';
+     }
    }
 
  
@@ -68,7 +73,7 @@ export class CheckoutComponent implements OnInit {
                 localStorage.setItem('checkout',JSON.stringify({}));   
               }
               let checkout = JSON.parse(localStorage.getItem('checkout'));
-              checkout['order'] =  order.id;
+              checkout['order'] =  order;
               localStorage.setItem('checkout',JSON.stringify(checkout));
 
 
@@ -98,6 +103,9 @@ export class CheckoutComponent implements OnInit {
      this.shipping = shippingField;
    }
 
+ paymentComplete(_paid:Boolean){
+   this.paid = _paid;
+ }
    
   
 

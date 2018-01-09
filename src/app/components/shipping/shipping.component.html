@@ -92,7 +92,7 @@
                    <tbody>
                        <tr>
                            <td>Subtotal</td>
-                           <td>$20.00</td>
+                           <td><span>&#163;</span>{{order.cost|number}}</td>
                        </tr>
 
                        <tr>
@@ -101,7 +101,7 @@
                                <ul id="shipping_method" class="list-unstyled">
 <li>
 <input type="radio" name="shipping_method" id="shipping_method_flat_rate1" value="1" class="shipping_method" checked="checked">
-<label for="shipping_method_flat_rate1">Flat rate: <span class="amount">$5.00</span></label> </li>
+<label for="shipping_method_flat_rate1">Flat rate: <span class="amount"><span>&#163;</span>0.00</span></label> </li>
 <li>
 <input type="radio" name="shipping_method" id="shipping_method_free_shipping2" value="2" class="shipping_method">
 <label for="shipping_method_free_shipping2">Free shipping</label> </li>
@@ -115,14 +115,14 @@
                    <tfoot>
                        <tr>
                            <th>Subtotal</th>
-                           <th class="color-accent">$25.00</th>
+                           <th class="color-accent"><span>&#163;</span>{{order.cost|number}}</th>
                        </tr>
                    </tfoot>
                </table> <hr>
 
-					<div class="form-actions text-center">
+					<!-- <div class="form-actions text-center">
 						<button class="btn btn-accent">Place Order</button>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
