@@ -82,7 +82,7 @@
 						        <option value="18">18</option>
 						        <option value="20">20</option>
 						     </select>
-						      <div *ngIf="cartForm.controls['size'].hasError('required') && formSubmitAttempt" style="color: red">Quantity is required</div>
+						      <div *ngIf="cartForm.controls['size'].hasError('required') && formSubmitAttempt" style="color: red">Size is required</div>
 						</div>
 
 						<div class="form-group col-md-4">
@@ -103,7 +103,7 @@
 						<br>
 						
 					</div>
-					<p><b>Category : </b> Women, Ladies</p>
+					<p><b>Category : </b> {{product.category?.name}}</p>
 						<p>SHARE &nbsp; 
 						<button class="btn btn-sm btn-outline-primary boldest" >facebook</button> 
 
