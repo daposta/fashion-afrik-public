@@ -145,7 +145,13 @@
 
   
   $("#example_id").ionRangeSlider({
-    'type': 'double'
+    'type': 'double',
+    onStart: function (data) {
+        console.log("onStart");
+    },
+    onChange: function (data) {
+        console.log("onChange");
+    }
   });
 
 		});
