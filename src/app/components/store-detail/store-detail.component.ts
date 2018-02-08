@@ -9,6 +9,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 import 'rxjs/add/operator/switchMap';
 
+
 @Component({
   selector: 'app-store-detail',
   templateUrl: './store-detail.component.html',
@@ -16,26 +17,27 @@ import 'rxjs/add/operator/switchMap';
    providers: [ ProductService, CategoryService, StoreService, ProductTypesService]
 })
 export class StoreDetailComponent implements OnInit {
-  
+
   products:any[];
   categorys:any[];
   productTypes:any[];
   store: {};
 
-  constructor(private productSrv :ProductService, private route: ActivatedRoute, 
+  constructor(private productSrv :ProductService, private route: ActivatedRoute,
     private categorySrv:CategoryService, private storeSrv: StoreService,  private productTypeSrv: ProductTypesService) { }
 
   ngOnInit() {
-  	this.route.params.switchMap((params: Params) => 
+  	this.route.params.switchMap((params: Params) =>
 			 	this.productSrv.fetchProductsByStore(params['store']))
 			 .subscribe(
 			 	data => {
                this.products = data.results;
-          
+
          });
 
        this.fetchCategories();
        this.fetchProductTypes();
+       $('#summernote').summernote();
   }
 
 
@@ -50,12 +52,12 @@ export class StoreDetailComponent implements OnInit {
   }
 
   getStoreInfo(){
-    // this.route.params.switchMap((params: Params) => 
+    // this.route.params.switchMap((params: Params) =>
     //      this.storeSrv.getStore(params['store']))
     //    .subscribe(
     //      data => {
     //            this.store = data;
-          
+
     //      });
 
   }

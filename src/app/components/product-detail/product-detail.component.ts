@@ -8,7 +8,9 @@ import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 import {Router, ActivatedRoute, Params} from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Globals } from '../../shared/api';
+// import 'assets/summernote';
 import  'jquery-zoom';
+import  'summernote';
 
 declare var $: any;
 
@@ -21,10 +23,10 @@ declare var $: any;
   providers: [ ProductService, CartService]
 })
 export class ProductDetailComponent implements OnInit {
-  
+
   product: Object= {};
   review: Object= {};
-  host_address: string =  this.globals.HOST_URL; 
+  host_address: string =  this.globals.HOST_URL;
   productItem: Object= {};
   cartForm:FormGroup;
   reviewForm:FormGroup;
@@ -34,13 +36,13 @@ export class ProductDetailComponent implements OnInit {
   description:any;
   img_url:any;
   url: any;
-  
+
   cart: any[];
 
   private formSubmitAttempt: boolean;
 
   constructor(private productSrv :ProductService, private route: ActivatedRoute, private globals: Globals,
-    private cartSrv: CartService, fb: FormBuilder) { 
+    private cartSrv: CartService, fb: FormBuilder) {
       this.cartForm = fb.group({
         'qty':['', Validators.required],
         //'measurementType':['', Validators.required],
@@ -86,20 +88,20 @@ export class ProductDetailComponent implements OnInit {
       // product slider zoom
       $('.slider-nav .slider-item').zoom({url:  '/assets/img/denim1.jpg'});
   });
-     
-   
+
+
   }
 
 
 
 
-  
+
 
   ngOnInit() {
 
 
- 
-      this.route.params.switchMap((params: Params) => 
+
+      this.route.params.switchMap((params: Params) =>
          this.productSrv.findProductByUUID(params['id']))
        .subscribe(
          data => {
@@ -115,8 +117,10 @@ export class ProductDetailComponent implements OnInit {
               this.description = this.product['description'];
               this.img_url = this.product['feature_image'];
               this.url = document.location.href;
-           
+
          });
+
+        //  $('.summernote').summernote();
   }
 
 
@@ -124,20 +128,20 @@ export class ProductDetailComponent implements OnInit {
   addToCart(){
       this.formSubmitAttempt = true;
      if(this.cartForm.valid  && this.product){
-        let data = {'product':this.product, 'qty':this.productItem['qty'] } 
-      
+        let data = {'product':this.product, 'qty':this.productItem['qty'] }
+
         this.cartSrv.addToCart(data);
         this.getCart();
         $("html, body").animate({ scrollTop: 0 }, "slow");
      }
-     
+
   };
 
   getCart(){
-    
+
     this.cart = this.cartSrv.loadCart()//.then(response => this.cart = response)
-  
-    
+
+
   }
 
   saveReview(){
@@ -163,9 +167,9 @@ export class ProductDetailComponent implements OnInit {
 
 
  checkItemInWishList(){
-   
+
  }
-  
+
 
 
 

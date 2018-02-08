@@ -25,7 +25,7 @@
 					<div class="title">
 						{{product.name}}
 					</div>
-					
+
 					<div class="price">
 						<span class="" style="margin-right: 50px">
 							<span>&#163;</span> {{product.regular_price |number}}
@@ -36,9 +36,9 @@
 						</span>
 					</div>
 					<section>
-						<div class="raty float-left"  data-score="3" readonly></div> 
+						<div class="raty float-left"  data-score="3" readonly></div>
 						<span class="review float-left " style="margin-left: 15px; display: inline-block; margin-top: 5px; text-transform: uppercase; font-size: 12px; font-weight: 600;">
-							 <a  (click)="goToAddReview()"> <i class="ion-plus"></i> Add Review</a> 
+							 <a  (click)="goToAddReview()"> <i class="ion-plus"></i> Add Review</a>
 					</span>
 						<div class="clearfix"></div>
 					</section> <br>
@@ -101,19 +101,19 @@
 						<button type="submit" class="btn btn-block btn-accent pull-left">Add to Cart</button>
 						<button class="btn btn-block pull-right">Save for Later</button>
 						<br>
-						
+
 					</div>
 					<p><b>Category : </b> {{product.category?.name}}</p>
-						<p>SHARE &nbsp; 
-						<button class="btn btn-sm btn-outline-primary boldest" >facebook</button> 
+						<p>SHARE &nbsp;
+						<button class="btn btn-sm btn-outline-primary boldest" >facebook</button>
 
-					<!-- 	 <share-button class="btn btn-sm btn-outline-primary boldest"  button="facebook" 
+					<!-- 	 <share-button class="btn btn-sm btn-outline-primary boldest"  button="facebook"
 						 [title]="{{title}}" attr.data-url="{{url}}" attr.data-description="{{description}}" attr.data-image="img_url">facebook</share-button>  -->
 
 						<button class="btn btn-sm btn-outline-info boldest">twitter</button> </p>
 					</form>
 
-					
+
 				</div>
 			</div>
 		</div>
@@ -143,14 +143,14 @@
 
 				     <div *ngIf="reviewForm.controls['email'].hasError('pattern')  && reviewSubmitAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
 				  </div>
-				  
+
 				  <div class="form-group">
 				  	<label for="">Comment</label>
-				    <textarea  class="form-control" [(ngModel)]="review.comment" [formControl]="reviewForm.controls['comment']" required></textarea>
+				    <textarea  class="form-control summernote" [(ngModel)]="review.comment" [formControl]="reviewForm.controls['comment']" required></textarea>
 
 				     <div *ngIf="reviewForm.controls['comment'].hasError('required') && reviewSubmitAttempt" style="color: red">Comment is required</div>
 				  </div>
-				 
+
 				  <div class="form-actions">
 				  	<button type="submit" class="btn btn-accent">Submit Review</button>
 				  </div>
@@ -178,8 +178,8 @@
 					</button>
 				</div>
 			</div>
-		</div>  <!-- .row -->		
-		
+		</div>  <!-- .row -->
+
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="review-block">
@@ -212,8 +212,8 @@
 						</div>
 					</div>
 					<hr/>
-					
-					
+
+
 				</div>
 			</div>
 		</div>
