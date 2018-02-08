@@ -83,16 +83,13 @@
   <script src="/assets/ladda/ladda.js"></script>
   <script src="/assets/iCheck/icheck.min.js"></script>
   <script src="/assets/awsel/awselect.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.8/js/intlTelInput.min.js"></script>
-
-
-
 
   <script src="https://cdn.jsdelivr.net/npm/goodshare.js@4/goodshare.min.js"></script>
 
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/js/ion.rangeSlider.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.8/js/utils.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.8/js/intlTelInput.min.js"></script>
 <!-- 	<script type="text/javascript">
   Stripe.setPublishableKey('pk_test_rc3kF517lh5pGOR8wRdRiekO');
 </script>
@@ -113,6 +110,11 @@
 
       $('.icheck_radio').iCheck({
          radioClass: 'iradio_square'
+      });
+
+      // call telinput
+      $("[type=tel]").intlTelInput({
+        autoplaceholder: 'aggressive'
       });
 
       // raty for ratings
@@ -159,9 +161,6 @@
 
   </script>
 
-  <script>
-    $("[type=tel]").intlTelInput();
-  </script>
 
 
 </body>
