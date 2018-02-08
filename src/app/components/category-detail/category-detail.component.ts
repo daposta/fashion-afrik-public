@@ -23,6 +23,10 @@ export class CategoryDetailComponent implements OnInit {
   host_address: string =  this.globals.HOST_URL; 
   category:string;
   productType:string;
+  categoryFilter= []
+ productTypeFilter= []
+  theFilter:Object= {}
+
   
   constructor(private productSrv :ProductService,  private productTypeSrv: ProductTypesService,
     private categorySrv:CategoryService,
@@ -30,7 +34,7 @@ export class CategoryDetailComponent implements OnInit {
 
   ngOnInit() {
     let t = this.route;
-    let productFilter:Object= {};
+    let productFilter= this.theFilter;
   	this.route.params.switchMap((params: Params) => 
 			 	this.productSrv.fetchProductsByCategory(params['category'], params['productType'] ))
 			 .subscribe(
@@ -54,9 +58,50 @@ export class CategoryDetailComponent implements OnInit {
            
              productFilter['minPrice'] = data['from'];
              productFilter['maxPrice'] = data['to'];
-            console.log(productFilter);
+           
         }
       });
+  }
+
+  addCategoryFilter(e){
+    let categoryFilter= this.categoryFilter;
+    if(e.target.checked){
+      categoryFilter.push(e.target.value);
+      //remove currency from list
+      //this.currencys.remove(e.target.value);
+    
+    }
+    else{
+      
+      let index = categoryFilter.indexOf(e.target.value);
+      if(index != -1){
+        categoryFilter.splice(index, 1);
+      }
+      
+    }
+    this.theFilter['categorys'] = categoryFilter;
+  }
+
+  addProductTypeFilter(e){
+
+    let  productTypeFilter= this.productTypeFilter;
+    if(e.target.checked){
+      productTypeFilter.push(e.target.value);
+      //remove currency from list
+      //this.currencys.remove(e.target.value);
+     
+    }
+    else{
+      
+      let index = productTypeFilter.indexOf(e.target.value);
+      if(index != -1){
+        productTypeFilter.splice(index, 1);
+      }
+      
+    }
+    this.theFilter['productTypes'] = productTypeFilter;
+
+
   }
 
   fetchProductTypes(){

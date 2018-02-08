@@ -27,7 +27,7 @@
       <li class="nav-item" >
         <div *ngFor="let item of categorys">
           <label for="{{item.slug}}">
-            <input type="checkbox" id="{{item.slug}}" class="icheck" > &nbsp;
+            <input type="checkbox" id="{{item.slug}}" class="icheck" value="{{item.slug}}" (change)="addCategoryFilter($event)"> &nbsp;
                   {{item.name}}
             </label>
         </div>
@@ -54,7 +54,7 @@
       <li class="nav-item" >
         <div *ngFor="let item of productTypes">
           <label for="{{item.slug}}">
-          <input type="checkbox" id="{{item.slug}}" class="icheck"> &nbsp;
+          <input type="checkbox" id="{{item.slug}}" class="icheck" value="{{item.slug}}" (change)="addProductTypeFilter($event)"> &nbsp;
           {{item.name}}
         </label>
         </div>
