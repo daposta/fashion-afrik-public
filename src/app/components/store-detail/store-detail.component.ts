@@ -37,7 +37,6 @@ export class StoreDetailComponent implements OnInit {
 
        this.fetchCategories();
        this.fetchProductTypes();
-       $('#summernote').summernote();
   }
 
 

@@ -10,7 +10,6 @@ import 'rxjs/add/operator/switchMap';
 import { Globals } from '../../shared/api';
 // import 'assets/summernote';
 import  'jquery-zoom';
-import  'summernote';
 
 declare var $: any;
 

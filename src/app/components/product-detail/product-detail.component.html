@@ -146,7 +146,7 @@
 
 				  <div class="form-group">
 				  	<label for="">Comment</label>
-				    <textarea  class="form-control summernote" [(ngModel)]="review.comment" [formControl]="reviewForm.controls['comment']" required></textarea>
+				    <textarea  class="summernote" [(ngModel)]="review.comment" [formControl]="reviewForm.controls['comment']" required></textarea>
 
 				     <div *ngIf="reviewForm.controls['comment'].hasError('required') && reviewSubmitAttempt" style="color: red">Comment is required</div>
 				  </div>
