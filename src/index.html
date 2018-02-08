@@ -19,10 +19,10 @@
   <link href="/assets/toast/jquery.toast.css"  rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/css/ion.rangeSlider.skinModern.min.css">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.8/css/intlTelInput.css">
 </head>
 <body>
-  
+
   <div class="customloader" >
       <div class="sk-fading-circle">
         <div class="sk-circle1 sk-circle"></div>
@@ -40,15 +40,15 @@
       </div>
     </div>
   <app-root>
-    
+
   </app-root>
 
   	<!-- Start of Async Drift Code -->
 <script>
     !function() {
       var t;
-      if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0, 
-      t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
+      if (t = window.driftt = window.drift = window.driftt || [], !t.init) return t.invoked ? void (window.console && console.error && console.error("Drift snippet included twice.")) : (t.invoked = !0,
+      t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ],
       t.factory = function(e) {
         return function() {
           var n;
@@ -58,8 +58,8 @@
         t[e] = t.factory(e);
       }), t.load = function(t) {
         var e, n, o, i;
-        e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"), 
-        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js", 
+        e = 3e5, i = Math.ceil(new Date() / e) * e, o = document.createElement("script"),
+        o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + i + "/" + t + ".js",
         n = document.getElementsByTagName("script")[0], n.parentNode.insertBefore(o, n);
       });
     }();
@@ -70,10 +70,10 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<script src="/assets/js/popper.min.js" 
+	<script src="/assets/js/popper.min.js"
 	integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 
-	<script src="/assets/js/bootstrap.min.js" 
+	<script src="/assets/js/bootstrap.min.js"
 	integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
   <script src="/assets/raty/jquery.raty.js"></script>
@@ -83,12 +83,13 @@
   <script src="/assets/ladda/ladda.js"></script>
   <script src="/assets/iCheck/icheck.min.js"></script>
   <script src="/assets/awsel/awselect.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.8/js/intlTelInput.min.js"></script>
 
-  
+
 
 
   <script src="https://cdn.jsdelivr.net/npm/goodshare.js@4/goodshare.min.js"></script>
-  
+
 <script src="https://checkout.stripe.com/checkout.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/js/ion.rangeSlider.min.js"></script>
 
@@ -116,7 +117,7 @@
 
       // raty for ratings
        $('div.raty').raty({
-        starType : 'img'  
+        starType : 'img'
        });
 
       // $.toast('Here you can put the text of the toast');
@@ -143,7 +144,7 @@
   //   // l.start()
   //   Ladda.bind( 'button[type=button]' );
 
-  
+
   $(".range-slider").ionRangeSlider({
     'type': 'double',
     onStart: function (data) {
@@ -155,8 +156,12 @@
   });
 
 		});
- 
-	</script>
+
+  </script>
+
+  <script>
+    $("[type=tel]").intlTelInput();
+  </script>
 
 
 </body>
