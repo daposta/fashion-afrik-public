@@ -22,7 +22,7 @@
 		opacity: 0.3;
 		// image should be darker for best representation.
 		background-image:linear-gradient(24deg, #530620, #1b1918);
-	} 
+	}
 }
 
 #products {
@@ -37,4 +37,8 @@
 		text-align: center;
 		margin-top: 20px;
 	}
+}
+
+.filter-btn {
+  margin-top: 10px;
 }

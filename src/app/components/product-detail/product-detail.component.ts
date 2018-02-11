@@ -88,6 +88,9 @@ export class ProductDetailComponent implements OnInit {
       $('.slider-nav .slider-item').zoom({url:  '/assets/img/denim1.jpg'});
   });
 
+  $('.filter').click(function(e){
+    $(this).addClass('is-loading');
+  });
 
   }
 

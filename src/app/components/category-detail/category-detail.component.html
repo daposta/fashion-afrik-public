@@ -5,12 +5,31 @@
 			<div class="col-sm-3">
 				<!-- filter section -->
 
-				<!-- update filter button -->
-				<div style="margin-bottom: 10px">
-            <input type="text" class="range-slider" value="" />
-					<button class="btn btn-secondary btn-block">Update Filter</button>
-				</div>
 				<div id="accordion" role="tablist">
+          <!-- start filter box -->
+            <div class="card">
+                <div class="card-header" role="tab" id="FilterTab">
+                  <h5 class="mb-0">
+                    <a class="boldest" data-toggle="collapse" href="#FilterTabPanel" aria-expanded="true" aria-controls="FilterTabPanel">
+                     Filter
+                    </a>
+                    <span class="icon float-right"><i class="ion-plus-round"></i></span>
+                  </h5>
+                </div>
+
+                <div id="FilterTabPanel" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body" style="padding-right: 15px;">
+                  <ul class="nav flex-column">
+                    <!-- update filter button -->
+                    <div style="margin-bottom: 10px">
+                        <input type="text" class="range-slider" value="" />
+                      <button class="btn btn-secondary btn-block filter-btn">Update Filter</button>
+                    </div>
+                  </ul>
+                  </div>
+                </div>
+              </div>
+              <!-- end filter box -->
  <div class="card">
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
@@ -32,9 +51,9 @@
             </label>
         </div>
 
-     
+
       </li>
-      
+
     </ul>
       </div>
     </div>
@@ -59,10 +78,10 @@
         </label>
         </div>
 
-       
-      
+
+
       </li>
-      
+
     </ul>
       </div>
     </div>
@@ -77,7 +96,7 @@
     </div>
     <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
       <div class="card-body">
-        
+
       </div>
     </div>
   </div> -->
@@ -86,13 +105,13 @@
 			<div class="col-sm-7 offset-md-1">
 				<h5 class="boldest">
 					<!-- You searched for "{sample search results}" -->
-					Category: {{category|uppercase}} 
+					Category: {{category|uppercase}}
 				</h5>
 				<p style="font-size: 12px"><b>{{products?.length || '0'}}</b> Item(s) found</p>
 				<!--  -->
 				<div class="row">
 					<!-- <div class="col-sm-4">
-						
+
 						<a href="">
 							<div class="product-component text-center">
 						<div class="product-image">

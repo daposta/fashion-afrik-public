@@ -16,18 +16,18 @@ declare var $: any;
    providers: [ ProductService, ProductTypesService, CategoryService]
 })
 export class CategoryDetailComponent implements OnInit {
-  
+
   products:any[];
   categorys:any[];
    productTypes:any[];
-  host_address: string =  this.globals.HOST_URL; 
+  host_address: string =  this.globals.HOST_URL;
   category:string;
   productType:string;
   categoryFilter= []
  productTypeFilter= []
   theFilter:Object= {}
 
-  
+
   constructor(private productSrv :ProductService,  private productTypeSrv: ProductTypesService,
     private categorySrv:CategoryService,
    private route: ActivatedRoute, private globals: Globals) { }
@@ -35,14 +35,14 @@ export class CategoryDetailComponent implements OnInit {
   ngOnInit() {
     let t = this.route;
     let productFilter= this.theFilter;
-  	this.route.params.switchMap((params: Params) => 
+  	this.route.params.switchMap((params: Params) =>
 			 	this.productSrv.fetchProductsByCategory(params['category'], params['productType'] ))
 			 .subscribe(
 			 	data => {
                this.products = data.results;
                this.category = t.snapshot.params['category'];
                this.productType = t.snapshot.params['productType'];
-          
+
          });
        this.fetchProductTypes();
        this.fetchCategories();
@@ -54,13 +54,21 @@ export class CategoryDetailComponent implements OnInit {
         },
         onChange: function (data) {
             console.log("onChange");
-          
-           
+
+
              productFilter['minPrice'] = data['from'];
              productFilter['maxPrice'] = data['to'];
-           
+
         }
       });
+
+      $('.filter-btn').click(function(e){
+        e.preventDefault();
+        let button_text = $(this).text();
+        // setTimeout(function(){
+          $(this).text('Loading ...');
+        // },2000);
+      })
   }
 
   addCategoryFilter(e){
@@ -69,15 +77,15 @@ export class CategoryDetailComponent implements OnInit {
       categoryFilter.push(e.target.value);
       //remove currency from list
       //this.currencys.remove(e.target.value);
-    
+
     }
     else{
-      
+
       let index = categoryFilter.indexOf(e.target.value);
       if(index != -1){
         categoryFilter.splice(index, 1);
       }
-      
+
     }
     this.theFilter['categorys'] = categoryFilter;
   }
@@ -89,15 +97,15 @@ export class CategoryDetailComponent implements OnInit {
       productTypeFilter.push(e.target.value);
       //remove currency from list
       //this.currencys.remove(e.target.value);
-     
+
     }
     else{
-      
+
       let index = productTypeFilter.indexOf(e.target.value);
       if(index != -1){
         productTypeFilter.splice(index, 1);
       }
-      
+
     }
     this.theFilter['productTypes'] = productTypeFilter;
 
