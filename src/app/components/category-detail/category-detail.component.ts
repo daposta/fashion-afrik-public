@@ -36,7 +36,7 @@ export class CategoryDetailComponent implements OnInit {
     let t = this.route;
     let productFilter= this.theFilter;
   	this.route.params.switchMap((params: Params) =>
-			 	this.productSrv.fetchProductsByCategory(params['category'], params['productType'] ))
+			 	this.productSrv.fetchProductsByCategory(params['category'], params['productType'], params['sub'] ))
 			 .subscribe(
 			 	data => {
                this.products = data.results;

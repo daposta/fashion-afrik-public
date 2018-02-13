@@ -38,7 +38,7 @@
                                            <!--  <li *ngFor="let pt of productTypes"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)" > {{pt.name}}</a>
                                         </li> -->
 
-                                          <li *ngFor="let sub of pt.sub_categorys"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(sub.slug)" > {{sub.name}}</a>
+                                          <li *ngFor="let sub of pt.sub_categorys"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}/{{sub.slug}}" (click)="setProductType(sub.slug)" > {{sub.name}}</a>
                                         </li>
                                            
                                   </ul>

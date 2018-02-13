@@ -33,10 +33,10 @@ export class ProductService {
   }
 
 
-  fetchProductsByCategory(x: string, y:string){
+  fetchProductsByCategory(x: string, y:string, z:string){
 
   	
-     return this.http.get(this.productsByCategoryUrl + x +'/' +y +'/')
+     return this.http.get(this.productsByCategoryUrl + x +'/' +y +'/' +z +'/')
               .toPromise()
               .then(response => response.json())
               //.catch(this.handleError);

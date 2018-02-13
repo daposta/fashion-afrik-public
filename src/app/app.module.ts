@@ -37,7 +37,7 @@ const appRoutes: Routes = [
     { path: 'product/:id/:slug', component: ProductDetailComponent },
     { path: 'store/:store', component: StoreDetailComponent },
     { path: 'register', component: RegisterComponent },
-    { path: 'category/:category/:productType', component: CategoryDetailComponent },
+    { path: 'category/:category/:productType/:sub', component: CategoryDetailComponent },
     { path: 'cart', component: ShoppingCartComponent },
      { path: 'user-profile', component: UserProfileComponent },
     { path: 'clearance/:category/:productType', component: ClearanceSalesComponent },
