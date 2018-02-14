@@ -32,13 +32,13 @@
                               </li> -->
 
                                 <li *ngFor="let pt of item.product_types"> 
-                                <a class="nav-link dropdown-toggle" href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)"  id="navbarDropdown" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > {{pt.name}}</a>
+                                <a class="nav-link dropdown-toggle" (mouseover)="setProductType(pt.slug)"  id="navbarDropdown" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > {{pt.name}}</a>
 
                                      <ul class="dropdown-menu">
                                            <!--  <li *ngFor="let pt of productTypes"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)" > {{pt.name}}</a>
                                         </li> -->
 
-                                          <li *ngFor="let sub of pt.sub_categorys"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}/{{sub.slug}}" (click)="setProductType(sub.slug)" > {{sub.name}}</a>
+                                          <li *ngFor="let sub of pt.sub_categorys"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}/{{sub.slug}}"  > {{sub.name}}</a>
                                         </li>
                                            
                                   </ul>
@@ -84,13 +84,13 @@
                                 
 
                                 <li *ngFor="let pt of item.product_types"> 
-                                <a class="nav-link dropdown-toggle" href="/clearance/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)"  id="navbarDropdown" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > {{pt.name}}</a>
+                                <a class="nav-link dropdown-toggle" (mouseover)="setProductType(pt.slug)"  id="navbarDropdown" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > {{pt.name}}</a>
 
                                      <ul class="dropdown-menu">
                                            <!--  <li *ngFor="let pt of productTypes"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)" > {{pt.name}}</a>
                                         </li> -->
 
-                                          <li *ngFor="let sub of pt.sub_categorys"> <a href="/clearance/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(sub.slug)" > {{sub.name}}</a>
+                                          <li *ngFor="let sub of pt.sub_categorys"> <a href="/clearance/{{selectedCategory}}/{{selectedProductType}}" > {{sub.name}}</a>
                                         </li>
                                            
                                   </ul>
