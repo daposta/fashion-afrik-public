@@ -14,6 +14,7 @@
                      Filter
                     </a>
                     <span class="icon float-right"><i class="ion-plus-round"></i></span>
+                     <button class="btn btn-secondary btn-block filter-btn" (click)="applyFilter()">Apply</button>
                   </h5>
                 </div>
 
@@ -22,15 +23,16 @@
                   <ul class="nav flex-column">
                     <!-- update filter button -->
                     <div style="margin-bottom: 10px">
+                        <label>Price Range</label>
                         <input type="text" class="range-slider" value="" />
-                      <button class="btn btn-secondary btn-block filter-btn">Update Filter</button>
+                     
                     </div>
                   </ul>
                   </div>
                 </div>
               </div>
               <!-- end filter box -->
- <div class="card">
+<!--  <div class="card">
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
         <a class="boldest" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -46,7 +48,7 @@
       <li class="nav-item" >
         <div *ngFor="let item of categorys">
           <label for="{{item.slug}}">
-            <input type="checkbox" id="{{item.slug}}" class="icheck" value="{{item.slug}}" (change)="addCategoryFilter($event)"> &nbsp;
+            <input type="checkbox" id="{{item.slug}}"   value="{{item.slug}}" (change)="addCategoryFilter($event)"> &nbsp;
                   {{item.name}}
             </label>
         </div>
@@ -57,7 +59,7 @@
     </ul>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="card">
     <div class="card-header" role="tab" id="headingTwo">
       <h5 class="mb-0">
@@ -73,7 +75,7 @@
       <li class="nav-item" >
         <div *ngFor="let item of productTypes">
           <label for="{{item.slug}}">
-          <input type="checkbox" id="{{item.slug}}" class="icheck" value="{{item.slug}}" (change)="addProductTypeFilter($event)"> &nbsp;
+          <input type="checkbox" id="{{item.slug}}"  value="{{item.slug}}" (change)="addProductTypeFilter($event)"> &nbsp;
           {{item.name}}
         </label>
         </div>
@@ -86,26 +88,13 @@
       </div>
     </div>
   </div>
- <!--  <div class="card">
-    <div class="card-header" role="tab" id="headingThree">
-      <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          #3
-        </a>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
-      <div class="card-body">
-
-      </div>
-    </div>
-  </div> -->
+ 
 </div>
 			</div>
 			<div class="col-sm-7 offset-md-1">
 				<h5 class="boldest">
 					<!-- You searched for "{sample search results}" -->
-					Category: {{category|uppercase}}
+					{{category}} > {{productType}} > {{sub}}
 				</h5>
 				<p style="font-size: 12px"><b>{{products?.length || '0'}}</b> Item(s) found</p>
 				<!--  -->

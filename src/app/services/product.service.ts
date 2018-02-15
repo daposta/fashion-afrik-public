@@ -33,10 +33,22 @@ export class ProductService {
   }
 
 
-  fetchProductsByCategory(x: string, y:string, z:string){
-
+  fetchProductsByCategory(x: string, y:string, z:string, a?:{}){
+    
+    let productTypes='';
+    if(a && a['productTypes']){
+      productTypes = a['productTypes'];
+    }
+    let min_price='';
+    let max_price = ''
+    if(a && a['minPrice'] && a['maxPrice']){
+      console.log('ting...');
+      min_price = a['minPrice'];
+      max_price = a['maxPrice'];
+    }
   	
-     return this.http.get(this.productsByCategoryUrl + x +'/' +y +'/' +z +'/')
+     return this.http.get(this.productsByCategoryUrl + x +'/' +y +'/' +z +'?&productTypes=' + productTypes
+        + '&min_price=' + min_price + '&max_price=' + max_price)
               .toPromise()
               .then(response => response.json())
               //.catch(this.handleError);

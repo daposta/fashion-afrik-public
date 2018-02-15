@@ -3,7 +3,7 @@ import { ProductService } from '../../services/product.service';
 import { ProductTypesService } from '../../services/product-types.service';
 import { CategoryService } from '../../services/category.service';
 
-import {Router, ActivatedRoute, Params} from '@angular/router';
+import {Router, ActivatedRoute, Params, NavigationEnd} from '@angular/router';
 import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 import 'rxjs/add/operator/switchMap';
 import { Globals } from '../../shared/api';
@@ -23,6 +23,7 @@ export class CategoryDetailComponent implements OnInit {
   host_address: string =  this.globals.HOST_URL;
   category:string;
   productType:string;
+  sub:string;
   categoryFilter= []
  productTypeFilter= []
   theFilter:Object= {}
@@ -40,8 +41,9 @@ export class CategoryDetailComponent implements OnInit {
 			 .subscribe(
 			 	data => {
                this.products = data.results;
-               this.category = t.snapshot.params['category'];
                this.productType = t.snapshot.params['productType'];
+               this.category = t.snapshot.params['category'];
+               this.sub = t.snapshot.params['sub'];
 
          });
        this.fetchProductTypes();
@@ -50,10 +52,10 @@ export class CategoryDetailComponent implements OnInit {
         $(".range-slider").ionRangeSlider({
         'type': 'double',
         onStart: function (data) {
-            console.log("onStart");
+            // console.log("onStart");
         },
         onChange: function (data) {
-            console.log("onChange");
+            // console.log("onChange");
 
 
              productFilter['minPrice'] = data['from'];
@@ -72,6 +74,7 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   addCategoryFilter(e){
+    
     let categoryFilter= this.categoryFilter;
     if(e.target.checked){
       categoryFilter.push(e.target.value);
@@ -88,28 +91,46 @@ export class CategoryDetailComponent implements OnInit {
 
     }
     this.theFilter['categorys'] = categoryFilter;
+
   }
 
-  addProductTypeFilter(e){
-
+  addProductTypeFilter(event){
+    
     let  productTypeFilter= this.productTypeFilter;
-    if(e.target.checked){
-      productTypeFilter.push(e.target.value);
+    if(event.target.checked){
+      productTypeFilter.push(event.target.value);
       //remove currency from list
       //this.currencys.remove(e.target.value);
 
     }
     else{
 
-      let index = productTypeFilter.indexOf(e.target.value);
+      let index = productTypeFilter.indexOf(event.target.value);
       if(index != -1){
         productTypeFilter.splice(index, 1);
       }
 
     }
     this.theFilter['productTypes'] = productTypeFilter;
+ 
 
 
+  }
+
+  applyFilter(){
+      // let filters = {};
+      // filters['prices'] = this.theFilter;
+      // filters['categories'] = this.categoryFilter;
+      // filters['productTypes'] = this.productTypeFilter;
+      
+      this.route.params.switchMap((params: Params) =>
+        this.productSrv.fetchProductsByCategory(params['category'], params['productType'], params['sub'], this.theFilter ))
+       .subscribe(
+         data => {
+               this.products = data.results;
+              
+
+         });
   }
 
   fetchProductTypes(){
