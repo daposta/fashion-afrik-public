@@ -5,6 +5,11 @@
         <a class="nav-link active" target="_blank" href="http://stores.vogueafriq.com">Sell on <b>VogueAfriq</b></a>
         <span class="greeting">Hi <b>{{customer?.first_name}}</b></span>
        <!--  <span class=""><b>Logout</b></span> -->
+     
+
+<select name="currency" id="currency_selector" style="height: 18px; font-size: 12px; margin-left: 20px">
+  <option value="usd">USD</option>
+</select>
         
       </nav>
   </div>
@@ -31,7 +36,7 @@
                                  <!--  <li *ngFor="let pt of productTypes"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)" > {{pt.name}}</a>
                               </li> -->
 
-                                <li *ngFor="let pt of item.product_types"> 
+                                <li *ngFor="let pt of item.product_types" class="dropdown-submenu"> 
                                 <a class="nav-link dropdown-toggle" (mouseover)="setProductType(pt.slug)"  id="navbarDropdown" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > {{pt.name}}</a>
 
                                      <ul class="dropdown-menu">

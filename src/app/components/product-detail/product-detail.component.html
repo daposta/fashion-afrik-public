@@ -50,14 +50,14 @@
 
 					<form  [formGroup]="cartForm" (ngSubmit)="addToCart()"   novalidate>
 						<div class="row">
-							<div class="form-group col-md-4">
+							<div class="form-group col-md-3">
 							<label for="email">Quantity</label>
 							<input type="text" class="form-control" [(ngModel)]="productItem.qty" [formControl]="cartForm.controls['qty']" required>
 
 							 <div *ngIf="cartForm.controls['qty'].hasError('required') && formSubmitAttempt" style="color: red">Quantity is required</div>
 						</div>
 
-						<!-- <div class="form-group col-md-4">
+						<!-- <div class="form-group col-md-3">
 							<label for="email">Measurement Type</label>
 							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="productItem.measurementType" [formControl]="cartForm.controls['measurementType']" required>
 						        <option selected></option>
@@ -68,7 +68,7 @@
 						      <div *ngIf="cartForm.controls['measurementType'].hasError('required') && formSubmitAttempt" style="color: red">Measurement Type is required</div>
 						</div> -->
 
-						<div class="form-group col-md-4">
+						<div class="form-group col-md-3">
 							<label for="email">Size</label>
 							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="productItem.size" [formControl]="cartForm.controls['size']" required>
 						        <option selected></option>
@@ -85,7 +85,7 @@
 						      <div *ngIf="cartForm.controls['size'].hasError('required') && formSubmitAttempt" style="color: red">Size is required</div>
 						</div>
 
-						<div class="form-group col-md-4">
+						<div class="form-group col-md-3">
 							<label for="email">Color</label>
 							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" [(ngModel)]="productItem.color" [formControl]="cartForm.controls['color']" required>
 						        <option selected></option>
@@ -95,6 +95,14 @@
 						     </select>
 						      <div *ngIf="cartForm.controls['color'].hasError('required') && formSubmitAttempt" style="color: red">Color is required</div>
 						</div>
+
+						<div class="col-md-3">
+							<!-- customize modal trigger  -->
+							<button style="margin-top: 25px" class="btn  btn-secondary" data-toggle="modal" data-target="#customizeModal" title="Customize"><i class="ion-plus-round"></i></button>
+						</div>
+
+
+
 						</div>
 
 						<div class="actions">
@@ -119,6 +127,75 @@
 		</div>
 	</div>
 </section>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="customizeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      	<h5 class="modal-title boldest" id="myModalLabel">Customize Fabric</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        
+      </div>
+      <div class="modal-body">
+       	<form action="">
+       		<!-- <div class="row">
+       			<div class="form-group col-sm-6">
+       				<label for="">General Build</label>
+       				<select name="GB" id="GB" class="form-control">
+       					<option value="">Average</option>
+       					<option value="Normal">Normal</option>
+       				</select>
+       			</div>
+       		</div> -->
+       		<div class="text-info alert alert-info" style="padding: 3px 20px">
+       			<small>Enter values in inches</small>
+       		</div>
+
+       		<div class="row">
+       			<div class="form-group col-sm-6">
+       				<label for="">Colar</label>
+       				<input type="text" class="form-control" placeholder="Enter value">
+       			</div>
+
+       			<div class="form-group col-sm-6">
+       				<label for="">Chest</label>
+       				<input type="text" class="form-control" placeholder="Enter value">
+       			</div>
+       		</div>
+
+       		<div class="row">
+       			<div class="form-group col-sm-6">
+       				<label for="">Waist</label>
+       				<input type="text" class="form-control" placeholder="Enter value">
+       			</div>
+
+       			<div class="form-group col-sm-6">
+       				<label for="">Inside Legs</label>
+       				<input type="text" class="form-control" placeholder="Enter value">
+       			</div>
+       		</div>
+
+       		<div class="row">
+       			<div class="form-group col-sm-12">
+       				<label for="">Upper Body Length</label>
+       				<input type="text" class="form-control" placeholder="Enter value">
+       			</div>
+       		</div>
+
+
+       	</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <section id="product-description" class="padded">
 	<div class="container">
