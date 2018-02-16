@@ -132,7 +132,7 @@
               <h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;">
               <a style="color: #011936" href="/product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h6>
               <span class="text-center">
-                <span>&#163;</span><b>{{item.regular_price |number}}</b>
+                <span>{{t.getItem('currency')}}</span><b>{{item.regular_price * t.getItem('rate')|number}}</b>
               </span>
               </div>
             </div>

@@ -84,7 +84,6 @@ fetchExchangeRates(){
     this.exchange_rates = response.results;
      let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
      localStorage.setItem('rate', selected_currency.rate);
-     console.log(localStorage.getItem('rate'));
    });
   
   }
@@ -115,11 +114,9 @@ fetchExchangeRates(){
  }
 
  changeCurrency(evt){
-     console.log(evt.target.value);
      localStorage.setItem('currency' , evt.target.value);
      let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
      localStorage.setItem('rate', selected_currency.rate);
-     console.log(localStorage.getItem('rate'));
 
  }
 

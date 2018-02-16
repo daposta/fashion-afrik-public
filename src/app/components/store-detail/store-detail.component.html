@@ -142,7 +142,7 @@
 						</div>
 						<div class="product-title">
 							<h5 class=""><a href="/product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h5>
-							<span>&#163;</span><b>{{item.regular_price |number}}</b>
+							<span>{{t.getItem('currency')}}</span><b>{{item.regular_price * t.getItem('rate') |number}}</b>
 							</div>
 						</div>
             </a>

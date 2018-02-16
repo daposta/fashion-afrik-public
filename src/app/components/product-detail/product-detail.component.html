@@ -28,11 +28,11 @@
 
 					<div class="price">
 						<span class="" style="margin-right: 50px">
-							<span>&#163;</span> {{product.regular_price |number}}
+							<span>{{t.getItem('currency')}}</span> {{product.regular_price * t.getItem('rate')|number}}
 						</span>
 
 						<span class="" style="text-decoration: line-through; opacity: 0.2">
-							<span>&#163;</span> {{product.discount_price |number}}
+							<span>&#163;</span> {{product.discount_price * t.getItem('rate')|number}}
 						</span>
 					</div>
 					<section>

@@ -11,7 +11,7 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
   providers: [  CategoryService,  ProductTypesService, ProductService]
 })
 export class SearchResultsComponent implements OnInit {
-
+  t = localStorage;
   search_results:any[];
   q :any
   constructor( private route: ActivatedRoute, private productSrv :ProductService) { }

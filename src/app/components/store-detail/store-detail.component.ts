@@ -17,7 +17,8 @@ import 'rxjs/add/operator/switchMap';
    providers: [ ProductService, CategoryService, StoreService, ProductTypesService]
 })
 export class StoreDetailComponent implements OnInit {
-
+  
+  t = localStorage;
   products:any[];
   categorys:any[];
   productTypes:any[];

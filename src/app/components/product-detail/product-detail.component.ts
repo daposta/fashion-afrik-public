@@ -25,7 +25,7 @@ declare var $: any;
   providers: [ ProductService, CartService, ColorService, FabricService, SizeService]
 })
 export class ProductDetailComponent implements OnInit {
-
+ t = localStorage;
   product: Object= {};
   review: Object= {};
   host_address: string =  this.globals.HOST_URL;

@@ -14,6 +14,7 @@ import { Globals } from '../../shared/api';
 })
 export class ClearanceSalesComponent implements OnInit {
   //products:any[];
+  t = localStorage;
   host_address: string =  this.globals.HOST_URL; 
   category:string;
   productType:string;
