@@ -6,16 +6,17 @@ import 'rxjs/add/operator/toPromise';
 declare var $: any;
 
 
-@Injectable()
-export class ColorService {
 
- private colorsUrl = this.globals.COLORS_URL; 
+@Injectable()
+export class SizeService {
+
+  private sizesUrl = this.globals.SIZES_URL; 
 
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
-  fetchColors(){
-  	  
-    return this.http.get(this.colorsUrl, )
+  fetchSizes(){
+  	  let v = this.page_header();
+    return this.http.get(this.sizesUrl, v)
               .toPromise()
               .then(response => response.json())
               .catch(this.handleError);
@@ -35,5 +36,6 @@ export class ColorService {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   };
+
 
 }

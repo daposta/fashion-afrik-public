@@ -7,8 +7,8 @@
        <!--  <span class=""><b>Logout</b></span> -->
      
 
-<select name="currency" id="currency_selector" style="height: 18px; font-size: 12px; margin-left: 20px">
-  <option value="usd">USD</option>
+<select name="currency" id="currency_selector" (change)="changeCurrency($event)" style="height: 18px; font-size: 12px; margin-left: 20px">
+    <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.name}}</option>
 </select>
         
       </nav>

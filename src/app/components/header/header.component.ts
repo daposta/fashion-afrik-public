@@ -4,19 +4,24 @@ import { StoreService } from '../../services/store.service';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 import { ProductTypesService } from '../../services/product-types.service';
+import { CurrencyService } from '../../services/currency.service';
+import { ExchangeRateService } from '../../services/exchange-rate.service';
 
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers: [ CategoryService , StoreService, CartService, ProductService, ProductTypesService]
+  providers: [ CategoryService , StoreService, CartService, ProductService, ProductTypesService,
+  CurrencyService, ExchangeRateService]
 })
 export class HeaderComponent implements OnInit {
-
+  t = localStorage;
   categorys:any[];
   stores:any[];
   productTypes:any[];
+  currencys:any[];
+  exchange_rates :any[];
   selectedCategory:any;
   selectedProductType:any;
   error: any;
@@ -24,8 +29,9 @@ export class HeaderComponent implements OnInit {
   cart: any[];
   @Input()
   customer: Object= {};
-  constructor(private categorySrv:CategoryService, private storeSrv: StoreService,
-   private cartSrv: CartService, private productSrv :ProductService, private productTypeSrv: ProductTypesService) { }
+  constructor(private categorySrv:CategoryService, private storeSrv: StoreService, private currencySrv: CurrencyService,
+   private cartSrv: CartService, private productSrv :ProductService, private productTypeSrv: ProductTypesService, 
+   private rateSrv: ExchangeRateService) { }
 
   ngOnInit() {
   	this.fetchProductsByCategory();
@@ -36,6 +42,12 @@ export class HeaderComponent implements OnInit {
     this.fetchStores();
     this.fetchProductTypes();
     this.getCustomer();
+    this.fetchCurrencys();
+    this.fetchExchangeRates()
+    if(!localStorage.getItem('currency')){
+      localStorage.setItem('currency', 'GBP');
+    }
+    console.log(localStorage.getItem('currency'));
   }
 
   fetchProductsByCategory(){
@@ -58,6 +70,23 @@ export class HeaderComponent implements OnInit {
   fetchStores(){
     
    this.storeSrv.fetchStores().then(response => this.stores = response.results)
+  }
+
+  fetchCurrencys(){
+    
+   this.currencySrv.fetchCurrencys().then(response => this.currencys = response.results)
+  }
+
+fetchExchangeRates(){
+    
+   this.rateSrv.fetchRates().then(response => {
+     
+    this.exchange_rates = response.results;
+     let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
+     localStorage.setItem('rate', selected_currency.rate);
+     console.log(localStorage.getItem('rate'));
+   });
+  
   }
 
   searchProduct(x){
@@ -83,6 +112,15 @@ export class HeaderComponent implements OnInit {
 
  setCategory(x){
    this.selectedCategory = x;
+ }
+
+ changeCurrency(evt){
+     console.log(evt.target.value);
+     localStorage.setItem('currency' , evt.target.value);
+     let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
+     localStorage.setItem('rate', selected_currency.rate);
+     console.log(localStorage.getItem('rate'));
+
  }
 
  setProductType(x){

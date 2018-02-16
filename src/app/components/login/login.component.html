@@ -86,7 +86,7 @@
 					<div class="row">
 						<div class="form-group col-md-12">
 						<label for="password">Confirm Password</label>
-						<input type="password" class="form-control" [(ngModel)]="registerUser.confirmPassword" [formControl]="registerForm.controls['confirmPassword']" required>
+						<input type="password" name="confirmPassword" class="form-control" [(ngModel)]="registerUser.confirmPassword" [formControl]="registerForm.controls['confirmPassword']" required>
 
 						 <div *ngIf="registerForm.controls['confirmPassword'].hasError('required') && registerAttempt" style="color: red">Confirm Password is required</div>
 
@@ -98,8 +98,8 @@
 
 					<div class="row">
 						<div class="form-group col-md-6">
-						<label for="email">Mobile</label>
-						<input type="tel" class="form-control" [(ngModel)]="registerUser.mobile" [formControl]="registerForm.controls['mobile']" required >
+						<label for="mobile">Mobile</label>
+						<input type="tel"  name="mobile" class="form-control" [(ngModel)]="registerUser.mobile" [formControl]="registerForm.controls['mobile']" required >
 
 						 <div *ngIf="registerForm.controls['mobile'].hasError('required') && registerAttempt" style="color: red">Mobile is required</div>
 

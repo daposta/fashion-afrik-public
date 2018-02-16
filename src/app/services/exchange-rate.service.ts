@@ -3,19 +3,18 @@ import { Http, Headers, RequestOptions } from '@angular/http';
 import {Router} from '@angular/router';
 import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
-declare var $: any;
 
 
 @Injectable()
-export class ColorService {
+export class ExchangeRateService {
 
- private colorsUrl = this.globals.COLORS_URL; 
+  private ratesUrl = this.globals.EXCHANGE_RATES_URL; 
 
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
-  fetchColors(){
-  	  
-    return this.http.get(this.colorsUrl, )
+  fetchRates(){
+  	 
+    return this.http.get(this.ratesUrl, )
               .toPromise()
               .then(response => response.json())
               .catch(this.handleError);
@@ -35,5 +34,7 @@ export class ColorService {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   };
+
+
 
 }

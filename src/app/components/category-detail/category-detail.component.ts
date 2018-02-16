@@ -16,7 +16,7 @@ declare var $: any;
    providers: [ ProductService, ProductTypesService, CategoryService]
 })
 export class CategoryDetailComponent implements OnInit {
-
+  t = localStorage;
   products:any[];
   categorys:any[];
    productTypes:any[];

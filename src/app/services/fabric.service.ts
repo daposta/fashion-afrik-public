@@ -5,17 +5,16 @@ import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
 declare var $: any;
 
-
 @Injectable()
-export class ColorService {
+export class FabricService {
 
- private colorsUrl = this.globals.COLORS_URL; 
+  private fabricsUrl = this.globals.FABRICS_URL; 
 
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
-  fetchColors(){
-  	  
-    return this.http.get(this.colorsUrl, )
+  fetchFabrics(){
+  	  let v = this.page_header();
+    return this.http.get(this.fabricsUrl, v)
               .toPromise()
               .then(response => response.json())
               .catch(this.handleError);
