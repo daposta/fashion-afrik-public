@@ -1,11 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import {Router} from '@angular/router';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
-
-declare var $: any;
-
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class ProductService {
@@ -21,14 +20,13 @@ export class ProductService {
  private searchUrl = this.globals.SEARCH_URL; 
  private reviewsUrl = this.globals.REVIEWS_URL;
 
-  constructor(private http: Http, private globals: Globals,  private router:Router) { }
+  constructor(private http: Http, private globals: Globals) { }
 
   fetchProductsByStore(data: string){
 
   	 return this.http.get(this.productsByStoreUrl + data +'/')
-              .toPromise()
-              .then(response => response.json())
-              //.catch(this.handleError);
+             .map(this.extractData)
+        .catch(this.handleErrorObservable);
     
   }
 
@@ -49,9 +47,8 @@ export class ProductService {
   	
      return this.http.get(this.productsByCategoryUrl + x +'/' +y +'/' +z +'?&productTypes=' + productTypes
         + '&min_price=' + min_price + '&max_price=' + max_price)
-              .toPromise()
-              .then(response => response.json())
-              //.catch(this.handleError);
+               .map(this.extractData)
+        .catch(this.handleErrorObservable);
 
   }
 
@@ -64,11 +61,26 @@ export class ProductService {
   };
 
 
-   fetchClearance(x: string, y:string){
-    
-         return this.http.get(this.productsClearanceUrl + x +'/' +y +'/')
-                .toPromise()
-                .then(response => response.json())
+   fetchClearance(x: string, y:string, z:string, a?:{}){
+        let productTypes='';
+    if(a && a['productTypes']){
+      productTypes = a['productTypes'];
+    }
+    let min_price='';
+    let max_price = ''
+    if(a && a['minPrice'] && a['maxPrice']){
+      console.log('ting...');
+      min_price = a['minPrice'];
+      max_price = a['maxPrice'];
+    }
+    return this.http.get(this.productsClearanceUrl + x +'/' +y +'/'  +z +'?&productTypes=' + productTypes
+        + '&min_price=' + min_price + '&max_price=' + max_price)
+    .map(this.extractData)
+        .catch(this.handleErrorObservable);
+                // .toPromise()
+                // .then(response => response.json())
+                //   .catch(this.handleErrorObservable);
+
    }
 
    fetchNewArrivals(){
@@ -76,6 +88,8 @@ export class ProductService {
        return this.http.get(this.newArrivalsUrl )
               .toPromise()
               .then(response => response.json())
+              .catch(this.handleErrorObservable);
+
 
    }
 
@@ -84,22 +98,28 @@ export class ProductService {
        return this.http.get(this.forHimUrl )
               .toPromise()
               .then(response => response.json())
+              .catch(this.handleErrorObservable);
+
 
    }
 
    fetchHer(){
 
        return this.http.get(this.forHerUrl )
-              .toPromise()
-              .then(response => response.json())
+          .map(this.extractData)
+        .catch(this.handleErrorObservable);
+              // .toPromise()
+              // .then(response => response.json())
+              //  .catch(this.handleErrorObservable);
+
 
    }
 
   searchProduct(data:string){
       
        return this.http.get(this.searchUrl +'?search=' +data )
-              .toPromise()
-              .then(response => response.json())
+              .map(this.extractData)
+          .catch(this.handleErrorObservable);
 
    }
 
@@ -117,25 +137,26 @@ export class ProductService {
      this.http.post(this.reviewsUrl, formData).subscribe(
          res => {
              let msg = JSON.parse(res['_body'])['message'];
-              // $.toast({
-              //     text: msg,
-              //      position: 'top-center',
-              //      'icon': 'success',
-              //     showHideTransition: 'slide',
-              // });
+             
                product.reviews.push(JSON.parse(res['_body']));
              //this.router.navigateByUrl('products');
          },
          error =>{
         
         let msg = JSON.parse(error._body)['message'];
-        // $.toast({
-        //     text: msg,
-        //      position: 'top-center',
-        //      icon: 'error',
-        //      showHideTransition: 'slide',
-        // });
+       
       })
    }
+
+    private extractData(res: Response) {
+        let body = res.json();
+        return body || {};
+    }
+
+
+    private handleErrorObservable (error: Response | any) {
+      console.error(error.message || error);
+      return Observable.throw(error.message || error);
+    }
 
 }

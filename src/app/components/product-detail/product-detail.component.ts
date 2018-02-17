@@ -40,7 +40,7 @@ export class ProductDetailComponent implements OnInit {
   description:any;
   img_url:any;
   url: any;
-
+   error: any;
   cart: any[];
   colors: any[];
   fabrics: any[];
@@ -120,8 +120,28 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
 
-    this.colorSrv.fetchColors().then(response => this.colors = response.results);
-    this.fabricSrv.fetchFabrics().then(response => this.fabrics = response.results);
+    this.colorSrv.fetchColors().subscribe(
+         data => {
+               this.colors = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.colors = response.results);
+    this.fabricSrv.fetchFabrics().subscribe(
+         data => {
+               this.fabrics = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.fabrics = response.results);
     this.sizeSrv.fetchSizes().then(response => this.sizes = response.results);
 
 

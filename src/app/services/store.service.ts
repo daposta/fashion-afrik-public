@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import {Router} from '@angular/router';
 import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs';
 
 
 @Injectable()
@@ -16,9 +18,8 @@ export class StoreService {
   fetchStores(){
   	
     return this.http.get(this.storesURL)
-              .toPromise()
-              .then(response => response.json())
-              .catch(this.handleError);
+               .map(this.extractData)
+        .catch(this.handleErrorObservable);
   };
 
 
@@ -33,5 +34,16 @@ export class StoreService {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   };
+
+  private extractData(res: Response) {
+        let body = res.json();
+        return body || {};
+    }
+
+
+    private handleErrorObservable (error: Response | any) {
+      console.error(error.message || error);
+      return Observable.throw(error.message || error);
+    }
 
 }

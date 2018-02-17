@@ -1,27 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions } from '@angular/http';
-import {Router} from '@angular/router';
+import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import { Observable } from 'rxjs';
+
 
 @Injectable()
 export class ProductTypesService {
   
   private productTypeURL =   this.globals.PRODUCTS_TYPES_URL;
-  constructor(private http: Http, private globals: Globals,  private router:Router) { }
+  constructor(private http: Http, private globals: Globals) { }
 
-  fetchProductTypes(){
+  fetchProductTypes(category?: string){
   	
-    return this.http.get(this.productTypeURL)
-              .toPromise()
-              .then(response => response.json())
-              .catch(this.handleError);
+    return this.http.get(this.productTypeURL  +'?&category=' + category)
+              .map(this.extractData)
+        .catch(this.handleErrorObservable);
   };
 
-   private handleError(error: any) {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  };
+    private extractData(res: Response) {
+        let body = res.json();
+        return body || {};
+    }
+
+
+    private handleErrorObservable (error: Response | any) {
+      console.error(error.message || error);
+      return Observable.throw(error.message || error);
+    }
+
 
 
 

@@ -16,6 +16,7 @@ export class ShippingComponent implements OnInit {
   shipping: Object= {};
   order: Object= {};
   countrys:any[];
+  error: any;
   shippingField: Boolean=false;
   private shippingAttempt: boolean;
     @Output() notifyShipping: EventEmitter<Boolean> = new EventEmitter<Boolean>();
@@ -43,7 +44,17 @@ export class ShippingComponent implements OnInit {
   }
 
   loadCountries(){
-    this.countrySrv.fetchCountrys().then(response => this.countrys = response.results)
+    this.countrySrv.fetchCountrys().subscribe(res =>{
+        console.log(res);
+      this.countrys = res.results
+    }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    })
+    //.then(response => this.countrys = response.results)
   }
 
   saveShipping(){

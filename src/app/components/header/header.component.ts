@@ -47,7 +47,6 @@ export class HeaderComponent implements OnInit {
     if(!localStorage.getItem('currency')){
       localStorage.setItem('currency', 'GBP');
     }
-    console.log(localStorage.getItem('currency'));
   }
 
   fetchProductsByCategory(){
@@ -64,17 +63,47 @@ export class HeaderComponent implements OnInit {
 
   fetchCategories(){
     
-   this.categorySrv.fetchCategories().then(response => this.categorys = response.results)
+   this.categorySrv.fetchCategories().subscribe(
+         data => {
+               this.categorys = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.categorys = response.results)
   }
 
   fetchStores(){
     
-   this.storeSrv.fetchStores().then(response => this.stores = response.results)
+   this.storeSrv.fetchStores().subscribe(
+         data => {
+               this.stores = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.stores = response.results)
   }
 
   fetchCurrencys(){
     
-   this.currencySrv.fetchCurrencys().then(response => this.currencys = response.results)
+   this.currencySrv.fetchCurrencys().subscribe(
+         data => {
+               this.currencys = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.currencys = response.results)
   }
 
 fetchExchangeRates(){
@@ -106,7 +135,17 @@ fetchExchangeRates(){
   }
 
   fetchProductTypes(){
-    this.productTypeSrv.fetchProductTypes().then(response => this.productTypes = response.results)
+    this.productTypeSrv.fetchProductTypes().subscribe(
+         data => {
+               this.productTypes = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.productTypes = response.results)
   }
 
  setCategory(x){

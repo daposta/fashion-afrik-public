@@ -24,9 +24,10 @@ export class CategoryDetailComponent implements OnInit {
   category:string;
   productType:string;
   sub:string;
-  categoryFilter= []
- productTypeFilter= []
-  theFilter:Object= {}
+  categoryFilter= [];
+ productTypeFilter= [];
+  theFilter:Object= {};
+  error: any;
 
 
   constructor(private productSrv :ProductService,  private productTypeSrv: ProductTypesService,
@@ -36,6 +37,7 @@ export class CategoryDetailComponent implements OnInit {
   ngOnInit() {
     let t = this.route;
     let productFilter= this.theFilter;
+    let a  = this;
   	this.route.params.switchMap((params: Params) =>
 			 	this.productSrv.fetchProductsByCategory(params['category'], params['productType'], params['sub'] ))
 			 .subscribe(
@@ -44,9 +46,10 @@ export class CategoryDetailComponent implements OnInit {
                this.productType = t.snapshot.params['productType'];
                this.category = t.snapshot.params['category'];
                this.sub = t.snapshot.params['sub'];
+                a.fetchProductTypes( this.category );
 
          });
-       this.fetchProductTypes();
+       //this.fetchProductTypes();
        this.fetchCategories();
 
         $(".range-slider").ionRangeSlider({
@@ -133,12 +136,33 @@ export class CategoryDetailComponent implements OnInit {
          });
   }
 
-  fetchProductTypes(){
-    this.productTypeSrv.fetchProductTypes().then(response => this.productTypes = response.results)
+  fetchProductTypes(pt){
+    this.productTypeSrv.fetchProductTypes(pt).subscribe(
+         data => {
+               this.productTypes = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.productTypes = response.results)
   }
 
   fetchCategories(){
-       this.categorySrv.fetchCategories().then(response => this.categorys = response.results)
+       this.categorySrv.fetchCategories().subscribe(
+         data => {
+               this.categorys = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });
+       //.then(response => this.categorys = response.results)
 
   }
 
