@@ -11,7 +11,7 @@ declare var $: any;
    providers: [  CartService]
 })
 export class ShoppingCartComponent implements OnInit {
- 
+  t = localStorage;
   cart: any[];
    host_address: string =  this.globals.HOST_URL;
   constructor(private cartSrv: CartService,private globals: Globals) { }
@@ -31,7 +31,8 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   getCart(){
-    this.cart = this.cartSrv.loadCart()//.then(response => this.cart = response)
+    this.cart = this.cartSrv.loadCart();//.then(response => this.cart = response)
+    console.log(this.cart);
     
   }
 

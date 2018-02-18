@@ -1,4 +1,4 @@
-<!--  <app-header [cart] ="cart" ></app-header> -->
+ <app-header [cart] ="cart" ></app-header>
 <section id="product-detail" class="padded">
 	<div class="container">
 		<div class="row">
@@ -48,11 +48,11 @@
 						{{product.description}}
 					</p>
 
-					<form  [formGroup]="cartForm" (ngSubmit)="addToCart()"   novalidate>
+					<form  [formGroup]="cartForm" (ngSubmit)="addToCart(cartForm.value)"   novalidate>
 						<div class="row">
 							<div class="form-group col-md-3">
 							<label for="email">Quantity</label>
-							<input type="text" class="form-control" [(ngModel)]="productItem.qty" [formControl]="cartForm.controls['qty']" [value]="1" (keypress)="numbersOnly($event)">
+							<input type="text" class="form-control" [formControl]="cartForm.controls['qty']" [value]="1" (keypress)="numbersOnly($event)">
 
 							 <div *ngIf="cartForm.controls['qty'].hasError('required') && formSubmitAttempt" class="small" style="color: red">Quantity is required</div>
 						</div>
@@ -60,7 +60,7 @@
 
 						<div class="form-group col-md-3">
 							<label for="email">Size</label>
-							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="productItem.size" [formControl]="cartForm.controls['size']" required>
+							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [formControl]="cartForm.controls['size']" required>
 						        <option selected></option>
 						        <option *ngFor="let item of sizes" [value]="item.name">{{item.name}}</option>
 						     </select>
@@ -69,7 +69,7 @@
 
 						<div class="form-group col-md-3">
 							<label for="email">Color</label>
-							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" [(ngModel)]="productItem.color" [formControl]="cartForm.controls['color']" required>
+							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect"  [formControl]="cartForm.controls['color']" required>
 						        <option selected></option>
 						         <option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
 						      

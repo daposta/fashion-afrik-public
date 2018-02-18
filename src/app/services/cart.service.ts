@@ -13,7 +13,8 @@ export class CartService {
          for(var i=0; i < cart.length ; i++){
               let t = cart[i]; //JSON.parse(cart[i]);
               items.push({
-                product: t.product, qty:t.qty, cost: t.cost, price: t.price
+                product: t.product, qty:t.qty, cost: t.cost, price: t.price, color: t.color,
+                 size: t.size
               });
 
             }
@@ -25,7 +26,6 @@ export class CartService {
 
 
   addToCart(data:any){
-
     let productId = data['product'].id
   	if(localStorage.getItem('cart'))
     {
@@ -43,8 +43,11 @@ export class CartService {
       }
       if(index == -1){
         let item = data;
+       
         item.price = data['product']['regular_price'];
         item.qty  = data['qty'];
+        item.color  = data['color'];
+         item.size  = data['size'];
         item.cost = item.qty * item.price;
        // cart[index] = item;//JSON.stringify(item);
        cart.push(item);
@@ -56,7 +59,9 @@ export class CartService {
         let item =  cart[index] //JSON.parse(cart[index]);
         item.price = item['product']['regular_price'];
         item.qty += data['qty'];
+        item.color  = data['color'];
         item.cost = item.qty * item.price;
+        item.size  = data['size'];
         cart[index] = item; //JSON.stringify(item);
         
         localStorage.setItem('cart', JSON.stringify(cart));
@@ -69,13 +74,18 @@ export class CartService {
   	else{
      
        let item = data;
+       console.log('item 3...');
+        console.log(item);
         item.price = data['product']['regular_price'];
         item.qty  = data['qty'];
+        item.color  = data['color'];
+        item.size  = data['size'];
         item.cost = item.qty * item.price;
 
   		 let cart =[];
   		 cart.push(item);
   		 localStorage.setItem('cart', JSON.stringify(cart));
+
   	}
    
   };

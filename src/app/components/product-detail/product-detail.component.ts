@@ -142,7 +142,17 @@ export class ProductDetailComponent implements OnInit {
         this.error = msg;
         
     });//.then(response => this.fabrics = response.results);
-    this.sizeSrv.fetchSizes().then(response => this.sizes = response.results);
+    this.sizeSrv.fetchSizes().subscribe(
+         data => {
+               this.sizes = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.sizes = response.results);
 
 
 
@@ -177,10 +187,10 @@ export class ProductDetailComponent implements OnInit {
     }
   }
 
-  addToCart(){
+  addToCart(t){
       this.formSubmitAttempt = true;
      if(this.cartForm.valid  && this.product){
-        let data = {'product':this.product, 'qty':this.productItem['qty'] }
+        let data = {'product':this.product, 'qty':t['qty'],  'size':t['size'], 'color': t['color'] }
 
         this.cartSrv.addToCart(data);
         this.getCart();
@@ -206,7 +216,6 @@ export class ProductDetailComponent implements OnInit {
 
   saveCustomRequest(data){
     this.customSubmitAttempt =true;
-    console.log('clicked...');
     if(this.customizeProductForm.valid){
       console.log(data);
     }

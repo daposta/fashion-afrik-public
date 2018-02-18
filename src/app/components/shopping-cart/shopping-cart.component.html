@@ -1,5 +1,5 @@
-<app-header>
-</app-header>
+<app-header [cart] ="cart"></app-header>
+
 <section class="jumbotron">
     <div class="inner-content">
         <div class="h2 boldest text-center">
@@ -29,6 +29,12 @@
                 <th>
                     Quantity
                 </th>
+                 <th>
+                    Size
+                </th>
+                 <th>
+                    Color
+                </th>
                 <th>
                     Sub-Total
                 </th>
@@ -52,7 +58,7 @@
                     <td style="font-size: 20px;">
                         <span>&#163;</span> 
                         <span class="boldest">
-                            {{item.price |number}}
+                            {{item.price * t.getItem('rate') |number}}
                         </span>
                     </td>
                     <td>
@@ -66,10 +72,22 @@
                                 </span>
                         </div>
                     </td>
-                    <td style="font-size: 20px;">
-                        <span>&#163;</span> 
+                     <td style="font-size: 20px;">
+                        
                         <span class="boldest">
-                            {{item.cost |number}}
+                            {{item.size }}
+                        </span>
+                    </td>
+                    <td style="font-size: 20px;">
+                        
+                        <span class="boldest">
+                            {{item.color }}
+                        </span>
+                    </td>
+                    <td style="font-size: 20px;">
+                        <span>{{t.getItem('currency')}}</span> 
+                        <span class="boldest">
+                            {{item.cost * t.getItem('rate') |number}}
                         </span>
                     </td>
                     <td>
