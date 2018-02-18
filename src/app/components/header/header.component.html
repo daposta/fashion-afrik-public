@@ -7,8 +7,8 @@
        <!--  <span class=""><b>Logout</b></span> -->
      
 
-<select name="currency" id="currency_selector" style="height: 18px; font-size: 12px; margin-left: 20px">
-  <option value="usd">USD</option>
+<select name="currency" id="currency_selector" (change)="changeCurrency($event)" style="height: 18px; font-size: 12px; margin-left: 20px">
+    <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.name}}</option>
 </select>
         
       </nav>
@@ -40,9 +40,7 @@
                                 <a class="nav-link dropdown-toggle" (mouseover)="setProductType(pt.slug)"  id="navbarDropdown" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > {{pt.name}}</a>
 
                                      <ul class="dropdown-menu">
-                                           <!--  <li *ngFor="let pt of productTypes"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)" > {{pt.name}}</a>
-                                        </li> -->
-
+                                         
                                           <li *ngFor="let sub of pt.sub_categorys"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}/{{sub.slug}}"  > {{sub.name}}</a>
                                         </li>
                                            
@@ -88,14 +86,14 @@
                    <ul class="dropdown-menu">
                                 
 
-                                <li *ngFor="let pt of item.product_types"> 
+                                <li *ngFor="let pt of item.product_types" class="dropdown-submenu"> 
                                 <a class="nav-link dropdown-toggle" (mouseover)="setProductType(pt.slug)"  id="navbarDropdown" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > {{pt.name}}</a>
 
                                      <ul class="dropdown-menu">
                                            <!--  <li *ngFor="let pt of productTypes"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)" > {{pt.name}}</a>
                                         </li> -->
 
-                                          <li *ngFor="let sub of pt.sub_categorys"> <a href="/clearance/{{selectedCategory}}/{{selectedProductType}}" > {{sub.name}}</a>
+                                          <li *ngFor="let sub of pt.sub_categorys"> <a href="/clearance/{{selectedCategory}}/{{selectedProductType}}/{{sub.slug}}" > {{sub.name}}</a>
                                         </li>
                                            
                                   </ul>

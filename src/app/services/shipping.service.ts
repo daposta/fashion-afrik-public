@@ -39,38 +39,7 @@ export class ShippingService {
 
      return  this.http.post(this.shippingUrl, formData, v).map(this.extractData)
         .catch(this.handleErrorObservable);
-      // .subscribe(
-      //    res => {
-      //        let msg = JSON.parse(res['_body'])['message'];
-      //         $.toast({
-      //             text: msg,
-      //              position: 'top-center',
-      //              'icon': 'success',
-      //             showHideTransition: 'slide',
-      //         });
-
-      //         if(!localStorage.getItem('checkout')){
-      //           console.log('1...');
-      //           localStorage.setItem('checkout',JSON.stringify({}));
-                  
-      //         }
-              
-      //         let checkout = {"shipping": true};
-      //         localStorage.setItem('checkout',JSON.stringify(checkout));
-
-      //          return res;
-              
-      //    },
-      //    error =>{
-        
-      //   let msg = JSON.parse(error._body)['message'];
-      //   $.toast({
-      //       text: msg,
-      //        position: 'top-center',
-      //        icon: 'error',
-      //        showHideTransition: 'slide',
-      //   });
-      // })
+      
    }
 
    private extractData(res: Response) {

@@ -9,6 +9,7 @@ import { ProductService } from '../../services/product.service';
 })
 export class NewArrivalsComponent implements OnInit {
   
+  t = localStorage;
   arrivals:any[];
   constructor(private productSrv :ProductService) { }
 

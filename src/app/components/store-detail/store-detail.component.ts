@@ -17,11 +17,14 @@ import 'rxjs/add/operator/switchMap';
    providers: [ ProductService, CategoryService, StoreService, ProductTypesService]
 })
 export class StoreDetailComponent implements OnInit {
-
+  
+  t = localStorage;
   products:any[];
   categorys:any[];
   productTypes:any[];
   store: {};
+    error: any;
+
 
   constructor(private productSrv :ProductService, private route: ActivatedRoute,
     private categorySrv:CategoryService, private storeSrv: StoreService,  private productTypeSrv: ProductTypesService) { }
@@ -33,7 +36,13 @@ export class StoreDetailComponent implements OnInit {
 			 	data => {
                this.products = data.results;
 
-         });
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });
 
        this.fetchCategories();
        this.fetchProductTypes();
@@ -42,12 +51,33 @@ export class StoreDetailComponent implements OnInit {
 
 
   fetchCategories(){
-       this.categorySrv.fetchCategories().then(response => this.categorys = response.results)
+       this.categorySrv.fetchCategories().subscribe(
+         data => {
+               this.categorys = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });
+       //.then(response => this.categorys = response.results)
 
   }
 
   fetchProductTypes(){
-    this.productTypeSrv.fetchProductTypes().then(response => this.productTypes = response.results)
+    this.productTypeSrv.fetchProductTypes().subscribe(
+         data => {
+               this.productTypes = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.productTypes = response.results)
   }
 
   getStoreInfo(){

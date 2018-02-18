@@ -4,19 +4,24 @@ import { StoreService } from '../../services/store.service';
 import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 import { ProductTypesService } from '../../services/product-types.service';
+import { CurrencyService } from '../../services/currency.service';
+import { ExchangeRateService } from '../../services/exchange-rate.service';
 
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers: [ CategoryService , StoreService, CartService, ProductService, ProductTypesService]
+  providers: [ CategoryService , StoreService, CartService, ProductService, ProductTypesService,
+  CurrencyService, ExchangeRateService]
 })
 export class HeaderComponent implements OnInit {
-
+  t = localStorage;
   categorys:any[];
   stores:any[];
   productTypes:any[];
+  currencys:any[];
+  exchange_rates :any[];
   selectedCategory:any;
   selectedProductType:any;
   error: any;
@@ -24,8 +29,9 @@ export class HeaderComponent implements OnInit {
   cart: any[];
   @Input()
   customer: Object= {};
-  constructor(private categorySrv:CategoryService, private storeSrv: StoreService,
-   private cartSrv: CartService, private productSrv :ProductService, private productTypeSrv: ProductTypesService) { }
+  constructor(private categorySrv:CategoryService, private storeSrv: StoreService, private currencySrv: CurrencyService,
+   private cartSrv: CartService, private productSrv :ProductService, private productTypeSrv: ProductTypesService, 
+   private rateSrv: ExchangeRateService) { }
 
   ngOnInit() {
   	this.fetchProductsByCategory();
@@ -36,6 +42,11 @@ export class HeaderComponent implements OnInit {
     this.fetchStores();
     this.fetchProductTypes();
     this.getCustomer();
+    this.fetchCurrencys();
+    this.fetchExchangeRates()
+    if(!localStorage.getItem('currency')){
+      localStorage.setItem('currency', 'GBP');
+    }
   }
 
   fetchProductsByCategory(){
@@ -52,12 +63,58 @@ export class HeaderComponent implements OnInit {
 
   fetchCategories(){
     
-   this.categorySrv.fetchCategories().then(response => this.categorys = response.results)
+   this.categorySrv.fetchCategories().subscribe(
+         data => {
+               this.categorys = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.categorys = response.results)
   }
 
   fetchStores(){
     
-   this.storeSrv.fetchStores().then(response => this.stores = response.results)
+   this.storeSrv.fetchStores().subscribe(
+         data => {
+               this.stores = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.stores = response.results)
+  }
+
+  fetchCurrencys(){
+    
+   this.currencySrv.fetchCurrencys().subscribe(
+         data => {
+               this.currencys = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.currencys = response.results)
+  }
+
+fetchExchangeRates(){
+    
+   this.rateSrv.fetchRates().then(response => {
+     
+    this.exchange_rates = response.results;
+     let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
+     localStorage.setItem('rate', selected_currency.rate);
+   });
+  
   }
 
   searchProduct(x){
@@ -78,11 +135,28 @@ export class HeaderComponent implements OnInit {
   }
 
   fetchProductTypes(){
-    this.productTypeSrv.fetchProductTypes().then(response => this.productTypes = response.results)
+    this.productTypeSrv.fetchProductTypes().subscribe(
+         data => {
+               this.productTypes = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.productTypes = response.results)
   }
 
  setCategory(x){
    this.selectedCategory = x;
+ }
+
+ changeCurrency(evt){
+     localStorage.setItem('currency' , evt.target.value);
+     let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
+     localStorage.setItem('rate', selected_currency.rate);
+
  }
 
  setProductType(x){

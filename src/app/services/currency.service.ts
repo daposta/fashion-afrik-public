@@ -7,16 +7,17 @@ import 'rxjs/add/operator/catch';
 import { Observable } from 'rxjs';
 
 @Injectable()
-export class ColorService {
+export class CurrencyService {
 
- private colorsUrl = this.globals.COLORS_URL; 
+  
+  private currencysUrl = this.globals.CURRENCYS_URL; 
 
   constructor(private http: Http, private globals: Globals) { }
 
-  fetchColors(){
+  fetchCurrencys(){
   	  
-    return this.http.get(this.colorsUrl, )
-                .map(this.extractData)
+    return this.http.get(this.currencysUrl)
+               .map(this.extractData)
         .catch(this.handleErrorObservable);
   };
 

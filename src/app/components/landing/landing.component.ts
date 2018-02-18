@@ -13,6 +13,7 @@ export class LandingComponent implements OnInit {
   newArrivals:any[];
   hers:any[];
   his:any[];
+  error: any;
 
   constructor( private productSrv :ProductService) { }
 
@@ -39,7 +40,18 @@ export class LandingComponent implements OnInit {
   }
 
   fetchWomen(){
-    this.productSrv.fetchHer().then(response => this.hers = response.results)
+    this.productSrv.fetchHer()
+    .subscribe(res =>{
+        
+      this.hers = res.results
+    }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    })
+    //.then(response => this.hers = response.results)
   }
 
   fetchMen(){
