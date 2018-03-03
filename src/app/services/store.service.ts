@@ -15,23 +15,22 @@ export class StoreService {
   constructor(private http: Http, private globals: Globals,  private router:Router) { }
 
 
-  fetchStores(){
-  	
-    return this.http.get(this.storesURL)
+  fetchStores(store?: string){
+  	let tempStoreURL = this.storesURL
+    if(store){
+      tempStoreURL = tempStoreURL + store;
+    }
+    return this.http.get(tempStoreURL)
                .map(this.extractData)
         .catch(this.handleErrorObservable);
   };
 
 
-  getStore(x:any){
-
-
-  }
+  
 
  
 
    private handleError(error: any) {
-    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   };
 
@@ -42,7 +41,6 @@ export class StoreService {
 
 
     private handleErrorObservable (error: Response | any) {
-      console.error(error.message || error);
       return Observable.throw(error.message || error);
     }
 

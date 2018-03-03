@@ -49,7 +49,6 @@ export class CategoryDetailComponent implements OnInit {
                 a.fetchProductTypes( this.category );
 
          });
-       //this.fetchProductTypes();
        this.fetchCategories();
 
         $(".range-slider").ionRangeSlider({
@@ -73,7 +72,7 @@ export class CategoryDetailComponent implements OnInit {
         // setTimeout(function(){
           $(this).text('Loading ...');
         // },2000);
-      })
+      });
   }
 
   addCategoryFilter(e){
@@ -147,7 +146,7 @@ export class CategoryDetailComponent implements OnInit {
         
         this.error = msg;
         
-    });//.then(response => this.productTypes = response.results)
+    });
   }
 
   fetchCategories(){
@@ -162,7 +161,6 @@ export class CategoryDetailComponent implements OnInit {
         this.error = msg;
         
     });
-       //.then(response => this.categorys = response.results)
 
   }
 

@@ -46,18 +46,19 @@
 
                 <tr *ngFor="let item of cart">
                     <td class="d-flex align-items-center">
-                        <div class="product-image">
+                        <div>
                            <!--  <img alt="" src="/assets/img/denim2.jpg"> -->
-                            <img alt="" src="{{ item.product.feature_image}}">
-                                <div class="product-name">
+                          <!--   <img alt="" src="{{ item.product.feature_image}}"> -->
+                                <div >
                                     <!-- Liya Dress -->
                                     {{item.product.name}}
                                 </div>
                         </div>
                     </td>
-                    <td style="font-size: 20px;">
-                        <span>&#163;</span> 
-                        <span class="boldest">
+                   <!--  <td style="font-size: 20px;"> -->
+                     <td >
+                        <span>{{t.getItem('currency')}}</span> 
+                        <span>
                             {{item.price * t.getItem('rate') |number}}
                         </span>
                     </td>
@@ -72,21 +73,21 @@
                                 </span>
                         </div>
                     </td>
-                     <td style="font-size: 20px;">
+                     <td >
                         
-                        <span class="boldest">
+                        <span>
                             {{item.size }}
                         </span>
                     </td>
-                    <td style="font-size: 20px;">
+                    <td >
                         
-                        <span class="boldest">
+                        <span>
                             {{item.color }}
                         </span>
                     </td>
-                    <td style="font-size: 20px;">
+                    <td>
                         <span>{{t.getItem('currency')}}</span> 
-                        <span class="boldest">
+                        <span >
                             {{item.cost * t.getItem('rate') |number}}
                         </span>
                     </td>

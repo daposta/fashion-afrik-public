@@ -1,4 +1,4 @@
-<!-- <app-header></app-header> -->
+<app-header [cart] ="cart"></app-header>
 <section class="jumbotron">
 	<div class="container inner-content">
 		<div class="row align-items-center">
@@ -6,19 +6,19 @@
 				<div class="avatar">
 			<!-- If no avatar use Initials -->
 			<span class="initials">
-				DF
+				{{store.name}}
 			</span>
 
 			<!-- <img src="http://placehold.it/100x100" alt="avatar"> -->
 		</div>
-		<span class="store-name boldest h5" style="margin-top: 10px; display: inline-block">Dot Fashion</span>
+		<span class="store-name boldest h5" style="margin-top: 10px; display: inline-block">{{store.name}}</span>
 			</div>
 			<div class="col-sm port">
 				<h5 class="boldest mb-0 uppercase">
 					Seller since
 				</h5>
 				<span class="uppercase">
-					Dec 25, 2017
+					{{store.user?.date_joined | date}}
 				</span>
 			</div>
 			<div class="col-sm port">

@@ -32,23 +32,21 @@ export class ProductService {
 
 
   fetchProductsByCategory(x: string, y:string, z:string, a?:{}){
-    
     let productTypes='';
     if(a && a['productTypes']){
       productTypes = a['productTypes'];
-    }
+    };
     let min_price='';
-    let max_price = ''
+    let max_price = '';
     if(a && a['minPrice'] && a['maxPrice']){
-      console.log('ting...');
       min_price = a['minPrice'];
       max_price = a['maxPrice'];
-    }
+    };
   	
-     return this.http.get(this.productsByCategoryUrl + x +'/' +y +'/' +z +'?&productTypes=' + productTypes
+     return this.http.get(this.productsByCategoryUrl + x +'/' +y +'/' +z +'/' +'?&productTypes=' + productTypes
         + '&min_price=' + min_price + '&max_price=' + max_price)
                .map(this.extractData)
-        .catch(this.handleErrorObservable);
+                .catch(this.handleErrorObservable);
 
   }
 
@@ -57,7 +55,6 @@ export class ProductService {
      return this.http.get(this.productsUrl + data +'/')
               .toPromise()
               .then(response => response.json())
-             // .catch(this.handleError);
   };
 
 
@@ -69,17 +66,14 @@ export class ProductService {
     let min_price='';
     let max_price = ''
     if(a && a['minPrice'] && a['maxPrice']){
-      console.log('ting...');
       min_price = a['minPrice'];
       max_price = a['maxPrice'];
     }
-    return this.http.get(this.productsClearanceUrl + x +'/' +y +'/'  +z +'?&productTypes=' + productTypes
+    return this.http.get(this.productsClearanceUrl + x +'/' +y +'/'  +z +'/' +'?&productTypes=' + productTypes
         + '&min_price=' + min_price + '&max_price=' + max_price)
-    .map(this.extractData)
-        .catch(this.handleErrorObservable);
-                // .toPromise()
-                // .then(response => response.json())
-                //   .catch(this.handleErrorObservable);
+            .map(this.extractData)
+            .catch(this.handleErrorObservable);
+              
 
    }
 
@@ -149,13 +143,12 @@ export class ProductService {
    }
 
     private extractData(res: Response) {
-        let body = res.json();
+        let body =  res.json();
         return body || {};
     }
 
 
     private handleErrorObservable (error: Response | any) {
-      console.error(error.message || error);
       return Observable.throw(error.message || error);
     }
 

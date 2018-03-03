@@ -11,8 +11,9 @@ import { ShippingService } from '../../services/shipping.service';
 
 })
 export class ShippingComponent implements OnInit {
-  
+  t = localStorage;
   shippingForm:FormGroup;
+  product_cost:number;
   shipping: Object= {};
   order: Object= {};
   countrys:any[];
@@ -38,14 +39,17 @@ export class ShippingComponent implements OnInit {
     this.loadCountries();
     if(localStorage.getItem('checkout')){
        this.order = JSON.parse(localStorage.getItem('checkout'))['order'];
+       this.product_cost = this.order['total_cost'];
     }
+    // console.log(this.order);
+    // console.log(this.product_cost);
+    // console.log(localStorage.getItem('checkout')['order']);
    
  
   }
 
   loadCountries(){
     this.countrySrv.fetchCountrys().subscribe(res =>{
-        console.log(res);
       this.countrys = res.results
     }, error =>{
         

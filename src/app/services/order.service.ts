@@ -20,7 +20,10 @@ export class OrderService {
     
        
       let v = this.page_header();
-     return  this.http.post(this.ordersUrl, cart, v)
+      let data = {};
+      data['cart'] = cart;
+      data['currency'] = localStorage.getItem('currency');
+     return  this.http.post(this.ordersUrl, data, v)
        .map(this.extractData)
         .catch(this.handleErrorObservable);
       
