@@ -6,6 +6,8 @@ header {
     &#top-header {
         height: 30px;
         background-color: $site-blue;
+        z-index: 99999;
+        position: relative;
     }
     &#primary-header {
         height: 60px;
@@ -194,3 +196,56 @@ li {
     padding-right: 0 !important;
 }
 }
+
+.flag {
+    background: #eee;
+    width: 50px;
+    height: 30px;
+    &.GBP {
+        background: red;
+    }
+}
+
+.dd-select {
+    width: 200px;
+}
+
+.dd-options {
+    img {
+       
+    }
+}
+
+.dd-option-image{
+     width: 20px !important;
+         max-width: 20px;
+}
+
+#currency_selector.dd-container {
+    position: relative;
+    z-index: 999 !important;
+}
+
+select {
+    position: relative;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    -moz-appearance:none;
+    appearance: none;
+        padding: 0 30px 0px 15px;
+    border: 0;
+    font-weight: 600;
+    color: #011936;
+
+
+  }
+
+  span.select-wrapper::after {
+    position: relative;
+    display: inline-block;
+    font-family: 'Ionicons';
+        content:"\f123";
+            right: 20px;
+    color: #eb5757;
+    top: 1px;
+  }
