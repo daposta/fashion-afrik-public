@@ -7,9 +7,14 @@
        <!--  <span class=""><b>Logout</b></span> -->
      
 
-<select name="currency" id="currency_selector" (change)="changeCurrency($event)" style="height: 18px; font-size: 12px; margin-left: 20px">
+<!-- <select name="currency" id="currency_selector" (change)="changeCurrency($event)" style="height: 18px; font-size: 12px; margin-left: 20px">
     <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.code}}</option>
-</select>
+</select> -->
+
+<!-- dont remove the span wrapper below -->
+<span class="select-wrapper"><select name="currency" id="currency_selector" (change)="changeCurrency($event)" style="height: 18px; font-size: 12px; margin-left: 5px">
+    <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.name}}</option>
+</select></span>
         
       </nav>
   </div>
@@ -125,13 +130,16 @@
       </div>
     </form>
 
-    <ul class="navbar-nav pull-right">
-   	<li class="nav-item">
-        <a class="nav-link" href="#">
-        	<img src="/assets/img/avatar.png" width="30" alt="avatar">
-          <!-- logged in user -->
+    <ul class="navbar-nav pull-right" style="position: relative;z-index: 999">
 
+      <li class="nav-item dropdown avatar-dd">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img src="/assets/img/avatar.png" width="30" alt="avatar">
         </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">view profile</a>
+          <a class="dropdown-item" href="#">Log out</a>
+        </div>
       </li>
 
       <li class="nav-item">

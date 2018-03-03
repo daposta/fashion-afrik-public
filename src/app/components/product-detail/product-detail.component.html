@@ -44,7 +44,7 @@
 					</section> <br>
 
 
-					<p class="">
+					<p class="description-text">
 						{{product.description}}
 					</p>
 
@@ -54,7 +54,7 @@
 							<label for="email">Quantity</label>
 							<input type="text" class="form-control" [formControl]="cartForm.controls['qty']" [value]="1" (keypress)="numbersOnly($event)">
 
-							 <div *ngIf="cartForm.controls['qty'].hasError('required') && formSubmitAttempt" class="small" style="color: red">Quantity is required</div>
+							 <div *ngIf="cartForm.controls['qty'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Quantity is required</div>
 						</div>
 
 
@@ -64,7 +64,7 @@
 						        <option selected></option>
 						        <option *ngFor="let item of sizes" [value]="item.name">{{item.name}}</option>
 						     </select>
-						      <div *ngIf="cartForm.controls['size'].hasError('required') && formSubmitAttempt" class="small" style="color: red">Size is required</div>
+						      <div *ngIf="cartForm.controls['size'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Size is required</div>
 						</div>
 
 						<div class="form-group col-md-3">
@@ -74,7 +74,7 @@
 						         <option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
 						      
 						     </select>
-						      <div *ngIf="cartForm.controls['color'].hasError('required') && formSubmitAttempt" class="small" style="color: red">Color is required</div>
+						      <div *ngIf="cartForm.controls['color'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Color is required</div>
 						</div>
 
 						<div class="col-md-3">
@@ -144,7 +144,7 @@
        					 <option *ngFor="let item of fabrics" [value]="item.slug">{{item.name}}</option>
 
        				</select>
-       				 <div *ngIf="customizeProductForm.controls['fabric'].hasError('required') && customSubmitAttempt" class="small" style="color: red">Fabric is required</div>
+       				 <div *ngIf="customizeProductForm.controls['fabric'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Fabric is required</div>
        			</div>
 
        			<div class="form-group col-sm-6">
@@ -153,7 +153,7 @@
        					 <option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
 
        				</select>
-       				<div *ngIf="customizeProductForm.controls['color'].hasError('required') && customSubmitAttempt" class="small" style="color: red">Color is required</div>
+       				<div *ngIf="customizeProductForm.controls['color'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Color is required</div>
        			</div>
        		</div>
 
@@ -162,14 +162,14 @@
        				<label for="">Collar</label>
        				<input type="text" class="form-control" [formControl]="customizeProductForm.controls['collar']" (keypress)="numbersOnly($event)" >
 
-       				<div *ngIf="customizeProductForm.controls['collar'].hasError('required') && customSubmitAttempt" class="small" style="color: red">Collar width is required</div>
+       				<div *ngIf="customizeProductForm.controls['collar'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Collar width is required</div>
        			</div>
 
        			<div class="form-group col-sm-6">
        				<label for="">Chest</label>
        				<input type="text" class="form-control" [formControl]="customizeProductForm.controls['chest']" (keypress)="numbersOnly($event)">
 
-       				<div *ngIf="customizeProductForm.controls['chest'].hasError('required') && customSubmitAttempt" class="small" style="color: red">Chest width is required</div>
+       				<div *ngIf="customizeProductForm.controls['chest'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Chest width is required</div>
        			</div>
        		</div>
 
@@ -178,14 +178,14 @@
        				<label for="">Waist</label>
        				<input type="text" class="form-control" [formControl]="customizeProductForm.controls['waist']" (keypress)="numbersOnly($event)">
 
-       				<div *ngIf="customizeProductForm.controls['waist'].hasError('required') && customSubmitAttempt" class="small" style="color: red">Color is required</div>
+       				<div *ngIf="customizeProductForm.controls['waist'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Color is required</div>
        			</div>
 
        			<div class="form-group col-sm-6">
        				<label for="">Inside Legs</label>
        				<input type="text" class="form-control" [formControl]="customizeProductForm.controls['insideLegs']" (keypress)="numbersOnly($event)">
 
-       				<div *ngIf="customizeProductForm.controls['insideLegs'].hasError('required') && customSubmitAttempt" class="small" style="color: red">Inside legs width is required</div>
+       				<div *ngIf="customizeProductForm.controls['insideLegs'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Inside legs width is required</div>
        			</div>
        		</div>
 
@@ -194,7 +194,7 @@
        				<label for="">Upper Body Length</label>
        				<input type="text" class="form-control" [formControl]="customizeProductForm.controls['upperBodyLength']" (keypress)="numbersOnly($event)">
 
-       				<div *ngIf="customizeProductForm.controls['upperBodyLength'].hasError('required') && customSubmitAttempt" class="small" style="color: red">Upper body length is required</div>
+       				<div *ngIf="customizeProductForm.controls['upperBodyLength'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Upper body length is required</div>
        			</div>
        		</div>
 
