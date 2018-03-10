@@ -27,6 +27,9 @@
 					</div>
 
 					<div class="price">
+						<span class="select-wrapper"><select name="currency" id="currency_selector" (change)="changeCurrency($event)" style="height: 18px; font-size: 12px; margin-left: 5px">
+    <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.name}}</option>
+</select></span>
 						<span class="" style="margin-right: 50px">
 							<span>{{t.getItem('currency')}}</span> {{product.regular_price * t.getItem('rate')|number}}
 						</span>
@@ -79,7 +82,10 @@
 
 						<div class="col-md-3">
 							<!-- customize modal trigger  -->
-							<button style="margin-top: 25px" class="btn  btn-secondary" data-toggle="modal" data-target="#customizeModal" title="Customize"><i class="ion-plus-round"></i></button>
+							<button style="margin-top: 25px" class="btn  btn-secondary" data-toggle="modal" data-target="#customizeModal" title="Customize">
+								<!-- <i class="ion-plus-round"></i> -->
+								Customize
+							</button>
 						</div>
 
 
