@@ -88,8 +88,29 @@ export class LoginComponent implements OnInit {
   	 this.registerAttempt = true;
     if (this.registerForm.valid){
     	
-   		this.userSrv.register(this.registerUser, this.registerForm);
-       }
-  }
+   		this.userSrv.register(this.registerUser, this.registerForm).subscribe(data=>{
+         
+            if(data){
+                localStorage.setItem('auth_token', data.token);
+              localStorage.setItem('customer', JSON.stringify(data.customer));
+              this.customer = data.customer;
+              this.loggedIn = true;
+             this.notifyLogin.emit(this.loggedIn);
+
+            }
+            this.registerForm.reset();
+        },  error=>{
+            let msg = JSON.parse(error._body)['message'];
+
+        
+              $.toast({
+                    text: msg,
+                     position: 'top-center',
+                     'icon': 'error'
+                })
+        });
+       };
+    }
+  //}
 
 }

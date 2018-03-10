@@ -3,9 +3,14 @@
       <nav class="nav justify-content-end">
         
         <a class="nav-link active" target="_blank" href="http://stores.vogueafriq.com">Sell on <b>VogueAfriq</b></a>
-        <span class="greeting">Hi <b>{{customer?.first_name}}</b></span>
+        <span class="greeting" *ngIf="customer">Hi <b>{{customer?.first_name}}</b></span>
        <!--  <span class=""><b>Logout</b></span> -->
      
+
+<!-- <select name="currency" id="currency_selector" (change)="changeCurrency($event)" style="height: 18px; font-size: 12px; margin-left: 20px">
+    <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.code}}</option>
+</select> -->
+
 <!-- dont remove the span wrapper below -->
 <span class="select-wrapper"><select name="currency" id="currency_selector" (change)="changeCurrency($event)" style="height: 18px; font-size: 12px; margin-left: 5px">
     <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.name}}</option>
@@ -15,7 +20,7 @@
   </div>
 </header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">VogueAfriq<span class="big-dot">.</span></a>
+  <a class="navbar-brand" routerLink="/">VogueAfriq<span class="big-dot">.</span></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -23,7 +28,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto main-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle"   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -31,17 +36,16 @@
         </a>
          <ul class="dropdown-menu">
                   <li *ngFor="let item of categorys" class="dropdown-submenu">
-                  <a class="nav-link dropdown-toggle" (mouseover)="setCategory(item.slug)"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > {{item.name}} </a>
+                  <a class="nav-link dropdown-toggle" (mouseover)="setCategory(item.slug)"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{item.name}} </a>
                         <ul class="dropdown-menu">
-                                 <!--  <li *ngFor="let pt of productTypes"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)" > {{pt.name}}</a>
-                              </li> -->
+                              
 
                                 <li *ngFor="let pt of item.product_types" class="dropdown-submenu"> 
-                                <a class="nav-link dropdown-toggle" (mouseover)="setProductType(pt.slug)"  id="navbarDropdown" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > {{pt.name}}</a>
+                                <a class="nav-link dropdown-toggle" (mouseover)="setProductType(pt.slug)"  id="navbarDropdown" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >{{pt.name}}</a>
 
                                      <ul class="dropdown-menu">
                                          
-                                          <li *ngFor="let sub of pt.sub_categorys"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}/{{sub.slug}}"  > {{sub.name}}</a>
+                                          <li *ngFor="let sub of pt.sub_categorys"> <a routerLink="/category/{{selectedCategory}}/{{selectedProductType}}/{{sub.slug}}"  >{{sub.name}}</a>
                                         </li>
                                            
                                   </ul>
@@ -66,7 +70,7 @@
           Store
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-           <a class="dropdown-item" href="/store/{{item.slug}}"  *ngFor="let item of stores">
+           <a class="dropdown-item" routerLink="/store/{{item.slug}}"  *ngFor="let item of stores">
             {{item.name}}
           </a>
 
@@ -93,7 +97,7 @@
                                            <!--  <li *ngFor="let pt of productTypes"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)" > {{pt.name}}</a>
                                         </li> -->
 
-                                          <li *ngFor="let sub of pt.sub_categorys"> <a href="/clearance/{{selectedCategory}}/{{selectedProductType}}/{{sub.slug}}" > {{sub.name}}</a>
+                                          <li *ngFor="let sub of pt.sub_categorys"> <a routerLink="/clearance/{{selectedCategory}}/{{selectedProductType}}/{{sub.slug}}" > {{sub.name}}</a>
                                         </li>
                                            
                                   </ul>
@@ -111,7 +115,7 @@
 
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/new-arrivals">New Arrivals</a>
+        <a class="nav-link" routerLink="/new-arrivals">New Arrivals</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Blog</a>

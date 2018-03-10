@@ -30,6 +30,11 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
+import { TermsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
+import { ShippingReturnsComponent } from './components/shipping-returns/shipping-returns.component';
+import { AboutComponent } from './components/about/about.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { FaqsComponent } from './components/faqs/faqs.component';
 
 const appRoutes: Routes = [
   
@@ -46,7 +51,11 @@ const appRoutes: Routes = [
      { path: 'me', component: UserProfileComponent },
      { path: 'checkout', component: CheckoutComponent },
       { path: 'search', component: SearchResultsComponent },
-
+      { path: 'terms-conditions', component: TermsConditionsComponent },
+      { path: 'shipping-returns', component: ShippingReturnsComponent },
+      { path: 'about-us', component: AboutComponent },
+      { path: 'faqs', component: FaqsComponent },
+      { path: 'privacy-policy', component: PrivacyPolicyComponent },
 ]
 
 
@@ -70,7 +79,12 @@ const appRoutes: Routes = [
     PaymentComponent,
     ShippingComponent,
     ConfirmationComponent,
-    WishlistComponent
+    WishlistComponent,
+    TermsConditionsComponent,
+    ShippingReturnsComponent,
+    AboutComponent,
+    PrivacyPolicyComponent,
+    FaqsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),

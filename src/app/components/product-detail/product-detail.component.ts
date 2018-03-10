@@ -119,6 +119,9 @@ export class ProductDetailComponent implements OnInit {
 
 
   ngOnInit() {
+     //localStorage.removeItem('cart');
+      //localStorage.removeItem('checkout');
+        //  console.log(localStorage);
 
     this.colorSrv.fetchColors().subscribe(
          data => {

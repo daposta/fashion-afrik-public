@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { Globals } from '../../shared/api';
+import {Router} from '@angular/router';
 
 declare var $: any;
 
@@ -14,7 +15,7 @@ export class ShoppingCartComponent implements OnInit {
   t = localStorage;
   cart: any[];
    host_address: string =  this.globals.HOST_URL;
-  constructor(private cartSrv: CartService,private globals: Globals) { }
+  constructor(private cartSrv: CartService, private router:Router, private globals: Globals) { }
 
   ngOnInit() {
     
@@ -32,7 +33,6 @@ export class ShoppingCartComponent implements OnInit {
 
   getCart(){
     this.cart = this.cartSrv.loadCart();//.then(response => this.cart = response)
-    console.log(this.cart);
     
   }
 
@@ -43,13 +43,16 @@ export class ShoppingCartComponent implements OnInit {
 
   proceed(){
    
-    window.location.href = '/checkout';
+   // window.location.href = '/checkout';
+     this.router.navigate(['/checkout']); 
   }
 
   goHome(){
 
-    window.location.href = '/';
-  }
+    //window.location.href = '/';
+    this.router.navigate(['/']); 
+
+    }
 
   openCheckout(){
    

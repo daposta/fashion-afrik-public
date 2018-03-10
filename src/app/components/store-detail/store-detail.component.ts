@@ -22,7 +22,9 @@ export class StoreDetailComponent implements OnInit {
   products:any[];
   categorys:any[];
   productTypes:any[];
-  store: {};
+  storeParam: string;
+  store: Object= {};
+  //storeInfo:
     error: any;
 
 
@@ -30,11 +32,32 @@ export class StoreDetailComponent implements OnInit {
     private categorySrv:CategoryService, private storeSrv: StoreService,  private productTypeSrv: ProductTypesService) { }
 
   ngOnInit() {
+    let t = this.route;
   	this.route.params.switchMap((params: Params) =>
 			 	this.productSrv.fetchProductsByStore(params['store']))
 			 .subscribe(
 			 	data => {
                this.products = data.results;
+               this.storeParam =  t.snapshot.params['store'];
+                this.getStore(this.storeParam);
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+       
+        
+    });
+
+       this.fetchCategories();
+       this.fetchProductTypes();
+  }
+
+  getStore(_store){
+       this.storeSrv.fetchStores(_store).subscribe(
+         data => {
+               this.store = data.results[0];
 
          }, error =>{
         
@@ -44,11 +67,7 @@ export class StoreDetailComponent implements OnInit {
         
     });
 
-       this.fetchCategories();
-       this.fetchProductTypes();
   }
-
-
 
   fetchCategories(){
        this.categorySrv.fetchCategories().subscribe(
@@ -62,7 +81,6 @@ export class StoreDetailComponent implements OnInit {
         this.error = msg;
         
     });
-       //.then(response => this.categorys = response.results)
 
   }
 

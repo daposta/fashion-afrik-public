@@ -23,6 +23,7 @@ export class CheckoutComponent implements OnInit {
   loginForm:FormGroup;
   product : any = {};
   customer: Object= {};
+  error: any;
   constructor(fb: FormBuilder, private orderSrv :OrderService,) { 
   	
    }
@@ -79,7 +80,8 @@ export class CheckoutComponent implements OnInit {
 
 
         },  error=>{
-
+           let msg = JSON.parse(error._body)['message'];
+           this.error = msg;
         });
   }
 

@@ -32,41 +32,6 @@ export class UserService {
 		return this.http.post(this.loginUrl,  JSON.stringify({email, password}), {headers})
 		.map(this.extractData)
         .catch(this.handleErrorObservable);
-		// .subscribe(res =>{
-		// 		let data = res.json();
-
-		// 	 		form.reset();
-		// 		if (data.token){
-		// 			localStorage.setItem('auth_token', data.token);
-		// 			localStorage.setItem('customer', JSON.stringify(data.user));
-		// 			//window.location.href= '/';
-					
-		// 			 form.reset();
-		// 			 this.router.navigate([this.router.url]);
-				
-					
-				
-		// 			}
-		// 			// else{
-		// 			// 	this.router.navigateByUrl('/login');
-		// 			// }
-
-		// }, error =>{
-
-		// 	let msg = JSON.parse(error._body)['message'];
-		// 	// form.reset();
-				
-		// 	$.toast({
-		//         text: msg,
-		//          position: 'top-center',
-		//          'icon': 'error'
-		//     })
-		   
-			
-		
-			
-		// })
-
 		
 	};
 
@@ -93,28 +58,31 @@ export class UserService {
 		
 		//let error =  <HTMLInputElement>document.getElementById('feedback_success');
 		return this.http.post(this.registerUrl,data)
-		.subscribe(res =>{
-				form.reset();
-				let msg = JSON.parse(res['_body'])['message'];
-				$.toast({
-		        text: msg,
-		         position: 'top-center',
-		         'icon': 'success',
-		        showHideTransition: 'slide',
-		    });
+		.map(this.extractData)
+        .catch(this.handleErrorObservable);
+		
+		// .subscribe(res =>{
+		// 		form.reset();
+		// 		let msg = JSON.parse(res['_body'])['message'];
+		// 		$.toast({
+		//         text: msg,
+		//          position: 'top-center',
+		//          'icon': 'success',
+		//         showHideTransition: 'slide',
+		//     });
 				
 
-		}, error =>{
+		// }, error =>{
 				
-				let msg = JSON.parse(error._body)['message'];
-				$.toast({
-		        text: msg,
-		         position: 'top-center',
-		         icon: 'error',
-		         showHideTransition: 'slide',
-		    });
+		// 		let msg = JSON.parse(error._body)['message'];
+		// 		$.toast({
+		//         text: msg,
+		//          position: 'top-center',
+		//          icon: 'error',
+		//          showHideTransition: 'slide',
+		//     });
 			
-		})
+		// })
 
 	};
 
