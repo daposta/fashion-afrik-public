@@ -1,0 +1,108 @@
+<section class="padded">
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-sm-5 offset-md-1">
+				<div class="jumbotron ordinary" style="padding:40px">
+					CONTACT DETAILS
+Telephone: 0208 997 3331
+
+Postal Address:
+Everything5pounds.com 
+Fiver London Ltd
+Unit 44 Yardley Business Centre
+Miles Gray Road,
+Basildon, SS14 3GN
+
+You may also contact us via sales@everything5pounds.com or using the contact form here...
+
+The following pages may help you
+				</div>
+			</div>
+
+			<div class="col-sm-6">
+				<h5 style="margin-bottom: 20px" class="boldest">Shipping/Delivery Details</h5>
+				<form [formGroup]="shippingForm" (ngSubmit)="saveShipping()"   novalidate>
+
+				   	<div class="row">
+						<div class="form-group col-md-12">
+							<label for="">Name/Company</label>
+							<input type="text" class="form-control" [(ngModel)]="shipping.recipient" [formControl]="shippingForm.controls['name']" required>
+
+							 <div *ngIf="shippingForm.controls['name'].hasError('required') && shippingAttempt" style="color: red">Name/Company is required</div>
+						</div>
+					</div>
+
+				    <div class="row">
+						<div class="form-group col-md-12">
+						    <label for="">Choose Country</label>
+						  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.country" [formControl]="shippingForm.controls['country']" required>
+
+						       <option *ngFor="let item of countrys" [value]="item.country_code">{{item.name}}</option>
+						    </select>
+
+						     <div *ngIf="shippingForm.controls['country'].hasError('required') && shippingAttempt" style="color: red">Country is required</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label for="">Zip Code</label>
+							<input type="text" class="form-control" [(ngModel)]="shipping.zipCode" [formControl]="shippingForm.controls['zipCode']" required>
+
+							 <div *ngIf="shippingForm.controls['zipCode'].hasError('required') && shippingAttempt" style="color: red">Zip code is required</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label for="">Address Line 1</label>
+							<input type="text" class="form-control" [(ngModel)]="shipping.addressLine1" [formControl]="shippingForm.controls['addressLine1']" required>
+
+							 <div *ngIf="shippingForm.controls['addressLine1'].hasError('required') && shippingAttempt" style="color: red">Address1 is required</div>
+						</div>
+
+				    </div>
+
+				    <div class="row">
+
+						<div class="form-group col-md-12">
+							<label for="">Address Line 2(optional)</label>
+							<input type="text" class="form-control" [(ngModel)]="shipping.addressLine2" [formControl]="shippingForm.controls['addressLine2']" >
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label for="">City</label>
+							<input type="text" class="form-control" [(ngModel)]="shipping.city" [formControl]="shippingForm.controls['city']" required>
+
+							 <div *ngIf="shippingForm.controls['city'].hasError('required') && shippingAttempt" style="color: red">City is required</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+							<label for="">State/Region/Province</label>
+							<input type="text" class="form-control" [(ngModel)]="shipping.state" [formControl]="shippingForm.controls['state']" required>
+
+							 <div *ngIf="shippingForm.controls['state'].hasError('required') && shippingAttempt" style="color: red">State is required</div>
+						</div>
+					</div>
+
+					
+
+					
+
+					
+
+				
+					
+					<button type="submit" class="btn  btn-accent">Save</button>
+				</form>
+			</div>
+		</div>
+
+		
+	</div>
+</section>
