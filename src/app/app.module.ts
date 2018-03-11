@@ -35,19 +35,21 @@ import { ShippingReturnsComponent } from './components/shipping-returns/shipping
 import { AboutComponent } from './components/about/about.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FaqsComponent } from './components/faqs/faqs.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
 
 const appRoutes: Routes = [
   
     { path: '', component: LandingComponent   },
     { path: 'product/:id/:slug', component: ProductDetailComponent },
     { path: 'store/:store', component: StoreDetailComponent },
-    { path: 'register', component: RegisterComponent },
+    //{ path: 'register', component: RegisterComponent },
     { path: 'category/:category/:productType/:sub', component: CategoryDetailComponent },
     { path: 'cart', component: ShoppingCartComponent },
      { path: 'user-profile', component: UserProfileComponent },
     { path: 'clearance/:category/:productType/:sub', component: ClearanceSalesComponent },
     { path: 'new-arrivals/:category/:productType/:sub', component: NewArrivalsComponent },
-    { path: 'login', component: LoginComponent },
+    //{ path: 'login', component: LoginComponent },
      { path: 'me', component: UserProfileComponent },
      { path: 'checkout', component: CheckoutComponent },
       { path: 'search', component: SearchResultsComponent },
@@ -56,6 +58,8 @@ const appRoutes: Routes = [
       { path: 'about-us', component: AboutComponent },
       { path: 'faqs', component: FaqsComponent },
       { path: 'privacy-policy', component: PrivacyPolicyComponent },
+      { path: 'login', component: SignInComponent },
+      { path: 'register', component: SignUpComponent },
 ]
 
 
@@ -84,7 +88,9 @@ const appRoutes: Routes = [
     ShippingReturnsComponent,
     AboutComponent,
     PrivacyPolicyComponent,
-    FaqsComponent
+    FaqsComponent,
+    SignInComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),

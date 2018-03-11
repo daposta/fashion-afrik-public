@@ -34,6 +34,7 @@ export class HeaderComponent implements OnInit {
    private rateSrv: ExchangeRateService) { }
 
   ngOnInit() {
+    //localStorage.clear();
   	this.fetchProductsByCategory();
   	this.fetchProductsByStore();
   	this.fetchClearanceSales();

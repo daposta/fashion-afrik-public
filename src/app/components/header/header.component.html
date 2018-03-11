@@ -3,7 +3,15 @@
       <nav class="nav justify-content-end">
         
         <a class="nav-link active" target="_blank" href="http://stores.vogueafriq.com">Sell on <b>VogueAfriq</b></a>
-        <span class="greeting" *ngIf="customer">Hi <b>{{customer?.first_name}}</b></span>
+        <span class="greeting" *ngIf="customer; else login">Hi <b>{{customer?.first_name}}</b></span>
+
+        <ng-template #login>
+           <span class="greeting"><a routerLink="/login">Login/Register</a></span>
+
+            </ng-template>
+
+<!--         <ng-template  #login>Login/Register</b></ng-template>
+ -->
        <!--  <span class=""><b>Logout</b></span> -->
      
 

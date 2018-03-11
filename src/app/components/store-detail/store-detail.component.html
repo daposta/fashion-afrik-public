@@ -136,20 +136,20 @@
         <div class="row">
           <div class="col-sm-4" *ngFor="let item of products">
             <!-- overall link for product and title -->
-            <a href="">
-              <div class="product-component">
+<!--             <a href="">
+ -->              <div class="product-component">
 						<div class="product-image text-center">
-            <a href="/product/{{item.id}}/{{item.slug}}">
+            <a routerLink="/product/{{item.id}}/{{item.slug}}">
 							<img src="{{item.feature_image}}" alt="product image" class="img-fluid">
               </a>
 							<!-- <img src="/assets/img/moon-dress.jpg" alt="product image" class="img-fluid"> -->
 						</div>
 						<div class="product-title">
-							<h5 class=""><a href="/product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h5>
+							<h5 class=""><a routerLink="/product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h5>
 							<span>{{t.getItem('currency')}}</span><b>{{item.regular_price * t.getItem('rate') |number}}</b>
 							</div>
 						</div>
-            </a>
+            <!-- </a> -->
           </div>
         </div>
       </div>

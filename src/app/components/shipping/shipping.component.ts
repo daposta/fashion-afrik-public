@@ -41,7 +41,7 @@ export class ShippingComponent implements OnInit {
        this.order = JSON.parse(localStorage.getItem('checkout'))['order'];
        this.product_cost = this.order['total_cost'];
     }
-    // console.log(this.order);
+     console.log(this.order);
     // console.log(this.product_cost);
     // console.log(localStorage.getItem('checkout')['order']);
    
