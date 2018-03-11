@@ -46,7 +46,7 @@ const appRoutes: Routes = [
     { path: 'cart', component: ShoppingCartComponent },
      { path: 'user-profile', component: UserProfileComponent },
     { path: 'clearance/:category/:productType/:sub', component: ClearanceSalesComponent },
-    { path: 'new-arrivals', component: NewArrivalsComponent },
+    { path: 'new-arrivals/:category/:productType/:sub', component: NewArrivalsComponent },
     { path: 'login', component: LoginComponent },
      { path: 'me', component: UserProfileComponent },
      { path: 'checkout', component: CheckoutComponent },

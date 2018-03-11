@@ -114,8 +114,34 @@
 
 
       </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/new-arrivals">New Arrivals</a>
+      <li  class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"   id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">New Arrivals</a>
+        <ul class="dropdown-menu">
+                  <li *ngFor="let item of categorys" class="dropdown-submenu">
+                  <a class="nav-link dropdown-toggle" (mouseover)="setCategory(item.slug)"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > {{item.name}} </a>
+                   <ul class="dropdown-menu">
+                                
+
+                                <li *ngFor="let pt of item.product_types" class="dropdown-submenu"> 
+                                <a class="nav-link dropdown-toggle" (mouseover)="setProductType(pt.slug)"  id="navbarDropdown" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > {{pt.name}}</a>
+
+                                     <ul class="dropdown-menu">
+                                           <!--  <li *ngFor="let pt of productTypes"> <a href="/category/{{selectedCategory}}/{{selectedProductType}}" (click)="setProductType(pt.slug)" > {{pt.name}}</a>
+                                        </li> -->
+
+                                          <li *ngFor="let sub of pt.sub_categorys"> <a routerLink="//new-arrivals/{{selectedCategory}}/{{selectedProductType}}/{{sub.slug}}" > {{sub.name}}</a>
+                                        </li>
+                                           
+                                  </ul>
+                              </li>
+                                 
+                        </ul>
+                     
+                  </li>
+                 
+             </ul>
+
+
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Blog</a>
