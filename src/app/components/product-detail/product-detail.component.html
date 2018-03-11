@@ -55,7 +55,7 @@
 						<div class="row">
 							<div class="form-group col-md-3">
 							<label for="email">Quantity</label>
-							<input type="text" class="form-control" [formControl]="cartForm.controls['qty']" [value]="1" (keypress)="numbersOnly($event)">
+							<input type="text" class="form-control" [formControl]="cartForm.controls['qty']"  (keypress)="numbersOnly($event)">
 
 							 <div *ngIf="cartForm.controls['qty'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Quantity is required</div>
 						</div>
