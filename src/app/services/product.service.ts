@@ -117,7 +117,7 @@ export class ProductService {
 
    }
 
-   saveNewReview(review:any, product:any){
+   saveNewReview(review:any){
      
     //  headers.append('Content-Type', 'multipart/form-data');
      let formData = new FormData();
@@ -128,18 +128,9 @@ export class ProductService {
      
        
 
-     this.http.post(this.reviewsUrl, formData).subscribe(
-         res => {
-             let msg = JSON.parse(res['_body'])['message'];
-             
-               product.reviews.push(JSON.parse(res['_body']));
-             //this.router.navigateByUrl('products');
-         },
-         error =>{
-        
-        let msg = JSON.parse(error._body)['message'];
-       
-      })
+     return this.http.post(this.reviewsUrl, formData).map(this.extractData)
+        .catch(this.handleErrorObservable);
+     
    }
 
     private extractData(res: Response) {

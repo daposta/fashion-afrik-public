@@ -5,6 +5,8 @@ import { CartService } from '../../services/cart.service';
 import { ColorService } from '../../services/color.service';
 import { FabricService } from '../../services/fabric.service';
 import { SizeService } from '../../services/size.service';
+import { CurrencyService } from '../../services/currency.service';
+import { ExchangeRateService } from '../../services/exchange-rate.service';
 
 import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 
@@ -22,10 +24,13 @@ declare var $: any;
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
-  providers: [ ProductService, CartService, ColorService, FabricService, SizeService]
+  providers: [ ProductService, CartService, ColorService, FabricService, SizeService,
+   CurrencyService, ExchangeRateService]
 })
 export class ProductDetailComponent implements OnInit {
  t = localStorage;
+ currencys:any[];
+   exchange_rates :any[];
   product: Object= {};
   review: Object= {};
   host_address: string =  this.globals.HOST_URL;
@@ -50,7 +55,8 @@ export class ProductDetailComponent implements OnInit {
 
   constructor(private productSrv :ProductService, private route: ActivatedRoute, private globals: Globals,
     private cartSrv: CartService, private colorSrv: ColorService, private sizeSrv: SizeService,
-      private fabricSrv: FabricService, fb: FormBuilder) {
+      private fabricSrv: FabricService, fb: FormBuilder, private currencySrv: CurrencyService,
+       private rateSrv: ExchangeRateService) {
       this.cartForm = fb.group({
         'qty':['', Validators.required],
         //'measurementType':['', Validators.required],
@@ -178,8 +184,46 @@ export class ProductDetailComponent implements OnInit {
 
          });
 
+         this.fetchCurrencys();
+          this.fetchExchangeRates()
+          if(!localStorage.getItem('currency')){
+            localStorage.setItem('currency', 'GBP');
+          }
         //  $('.summernote').summernote();
   }
+
+  fetchCurrencys(){
+    
+   this.currencySrv.fetchCurrencys().subscribe(
+         data => {
+               this.currencys = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.currencys = response.results)
+  }
+
+fetchExchangeRates(){
+    
+   this.rateSrv.fetchRates().then(response => {
+     
+    this.exchange_rates = response.results;
+     let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
+     localStorage.setItem('rate', selected_currency.rate);
+   });
+  
+  }
+
+  changeCurrency(evt){
+     localStorage.setItem('currency' , evt.target.value);
+     let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
+     localStorage.setItem('rate', selected_currency.rate);
+
+ }
 
  numbersOnly(event: any) {
     const pattern = /[0-9\+\-\ ]/;
@@ -209,11 +253,27 @@ export class ProductDetailComponent implements OnInit {
 
   }
 
-  saveReview(){
+  saveReview(review){
     this.reviewSubmitAttempt = true;
     if (this.reviewForm.valid){
-        this.review['product'] = this.product['id'];
-        this.productSrv.saveNewReview(this.review, this.product);
+        review['product'] = this.product['id'];
+        this.productSrv.saveNewReview(review).subscribe(res=>{
+         
+            if(res){
+               
+              this.product['reviews'].unshift(res);
+               $('html, body').animate({
+                  scrollTop: $(".review-block").offset().top
+              }, 2000);
+
+            }
+            this.reviewForm.reset();
+        },  error=>{
+            let msg = JSON.parse(error._body)['message'];
+
+        
+           
+        });
        }
   };
 

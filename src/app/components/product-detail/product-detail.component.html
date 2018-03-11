@@ -35,7 +35,7 @@
 						</span>
 
 						<span class="" style="text-decoration: line-through; opacity: 0.2">
-							<span>&#163;</span> {{product.discount_price * t.getItem('rate')|number}}
+							<span>{{t.getItem('currency')}}</span> {{product.discount_price * t.getItem('rate')|number}}
 						</span>
 					</div>
 					<section>
@@ -224,7 +224,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6">
-				<form style="" [formGroup]="reviewForm" (ngSubmit)="saveReview()" novalidate>
+				<form style="" [formGroup]="reviewForm" (ngSubmit)="saveReview(reviewForm.value)" novalidate>
 				  <h4 class="boldest">Submit a Review</h4>
 					<div class="raty" data-score="1"></div>
 					<br>
@@ -287,7 +287,8 @@
 						<div class="col-sm-3">
 							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
 							<div class="review-block-name"><a href="#">{{review.reviewer_name}}</a></div>
-							<div class="review-block-date">{{review.timestamp | date}}<br/>{{review.timestamp | amTimeAgo}}</div>
+							<!--{{review.timestamp | date}}<br/> -->
+							<div class="review-block-date">{{review.timestamp | amTimeAgo}}</div>
 						</div>
 						<div class="col-sm-9">
 							<div class="review-block-rate">
