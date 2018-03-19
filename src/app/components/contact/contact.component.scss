@@ -1,0 +1,72 @@
+.card {
+    margin-bottom: 3px;
+    border: 0 !important;
+}
+
+
+.card-body {
+	padding: 10px 20px;
+    background: #ffffff;
+    font-size: 13px;
+    line-height: 1.5;
+    letter-spacing: 0px;
+}
+
+.card-header {
+	padding: 0 !important;
+	border-radius: 5px;
+
+	&:hover {
+		button {
+			color: #eb5757;
+			text-decoration: none;
+		}
+	}
+
+
+	button {
+		text-transform: none;
+    color: #011936;
+    font-weight: 700;
+    display: block;
+    width: 100%;
+    text-align: left;
+	}
+}
+
+
+.content  {
+	    font-size: 14px;
+    line-height: 2;
+    color: #5a6879;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+br {
+	content: "";
+	display: block;
+	margin-bottom: 25px;
+}
+
+
+.accordion {
+	margin-top: 40px;
+}
+
+address {
+	h5, i{
+		color: #eb5757;
+    	text-transform: uppercase;
+   		margin-bottom: 20px;
+	}
+
+	br {
+		margin-bottom: 0
+	}
+}	
+
+
+// ol { counter-reset: item }
+// li{ display: block }
+// li:before { content: counters(item, ".") " "; counter-increment: item }
