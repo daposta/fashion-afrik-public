@@ -21,7 +21,7 @@
     "@angular/http": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
-    "@angular/platform-server": "^5.2.7",
+    "@angular/platform-server": "^5.2.9",
     "@angular/router": "^4.0.0",
     "angular2-moment": "^1.8.0",
     "bootstrap": "^4.0.0",
