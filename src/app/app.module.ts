@@ -96,7 +96,8 @@ const appRoutes: Routes = [
     ContactComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
+    BrowserModule,
+    HttpClientModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
     MomentModule,
   ],
   providers: [Globals,],
