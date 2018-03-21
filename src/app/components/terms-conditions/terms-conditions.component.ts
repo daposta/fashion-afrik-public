@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-terms-conditions',
@@ -10,6 +11,8 @@ export class TermsConditionsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  	 $("html, body").animate({ scrollTop: 0 }, "slow");
+  
   }
 
 }

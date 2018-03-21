@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-shipping-returns',
@@ -10,6 +11,8 @@ export class ShippingReturnsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  	 $("html, body").animate({ scrollTop: 0 }, "slow");
+  
   }
 
 }

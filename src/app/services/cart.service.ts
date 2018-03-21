@@ -44,7 +44,7 @@ export class CartService {
       if(index == -1){
         let item = data;
        
-        item.price = data['product']['regular_price'];
+        item.price = data['product']['sale_price'];
         item.qty  = data['qty'];
         item.color  = data['color'];
          item.size  = data['size'];
@@ -57,7 +57,7 @@ export class CartService {
       else{
          
         let item =  cart[index] //JSON.parse(cart[index]);
-        item.price = item['product']['regular_price'];
+        item.price = item['product']['sale_price'];
         item.qty += data['qty'];
         item.color  = data['color'];
         item.cost = item.qty * item.price;
@@ -74,9 +74,7 @@ export class CartService {
   	else{
      
        let item = data;
-       console.log('item 3...');
-        console.log(item);
-        item.price = data['product']['regular_price'];
+        item.price = data['product']['sale_price'];
         item.qty  = data['qty'];
         item.color  = data['color'];
         item.size  = data['size'];

@@ -146,7 +146,7 @@
 						</div>
 						<div class="product-title">
 							<h5 class=""><a routerLink="/product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h5>
-							<span>{{t.getItem('currency')}}</span><b>{{item.regular_price * t.getItem('rate') |number}}</b>
+							<span>{{t.getItem('currency')}}</span><b>{{item.sale_price * t.getItem('rate') |number}}</b>
 							</div>
 						</div>
             <!-- </a> -->

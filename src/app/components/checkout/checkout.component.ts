@@ -2,15 +2,19 @@ import { Component, OnInit, Input } from '@angular/core';
 import {FormBuilder,FormGroup, Validators} from '@angular/forms'
 import { OrderService } from '../../services/order.service';
 
+import { CurrencyService } from '../../services/currency.service';
+import { ExchangeRateService } from '../../services/exchange-rate.service';
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
-   providers: [ OrderService,]
+   providers: [ OrderService, CurrencyService, ExchangeRateService ]
 })
 export class CheckoutComponent implements OnInit {
   
-
+  t = localStorage;
+   currencys:any[];
+   exchange_rates :any[];
   //registered:Boolean=true;
   anonymous:Boolean=true;
   
@@ -24,7 +28,8 @@ export class CheckoutComponent implements OnInit {
   product : any = {};
   customer: Object= {};
   error: any;
-  constructor(fb: FormBuilder, private orderSrv :OrderService,) { 
+  constructor(fb: FormBuilder, private orderSrv :OrderService, private currencySrv: CurrencyService,
+       private rateSrv: ExchangeRateService) { 
   	
    }
 
@@ -59,11 +64,50 @@ export class CheckoutComponent implements OnInit {
        localStorage.removeItem('checkout');
        location.href= '/';
      }
-   }
+   };
+
+   this.fetchCurrencys();
+          this.fetchExchangeRates()
+          if(!localStorage.getItem('currency')){
+            localStorage.setItem('currency', 'GBP');
+          }
 
  
  
+  };
+
+  fetchCurrencys(){
+    
+   this.currencySrv.fetchCurrencys().subscribe(
+         data => {
+               this.currencys = data.results;
+
+         }, error =>{
+        
+        let msg = JSON.parse(error._body)['message'];
+        
+        this.error = msg;
+        
+    });//.then(response => this.currencys = response.results)
   }
+
+fetchExchangeRates(){
+    
+   this.rateSrv.fetchRates().then(response => {
+     
+    this.exchange_rates = response.results;
+     let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
+     localStorage.setItem('rate', selected_currency.rate);
+   });
+  
+  };
+
+  changeCurrency(evt){
+     localStorage.setItem('currency' , evt.target.value);
+     let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
+     localStorage.setItem('rate', selected_currency.rate);
+
+ };
 
 
   saveOrder(order){
