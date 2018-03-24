@@ -1,44 +1,71 @@
-<app-header></app-header>
- <section class="jumbotron">
- 	<div class="inner-content">
- 		<h3 class="text-center boldest"> CONTACT DETAILS</h3>
- 	</div>
- </section>
-
+<app-header>
+</app-header>
+<section class="jumbotron">
+    <div class="inner-content">
+        <h3 class="text-center boldest">
+            CONTACT DETAILS
+        </h3>
+    </div>
+</section>
 <section class="bg-white padded">
     <div class="container">
-		<div class="content">
-
-		<address>
-		<h5>LONDON  Address</h5>
-		VogueAfriq.com 
+        <div class="content">
+            <div class="row">
+                <div class="col-sm-6">
+                    <address>
+                        <h5>
+                            LONDON  Address
+                        </h5>
+                        VogueAfriq.com 
 		Fiver London Ltd
 		Unit 44 Yardley Business Centre
 		Miles Gray Road,
-		Basildon, SS14 3GN <br>
+		Basildon, SS14 3GN
+                        <br>
+                            You may also contact us via sales@vogueafriq.com or using the contact form here...
+                            <p>
+                                <i class="ion-android-call">
+                                </i>
+                                0208 997 3331
+                            </p>
+                    </address>
+                    <hr>
+                        <address>
+                            <h5>
+                                LAGOS  Address
+                            </h5>
+                            8b Oladipo Diya Crescent, 2nd Avenue Estate, Lagos, Nigeria.
+                            <br>
+                                You may also contact us via sales@vogueafriq.com or using the contact form here...
+                                <p>
+                                    <i class="ion-android-call">
+                                    </i>
+                                    01 794 3024
+                                </p>
+                        </address>
+                </div>
 
-		You may also contact us via sales@vogueafriq.com or using the contact form here...
-<p><i class="ion-android-call"></i> &nbsp; 0208 997 3331</p>
 
-		</address>
-
-		<hr>
-
-		<address>
-		<h5>LAGOS  Address</h5>
-
-		8b Oladipo Diya Crescent, 2nd Avenue Estate, Lagos, Nigeria. <br>
-		You may also contact us via sales@vogueafriq.com or using the contact form here...
-
-<p>
-		<i class="ion-android-call"></i> &nbsp; 01 794 3024
-
-		</p>
-		</address>
-
-		
-		</div>
-
-
-	</div>
+                <div class="offset-md-1 col-sm-5">
+				<form id="contact" method="post" class="form" role="form">
+					<div class="row">
+					<div class="col-xs-6 col-md-6 form-group">
+					<input class="form-control" id="name" name="name" placeholder="Name" type="text" required autofocus />
+					</div>
+					<div class="col-xs-6 col-md-6 form-group">
+					<input class="form-control" id="email" name="email" placeholder="Email" type="email" required />
+					</div>
+					</div>
+					<textarea class="form-control" id="message" name="message" placeholder="Message" rows="5"></textarea>
+					<br />
+					<div class="row">
+					<div class="col-xs-12 col-md-12 form-group text-right">
+					<button class="btn btn-accent pull-right" type="submit">Submit</button>
+				</div>
+			</div>
+				</form>
+			</div>
+            </div>
+        </div>
+    </div>
 </section>
