@@ -1,7 +1,11 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import {FormBuilder,FormGroup, Validators} from '@angular/forms';
-import {UserService} from '../../services/user.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { PasswordValidation } from '../../validators/password-confirm-validator';
+
+import { UserService } from '../../services/user.service';
+
 declare var $: any;
 
 
@@ -12,105 +16,144 @@ declare var $: any;
   providers: [UserService]
 })
 export class LoginComponent implements OnInit {
- 
 
-  loginForm:FormGroup;
-  registerForm:FormGroup;
-  loginUser: Object= {};
-  registerUser: Object= {};
-  customer: Object= {};
-  loggedIn:Boolean=false;
+
+  loginForm: FormGroup;
+  registerForm: FormGroup;
+  loginUser: Object = {};
+  registerUser: Object = {};
+  customer: Object = {};
+  loggedIn: Boolean = false;
+  loading: boolean = false;
+  is_customer: boolean = false;
   @Output() notifyLogin: EventEmitter<Boolean> = new EventEmitter<Boolean>();
 
 
   private loginAttempt: boolean;
   private registerAttempt: boolean;
 
-  constructor(fb: FormBuilder,  private userSrv: UserService) { 
-  	// let emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
-  	 this.loginForm = fb.group({
-        'email':['', Validators.required,],
-        'password':['', Validators.required],
-      });
+  constructor(fb: FormBuilder, private userSrv: UserService, private router: Router) {
+    // let emailRegex = '^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$';
+    this.loginForm = fb.group({
+      'email': ['', Validators.required,],
+      'password': ['', Validators.required],
+    });
 
-       this.registerForm = fb.group({
-          'firstName':['', Validators.required],
-          'lastName':['', Validators.required],
-          'email':['', Validators.required, ],
-          'password':['', [Validators.required, Validators.minLength(8)]],
-          'confirmPassword':['', [Validators.required, Validators.minLength(8)]],
-          'mobile':['', Validators.required],
-      },  {validator: this.checkPasswords});
+    this.registerForm = fb.group({
+      'first_name': ['', Validators.required],
+      'last_name': ['', Validators.required],
+      'email': ['', Validators.required,],
+      'password': ['', [Validators.required, Validators.minLength(8)]],
+      'confirmPassword': ['', [Validators.required, Validators.minLength(8)]],
+      'mobile': ['', Validators.required],
+      'is_customer': ['', Validators.required],
+    }, { validator: this.checkPasswords });
   }
 
 
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
 
-  let pass = group.controls['password'].value;
-  let confirmPass = group.controls['confirmPassword'].value;
+    let pass = group.controls['password'].value;
+    let confirmPass = group.controls['confirmPassword'].value;
 
-  return pass === confirmPass ? null : { notSame: true }     
-	}
-
-
-
-  ngOnInit( ) {
+    return pass === confirmPass ? null : { notSame: true }
   }
 
-  login(){
-  	this.loginAttempt = true;
-    if (this.loginForm.valid){
-        this.userSrv.login(this.loginUser).subscribe(data=>{
-         
-            if(data){
-                localStorage.setItem('auth_token', data.token);
-              localStorage.setItem('customer', JSON.stringify(data.customer));
-              this.customer = data.customer;
-              this.loggedIn = true;
-             this.notifyLogin.emit(this.loggedIn);
 
-            }
-            this.loginForm.reset();
-        },  error=>{
-            let msg = JSON.parse(error._body)['message'];
 
-        
-              $.toast({
-                    text: msg,
-                     position: 'top-center',
-                     'icon': 'error'
-                })
-        });
-       }
+  ngOnInit() {
+
   }
 
-  register(){
-  	 this.registerAttempt = true;
-    if (this.registerForm.valid){
-    	
-   		this.userSrv.register(this.registerUser, this.registerForm).subscribe(data=>{
-         
-            if(data){
-                localStorage.setItem('auth_token', data.token);
-              localStorage.setItem('customer', JSON.stringify(data.customer));
-              this.customer = data.customer;
-              this.loggedIn = true;
-             this.notifyLogin.emit(this.loggedIn);
+  login() {
+    this.loginAttempt = true;
+    this.loading = true;
+    if (this.loginForm.valid) {
 
-            }
-            this.registerForm.reset();
-        },  error=>{
-            let msg = JSON.parse(error._body)['message'];
+      this.userSrv.login(this.loginUser).subscribe(res => {
 
-        
-              $.toast({
-                    text: msg,
-                     position: 'top-center',
-                     'icon': 'error'
-                })
+          console.log(res);
+          if (res) {
+            
+            localStorage.setItem('auth_token', res.data.token);
+            localStorage.setItem('customer', JSON.stringify(res.data.user));
+            this.customer = res.data.user;
+            this.loggedIn = true;
+            this.notifyLogin.emit(this.loggedIn);
+          }
+          this.router.navigateByUrl('/');
+          this.loading = false;
+        }, err => {
+
+          console.log(err);
+          this.loading = false;
         });
-       };
+        this.loading = false;
     }
-  //}
+  }
+
+  // login() {
+  //   this.loginAttempt = true;
+  //   if (this.loginForm.valid) {
+  //     this.userSrv.login(this.loginUser).subscribe(data => {
+
+  //       if (data) {
+  //         localStorage.setItem('auth_token', data.token);
+  //         localStorage.setItem('customer', JSON.stringify(data.customer));
+  //         this.customer = data.customer;
+  //         this.loggedIn = true;
+  //         this.notifyLogin.emit(this.loggedIn);
+
+  //       }
+  //       this.loginForm.reset();
+  //     }, error => {
+  //       let msg = JSON.parse(error._body)['message'];
+
+
+  //       $.toast({
+  //         text: msg,
+  //         position: 'top-center',
+  //         'icon': 'error'
+  //       })
+  //     });
+  //   }
+  // }
+
+  register() {
+    this.registerAttempt = true;
+    if (this.registerForm.valid) {
+      this.loading = true;
+
+      this.userSrv.register(this.registerUser, this.registerForm)
+        .subscribe(res => {
+          console.log(res);
+
+          if (res) {
+            // localStorage.setItem('auth_token', res.token);
+            // localStorage.setItem('customer', JSON.stringify(res.customer));
+            this.customer = res.customer;
+            this.loggedIn = true;
+            this.notifyLogin.emit(this.loggedIn);
+          }
+          this.registerForm.reset();
+          this.loading = false;
+        }, err => {
+          console.log(err)
+
+          $.toast({
+            text: 'login failed',
+            position: 'top-center',
+            icon: 'error'
+          })
+          this.loading = false;
+        });
+      this.loading = false;
+    };
+  }
+
+  isCustomerChange() {
+    this.is_customer = !this.is_customer;
+    this.customer['is_customer'] = this.is_customer;
+  }
 
 }

@@ -1,9 +1,4 @@
 <app-header [cart] ="cart"></app-header>
- <section class="jumbotron">
- 	<div class="inner-content">
- 		<h3 class="text-center boldest">New Arrivals</h3>
- 	</div>
- </section>
 <section class="padded" style="">
   <div class="container">
     <div class="row">
@@ -78,10 +73,10 @@
       <div class="card-body">
         <ul class="nav flex-column">
       <li class="nav-item" >
-        <div *ngFor="let item of productTypes">
-          <label for="{{item.slug}}">
-          <input type="checkbox" id="{{item.slug}}"  value="{{item.slug}}" (change)="addProductTypeFilter($event)"> &nbsp;
-          {{item.name}}
+        <div *ngFor="let productType of productTypes">
+          <label for="{{productType.slug}}">
+          <input type="checkbox" id="{{productType.slug}}"  value="{{productType.slug}}" (change)="addProductTypeFilter($event)"> &nbsp;
+          {{productType.name}}
         </label>
         </div>
 
@@ -101,23 +96,23 @@
           <!-- You searched for "{sample search results}" -->
           {{category}} > {{productType}} > {{sub}}
         </h5>
-        <p style="font-size: 12px"><b>{{products?.length || '0'}}</b> Item(s) found</p>
+        <p style="font-size: 12px"><b>{{arrivals?.length || '0'}}</b> Item(s) found</p>
         <!--  -->
         <div class="row">
-          <div class="col-sm-4" *ngFor="let item of sales">
+          <div class="col-sm-4" *ngFor="let arrival of arrivals">
             <!-- overall link for product and title -->
           <!--   <a href=""> -->
               <div class="product-component text-center">
             <div class="product-image">
-            <a routerLink="/product/{{item.id}}/{{item.slug}}">
-              <img src="{{item.feature_image}}" alt="product image" class="img-fluid">
+            <a routerLink="/product/{{arrival.id}}/{{arrival.slug}}">
+              <img src="{{arrival.banner_image}}" alt="product image" class="img-fluid">
               </a>
             </div>
             <div class="product-title">
               <h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;">
-              <a style="color: #011936" routerLink="/product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h6>
+              <a style="color: #011936" routerLink="/product/{{arrival.id}}/{{arrival.slug}}">{{arrival.name}}</a></h6>
               <span class="text-center">
-                <span>{{t.getItem('currency')}}</span><b>{{item.sale_price * t.getItem('rate')|number}}</b>
+                <span>{{t.getItem('currency')}}</span><b>{{arrival.sale_price * t.getItem('rate')|number}}</b>
               </span>
               </div>
             </div>

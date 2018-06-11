@@ -1,38 +1,40 @@
-<app-header [cart] ="cart"></app-header>
-<section class="padded" style="">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-3">
-				<!-- filter section -->
+<app-header [cart]="cart"></app-header>
+<section class="padded">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <!-- filter section -->
 
-				<div id="accordion" role="tablist">
+        <div id="accordion" role="tablist">
           <!-- start filter box -->
-            <div class="card">
-                <div class="card-header" role="tab" id="FilterTab">
-                  <h5 class="mb-0">
-                    <a class="boldest" data-toggle="collapse" href="#FilterTabPanel" aria-expanded="true" aria-controls="FilterTabPanel">
-                     Filter
-                    </a>
-                    <span class="icon float-right"><i class="ion-plus-round"></i></span>
-                     <button class="btn btn-secondary btn-block filter-btn" (click)="applyFilter()">Apply</button>
-                  </h5>
-                </div>
+          <div class="card">
+            <div class="card-header" role="tab" id="FilterTab">
+              <h5 class="mb-0">
+                <a class="boldest" data-toggle="collapse" href="#FilterTabPanel" aria-expanded="true" aria-controls="FilterTabPanel">
+                  Filter
+                </a>
+                <span class="icon float-right">
+                  <i class="ion-plus-round"></i>
+                </span>
+                <button class="btn btn-secondary btn-block filter-btn" (click)="applyFilter()">Apply</button>
+              </h5>
+            </div>
 
-                <div id="FilterTabPanel" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                  <div class="card-body" style="padding-right: 15px;">
-                  <ul class="nav flex-column">
-                    <!-- update filter button -->
-                    <div style="margin-bottom: 10px">
-                        <label>Price Range</label>
-                        <input type="text" class="range-slider" value="" />
-                     
-                    </div>
-                  </ul>
+            <div id="FilterTabPanel" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body" style="padding-right: 15px;">
+                <ul class="nav flex-column">
+                  <!-- update filter button -->
+                  <div style="margin-bottom: 10px">
+                    <label>Price Range</label>
+                    <input type="text" class="range-slider" value="" />
+
                   </div>
-                </div>
+                </ul>
               </div>
-              <!-- end filter box -->
-<!--  <div class="card">
+            </div>
+          </div>
+          <!-- end filter box -->
+          <!--  <div class="card">
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
         <a class="boldest" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -60,85 +62,66 @@
       </div>
     </div>
   </div> -->
-  <div class="card">
-    <div class="card-header" role="tab" id="headingTwo">
-      <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          Product Type
-        </a>
-        <span class="icon float-right"><i class="ion-plus-round"></i></span>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
-      <div class="card-body">
-        <ul class="nav flex-column">
-      <li class="nav-item" >
-        <div *ngFor="let item of productTypes">
-          <label for="{{item.slug}}">
-          <input type="checkbox" id="{{item.slug}}"  value="{{item.slug}}" (change)="addProductTypeFilter($event)"> &nbsp;
-          {{item.name}}
-        </label>
+          <div class="card">
+            <div class="card-header" role="tab" id="headingTwo">
+              <h5 class="mb-0">
+                <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                  Product Type
+                </a>
+                <span class="icon float-right">
+                  <i class="ion-plus-round"></i>
+                </span>
+              </h5>
+            </div>
+            <div id="collapseTwo" class="collapse show" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+              <div class="card-body">
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <div *ngFor="let productType of productTypes">
+                      <label for="{{productType.slug}}">
+                        <input type="checkbox" id="{{productType.slug}}" value="{{productType.slug}}" (change)="addProductTypeFilter($event)"> &nbsp; {{productType.name}}
+                      </label>
+                    </div>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+          </div>
+
         </div>
+      </div>
+      <div class="col-sm-7 offset-md-1">
+        <h5 class="boldest">
+          {{category}} > {{productType}} > {{sub}}
+        </h5>
+        <p style="font-size: 12px">
+          <b>{{products?.length || '0'}}</b> Item(s) found</p>
+        <div class="row">
 
-
-
-      </li>
-
-    </ul>
+          <div class="col-md-6 col-lg-4" *ngFor="let product of products">
+            <!-- overall link for product and title -->
+            <div class="product-component text-center">
+              <div class="product-image">
+                <a routerLink="/product/{{product.id}}/{{product.slug}}">
+                  <img src="{{product.banner_image}}" alt="product image" class="img-fluid">
+                </a>
+              </div>
+              <div class="product-title">
+                <h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;">
+                  <a style="color: #011936" routerLink="/product/{{product.id}}/{{product.slug}}">{{product.name}}</a>
+                </h6>
+                <span class="text-center">
+                  <span>{{t.getItem('currency')}}</span>
+                  <b>{{product.sale_price * t.getItem('rate') |number}}</b>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
- 
-</div>
-			</div>
-			<div class="col-sm-7 offset-md-1">
-				<h5 class="boldest">
-					<!-- You searched for "{sample search results}" -->
-					{{category}} > {{productType}} > {{sub}}
-				</h5>
-				<p style="font-size: 12px"><b>{{products?.length || '0'}}</b> Item(s) found</p>
-				<!--  -->
-				<div class="row">
-					<!-- <div class="col-sm-4">
-
-						<a href="">
-							<div class="product-component text-center">
-						<div class="product-image">
-							<img src="/assets/img/moon-dress.jpg" alt="product image" class="img-fluid">
-						</div>
-						<div class="product-title">
-							<h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;"><a style="color: #011936" href="">Moon Dress</a></h6>
-							<span class="text-center">
-								<del>N</del><b>50,000</b>
-							</span>
-							</div>
-						</div>
-						</a>
-					</div> -->
-
-					<div class="col-sm-4" *ngFor="let item of products">
-						<!-- overall link for product and title -->
-						<!-- <a href=""> -->
-							<div class="product-component text-center">
-						<div class="product-image">
-						<a routerLink="/product/{{item.id}}/{{item.slug}}">
-							<img src="{{item.feature_image}}" alt="product image" class="img-fluid">
-						</a>
-						</div>
-						<div class="product-title">
-							<h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;">
-							<a style="color: #011936" routerLink="/product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h6>
-							<span class="text-center">
-								<span>{{t.getItem('currency')}}</span><b>{{item.sale_price * t.getItem('rate') |number}}</b>
-							</span>
-							</div>
-						</div>
-					<!-- 	</a>
- -->					</div>
-				</div>
-			</div>
-		</div>
-	</div>
 </section>
 
 <!-- <app-footer></app-footer> -->

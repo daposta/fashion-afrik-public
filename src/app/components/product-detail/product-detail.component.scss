@@ -49,11 +49,11 @@ transform: none
 	}
 
 	.price {
-		font-size: 25px
+		// font-size: 25px
 	}
 
 	input {
-		border: 0;
+		// border: 0;
 		font-family: 'Arial', sans-serif;
 	}
 
@@ -177,9 +177,14 @@ button.slick-next:before {
 }
 
 #currency_selector {
-	    font-size: 12px;
+	// font-size: 12px;
     margin-right: 12px;
-    width: 70px;
-    height: 25px;
-    margin-bottom: 10px;
+    max-width: 200px;
+    // height: 25px;
+	margin-bottom: 10px;
+	background: transparent;
+	padding: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+	outline: none;
 }

@@ -1,7 +1,7 @@
-<app-header [cart] ="cart"></app-header>
-    <!-- <div class="row"> -->
-        <div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
-    
+<app-header [cart]="cart"></app-header>
+<!-- <div class="row"> -->
+<div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
+
     <ol class="carousel-indicators">
         <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators">
         </li>
@@ -13,27 +13,27 @@
 
     <div class="carousel-inner">
         <div class="carousel-item active" style="background-image: url('/assets/img/banner/women-category-banner.jpg');">
-           <a href=""> 
-            <div class="carousel-caption d-none d-md-block">
-                <h3 class="boldest">The Liya Lisafi Collection</h3>
-                <p>collection description goes here</p>
-            </div>
+            <a href="">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="boldest">The Liya Lisafi Collection</h3>
+                    <p>collection description goes here</p>
+                </div>
             </a>
         </div>
         <div class="carousel-item" style="background-image: url('/assets/img/banner/women-category-banner.jpg');">
-          <a href=""> 
-            <div class="carousel-caption d-none d-md-block">
-                <h3 class="boldest">Amal &amp; Nikolina</h3>
-                <p>collection description goes here</p>
-            </div>
+            <a href="">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="boldest">Amal &amp; Nikolina</h3>
+                    <p>collection description goes here</p>
+                </div>
             </a>
         </div>
         <div class="carousel-item" style="background-image: url('/assets/img/banner/women-category-banner.jpg');">
-          <a href=""> 
-            <div class="carousel-caption d-none d-md-block">
-                <h3 class="boldest">Mena</h3>
-                <p>collection description goes here</p>
-            </div>
+            <a href="">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3 class="boldest">Mena</h3>
+                    <p>collection description goes here</p>
+                </div>
             </a>
         </div>
     </div>
@@ -50,37 +50,36 @@
 </div>
 
 <section id="top-stores" class="">
-  <div class="d-flex flex-row justify-content-center flex-wrap">
-    <div class="col-sm rank">
-     <h3 class="boldest text-left" style=" color: #fff;">
-         <span>Top</span><br>
-         <span>Stores</span>
-     </h3>
+    <div class="d-flex flex-row justify-content-center flex-wrap">
+        <div class="col-sm rank">
+            <h3 class="boldest text-left" style=" color: #fff;">
+                <span>Top</span>
+                <br>
+                <span>Stores</span>
+            </h3>
+        </div>
+        <div class="col-md rank">
+            <span class="center">Odeku Stores</span>
+        </div>
+        <div class="col-md rank">
+            <span class="center">Cossly Wears</span>
+        </div>
+        <div class="col-md rank">
+            <span class="center">Liya Lisafi</span>
+        </div>
+        <div class="col-md rank">
+            <span class="center">Amal &amp; Nicole</span>
+        </div>
+        <div class="col-md rank">
+            <span class="center">Eyez Shoes</span>
+        </div>
     </div>
-    <div class="col-sm rank">
-      Odeku Stores
-    </div>
-    <div class="col-sm rank">
-     Cossly Wears
-    </div>
-    <div class="col-sm rank">
-     Liya Lisafi
-    </div>
-    <div class="col-sm rank">
-     Amal &amp; Nicole
-    </div>
-
-    <div class="col-sm rank">
-     Eyez Shoes
-    </div>
-    
-  </div>
 </section>
 
 <!-- Top Ranked stores -->
 
-    <!-- </div> -->
-    
+<!-- </div> -->
+
 <section class="padded" id="new-arrivals">
     <div class="section-header text-center font-2">
         # new arrivals
@@ -93,20 +92,20 @@
         <div class="row">
             <div class="col-md-3 col-sm-6" *ngFor="let item of newArrivals">
                 <div class="item">
-<a routerLink="/product/{{item.id}}/{{item.slug}}" class="">
-                <img src="{{ item.feature_image}}" class="img-fluid">
+                    <a routerLink="/product/{{item.id}}/{{item.slug}}" class="">
+                        <img src="{{ item.feature_image}}" class="img-fluid">
 
-               <figcaption class="invisible">
-                    {{item.name}}
-               </figcaption>
-                    </a>    
+                        <figcaption class="invisible">
+                            {{item.name}}
+                        </figcaption>
+                    </a>
                 </div>
-               
+
             </div>
-            
+
             <!-- <div class="w-100"></div> -->
-          
-           
+
+
         </div>
     </div>
 </section>
@@ -122,26 +121,23 @@
         </span>
     </div>
 
-     <div class="container">
+    <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6" *ngFor="let item of hers">
+            <div class="col-md-3 col-sm-6" *ngFor="let her of hers">
                 <div class="item">
-                <a routerLink="/product/{{item.id}}/{{item.slug}}" class="">
+                    <a routerLink="/product/{{her.id}}/{{her.slug}}" class="">
+                        <img src="{{her.banner_image}}" class="img-fluid">
+                    </a>
 
-                <img src="{{  item.feature_image}}" class="img-fluid">
-                </a>
+                    <figcaption class="invisible">
+                        <a routerLink="/product/{{her.id}}/{{her.slug}}" class="">{{her.name}}</a>
+                    </figcaption>
 
-               <figcaption class="invisible">
-                    <a routerLink="/product/{{item.id}}/{{item.slug}}" class="">{{item.name}}</a> 
-               </figcaption>
-                        
                 </div>
-               
+
             </div>
-            
-            <!-- <div class="w-100"></div> -->
-          
-           
+
+
         </div>
     </div>
 </section>
@@ -154,26 +150,26 @@
         </span>
     </div>
 
-     <div class="container">
+    <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6" *ngFor="let item of his">
+            <div class="col-md-3 col-sm-6" *ngFor="let him of his">
                 <div class="item">
-                <a routerLink="/product/{{item.id}}/{{item.slug}}" class="">
+                    <a routerLink="/product/{{him.id}}/{{him.slug}}" class="">
 
-                <img src="{{ item.feature_image}}" class="img-fluid">
-                </a>
+                        <img src="{{him.banner_image}}" class="img-fluid">
+                    </a>
 
-               <figcaption class="invisible">
-                    <a routerLink="/product/{{item.id}}/{{item.slug}}" class="">{{item.name}}</a> 
-               </figcaption>
-                        
+                    <figcaption class="invisible">
+                        <a routerLink="/product/{{him.id}}/{{him.slug}}" class="">{{him.name}}</a>
+                    </figcaption>
+
                 </div>
-               
+
             </div>
-            
+
             <!-- <div class="w-100"></div> -->
-          
-           
+
+
         </div>
     </div>
 </section>

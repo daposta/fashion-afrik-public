@@ -1,4 +1,25 @@
 <app-header [cart] ="cart"></app-header>
-<p>
-  sign-in works!
-</p>
+<div class="signIn-wrapper">
+  <div class="signIn-head">
+    <h1 class="title">Sign In</h1>
+  </div>
+
+  <div class="signIn-body">
+    <form action="">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" type="text" placeholder="Enter email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input class="form-control" type="password" placeholder="Enter Password">
+      </div>
+      <a routerLink="/">
+          <span class="forgot-password">Forgot your password?</span>
+      </a>
+      <button class="signIn-button">
+        Sign In
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,25 +1,11 @@
-<app-header [cart] ="cart"></app-header>
-
-<section class="jumbotron">
-    <div class="inner-content">
-        <div class="h2 boldest text-center">
-            Cart
-        </div>
-    </div>
-</section>
+<app-header [cart]="cart"></app-header>
 <section class="padded" id="shopping-list">
     <div class="container">
-        <!-- <div class="alert alert-success">
-            <strong>Great! </strong>
-            Product name.. has been added to cart
-        </div> -->
-
-        <!-- <div class="alert alert-danger">
-            <strong>Error Message! </strong>
-            This is an error message
-        </div> -->
         <table class="table">
             <thead>
+                <th>
+                    Product Image
+                </th>
                 <th>
                     Product Name
                 </th>
@@ -29,10 +15,10 @@
                 <th>
                     Quantity
                 </th>
-                 <th>
+                <th>
                     Size
                 </th>
-                 <th>
+                <th>
                     Color
                 </th>
                 <th>
@@ -42,55 +28,50 @@
                 </th>
             </thead>
             <tbody>
-               
+
 
                 <tr *ngFor="let item of cart">
-                    <td class="d-flex align-items-center">
+                    <td>
+                        <img src="{{item.banner_image}}" alt="" style="height: 100px; width: 100px;">
+                    </td>
+                    <td>
                         <div>
-                           <!--  <img alt="" src="/assets/img/denim2.jpg"> -->
-                          <!--   <img alt="" src="{{ item.product.feature_image}}"> -->
-                                <div >
-                                    <!-- Liya Dress -->
-                                    {{item.product.name}}
-                                </div>
+                            <div>
+                                {{item.product_name}}
+                            </div>
                         </div>
                     </td>
-                   <!--  <td style="font-size: 20px;"> -->
-                     <td >
-                        <span>{{t.getItem('currency')}}</span> 
+                    <td>
+                        <span>{{t.getItem('currency')}}</span>
                         <span>
                             {{item.price * t.getItem('rate') |number}}
                         </span>
                     </td>
                     <td>
-                        <div class="input-group">
-                          <span>
-                            {{item.qty|number}}
-                        </span>
-                            <!-- <span class="input-group-addon">
-                                +
+                        <span>
+                            <i class="fa fa-caret-left" style="font-size: 20px; cursor: pointer;" (click)="decrement()"></i>
+                            <span style="font-size: 19px;">
+                                <input type="text" value="{{item.qty | number}}" readonly style="border: none; background: #FFF; max-width: 20px; margin: 0; padding: 5px;" ([ngModel])="count">
+                                <!-- {{item.qty|number}} -->
                             </span>
-                            <input class="form-control" type="text" value="{{item.qty}}">
-                                <span class="input-group-addon">
-                                    −
-                                </span> -->
-                        </div>
+                            <i class="fa fa-caret-right" style="font-size: 20px; cursor: pointer;" (click)="increment()"></i>
+                        </span>
                     </td>
-                     <td >
-                        
+                    <td>
+
                         <span>
                             {{item.size }}
                         </span>
                     </td>
-                    <td >
-                        
+                    <td>
+
                         <span>
                             {{item.color }}
                         </span>
                     </td>
                     <td>
-                        <span>{{t.getItem('currency')}}</span> 
-                        <span >
+                        <span>{{t.getItem('currency')}}</span>
+                        <span>
                             {{item.cost * t.getItem('rate') |number}}
                         </span>
                     </td>
@@ -103,22 +84,24 @@
             </tbody>
 
             <tfoot>
-            	<tr>
-            		<td colspan="3">
-            			<button class="btn btn-secondary boldest" (click)="goHome()" >Continue Shopping</button>
-            			<button class="btn btn-light boldest" (click)="clear()">&times; Clear Shopping Cart</button>
-            		</td>
-            		
-            		<td class="boldest" style="vertical-align: middle;"></td>
-            		<td>
-            			
-            		</td>
-            	</tr>
+                <tr>
+                    <td colspan="3">
+                        <button class="btn btn-secondary boldest" (click)="goHome()">Continue Shopping</button>
+                        <button class="btn btn-light boldest" (click)="clear()">&times; Clear Shopping Cart</button>
+                    </td>
+
+                    <td class="boldest" style="vertical-align: middle;"></td>
+                    <td>
+
+                    </td>
+                </tr>
             </tfoot>
         </table>
-        <div class="float-right"> 
-        	<button class="btn btn-light boldest">Update Cart</button>
-            			<button type="button" (click)="proceed()" [disabled]="!cart" class="btn btn-accent boldest ladda-button" data-style="expand-right"><span class="ladda-label">Proceed To Checkout &raquo;</span></button>
+        <div class="float-right">
+            <button class="btn btn-light boldest">Update Cart</button>
+            <button type="button" (click)="proceed()" [disabled]="!cart" class="btn btn-accent boldest ladda-button" data-style="expand-right">
+                <span class="ladda-label">Proceed To Checkout &raquo;</span>
+            </button>
         </div>
         <div class="clearfix"></div>
     </div>

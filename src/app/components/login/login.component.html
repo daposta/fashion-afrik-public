@@ -1,4 +1,4 @@
-<!-- <app-header></app-header> -->
+<app-header [cart]="cart"></app-header>
 <section class="jumbotron">
 	<div class="inner-content text-center">
 		<h4 class="boldest">
@@ -9,139 +9,132 @@
 <section class="padded">
 	<div class="container">
 		<div class="row">
-		<div class="col-md-5">
-			<h4 class="form-title">SIGN IN WITH EMAIL</h4>
-			<form [formGroup]="loginForm" (ngSubmit)="login()"   novalidate>
-				<div class="row">
-					<div class="form-group col-md-12">
-						<label for="email">Email Address</label>
-						<input type="text" class="form-control" name="email" [(ngModel)]="loginUser.email" [formControl]="loginForm.controls['email']" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" >
+			<div class="col-md-5">
+				<h4 class="form-title">LOGIN</h4>
+				<form [formGroup]="loginForm" (ngSubmit)="login()" class="loginForm" novalidate>
+					<div class="row">
+						<div class="form-group col-md-12">
+							<!-- <label for="email">Email Address</label> -->
+							<input type="text" class="form-control" name="email" [(ngModel)]="loginUser.email" [formControl]="loginForm.controls['email']"
+							 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" placeholder="Email Address">
 
-						 <div *ngIf="loginForm.controls['email'].hasError('required') && loginAttempt" style="color: red">Email is required</div>
+							<div *ngIf="loginForm.controls['email'].hasError('required') && loginAttempt" style="color: red">Email is required</div>
 
-						  <div *ngIf="loginForm.controls['email'].hasError('pattern')  && loginAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
+							<div *ngIf="loginForm.controls['email'].hasError('pattern')  && loginAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
+						</div>
+
+						<div class="form-group col-md-12">
+							<!-- <label for="password">Password</label> -->
+							<input type="password" class="form-control" name="password" [(ngModel)]="loginUser.password" [formControl]="loginForm.controls['password']"
+							 placeholder="Password">
+
+							<div *ngIf="loginForm.controls['password'].hasError('required') && loginAttempt" style="color: red">Password is required</div>
+
+							<p class="float-right">
+								<a routerLink="/" style="font-size: 14px; margin: 10px 0; display: inline-block; color: #fff">
+									Forgot your Password?
+								</a>
+							</p>
+						</div>
 					</div>
+					<button type="submit" class="btn btn-block btn-accent" [disabled]="loading">
+						Login
+						<i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+					</button>
+				</form>
+			</div>
 
-					<div class="form-group col-md-12">
-						<label for="password">Password</label>
-						<input type="password" class="form-control" name="password" [(ngModel)]="loginUser.password" [formControl]="loginForm.controls['password']" >
+			<div class="col-md-5 offset-md-2">
+				<h4 class="form-title">Sign Up</h4>
+				<form [formGroup]="registerForm" (ngSubmit)="register()" class="registerForm" novalidate>
+					<div class="row">
+						<div class="form-group col-md-6">
+							<!-- <label for="email">First Name</label> -->
+							<input type="text" class="form-control" [(ngModel)]="registerUser.first_name" [formControl]="registerForm.controls['first_name']"
+							 placeholder="First Name">
 
-						 <div *ngIf="loginForm.controls['password'].hasError('required') && loginAttempt" style="color: red">Password is required</div>
+							<div *ngIf="registerForm.controls['first_name'].hasError('required') && registerAttempt" style="color: red">First Name is required</div>
+						</div>
 
-						<p class="float-right">
-							<a href="#" style="    font-size: 12px;
-    margin: 10px 0;
-    display: inline-block;
-    color: #011936;">
-								Forgot your Password?
-							</a>
-						</p>
-					</div>
-				</div>
-				<button type="submit" class="btn btn-block btn-accent">Login</button>
-			</form>
-		</div>
+						<div class="form-group col-md-6">
+							<!-- <label for="email">Last Name</label> -->
+							<input type="text" class="form-control" [(ngModel)]="registerUser.last_name" [formControl]="registerForm.controls['last_name']"
+							 placeholder="Last Name">
 
-		<div class="col-md-5 offset-md-2">
-			<h4 class="form-title">Create An Account</h4>
-			<form [formGroup]="registerForm" (ngSubmit)="register()"   novalidate>
-				<div class="row">
-					<div class="form-group col-md-6">
-						<label for="email">First Name</label>
-						<input type="text" class="form-control" [(ngModel)]="registerUser.firstName" [formControl]="registerForm.controls['firstName']" >
-
-						 <div *ngIf="registerForm.controls['firstName'].hasError('required') && registerAttempt" style="color: red">First Name is required</div>
-					</div>
-
-					<div class="form-group col-md-6">
-						<label for="email">Last Name</label>
-						<input type="text" class="form-control" [(ngModel)]="registerUser.lastName" [formControl]="registerForm.controls['lastName']" >
-
-						 <div *ngIf="registerForm.controls['lastName'].hasError('required') && registerAttempt" style="color: red">Last Name is required</div>
-					</div>
+							<div *ngIf="registerForm.controls['last_name'].hasError('required') && registerAttempt" style="color: red">Last Name is required</div>
+						</div>
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-12">
-						<label for="email">Email Address</label>
-						<input type="email" class="form-control" [(ngModel)]="registerUser.email" [formControl]="registerForm.controls['email']" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" >
+							<!-- <label for="email">Email Address</label> -->
+							<input type="email" class="form-control" [(ngModel)]="registerUser.email" [formControl]="registerForm.controls['email']"
+							 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" placeholder="Email Address">
 
-						 <div *ngIf="registerForm.controls['email'].hasError('required') && registerAttempt" style="color: red">Email is required</div>
+							<div *ngIf="registerForm.controls['email'].hasError('required') && registerAttempt" style="color: red">Email is required</div>
 
-						  <div *ngIf="registerForm.controls['email'].hasError('pattern')  && registerAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
-					</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-12">
-						<label for="password">Password</label>
-						<input type="password" class="form-control" [(ngModel)]="registerUser.password" [formControl]="registerForm.controls['password']" required>
-
-						 <div *ngIf="registerForm.controls['password'].hasError('required') && registerAttempt" style="color: red">Password is required</div>
-
-						  <div *ngIf="registerForm.controls['password'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
-					</div>
+							<div *ngIf="registerForm.controls['email'].hasError('pattern')  && registerAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
+						</div>
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-12">
-						<label for="password">Confirm Password</label>
-						<input type="password" name="confirmPassword" class="form-control" [(ngModel)]="registerUser.confirmPassword" [formControl]="registerForm.controls['confirmPassword']" required>
+							<!-- <label for="password">Password</label> -->
+							<input type="password" class="form-control" [(ngModel)]="registerUser.password" [formControl]="registerForm.controls['password']"
+							 placeholder="Password" required>
 
-						 <div *ngIf="registerForm.controls['confirmPassword'].hasError('required') && registerAttempt" style="color: red">Confirm Password is required</div>
+							<div *ngIf="registerForm.controls['password'].hasError('required') && registerAttempt" style="color: red">Password is required</div>
 
-						 <div *ngIf="registerForm.hasError('notSame') && registerAttempt" style="color: red">Password fields should match</div>
-
-						  <div *ngIf="registerForm.controls['confirmPassword'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
+							<div *ngIf="registerForm.controls['password'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
+						</div>
 					</div>
+
+					<div class="row">
+						<div class="form-group col-md-12">
+							<!-- <label for="password">Confirm Password</label> -->
+							<input type="password" name="confirmPassword" class="form-control" [(ngModel)]="registerUser.confirmPassword" [formControl]="registerForm.controls['confirmPassword']"
+							 placeholder="Confirm Password" required>
+
+							<div *ngIf="registerForm.controls['confirmPassword'].hasError('required') && registerAttempt" style="color: red">Confirm Password is required</div>
+
+							<div *ngIf="registerForm.hasError('notSame') && registerAttempt" style="color: red">Password fields should match</div>
+
+							<div *ngIf="registerForm.controls['confirmPassword'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
+						</div>
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-6">
-						<label for="mobile">Mobile</label>
-						<input type="tel"  name="mobile" class="form-control" [(ngModel)]="registerUser.mobile" [formControl]="registerForm.controls['mobile']" required >
+							<!-- <label for="mobile">Mobile</label> -->
+							<input type="tel" name="mobile" class="form-control" [(ngModel)]="registerUser.mobile" [formControl]="registerForm.controls['mobile']"
+							 placeholder="Mobile" style="width: 100%; padding-left: 50px;" required>
 
-						 <div *ngIf="registerForm.controls['mobile'].hasError('required') && registerAttempt" style="color: red">Mobile is required</div>
+							<div *ngIf="registerForm.controls['mobile'].hasError('required') && registerAttempt" style="color: red">Mobile is required</div>
+
+						</div>
+
+						<div class="form-group col-md-6">
+							<input type="checkbox" [checked]="is_customer" (change)="isCustomerChange" [(ngModel)]="registerUser.is_customer" [formControl]="registerForm.controls['is_customer']" id="isCustomer">
+	
+							<label for="isCustomer">
+								<span></span>
+								Customer Account
+							</label>
+
+							<div *ngIf="registerForm.controls['is_customer'].hasError('required') && registerAttempt" style="color: red;">Account type is required</div>
+						</div>
 
 					</div>
 
-					<!-- <div class="form-group col-md-6">
-						<label for="email">Address 2</label>
-						<input type="text" class="form-control" name="address2" placeholder="e.g 234 Allen Ave">
-					</div> -->
+					<div class="form-actions">
+						<button type="submit" class="btn btn-block btn-accent" [disabled]="loading">
+							Create an account
+							<i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+						</button>
 					</div>
-
-					<!-- <div class="row">
-						<div class="form-group col-md-12">
-							<label for="male" style="display: inline-block;margin-right: 10px">
-							<input type="radio" class="icheck_radio" name="gender" id="male">
-							Male
-						</label>
-
-						<label for="female">
-							<input type="radio" class="icheck_radio" name="gender" id="female">
-							Female
-						</label>
-						</div>
-					</div> -->
-
-					<!-- <div class="row">
-						<div class="form-group col-md-12">
-							<select class="custom-select " name="country" style="width: 100%">
-							  <option selected>Pick Country</option>
-							  <option value="1">One</option>
-							  <option value="2">Two</option>
-							  <option value="3">Three</option>
-							</select>
-						</div>
-					</div> -->
-
-				<div class="form-actions">
-					<button type="submit" class="btn btn-block btn-accent">Create an account</button>
-				</div>
-			</form>
+				</form>
+			</div>
 		</div>
-	</div>
 	</div>
 </section>
 <!-- <app-footer></app-footer> -->

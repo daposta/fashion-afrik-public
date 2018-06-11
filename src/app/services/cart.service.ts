@@ -6,119 +6,121 @@ export class CartService {
   //public cart =[];
   constructor() { }
 
-  loadCart(){
+  loadCart() {
     let items = [];
     let cart = JSON.parse(localStorage.getItem('cart'));
-    if(cart){
-         for(var i=0; i < cart.length ; i++){
-              let t = cart[i]; //JSON.parse(cart[i]);
-              items.push({
-                product: t.product, qty:t.qty, cost: t.cost, price: t.price, color: t.color,
-                 size: t.size
-              });
+    if (cart) {
+      for (var i = 0; i < cart.length; i++) {
+        let t = cart[i]; //JSON.parse(cart[i]);
+        items.push({
+          product_name: t.product_name, banner_image: t.product_image, qty: t.qty, cost: t.cost, price: t.price, color: t.color,
+          size: t.size
+        });
 
-            }
-          
-            return items;
-         }
-   
+      }
+
+      return items;
+    }
+
   }
 
 
-  addToCart(data:any){
-    let productId = data['product'].id
-  	if(localStorage.getItem('cart'))
-    {
-  		  let cart:any = JSON.parse(localStorage.getItem('cart'));
-        let index:number = -1;
-        for(var i= 0; i < cart.length; i++){
-        
-          let item = cart[i];//JSON.parse(cart[i]);
-        
-          if(item['product']['id'] == productId){
-           
-            index = i;
-            break;
-          }
+  addToCart(data: any) {
+    console.log(data);
+    let productId = data.product_id;
+    // let productId = data['product'].id
+    if (localStorage.getItem('cart')) {
+      let cart: any = JSON.parse(localStorage.getItem('cart'));
+      let index: number = -1;
+      for (var i = 0; i < cart.length; i++) {
+
+        let item = cart[i];//JSON.parse(cart[i]);
+
+        // if (item['product']['id'] == productId) {
+
+        //   index = i;
+        //   break;
+        // }
       }
-      if(index == -1){
+      if (index == -1) {
         let item = data;
-       
+
         item.price = data['product']['sale_price'];
-        item.qty  = data['qty'];
-        item.color  = data['color'];
-         item.size  = data['size'];
+        item.qty = data['qty'];
+        item.color = data['color'];
+        item.size = data['size'];
         item.cost = item.qty * item.price;
-       // cart[index] = item;//JSON.stringify(item);
-       cart.push(item);
-          localStorage.setItem('cart', JSON.stringify(cart));
-         
+        // cart[index] = item;//JSON.stringify(item);
+        cart.push(item);
+        localStorage.setItem('cart', JSON.stringify(cart));
+
       }
-      else{
-         
-        let item =  cart[index] //JSON.parse(cart[index]);
+      else {
+
+        let item = cart[index] //JSON.parse(cart[index]);
         item.price = item['product']['sale_price'];
         item.qty += data['qty'];
-        item.color  = data['color'];
+        item.color = data['color'];
         item.cost = item.qty * item.price;
-        item.size  = data['size'];
+        item.size = data['size'];
         cart[index] = item; //JSON.stringify(item);
-        
+
         localStorage.setItem('cart', JSON.stringify(cart));
       }
 
 
 
 
-  	}
-  	else{
-     
-       let item = data;
-        item.price = data['product']['sale_price'];
-        item.qty  = data['qty'];
-        item.color  = data['color'];
-        item.size  = data['size'];
-        item.cost = item.qty * item.price;
+    }
+    else {
 
-  		 let cart =[];
-  		 cart.push(item);
-  		 localStorage.setItem('cart', JSON.stringify(cart));
+      let item = data;
+      // item.price = data['product']['sale_price'];
+      item.price = data.sale_price;
+      item.qty = data['qty'];
+      item.color = data['color'];
+      item.size = data['size'];
+      item.cost = item.qty * item.price;
 
-  	}
-   
+      let cart = [];
+      cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+    }
+
   };
 
-  removeFromCart(data:any){
+  removeFromCart(data: any) {
 
-     let productId = data['product'].id;
-      if(localStorage.getItem('cart')){
-         let cart:any = JSON.parse(localStorage.getItem('cart'));
-         let index:number = -1;
-         for(var i= 0; i < cart.length; i++){
-        
-          let item = cart[i];//JSON.parse(cart[i]);
-        
-            if(item['product']['id'] == productId){
-             
-              index = i;
-              break;
-            }
+    let productId = data['product'].id;
+    if (localStorage.getItem('cart')) {
+      let cart: any = JSON.parse(localStorage.getItem('cart'));
+      let index: number = -1;
+      for (var i = 0; i < cart.length; i++) {
+
+        let item = cart[i];//JSON.parse(cart[i]);
+
+        if (item['product']['id'] == productId) {
+
+          index = i;
+          break;
         }
-        if(index != -1){
-         
-           let item =  cart[index]
-           cart.pop(item);
-         
-           localStorage.setItem('cart', JSON.stringify(cart));
-        }
-       
       }
+      if (index != -1) {
+
+        let item = cart[index]
+        cart.pop(item);
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+      }
+
+    }
 
 
   }
 
 
-  clearCart(){
+  clearCart() {
     localStorage.removeItem('cart');
   }
 

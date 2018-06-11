@@ -1,22 +1,16 @@
- <app-header [cart] ="cart" ></app-header>
+<app-header [cart]="cart"></app-header>
 <section id="product-detail" class="padded">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col-lg-6">
 				<!-- slider -->
 				<div class="slider-element">
-					<div class="slider-nav">
-					<div   *ngFor="let rp of reps" class="slider-item" attr.data-url="{{rp}}"  [ngStyle]="{ 'background-image': 'url(' + rp + ')'}"></div>
-				<!-- 	<div   *ngFor="let rp of reps" class="slider-item" attr.data-url="{{rp}}" [ngStyle]="{'background-image': 'url(' +   rp + ')'}"></div> -->
-					<!-- <div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim2.jpg')  ; "></div>
-					<div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim1.jpg')  ; "></div> -->
-				</div>
-				<div class="slider-for">
-					<div  *ngFor="let item of reps" class="slider-item" attr.data-url="{{item}}" [style.background-image]="'url(' + item + ')'"></div>
-				<!-- 	<div  *ngFor="let item of reps" class="slider-item" attr.data-url="{{item}}" [ngStyle]="{'background-image': 'url(' + item + ')'}"></div> -->
-					<!-- <div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim2.jpg')  ;"></div>
-					<div class="slider-item" data-url="/assets/img/denim2.jpg" style="background: url('/assets/img/denim1.jpg')  ; "></div> -->
-				</div>
+					<div class="slider-nav" style="display: inherit;">
+						<div *ngFor="let rp of reps" class="slider-item" attr.data-url="{{rp}}" [ngStyle]="{ 'background-image': 'url(' + rp + ')'}"></div>
+					</div>
+					<div class="slider-for">
+						<div class="slider-item" attr.data-url="{{product.banner_image}}" [ngStyle]="{'background-image': 'url(' + product.banner_image + ')'}"></div>
+					</div>
 				</div>
 			</div>
 
@@ -27,85 +21,93 @@
 					</div>
 
 					<div class="price">
-						<span class="select-wrapper"><select name="currency" id="currency_selector" (change)="changeCurrency($event)" >
-    <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.name}}</option>
-</select></span>
-						<span class="" style="margin-right: 50px">
-							<span>{{t.getItem('currency')}}</span> {{product.sale_price * t.getItem('rate')|number}}
+						<span class="select-wrapper">
+							<select name="currency" id="currency_selector" (change)="changeCurrency($event)">
+								<option *ngFor="let currency of currencys" [selected]="t.getItem('currency') === currency.code" [value]="currency.code">{{currency.name}}</option>
+							</select>
+						</span>
+						<span class="" style="margin-right: 10px">
+							<span>{{t.getItem('currency')}}</span> {{product.sale_price * t.getItem('rate') | number}}
 						</span>
 
 						<span class="" style="text-decoration: line-through; opacity: 0.2">
-							<span>{{t.getItem('currency')}}</span> {{product.discount_price * t.getItem('rate')|number}}
+							<small>
+								<span>{{t.getItem('currency')}}</span> {{product.discount_price * t.getItem('rate')|number}}
+							</small>
 						</span>
 					</div>
 					<section>
-						<div class="raty float-left"  data-score="3" readonly></div>
+						<div class="raty float-left" data-score="3" readonly></div>
 						<span class="review float-left " style="margin-left: 15px; display: inline-block; margin-top: 5px; text-transform: uppercase; font-size: 12px; font-weight: 600;">
-							 <a  (click)="goToAddReview()"> <i class="ion-plus"></i> Add Review</a>
-					</span>
+							<a (click)="goToAddReview()" style="cursor: pointer;">
+								<i class="ion-plus"></i> Add Review</a>
+						</span>
 						<div class="clearfix"></div>
-					</section> <br>
+					</section>
+					<br>
 
 
 					<p class="description-text">
 						{{product.description}}
 					</p>
 
-					<form  [formGroup]="cartForm" (ngSubmit)="addToCart(cartForm.value)"   novalidate>
+					<form [formGroup]="cartForm" (ngSubmit)="addToCart(cartForm.value)" novalidate>
 						<div class="row">
 							<div class="form-group col-md-3">
-							<label for="email">Quantity</label>
-							<input type="text" class="form-control" [formControl]="cartForm.controls['qty']"  (keypress)="numbersOnly($event)">
+								<label for="quantity">Quantity</label>
+								<input type="text" class="form-control" [formControl]="cartForm.controls['qty']" (keypress)="numbersOnly($event)">
 
-							 <div *ngIf="cartForm.controls['qty'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Quantity is required</div>
-						</div>
+								<div *ngIf="cartForm.controls['qty'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Quantity is required</div>
+							</div>
 
 
-						<div class="form-group col-md-3">
-							<label for="email">Size</label>
-							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [formControl]="cartForm.controls['size']" required>
-						        <option selected></option>
-						        <option *ngFor="let item of sizes" [value]="item.name">{{item.name}}</option>
-						     </select>
-						      <div *ngIf="cartForm.controls['size'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Size is required</div>
-						</div>
+							<div class="form-group col-md-3">
+								<label for="sizes">Size</label>
+								<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [formControl]="cartForm.controls['size']" required>
+									<option selected></option>
+									<option *ngFor="let size of product.sizes" [value]="size.slug">{{size.name}}</option>
+								</select>
+								<div *ngIf="cartForm.controls['size'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Size is required</div>
+							</div>
 
-						<div class="form-group col-md-3">
-							<label for="email">Color</label>
-							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect"  [formControl]="cartForm.controls['color']" required>
-						        <option selected></option>
-						         <option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
-						      
-						     </select>
-						      <div *ngIf="cartForm.controls['color'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Color is required</div>
-						</div>
+							<div class="form-group col-md-3">
+								<label for="colors">Color</label>
+								<select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect" [formControl]="cartForm.controls['color']"
+								 required>
+									<option selected></option>
+									<option *ngFor="let color of product.colors" [value]="color.slug">{{color.name}}</option>
+								</select>
+								<div *ngIf="cartForm.controls['color'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Color is required</div>
+							</div>
 
-						<div class="col-md-3">
-							<!-- customize modal trigger  -->
-							<button style="margin-top: 25px" class="btn  btn-secondary" data-toggle="modal" data-target="#customizeModal" title="Customize">
-								<!-- <i class="ion-plus-round"></i> -->
-								Customize
-							</button>
-						</div>
+							<div class="col-md-3">
+								<!-- customize modal trigger  -->
+								<label style="opacity: 0;">pleaseLeaveEmpty</label>
+								<button class="btn  btn-secondary" data-toggle="modal" data-target="#customizeModal" title="Customize" style="padding: 9px 10px; font-size: 12px;">
+									Customize
+								</button>
+							</div>
 
 
 
 						</div>
 
 						<div class="actions">
-						<button type="submit" class="btn btn-block btn-accent pull-left">Add to Cart</button>
-						<button class="btn btn-block pull-right">Save for Later</button>
-						<br>
+							<button type="submit" class="btn btn-block btn-accent pull-left" style="cursor: pointer;">Add to Cart</button>
+							<button class="btn btn-block pull-right" style="cursor: pointer;">Save for Later</button>
+							<br>
 
-					</div>
-					<p><b>Category : </b> {{product.category?.name}}</p>
+						</div>
+						<p>
+							<b>Category : </b> {{product.l1category?.name}}</p>
 						<p>SHARE &nbsp;
-						<button class="btn btn-sm btn-outline-primary boldest" >facebook</button>
+							<button class="btn btn-sm btn-outline-primary boldest">facebook</button>
 
-					<!-- 	 <share-button class="btn btn-sm btn-outline-primary boldest"  button="facebook"
+							<!-- 	 <share-button class="btn btn-sm btn-outline-primary boldest"  button="facebook"
 						 [title]="{{title}}" attr.data-url="{{url}}" attr.data-description="{{description}}" attr.data-image="img_url">facebook</share-button>  -->
 
-						<button class="btn btn-sm btn-outline-info boldest">twitter</button> </p>
+							<button class="btn btn-sm btn-outline-info boldest">twitter</button>
+						</p>
 					</form>
 
 
@@ -120,16 +122,18 @@
 
 <!-- Modal -->
 <div class="modal fade" id="customizeModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      	<h5 class="modal-title boldest" id="myModalLabel">Customize Product</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        
-      </div>
-      <div class="modal-body">
-       	<form [formGroup]="customizeProductForm" (ngSubmit)="saveCustomRequest(customizeProductForm.value)"   novalidate>
-       		<!-- <div class="row">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title boldest" id="myModalLabel">Customize Product</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+
+			</div>
+			<div class="modal-body">
+				<form [formGroup]="customizeProductForm" (ngSubmit)="saveCustomRequest(customizeProductForm.value)" novalidate>
+					<!-- <div class="row">
        			<div class="form-group col-sm-6">
        				<label for="">General Build</label>
        				<select name="GB" id="GB" class="form-control">
@@ -138,86 +142,93 @@
        				</select>
        			</div>
        		</div> -->
-       		<div class="text-info alert alert-info" style="padding: 3px 20px">
-       			<small>Enter values in inches</small>
-       		</div>
+					<div class="text-info alert alert-info" style="padding: 3px 20px">
+						<small>Enter values in inches</small>
+					</div>
 
-       		<div class="row">
-       			<div class="form-group col-sm-6">
-       				<label for="fabric">Fabric</label>
-       				<!-- <input type="text" class="form-control" placeholder="Enter value"> -->
-       				<select name="fabric" [formControl]="customizeProductForm.controls['fabric']">
-       					 <option *ngFor="let item of fabrics" [value]="item.slug">{{item.name}}</option>
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label for="fabric">Fabric</label>
+							<!-- <input type="text" class="form-control" placeholder="Enter value"> -->
+							<select name="fabric" [formControl]="customizeProductForm.controls['fabric']">
+								<option *ngFor="let item of fabrics" [value]="item.slug">{{item.name}}</option>
 
-       				</select>
-       				 <div *ngIf="customizeProductForm.controls['fabric'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Fabric is required</div>
-       			</div>
+							</select>
+							<div *ngIf="customizeProductForm.controls['fabric'].hasError('required') && customSubmitAttempt" class="small form-error"
+							 style="color: red">Fabric is required</div>
+						</div>
 
-       			<div class="form-group col-sm-6">
-       				<label for="">Color</label>
-       				<select name="color" [formControl]="customizeProductForm.controls['color']" >
-       					 <option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
+						<div class="form-group col-sm-6">
+							<label for="">Color</label>
+							<select name="color" [formControl]="customizeProductForm.controls['color']">
+								<option *ngFor="let item of colors" [value]="item.slug">{{item.name}}</option>
 
-       				</select>
-       				<div *ngIf="customizeProductForm.controls['color'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Color is required</div>
-       			</div>
-       		</div>
+							</select>
+							<div *ngIf="customizeProductForm.controls['color'].hasError('required') && customSubmitAttempt" class="small form-error"
+							 style="color: red">Color is required</div>
+						</div>
+					</div>
 
-       		<div class="row">
-       			<div class="form-group col-sm-6">
-       				<label for="">Collar</label>
-       				<input type="text" class="form-control" [formControl]="customizeProductForm.controls['collar']" (keypress)="numbersOnly($event)" >
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label for="">Collar</label>
+							<input type="text" class="form-control" [formControl]="customizeProductForm.controls['collar']" (keypress)="numbersOnly($event)">
 
-       				<div *ngIf="customizeProductForm.controls['collar'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Collar width is required</div>
-       			</div>
+							<div *ngIf="customizeProductForm.controls['collar'].hasError('required') && customSubmitAttempt" class="small form-error"
+							 style="color: red">Collar width is required</div>
+						</div>
 
-       			<div class="form-group col-sm-6">
-       				<label for="">Chest</label>
-       				<input type="text" class="form-control" [formControl]="customizeProductForm.controls['chest']" (keypress)="numbersOnly($event)">
+						<div class="form-group col-sm-6">
+							<label for="">Chest</label>
+							<input type="text" class="form-control" [formControl]="customizeProductForm.controls['chest']" (keypress)="numbersOnly($event)">
 
-       				<div *ngIf="customizeProductForm.controls['chest'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Chest width is required</div>
-       			</div>
-       		</div>
+							<div *ngIf="customizeProductForm.controls['chest'].hasError('required') && customSubmitAttempt" class="small form-error"
+							 style="color: red">Chest width is required</div>
+						</div>
+					</div>
 
-       		<div class="row">
-       			<div class="form-group col-sm-6">
-       				<label for="">Waist</label>
-       				<input type="text" class="form-control" [formControl]="customizeProductForm.controls['waist']" (keypress)="numbersOnly($event)">
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label for="">Waist</label>
+							<input type="text" class="form-control" [formControl]="customizeProductForm.controls['waist']" (keypress)="numbersOnly($event)">
 
-       				<div *ngIf="customizeProductForm.controls['waist'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Color is required</div>
-       			</div>
+							<div *ngIf="customizeProductForm.controls['waist'].hasError('required') && customSubmitAttempt" class="small form-error"
+							 style="color: red">Color is required</div>
+						</div>
 
-       			<div class="form-group col-sm-6">
-       				<label for="">Inside Legs</label>
-       				<input type="text" class="form-control" [formControl]="customizeProductForm.controls['insideLegs']" (keypress)="numbersOnly($event)">
+						<div class="form-group col-sm-6">
+							<label for="">Inside Legs</label>
+							<input type="text" class="form-control" [formControl]="customizeProductForm.controls['insideLegs']" (keypress)="numbersOnly($event)">
 
-       				<div *ngIf="customizeProductForm.controls['insideLegs'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Inside legs width is required</div>
-       			</div>
-       		</div>
+							<div *ngIf="customizeProductForm.controls['insideLegs'].hasError('required') && customSubmitAttempt" class="small form-error"
+							 style="color: red">Inside legs width is required</div>
+						</div>
+					</div>
 
-       		<div class="row">
-       			<div class="form-group col-sm-6">
-       				<label for="">Upper Body Length</label>
-       				<input type="text" class="form-control" [formControl]="customizeProductForm.controls['upperBodyLength']" (keypress)="numbersOnly($event)">
+					<div class="row">
+						<div class="form-group col-sm-6">
+							<label for="">Upper Body Length</label>
+							<input type="text" class="form-control" [formControl]="customizeProductForm.controls['upperBodyLength']" (keypress)="numbersOnly($event)">
 
-       				<div *ngIf="customizeProductForm.controls['upperBodyLength'].hasError('required') && customSubmitAttempt" class="small form-error" style="color: red">Upper body length is required</div>
-       			</div>
-       		</div>
+							<div *ngIf="customizeProductForm.controls['upperBodyLength'].hasError('required') && customSubmitAttempt" class="small form-error"
+							 style="color: red">Upper body length is required</div>
+						</div>
+					</div>
 
-       		<div class="row">
-       			 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-       			 <button type="submit" class="btn btn-primary">Save changes</button>
-       		</div>
+					<div class="row">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="submit" class="btn btn-primary">Save changes</button>
+					</div>
 
 
-       	</form>
-      </div>
-     <!--  <div class="modal-footer">
+				</form>
+			</div>
+			<!--  <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary">Save changes</button>
       </div> -->
-    </div>
-  </div>
+		</div>
+	</div>
 </div>
 
 <section id="product-description" class="padded">
@@ -225,87 +236,93 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<form style="" [formGroup]="reviewForm" (ngSubmit)="saveReview(reviewForm.value)" novalidate>
-				  <h4 class="boldest">Submit a Review</h4>
+					<h4 class="boldest">Submit a Review</h4>
 					<div class="raty" data-score="1"></div>
 					<br>
-				  <div class="form-group">
-				  	<label for="">Your Name</label>
-				    <input type="text" class="form-control" [(ngModel)]="review.name" [formControl]="reviewForm.controls['name']" required>
+					<div class="form-group">
+						<label for="">Your Name</label>
+						<input type="text" class="form-control" [(ngModel)]="review.name" [formControl]="reviewForm.controls['name']" required>
 
-				     <div *ngIf="reviewForm.controls['name'].hasError('required') && reviewSubmitAttempt" style="color: red">Name is required</div>
-				  </div>
+						<div *ngIf="reviewForm.controls['name'].hasError('required') && reviewSubmitAttempt" style="color: red">Name is required</div>
+					</div>
 
-				   <div class="form-group">
-				  	<label for="">Your Email</label>
-				    <input type="text" class="form-control" [(ngModel)]="review.email" [formControl]="reviewForm.controls['email']" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" required>
+					<div class="form-group">
+						<label for="">Your Email</label>
+						<input type="text" class="form-control" [(ngModel)]="review.email" [formControl]="reviewForm.controls['email']" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$"
+						 required>
 
-				     <div *ngIf="reviewForm.controls['email'].hasError('required') && reviewSubmitAttempt" style="color: red">Email is required</div>
+						<div *ngIf="reviewForm.controls['email'].hasError('required') && reviewSubmitAttempt" style="color: red">Email is required</div>
 
-				     <div *ngIf="reviewForm.controls['email'].hasError('pattern')  && reviewSubmitAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
-				  </div>
+						<div *ngIf="reviewForm.controls['email'].hasError('pattern')  && reviewSubmitAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
+					</div>
 
-				  <div class="form-group">
-				  	<label for="">Comment</label>
-				    <textarea class="form-control" [(ngModel)]="review.comment" [formControl]="reviewForm.controls['comment']" required></textarea>
+					<div class="form-group">
+						<label for="">Comment</label>
+						<textarea class="form-control" [(ngModel)]="review.comment" [formControl]="reviewForm.controls['comment']" required></textarea>
 
-				     <div *ngIf="reviewForm.controls['comment'].hasError('required') && reviewSubmitAttempt" style="color: red">Comment is required</div>
-				  </div>
+						<div *ngIf="reviewForm.controls['comment'].hasError('required') && reviewSubmitAttempt" style="color: red">Comment is required</div>
+					</div>
 
-				  <div class="form-actions">
-				  	<button type="submit" class="btn btn-accent">Submit Review</button>
-				  </div>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-accent">Submit Review</button>
+					</div>
 				</form>
 			</div>
 
 			<div class="col-sm-6">
 				<div class="rating-block float-right">
 					<h5>Average rating</h5>
-					<h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
+					<h2 class="bold padding-bottom-7">4.3
+						<small>/ 5</small>
+					</h2>
 					<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 					</button>
 					<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 					</button>
 					<button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 					</button>
 					<button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 					</button>
 					<button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-					  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+						<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 					</button>
 				</div>
 			</div>
-		</div>  <!-- .row -->
+		</div>
+		<!-- .row -->
 
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="review-block">
-					<div class="row"  *ngFor="let review of product.reviews">
+					<div class="row" *ngFor="let review of product.reviews">
 						<div class="col-sm-3">
 							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
-							<div class="review-block-name"><a href="#">{{review.reviewer_name}}</a></div>
+							<div class="review-block-name">
+								<a href="#">{{review.reviewer_name}}</a>
+							</div>
 							<!--{{review.timestamp | date}}<br/> -->
 							<div class="review-block-date">{{review.timestamp | amTimeAgo}}</div>
 						</div>
 						<div class="col-sm-9">
 							<div class="review-block-rate">
 								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
 								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
 								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
 								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
 								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
 								</button>
 							</div>
 							<!-- <div class="review-block-title">this was nice in buy</div> -->
@@ -323,54 +340,56 @@
 
 <section id="related-products" class="padded">
 	<div class="container">
-		<div class="section-header font-2">Related Collections <span class="big-dot">...</span></div>
+		<div class="section-header font-2">Related Collections
+			<span class="big-dot">...</span>
+		</div>
 		<div class="responsive">
-		    <div>
-		    <div style="background: #d6dee0; width: 200px; height: 180px">
-		    	<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
-		    </div>
+			<div>
+				<div style="background: #d6dee0; width: 200px; height: 180px">
+					<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
+				</div>
+			</div>
+			<div>
+				<div style="background: #d6dee0; width: 200px; height: 180px">
+					<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
+				</div>
+			</div>
+			<div>
+				<div style="background: #d6dee0; width: 200px; height: 180px">
+					<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
+				</div>
+			</div>
+			<div>
+				<div style="background: #d6dee0; width: 200px; height: 180px">
+					<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
+				</div>
+			</div>
+			<div>
+				<div style="background: #d6dee0; width: 200px; height: 180px">
+					<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
+				</div>
+			</div>
+			<div>
+				<div style="background: #d6dee0; width: 200px; height: 180px">
+					<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
+				</div>
+			</div>
+			<div>
+				<div style="background: #d6dee0; width: 200px; height: 180px">
+					<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
+				</div>
+			</div>
+			<div>
+				<div style="background: #d6dee0; width: 200px; height: 180px">
+					<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
+				</div>
+			</div>
+			<div>
+				<div style="background: #d6dee0; width: 200px; height: 180px">
+					<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
+				</div>
+			</div>
 		</div>
-		    <div>
-		    <div style="background: #d6dee0; width: 200px; height: 180px">
-		    	<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
-		    </div>
-		</div>
-		    <div>
-		    <div style="background: #d6dee0; width: 200px; height: 180px">
-		    	<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
-		    </div>
-		</div>
-		    <div>
-		    <div style="background: #d6dee0; width: 200px; height: 180px">
-		    	<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
-		    </div>
-		</div>
-		    <div>
-		    <div style="background: #d6dee0; width: 200px; height: 180px">
-		    	<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
-		    </div>
-		</div>
-		    <div>
-		    <div style="background: #d6dee0; width: 200px; height: 180px">
-		    	<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
-		    </div>
-		</div>
-		    <div>
-		    <div style="background: #d6dee0; width: 200px; height: 180px">
-		    	<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
-		    </div>
-		</div>
-		<div>
-		    <div style="background: #d6dee0; width: 200px; height: 180px">
-		    	<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
-		    </div>
-		</div>
-		<div>
-		    <div style="background: #d6dee0; width: 200px; height: 180px">
-		    	<!-- <img src="/assets/img/denim1.jpg" width="200px" height="180px" alt=""> -->
-		    </div>
-		</div>
-		 </div>
 		<!-- .................. -->
 		<div class="text-center">
 			<!-- <button class="btn btn-outline-accent btn-rounded load-more btn-accent">Load-more</button> -->

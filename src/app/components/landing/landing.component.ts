@@ -18,10 +18,11 @@ export class LandingComponent implements OnInit {
   constructor( private productSrv :ProductService) { }
 
   ngOnInit() {
-  	this.fetchNewArrivals();
-  	this.fetchTopFiveStores();
-    this.fetchMen();
     this.fetchWomen();
+    this.fetchMen();
+  	this.fetchNewArrivals();
+
+  	// this.fetchTopFiveStores();
     // localStorage.removeItem('cart');
     // localStorage.removeItem('auth_token');
     // localStorage.removeItem('checkout');
@@ -30,32 +31,43 @@ export class LandingComponent implements OnInit {
 
   }
 
-  fetchTopFiveStores(){
+  // fetchTopFiveStores(){
 
-  }
+  // }
 
-  fetchNewArrivals(){
-      this.productSrv.fetchNewArrivals().then(response => this.newArrivals = response.results)
-    //.catch(err => this.error = err)
+  // fetchNewArrivals(){
+  //     this.productSrv.fetchNewArrivals().then(response => this.newArrivals = response.results)
+  //   //.catch(err => this.error = err)
+  // }
+
+  fetchNewArrivals() {
+    this.productSrv.fetchNewArrivals()
+    .subscribe(res => {
+      this.newArrivals = res;
+      // console.log(this.newArrivals);
+    }, err => {
+      console.log(err);
+    })
   }
 
   fetchWomen(){
     this.productSrv.fetchHer()
     .subscribe(res =>{
-        
-      this.hers = res.results
-    }, error =>{
-        
-        let msg = JSON.parse(error._body)['message'];
-        
-        this.error = msg;
-        
+      this.hers = res;
+      // console.log(this.hers);
+    }, err =>{
+      console.log(err);
     })
-    //.then(response => this.hers = response.results)
   }
 
-  fetchMen(){
-    this.productSrv.fetchHim().then(response => this.his = response.results)
+  fetchMen() {
+    this.productSrv.fetchHim()
+    .subscribe(res => {
+      this.his = res;
+      // console.log(this.his);
+    }, err => {
+      console.log(err);
+    })
   }
 
 }

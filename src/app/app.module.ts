@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpModule,  Http } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { MomentModule } from 'angular2-moment';
@@ -40,28 +40,28 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 const appRoutes: Routes = [
-  
-    { path: '', component: LandingComponent   },
-    { path: 'product/:id/:slug', component: ProductDetailComponent },
-    { path: 'store/:store', component: StoreDetailComponent },
-    //{ path: 'register', component: RegisterComponent },
-    { path: 'category/:category/:productType/:sub', component: CategoryDetailComponent },
-    { path: 'cart', component: ShoppingCartComponent },
-     { path: 'user-profile', component: UserProfileComponent },
-    { path: 'clearance/:category/:productType/:sub', component: ClearanceSalesComponent },
-    { path: 'new-arrivals/:category/:productType/:sub', component: NewArrivalsComponent },
-    //{ path: 'login', component: LoginComponent },
-     { path: 'me', component: UserProfileComponent },
-     { path: 'checkout', component: CheckoutComponent },
-      { path: 'search', component: SearchResultsComponent },
-      { path: 'terms-conditions', component: TermsConditionsComponent },
-      { path: 'shipping-returns', component: ShippingReturnsComponent },
-      { path: 'about-us', component: AboutComponent },
-      { path: 'faqs', component: FaqsComponent },
-      { path: 'privacy-policy', component: PrivacyPolicyComponent },
-      { path: 'login', component: SignInComponent },
-      { path: 'register', component: SignUpComponent },
-       { path: 'contact-us', component: ContactComponent },
+
+  { path: '', component: LandingComponent },
+  { path: 'product/:id/:slug', component: ProductDetailComponent },
+  { path: 'store/:store', component: StoreDetailComponent },
+  //{ path: 'register', component: RegisterComponent },
+  { path: 'category/:category/:productType/:sub', component: CategoryDetailComponent },
+  { path: 'cart', component: ShoppingCartComponent },
+  { path: 'user-profile', component: UserProfileComponent },
+  { path: 'clearance/:category/:productType/:sub', component: ClearanceSalesComponent },
+  { path: 'new-arrivals/:category/:productType/:sub', component: NewArrivalsComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'me', component: UserProfileComponent },
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'search', component: SearchResultsComponent },
+  { path: 'terms-conditions', component: TermsConditionsComponent },
+  { path: 'shipping-returns', component: ShippingReturnsComponent },
+  { path: 'about-us', component: AboutComponent },
+  { path: 'faqs', component: FaqsComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  // { path: 'login', component: SignInComponent },
+  { path: 'register', component: SignUpComponent },
+  { path: 'contact-us', component: ContactComponent },
 ]
 
 
@@ -97,7 +97,7 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,  HttpModule ,FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
+    HttpClientModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
     MomentModule,
   ],
   providers: [Globals,],

@@ -12,160 +12,156 @@ import { ExchangeRateService } from '../../services/exchange-rate.service';
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  providers: [ CategoryService , StoreService, CartService, ProductService, ProductTypesService,
-  CurrencyService, ExchangeRateService]
+  providers: [CategoryService, StoreService, CartService, ProductService, ProductTypesService,
+    CurrencyService, ExchangeRateService]
 })
 export class HeaderComponent implements OnInit {
   t = localStorage;
-  categorys:any[];
-  stores:any[];
-  productTypes:any[];
-  currencys:any[];
-  exchange_rates :any[];
-  selectedCategory:any;
-  selectedProductType:any;
+  categorys: any[];
+  stores: any[];
+  productTypes: any[];
+  currencys: any[];
+  exchange_rates: any[];
+  selectedCategory: any;
+  selectedProductType: any;
   error: any;
   @Input()
   cart: any[];
   @Input()
-  customer: Object= {};
-  constructor(private categorySrv:CategoryService, private storeSrv: StoreService, private currencySrv: CurrencyService,
-   private cartSrv: CartService, private productSrv :ProductService, private productTypeSrv: ProductTypesService, 
-   private rateSrv: ExchangeRateService) { }
+  customer: Object = {};
+  constructor(private categorySrv: CategoryService, private storeSrv: StoreService, private currencySrv: CurrencyService,
+    private cartSrv: CartService, private productSrv: ProductService, private productTypeSrv: ProductTypesService,
+    private rateSrv: ExchangeRateService) { }
 
   ngOnInit() {
-    //localStorage.clear();
-  	this.fetchProductsByCategory();
-  	this.fetchProductsByStore();
-  	this.fetchClearanceSales();
-    this.getCart();
-    this.fetchCategories();
-    this.fetchStores();
-    this.fetchProductTypes();
-    this.getCustomer();
-    this.fetchCurrencys();
-    this.fetchExchangeRates()
-    if(!localStorage.getItem('currency')){
+    if (!localStorage.getItem('currency')) {
       localStorage.setItem('currency', 'GBP');
     }
+
+    this.getCustomer();
+    this.fetchCategories();
+    this.fetchCurrencys();
+    this.getCart();
+    
+    // this.fetchStores();
+    // this.fetchProductTypes();
+    // this.fetchProductsByCategory();
+    // this.fetchProductsByStore();
+    // this.fetchClearanceSales();
+    // this.fetchExchangeRates()
+
   }
-
-  fetchProductsByCategory(){
-
-  };
-
-  fetchProductsByStore(){
-
-  };
-
-  fetchClearanceSales(){
-
-  };
 
   fetchCategories(){
-    
-   this.categorySrv.fetchCategories().subscribe(
-         data => {
-               this.categorys = data.results;
-
-         }, error =>{
-        
-        let msg = JSON.parse(error._body)['message'];
-        
-        this.error = msg;
-        
-    });//.then(response => this.categorys = response.results)
+    this.categorySrv.fetchCategories().subscribe(
+      res => {
+        this.categorys = res;
+        console.log(this.categorys);
+      }, err => {
+        console.log(err);
+      }
+    )
   }
 
-  fetchStores(){
-    
-   this.storeSrv.fetchStores().subscribe(
-         data => {
-               this.stores = data.results;
+  fetchCurrencys() {
 
-         }, error =>{
-        
-        let msg = JSON.parse(error._body)['message'];
-        
-        this.error = msg;
-        
-    });//.then(response => this.stores = response.results)
+    this.currencySrv.fetchCurrencys()
+      .subscribe( res => {
+        this.currencys = res;
+        console.log(this.currencys);
+      }, err => {
+        console.log(err);
+      });
   }
 
-  fetchCurrencys(){
-    
-   this.currencySrv.fetchCurrencys().subscribe(
-         data => {
-               this.currencys = data.results;
+  getCart() {
 
-         }, error =>{
-        
-        let msg = JSON.parse(error._body)['message'];
-        
-        this.error = msg;
-        
-    });//.then(response => this.currencys = response.results)
+    this.cart = this.cartSrv.loadCart()
   }
 
-fetchExchangeRates(){
-    
-   this.rateSrv.fetchRates().then(response => {
-     
-    this.exchange_rates = response.results;
-     let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
-     localStorage.setItem('rate', selected_currency.rate);
-   });
+  // fetchStores() {
+
+  //   this.storeSrv.fetchStores().subscribe(
+  //     res => {
+  //       this.stores = res;
+  //       console.log(this.stores);
+  //     }, err => {
+  //       console.log(err);
+  //     });
+  // }
+
+  // fetchProductTypes() {
+  //   this.productTypeSrv.fetchProductTypes().subscribe(
+  //     res => {
+  //       this.productTypes = res;
+  //     }, err => {
+  //       // let msg = JSON.parse(err._body)['message'];
+  //       // this.error = msg;
+  //       console.log(err);
+  //     });
+  // }
+
+  setCategory(x){
+    this.selectedCategory = x;
+    // console.log(x);
+  }
+
+  setProductType(x){
+    this.selectedProductType = x;
+    // console.log(x);
+  }
+ 
+
+  getCustomer() {
+    this.customer = JSON.parse(localStorage.getItem('customer'));
+  }
+
+  // fetchProductsByCategory() {
+
+  // };
+
+  // fetchProductsByStore() {
+
+  // };
+
+  // fetchClearanceSales() {
+
+  // };
+
+  // fetchExchangeRates() {
+
+  //   this.rateSrv.fetchRates().then(response => {
+
+  //     this.exchange_rates = response.results;
+  //     let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
+  //     localStorage.setItem('rate', selected_currency.rate);
+  //   });
+
+  // }
+
+  // searchProduct(x) {
+
+  //   // this.productSrv.searchProduct(x);
+  //   window.location.href = '/search/?q=' + x;
+  // }
+
   
-  }
 
-  searchProduct(x){
   
-   // this.productSrv.searchProduct(x);
-   window.location.href = '/search/?q=' + x;
-  }
 
-  getCart(){
+  // changeCurrency(evt) {
+  //   localStorage.setItem('currency', evt.target.value);
+  //   let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
+  //   localStorage.setItem('rate', selected_currency.rate);
 
-    this.cart = this.cartSrv.loadCart()//.then(response => this.cart = response)
-    
-  }
+  // }
 
-  getCustomer(){
-    this.customer =  JSON.parse( localStorage.getItem('customer'));
-   
-  }
+  // setProductType(x) {
+  //   this.selectedProductType = x;
+  // }
 
-  fetchProductTypes(){
-    this.productTypeSrv.fetchProductTypes().subscribe(
-         data => {
-               this.productTypes = data.results;
+  // setCustomerFromLogin(_customer: Object) {
 
-         }, error =>{
-        
-        let msg = JSON.parse(error._body)['message'];
-        
-        this.error = msg;
-        
-    });//.then(response => this.productTypes = response.results)
-  }
-
- setCategory(x){
-   this.selectedCategory = x;
- }
-
- changeCurrency(evt){
-     localStorage.setItem('currency' , evt.target.value);
-     let selected_currency = this.exchange_rates.find(x =>  x['currency']['code'] == localStorage.getItem('currency'));
-     localStorage.setItem('rate', selected_currency.rate);
-
- }
-
- setProductType(x){
-   this.selectedProductType = x;
- }
-
- setCustomerFromLogin(_customer:Object){
-   
-     this.customer = _customer;
-   }
+  //   this.customer = _customer;
+  // }
 }
