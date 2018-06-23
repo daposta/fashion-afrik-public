@@ -6,10 +6,10 @@
 				<!-- slider -->
 				<div class="slider-element">
 					<div class="slider-nav" style="display: inherit;">
-						<div *ngFor="let rp of reps" class="slider-item" attr.data-url="{{rp}}" [ngStyle]="{ 'background-image': 'url(' + rp + ')'}"></div>
+						<div *ngFor="let rp of reps" class="slider-item" [attr.data-url]="rp" [ngStyle]="{ 'background-image': 'url(' + rp + ')'}"></div>
 					</div>
 					<div class="slider-for">
-						<div class="slider-item" attr.data-url="{{product.banner_image}}" [ngStyle]="{'background-image': 'url(' + product.banner_image + ')'}"></div>
+						<div class="slider-item" [attr.data-url]="product.banner_image" [ngStyle]="{'background-image': 'url(' + product.banner_image + ')'}"></div>
 					</div>
 				</div>
 			</div>

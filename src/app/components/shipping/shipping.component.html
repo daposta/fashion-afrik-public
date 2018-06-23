@@ -3,26 +3,27 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<h5 style="margin-bottom: 20px" class="boldest">Shipping/Delivery Details</h5>
-				<form [formGroup]="shippingForm" (ngSubmit)="saveShipping()"   novalidate>
+				<form [formGroup]="shippingForm" (ngSubmit)="saveShipping()" novalidate>
 
-				   	<div class="row">
+					<div class="row">
 						<div class="form-group col-md-12">
 							<label for="">Name/Company</label>
 							<input type="text" class="form-control" [(ngModel)]="shipping.recipient" [formControl]="shippingForm.controls['name']" required>
 
-							 <div *ngIf="shippingForm.controls['name'].hasError('required') && shippingAttempt" style="color: red">Name/Company is required</div>
+							<div *ngIf="shippingForm.controls['name'].hasError('required') && shippingAttempt" style="color: red">Name/Company is required</div>
 						</div>
 					</div>
 
-				    <div class="row">
+					<div class="row">
 						<div class="form-group col-md-12">
-						    <label for="">Choose Country</label>
-						  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.country" [formControl]="shippingForm.controls['country']" required>
+							<label for="">Choose Country</label>
+							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.country" [formControl]="shippingForm.controls['country']"
+							 required>
 
-						       <option *ngFor="let item of countrys" [value]="item.country_code">{{item.name}}</option>
-						    </select>
+								<option *ngFor="let item of countrys" [value]="item.country_code">{{item.name}}</option>
+							</select>
 
-						     <div *ngIf="shippingForm.controls['country'].hasError('required') && shippingAttempt" style="color: red">Country is required</div>
+							<div *ngIf="shippingForm.controls['country'].hasError('required') && shippingAttempt" style="color: red">Country is required</div>
 						</div>
 					</div>
 
@@ -31,25 +32,26 @@
 							<label for="">Zip Code</label>
 							<input type="text" class="form-control" [(ngModel)]="shipping.zipCode" [formControl]="shippingForm.controls['zipCode']" required>
 
-							 <div *ngIf="shippingForm.controls['zipCode'].hasError('required') && shippingAttempt" style="color: red">Zip code is required</div>
+							<div *ngIf="shippingForm.controls['zipCode'].hasError('required') && shippingAttempt" style="color: red">Zip code is required</div>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="form-group col-md-12">
 							<label for="">Address Line 1</label>
-							<input type="text" class="form-control" [(ngModel)]="shipping.addressLine1" [formControl]="shippingForm.controls['addressLine1']" required>
+							<input type="text" class="form-control" [(ngModel)]="shipping.addressLine1" [formControl]="shippingForm.controls['addressLine1']"
+							 required>
 
-							 <div *ngIf="shippingForm.controls['addressLine1'].hasError('required') && shippingAttempt" style="color: red">Address1 is required</div>
+							<div *ngIf="shippingForm.controls['addressLine1'].hasError('required') && shippingAttempt" style="color: red">Address1 is required</div>
 						</div>
 
-				    </div>
+					</div>
 
-				    <div class="row">
+					<div class="row">
 
 						<div class="form-group col-md-12">
 							<label for="">Address Line 2(optional)</label>
-							<input type="text" class="form-control" [(ngModel)]="shipping.addressLine2" [formControl]="shippingForm.controls['addressLine2']" >
+							<input type="text" class="form-control" [(ngModel)]="shipping.addressLine2" [formControl]="shippingForm.controls['addressLine2']">
 						</div>
 					</div>
 
@@ -58,7 +60,7 @@
 							<label for="">City</label>
 							<input type="text" class="form-control" [(ngModel)]="shipping.city" [formControl]="shippingForm.controls['city']" required>
 
-							 <div *ngIf="shippingForm.controls['city'].hasError('required') && shippingAttempt" style="color: red">City is required</div>
+							<div *ngIf="shippingForm.controls['city'].hasError('required') && shippingAttempt" style="color: red">City is required</div>
 						</div>
 					</div>
 
@@ -67,66 +69,79 @@
 							<label for="">State/Region/Province</label>
 							<input type="text" class="form-control" [(ngModel)]="shipping.state" [formControl]="shippingForm.controls['state']" required>
 
-							 <div *ngIf="shippingForm.controls['state'].hasError('required') && shippingAttempt" style="color: red">State is required</div>
+							<div *ngIf="shippingForm.controls['state'].hasError('required') && shippingAttempt" style="color: red">State is required</div>
 						</div>
 					</div>
 
-					
 
-					
 
-					
 
-				
-					
+
+
+
+
+
 					<button type="submit" class="btn  btn-accent">Save</button>
 				</form>
 			</div>
 			<div class="col-sm-5 offset-md-1">
 				<div class="jumbotron ordinary" style="padding:40px">
 					<div class="text-center">
-						<h5 class="boldest">Your Order</h5><hr>
+						<h5 class="boldest">Your Order</h5>
+						<hr>
 					</div>
 
 					<table class="table table-striped" style="font-size: 14px">
-                   <tbody>
-                   	<tr>
-                   		<td>Change Currency</td>
-                   		<td>
-                   			<span class="select-wrapper"><select name="currency" id="currency_selector" (change)="changeCurrency($event)" >
-    <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.name}}</option>
-</select></span>
-                   		</td>
-                   	</tr>
-                       <tr>
-                           <td>Subtotal</td>
-                           <td><span>{{t.getItem('currency')}}</span>{{product_cost * t.getItem('rate') |number}}</td>
-                       </tr>
+						<tbody>
+							<!-- <tr>
+								<td>Change Currency</td>
+								<td>
+									<span class="select-wrapper">
+										<select name="currency" id="currency_selector" (change)="changeCurrency($event)">
+											<option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.name}}</option>
+										</select>
+									</span>
+								</td>
+							</tr> -->
+							<tr>
+								<td>Subtotal</td>
+								<td>
+									<span>{{t.getItem('currency')}}</span>
+									{{product_cost * t.getItem('rate') |number}}
+								</td>
+							</tr>
 
-                       <tr>
-                           <td>Shipping</td>
-                           <td>
-                               <ul id="shipping_method" class="list-unstyled">
-<li>
-<input type="radio" name="shipping_method" id="shipping_method_flat_rate1" value="1" class="shipping_method" checked="checked">
-<label for="shipping_method_flat_rate1">Within London: <span class="amount"><span>{{t.getItem('currency')}}</span>0.00</span></label> </li>
-<li>
-<input type="radio" name="shipping_method" id="shipping_method_free_shipping2" value="2" class="shipping_method">
-<label for="shipping_method_free_shipping2">Outside London</label> </li>
-</ul>
-                           </td>
-                       </tr>
+							<tr>
+								<td>Shipping</td>
+								<td>
+									<ul id="shipping_method" class="list-unstyled">
+										<li>
+											<input type="radio" name="shipping_method" id="shipping_method_flat_rate1" value="1" class="shipping_method" checked="checked">
+											<label for="shipping_method_flat_rate1">Within London:
+												<span class="amount">
+													<span>{{t.getItem('currency')}}</span>0.00</span>
+											</label>
+										</li>
+										<li>
+											<input type="radio" name="shipping_method" id="shipping_method_free_shipping2" value="2" class="shipping_method">
+											<label for="shipping_method_free_shipping2">Outside London</label>
+										</li>
+									</ul>
+								</td>
+							</tr>
 
 
-                   </tbody>
+						</tbody>
 
-                   <tfoot>
-                       <tr>
-                           <th>Subtotal</th>
-                           <th class="color-accent"><span>{{t.getItem('currency')}}</span>{{product_cost * t.getItem('rate') |number}}</th>
-                       </tr>
-                   </tfoot>
-               </table> <hr>
+						<tfoot>
+							<tr>
+								<th>Subtotal</th>
+								<th class="color-accent">
+									<span>{{t.getItem('currency')}}</span>{{product_cost * t.getItem('rate') |number}}</th>
+							</tr>
+						</tfoot>
+					</table>
+					<hr>
 
 					<!-- <div class="form-actions text-center">
 						<button class="btn btn-accent">Place Order</button>
@@ -135,6 +150,6 @@
 			</div>
 		</div>
 
-		
+
 	</div>
 </section>

@@ -3,27 +3,13 @@
     <div class="container">
         <table class="table">
             <thead>
-                <th>
-                    Product Image
-                </th>
-                <th>
-                    Product Name
-                </th>
-                <th>
-                    Unit Price
-                </th>
-                <th>
-                    Quantity
-                </th>
-                <th>
-                    Size
-                </th>
-                <th>
-                    Color
-                </th>
-                <th>
-                    Sub-Total
-                </th>
+                <th>Product Image</th>
+                <th>Product Name</th>
+                <th>Unit Price</th>
+                <th>Quantity</th>
+                <th>Size</th>
+                <th>Color</th>
+                <th>Sub-Total</th>
                 <th>
                 </th>
             </thead>
@@ -32,47 +18,37 @@
 
                 <tr *ngFor="let item of cart">
                     <td>
-                        <img src="{{item.banner_image}}" alt="" style="height: 100px; width: 100px;">
+                        <img [src]="item.product_image" alt="" style="height: 100px; width: 100px;">
                     </td>
                     <td>
-                        <div>
-                            <div>
-                                {{item.product_name}}
-                            </div>
-                        </div>
+                        {{item.product_name}}
                     </td>
                     <td>
                         <span>{{t.getItem('currency')}}</span>
                         <span>
-                            {{item.price * t.getItem('rate') |number}}
+                            {{item.sale_price * t.getItem('rate') | number}}
                         </span>
                     </td>
                     <td>
-                        <span>
-                            <i class="fa fa-caret-left" style="font-size: 20px; cursor: pointer;" (click)="decrement()"></i>
-                            <span style="font-size: 19px;">
-                                <input type="text" value="{{item.qty | number}}" readonly style="border: none; background: #FFF; max-width: 20px; margin: 0; padding: 5px;" ([ngModel])="count">
-                                <!-- {{item.qty|number}} -->
-                            </span>
-                            <i class="fa fa-caret-right" style="font-size: 20px; cursor: pointer;" (click)="increment()"></i>
+                        <span style="font-size: 19px;">
+                            <input type="text" value="{{item.qty | number}}" readonly style="border: none; background: #FFF; max-width: 20px; margin: 0; padding: 5px;"
+                                ([ngModel])="count">
                         </span>
                     </td>
                     <td>
-
-                        <span>
+                        <span style="text-transform: uppercase;">
                             {{item.size }}
                         </span>
                     </td>
                     <td>
-
-                        <span>
+                        <span style="text-transform: uppercase;">
                             {{item.color }}
                         </span>
                     </td>
                     <td>
                         <span>{{t.getItem('currency')}}</span>
                         <span>
-                            {{item.cost * t.getItem('rate') |number}}
+                            {{item.cost * t.getItem('rate') | number}}
                         </span>
                     </td>
                     <td>
@@ -85,23 +61,23 @@
 
             <tfoot>
                 <tr>
-                    <td colspan="3">
-                        <button class="btn btn-secondary boldest" (click)="goHome()">Continue Shopping</button>
-                        <button class="btn btn-light boldest" (click)="clear()">&times; Clear Shopping Cart</button>
+                    <td colspan="12">
+                        <button style="cursor: pointer;" class="btn btn-secondary boldest" (click)="goHome()">Continue Shopping</button>
+                        <!-- <button style="cursor: pointer;" class="btn btn-light boldest" (click)="clear()">&times; Clear Shopping Cart</button> -->
+                        <button style="cursor: pointer;" type="button" (click)="proceed()" [disabled]="!cart" class="btn btn-accent boldest ladda-button" data-style="expand-right">
+                            <span class="ladda-label">Proceed To Checkout &raquo;</span>
+                        </button>
                     </td>
 
-                    <td class="boldest" style="vertical-align: middle;"></td>
-                    <td>
+                    <!-- <td class="boldest" style="vertical-align: middle;"></td> -->
+                    <!-- <td>
 
-                    </td>
+                    </td> -->
                 </tr>
             </tfoot>
         </table>
         <div class="float-right">
-            <button class="btn btn-light boldest">Update Cart</button>
-            <button type="button" (click)="proceed()" [disabled]="!cart" class="btn btn-accent boldest ladda-button" data-style="expand-right">
-                <span class="ladda-label">Proceed To Checkout &raquo;</span>
-            </button>
+            <!-- <button class="btn btn-light boldest">Update Cart</button> -->
         </div>
         <div class="clearfix"></div>
     </div>
@@ -186,5 +162,5 @@
 	</div>
 </section>
  End Cart Totals -->
-<app-footer>
-</app-footer>
+<!-- <app-footer>
+</app-footer> -->

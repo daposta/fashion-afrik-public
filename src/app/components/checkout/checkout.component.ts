@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { OrderService } from '../../services/order.service';
+import { UserService } from '../../services/user.service'
 
 import { CurrencyService } from '../../services/currency.service';
 import { ExchangeRateService } from '../../services/exchange-rate.service';
@@ -8,7 +10,7 @@ import { ExchangeRateService } from '../../services/exchange-rate.service';
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
-  providers: [OrderService, CurrencyService, ExchangeRateService]
+  providers: [OrderService, CurrencyService, ExchangeRateService, UserService]
 })
 export class CheckoutComponent implements OnInit {
 
@@ -25,12 +27,21 @@ export class CheckoutComponent implements OnInit {
   paid: Boolean = false;
 
   loginForm: FormGroup;
+  loginUser: Object = {};
+  loginAttempt: boolean;
+  loading: boolean;
   product: any = {};
   customer: Object = {};
+  order: any;
+  @Output() notifyLogin: EventEmitter<Boolean> = new EventEmitter<Boolean>();
   error: any;
   constructor(fb: FormBuilder, private orderSrv: OrderService, private currencySrv: CurrencyService,
-    private rateSrv: ExchangeRateService) {
+    private rateSrv: ExchangeRateService, private userSrv: UserService, private router: Router) {
 
+    this.loginForm = fb.group({
+      'email': ['', Validators.required,],
+      'password': ['', Validators.required],
+    });
   }
 
   ngOnInit() {
@@ -45,13 +56,13 @@ export class CheckoutComponent implements OnInit {
       this.anonymous = false;
       this.customer = JSON.parse(localStorage.getItem('customer'));
       //create order
-      let order = JSON.parse(localStorage.getItem('cart'));
-      if (order) {
-        this.saveOrder(order)
+      this.order = JSON.parse(localStorage.getItem('cart'));
+      // if (order) {
+      //   this.saveOrder(order)
 
-        console.log(order);
+      //   console.log(order);
 
-      }
+      // }
 
 
     }
@@ -107,6 +118,7 @@ export class CheckoutComponent implements OnInit {
 
   saveOrder(order) {
     this.orderSrv.saveOrder(order).subscribe(order => {
+      console.log(order);
 
       localStorage.removeItem('cart');
       if (!localStorage.getItem('checkout')) {
@@ -115,7 +127,7 @@ export class CheckoutComponent implements OnInit {
       let checkout = JSON.parse(localStorage.getItem('checkout'));
       checkout['order'] = order;
       localStorage.setItem('checkout', JSON.stringify(checkout));
-      
+
     }, err => {
       console.log(err);
     });
@@ -129,7 +141,7 @@ export class CheckoutComponent implements OnInit {
 
     let order = JSON.parse(localStorage.getItem('cart'));
     if (order) {
-      // this.saveOrder(order)
+      this.saveOrder(order)
       console.log(order);
 
     }
@@ -144,6 +156,33 @@ export class CheckoutComponent implements OnInit {
 
   paymentComplete(_paid: Boolean) {
     this.paid = _paid;
+  }
+
+  login() {
+    this.loginAttempt = true;
+    this.loading = true;
+    if (this.loginForm.valid) {
+
+      this.userSrv.login(this.loginUser).subscribe(res => {
+
+        // console.log(res);
+        if (res) {
+
+          localStorage.setItem('token', res.data.token);
+          localStorage.setItem('customer', JSON.stringify(res.data.user));
+          this.customer = res.data.user;
+          this.loggedIn = true;
+          this.notifyLogin.emit(this.loggedIn);
+        }
+        // this.router.navigateByUrl('/payment');
+        this.loading = false;
+      }, err => {
+
+        console.log(err);
+        this.loading = false;
+      });
+      this.loading = false;
+    }
   }
 
 

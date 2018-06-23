@@ -84,28 +84,7 @@ export class ShoppingCartComponent implements OnInit {
       description: 'VogueAfriq Purchase',
       amount: 2000
     });
-
-    //}
   }
-
-  // increment() {
-  //   console.log('incrementing');
-  //   console.log(this.count);
-  //   this.count++;
-  //   this.update.emit({
-  //     count: this.count
-  //   })
-  //   console.log(this.count);
-  // }
-
-  // decrement() {
-  //   console.log('decrementing');
-  //   this.count--;
-  //   this.update.emit({
-  //     count: this.count
-  //   })
-  //   console.log(this.count);
-  // }
 
 
 

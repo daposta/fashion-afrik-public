@@ -5,16 +5,14 @@
       <a class="nav-link active" target="_blank" href="http://stores.vogueafriq.com">Sell on
         <b>VogueAfriq</b>
       </a>
-      <span class="greeting" *ngIf="customer; else login">Hi
-        <b>{{customer?.first_name}}</b>
-      </span>
+      <b><span class="greeting" *ngIf="customer; else login">Hi {{customer?.first_name}}</span></b>
 
       <ng-template #login>
         <span class="greeting">
           <a routerLink="/login">Login</a>
         </span>
         <span class="greeting">
-          <a routerLink="/register">Register</a>
+          <a routerLink="/login">Register</a>
         </span>
 
       </ng-template>
@@ -157,25 +155,27 @@
     </form>
 
     <ul class="navbar-nav pull-right" style="position: relative;z-index: 999">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="cart ? '/cart' : null" style="position: relative;">
+          <img src="/assets/img/cart.png" width="30" alt="cart">
+          <span *ngIf="cart?.length > 0" class="cart-bubble">{{cart?.length}}</span>
+        </a>
+      </li>
 
       <li class="nav-item dropdown avatar-dd">
         <a class="nav-link dropdown-toggle" routerLink="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
           <img src="/assets/img/avatar.png" width="30" alt="avatar">
+          <!-- <span>{{customer?.first_name}}</span> -->
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">view profile</a>
-          <a class="dropdown-item" href="#">Log out</a>
+          <a class="dropdown-item" routerLink="">Profile</a>
+          <a class="dropdown-item" routerLink="">Orders</a>
+          <a class="dropdown-item" routerLink="">Wishlist</a>
+          <a class="dropdown-item" (click)="logout()">Log out</a>
         </div>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="cart ? '/cart' : null" style="position: relative;">
-          <!-- [attr.href]="cart ? '/cart' : null" -->
-          <img src="/assets/img/cart.png" width="30" alt="cart">
-          <span *ngIf="cart?.length > 0" class="cart-bubble">{{cart?.length}}</span>
-        </a>
-      </li>
     </ul>
   </div>
 </nav>

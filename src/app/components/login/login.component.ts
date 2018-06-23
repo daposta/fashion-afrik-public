@@ -66,65 +66,41 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+
     this.loginAttempt = true;
-    this.loading = true;
+    
     if (this.loginForm.valid) {
+
+      this.loading = true;
 
       this.userSrv.login(this.loginUser).subscribe(res => {
 
-          console.log(res);
-          if (res) {
-            
-            localStorage.setItem('auth_token', res.data.token);
-            localStorage.setItem('customer', JSON.stringify(res.data.user));
-            this.customer = res.data.user;
-            this.loggedIn = true;
-            this.notifyLogin.emit(this.loggedIn);
-          }
-          this.router.navigateByUrl('/');
-          this.loading = false;
-        }, err => {
+        console.log(res);
+        if (res) {
 
-          console.log(err);
-          this.loading = false;
-        });
+          localStorage.setItem('token', res.data.token);
+          localStorage.setItem('customer', JSON.stringify(res.data.user));
+          this.customer = res.data.user;
+          this.loggedIn = true;
+          this.notifyLogin.emit(this.loggedIn);
+        }
+        this.router.navigateByUrl('/');
         this.loading = false;
+      }, err => {
+
+        console.log(err);
+        this.loading = false;
+      });
+      this.loading = false;
     }
   }
-
-  // login() {
-  //   this.loginAttempt = true;
-  //   if (this.loginForm.valid) {
-  //     this.userSrv.login(this.loginUser).subscribe(data => {
-
-  //       if (data) {
-  //         localStorage.setItem('auth_token', data.token);
-  //         localStorage.setItem('customer', JSON.stringify(data.customer));
-  //         this.customer = data.customer;
-  //         this.loggedIn = true;
-  //         this.notifyLogin.emit(this.loggedIn);
-
-  //       }
-  //       this.loginForm.reset();
-  //     }, error => {
-  //       let msg = JSON.parse(error._body)['message'];
-
-
-  //       $.toast({
-  //         text: msg,
-  //         position: 'top-center',
-  //         'icon': 'error'
-  //       })
-  //     });
-  //   }
-  // }
 
   register() {
     this.registerAttempt = true;
     if (this.registerForm.valid) {
       this.loading = true;
 
-      this.userSrv.register(this.registerUser, this.registerForm)
+      this.userSrv.register(this.registerForm.value)
         .subscribe(res => {
           console.log(res);
 

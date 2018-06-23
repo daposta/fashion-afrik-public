@@ -24,6 +24,8 @@ export class UserService {
 
 	private loggedIn = false;
 
+	authToken = localStorage.getItem('auth_token');
+
 
 	constructor(private http: HttpClient, private globals: Globals) { }
 
@@ -36,19 +38,15 @@ export class UserService {
 		return this.http.post(this.loginUrl, JSON.stringify({ email, password }), { headers })
 	}
 
+	logout(): Observable<any> {
+		const httpOptions = {
+			headers: new HttpHeaders({
+				'Authorization': 'JWT ' + this.authToken
+			})
+		};
 
-	// login(data: any) {
-	// 	//this.logout();
-	// 	let headers = new Headers();
-	// 	headers.append('Content-Type', 'application/json');
-	// 	// headers.append('Access-Control-Allow-Origin', '*') 
-	// 	let email = data["email"];
-	// 	let password = data['password'];
-	// 	return this.http.post(this.loginUrl, JSON.stringify({ email, password }), { headers })
-	// 		.map(this.extractData)
-	// 		.catch(this.handleErrorObservable);
-
-	// };
+		return this.http.get(this.logoutUrl, httpOptions)
+	}
 
 
 	// logout() {
@@ -76,7 +74,7 @@ export class UserService {
 	// 		.catch(this.handleErrorObservable);
 	// };
 
-	register(data: any, form: FormGroup): Observable<any> {
+	register(data: any): Observable<any> {
 		
 		return this.http.post(this.registerUrl, data)
 	}

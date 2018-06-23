@@ -2,12 +2,13 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CountryService } from '../../services/country.service';
 import { ShippingService } from '../../services/shipping.service';
+import { CurrencyService } from '../../services/currency.service';
 
 @Component({
   selector: 'app-shipping',
   templateUrl: './shipping.component.html',
   styleUrls: ['./shipping.component.scss'],
-  providers: [CountryService, ShippingService]
+  providers: [CountryService, ShippingService, CurrencyService]
 
 })
 export class ShippingComponent implements OnInit {
@@ -17,13 +18,14 @@ export class ShippingComponent implements OnInit {
   shipping: Object = {};
   order: Object = {};
   countrys: any[];
+  currencys: any[] = [];
   error: any;
   shippingField: Boolean = false;
   private shippingAttempt: boolean;
   @Output() notifyShipping: EventEmitter<Boolean> = new EventEmitter<Boolean>();
 
 
-  constructor(fb: FormBuilder, private countrySrv: CountryService, private shippingSrv: ShippingService) {
+  constructor(fb: FormBuilder, private countrySrv: CountryService, private shippingSrv: ShippingService, public currencySrv: CurrencyService) {
     this.shippingForm = fb.group({
       'addressLine1': ['', Validators.required,],
       'addressLine2': ['',],
@@ -36,10 +38,16 @@ export class ShippingComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.loadCountries();
+    this.fetchCurrencys();
+
     if (localStorage.getItem('checkout')) {
       this.order = JSON.parse(localStorage.getItem('checkout'))['cart'];
       this.product_cost = this.order['total_cost'];
+
+      console.log(this.order);
+      console.log(this.product_cost);
     }
     // console.log(this.order);
     // console.log(this.product_cost);
@@ -56,29 +64,37 @@ export class ShippingComponent implements OnInit {
     })
   }
 
+  fetchCurrencys() {
+    this.currencySrv.fetchCurrencys().subscribe(res => {
+      this.currencys = res
+    }, err => {
+      console.log(err);
+    })
+  }
+
   saveShipping() {
-    this.shippingAttempt = true;
+    // this.shippingAttempt = true;
 
-    if (this.shippingForm.valid) {
+    // if (this.shippingForm.valid) {
 
-      this.shippingSrv.saveShippingInfo(this.shipping).subscribe(shipping => {
+    //   this.shippingSrv.saveShippingInfo(this.shipping).subscribe(shipping => {
 
-        if (!localStorage.getItem('checkout')) {
-          localStorage.setItem('checkout', JSON.stringify({}));
-        }
-        let data = JSON.parse(localStorage.getItem('checkout'));
-        data['shipping'] = shipping.id
-        localStorage.setItem('checkout', JSON.stringify(data));
-        this.shippingField = true;
-        this.notifyShipping.emit(this.shippingField);
+    //     if (!localStorage.getItem('checkout')) {
+    //       localStorage.setItem('checkout', JSON.stringify({}));
+    //     }
+    //     let data = JSON.parse(localStorage.getItem('checkout'));
+    //     data['shipping'] = shipping.id
+    //     localStorage.setItem('checkout', JSON.stringify(data));
+    //     this.shippingField = true;
+    //     this.notifyShipping.emit(this.shippingField);
 
 
 
-      }, error => {
+    //   }, error => {
 
-      });
+    //   });
 
-    }
+    // }
   }
 
 }

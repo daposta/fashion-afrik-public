@@ -1,21 +1,56 @@
-<app-header [cart] ="cart"></app-header>
+<app-header [cart]="cart"></app-header>
 <section class="jumbotron">
 	<div class="inner-content text-center">
-		<h3 class="boldest">Checkout</h3>
+		<h3 class="boldest" *ngIf='!loggedIn===true && shipping===false'>Checkout</h3>
+		<h3 *ngIf='loggedIn===true && shipping===false'>Hello {{customer?.first_name}}</h3>
 	</div>
 </section>
-<div id="login" *ngIf='anonymous && loggedIn==false' >
-	<app-login (notifyLogin)= userLoggedIn($event) ></app-login>
+<div id="login" *ngIf='anonymous && loggedIn==false'>
+	<!-- <app-login (notifyLogin)= userLoggedIn($event) ></app-login> -->
+
+	<div class="row padded" (notifyLogin)=userLoggedIn($event) style="margin-right: 0;">
+		<div class="col-md-4" style="margin: 0 auto;">
+			<h1 style="font-size: 27px; text-align: center; margin: 20px">Signin to continue</h1>
+			<form [formGroup]="loginForm" (ngSubmit)="login()" class="loginForm" novalidate>
+				<div class="row">
+					<div class="form-group col-md-12">
+						<input type="text" class="form-control" name="email" [(ngModel)]="loginUser.email" [formControl]="loginForm.controls['email']"
+						 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" placeholder="Email Address">
+
+						<div *ngIf="loginForm.controls['email'].hasError('required') && loginAttempt" style="color: red">Email is required</div>
+
+						<div *ngIf="loginForm.controls['email'].hasError('pattern')  && loginAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
+					</div>
+
+					<div class="form-group col-md-12">
+						<input type="password" class="form-control" name="password" [(ngModel)]="loginUser.password" [formControl]="loginForm.controls['password']"
+						 placeholder="Password">
+
+						<div *ngIf="loginForm.controls['password'].hasError('required') && loginAttempt" style="color: red">Password is required</div>
+
+						<p class="float-right">
+							<a routerLink="/" style="font-size: 14px; margin: 10px 0; display: inline-block; color: #fff">
+								Forgot your Password?
+							</a>
+						</p>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-block btn-accent" [disabled]="loading">
+					Login
+					<i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+				</button>
+			</form>
+		</div>
+	</div>
 </div>
-<div id="shipping" *ngIf='loggedIn===true && shipping===false'  style="background-color: #fff;" class="padded"> 
-   <div>Hello {{customer.first_name}}</div>
-	<app-shipping (notifyShipping)= orderShippingFilled($event) ></app-shipping>
+<div id="shipping" *ngIf='loggedIn===true && shipping===false' style="background-color: #fff;" class="padded">
+	<app-shipping (notifyShipping)=orderShippingFilled($event)></app-shipping>
 </div>
 
 
 <div id="payment" *ngIf='loggedIn==true && shipping==true && paid==false'>
-<app-payment (notifyPayment)= paymentComplete($event)></app-payment>
+	<app-payment (notifyPayment)=paymentComplete($event)></app-payment>
 </div>
 <div id="confirmation" *ngIf='paid==true && shipping==true && loggedIn==true ' style="background-color: #fff;" class="padded">
-<app-confirmation ></app-confirmation>
+	<app-confirmation></app-confirmation>
 </div>

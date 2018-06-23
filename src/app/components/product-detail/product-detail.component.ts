@@ -171,7 +171,7 @@ export class ProductDetailComponent implements OnInit {
       .subscribe(
         res => {
           this.product = res;
-          console.log(this.product);
+          // console.log(this.product);
           let product_imgs = [];
 
           for (let i = 0; i < this.product['other_images'].length; i++) {
@@ -199,7 +199,7 @@ export class ProductDetailComponent implements OnInit {
     this.currencySrv.fetchCurrencys().subscribe(
       res => {
         this.currencys = res;
-        console.log(this.currencys);
+        // console.log(this.currencys);
       }, err => {
         console.log(err);
       });
@@ -208,7 +208,7 @@ export class ProductDetailComponent implements OnInit {
   fetchExchangeRates() {
     this.rateSrv.fetchRates().subscribe((res: any) => {
       this.exchange_rates = res;
-      console.log(this.exchange_rates);
+      // console.log(this.exchange_rates);
 
       let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
       localStorage.setItem('rate', selected_currency.rate);
@@ -237,15 +237,14 @@ export class ProductDetailComponent implements OnInit {
   addToCart(t) {
     this.formSubmitAttempt = true;
     if (this.cartForm.valid && this.product) {
-      console.log(this.product);
-      console.log(this.cartForm.value);
+      // console.log(this.product);
+      // console.log(this.cartForm.value);
 
       let nProduct: any = {};
       nProduct = this.product;
-      console.log(nProduct.id, nProduct.name, nProduct.banner_image);
 
-      // let data = { 'product': this.product, 'qty': t['qty'], 'size': t['size'], 'color': t['color'] }
-      let data = { 'product_id': nProduct.id, 'product_name':  nProduct.name, 'product_image': nProduct.banner_image, 'sale_price': nProduct.sale_price, 'qty': t['qty'], 'size': t['size'], 'color': t['color'] }
+      let data = { 'product_id': nProduct.id, 'product_name':  nProduct.name, 'product_image': nProduct.banner_image, 'sale_price': nProduct.sale_price, 'cost': nProduct.sale_price * parseInt(t['qty'], 10), 'qty': parseInt(t['qty'], 10), 'size': t['size'], 'color': t['color'] };
+      // console.log(data);
 
       this.cartSrv.addToCart(data);
       this.getCart();
