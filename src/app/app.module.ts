@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 import { HttpModule, Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MomentModule } from 'angular2-moment';
 
 
 import { Globals } from './shared/api';
+import { TabModule } from 'angular-tabs-component';
 
 
 import { AppComponent } from './app.component';
@@ -98,7 +99,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
-    MomentModule,
+    MomentModule, TabModule,
   ],
   providers: [Globals,],
   bootstrap: [AppComponent]
