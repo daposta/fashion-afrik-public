@@ -17,7 +17,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { LandingComponent } from './components/landing/landing.component';
-import { RegisterComponent } from './components/register/register.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
@@ -36,32 +35,29 @@ import { ShippingReturnsComponent } from './components/shipping-returns/shipping
 import { AboutComponent } from './components/about/about.component';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { FaqsComponent } from './components/faqs/faqs.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ContactComponent } from './components/contact/contact.component';
 
 const appRoutes: Routes = [
 
   { path: '', component: LandingComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: SignUpComponent },
+  { path: 'me', component: UserProfileComponent },
+  { path: 'search', component: SearchResultsComponent },
   { path: 'product/:id/:slug', component: ProductDetailComponent },
   { path: 'store/:store', component: StoreDetailComponent },
-  //{ path: 'register', component: RegisterComponent },
   { path: 'category/:category/:productType/:sub', component: CategoryDetailComponent },
   { path: 'cart', component: ShoppingCartComponent },
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'clearance/:category/:productType/:sub', component: ClearanceSalesComponent },
   { path: 'new-arrivals/:category/:productType/:sub', component: NewArrivalsComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'me', component: UserProfileComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'search', component: SearchResultsComponent },
   { path: 'terms-conditions', component: TermsConditionsComponent },
   { path: 'shipping-returns', component: ShippingReturnsComponent },
   { path: 'about-us', component: AboutComponent },
   { path: 'faqs', component: FaqsComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
-  // { path: 'login', component: SignInComponent },
-  { path: 'register', component: SignUpComponent },
   { path: 'contact-us', component: ContactComponent },
 ]
 
@@ -73,7 +69,6 @@ const appRoutes: Routes = [
     FooterComponent,
     ProductDetailComponent,
     LandingComponent,
-    RegisterComponent,
     ShoppingCartComponent,
     UserProfileComponent,
     CategoryDetailComponent,
@@ -92,7 +87,6 @@ const appRoutes: Routes = [
     AboutComponent,
     PrivacyPolicyComponent,
     FaqsComponent,
-    SignInComponent,
     SignUpComponent,
     ContactComponent,
   ],

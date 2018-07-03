@@ -14,7 +14,6 @@
 				<form [formGroup]="loginForm" (ngSubmit)="login()" class="loginForm" novalidate>
 					<div class="row">
 						<div class="form-group col-md-12">
-							<!-- <label for="email">Email Address</label> -->
 							<input type="text" class="form-control" name="email" [(ngModel)]="loginUser.email" [formControl]="loginForm.controls['email']"
 							 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" placeholder="Email Address">
 
@@ -24,7 +23,6 @@
 						</div>
 
 						<div class="form-group col-md-12">
-							<!-- <label for="password">Password</label> -->
 							<input type="password" class="form-control" name="password" [(ngModel)]="loginUser.password" [formControl]="loginForm.controls['password']"
 							 placeholder="Password">
 
@@ -49,7 +47,6 @@
 				<form [formGroup]="registerForm" (ngSubmit)="register()" class="registerForm" novalidate>
 					<div class="row">
 						<div class="form-group col-md-6">
-							<!-- <label for="email">First Name</label> -->
 							<input type="text" class="form-control" [(ngModel)]="registerUser.first_name" [formControl]="registerForm.controls['first_name']"
 							 placeholder="First Name">
 
@@ -57,7 +54,6 @@
 						</div>
 
 						<div class="form-group col-md-6">
-							<!-- <label for="email">Last Name</label> -->
 							<input type="text" class="form-control" [(ngModel)]="registerUser.last_name" [formControl]="registerForm.controls['last_name']"
 							 placeholder="Last Name">
 
@@ -67,7 +63,6 @@
 
 					<div class="row">
 						<div class="form-group col-md-12">
-							<!-- <label for="email">Email Address</label> -->
 							<input type="email" class="form-control" [(ngModel)]="registerUser.email" [formControl]="registerForm.controls['email']"
 							 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" placeholder="Email Address">
 
@@ -79,7 +74,6 @@
 
 					<div class="row">
 						<div class="form-group col-md-12">
-							<!-- <label for="password">Password</label> -->
 							<input type="password" class="form-control" [(ngModel)]="registerUser.password" [formControl]="registerForm.controls['password']"
 							 placeholder="Password" required>
 
@@ -91,7 +85,6 @@
 
 					<div class="row">
 						<div class="form-group col-md-12">
-							<!-- <label for="password">Confirm Password</label> -->
 							<input type="password" name="confirmPassword" class="form-control" [(ngModel)]="registerUser.confirmPassword" [formControl]="registerForm.controls['confirmPassword']"
 							 placeholder="Confirm Password" required>
 
@@ -105,25 +98,12 @@
 
 					<div class="row">
 						<div class="form-group col-md-6">
-							<!-- <label for="mobile">Mobile</label> -->
 							<input type="tel" name="mobile" class="form-control" [(ngModel)]="registerUser.mobile" [formControl]="registerForm.controls['mobile']"
 							 placeholder="Mobile" style="width: 100%; padding-left: 50px;" required>
 
 							<div *ngIf="registerForm.controls['mobile'].hasError('required') && registerAttempt" style="color: red">Mobile is required</div>
 
 						</div>
-
-						<div class="form-group col-md-6">
-							<input type="checkbox" [checked]="is_customer" (change)="isCustomerChange" [(ngModel)]="registerUser.is_customer" [formControl]="registerForm.controls['is_customer']" id="isCustomer">
-	
-							<label for="isCustomer">
-								<span></span>
-								Customer Account
-							</label>
-
-							<div *ngIf="registerForm.controls['is_customer'].hasError('required') && registerAttempt" style="color: red;">Account type is required</div>
-						</div>
-
 					</div>
 
 					<div class="form-actions">
@@ -137,4 +117,3 @@
 		</div>
 	</div>
 </section>
-<!-- <app-footer></app-footer> -->

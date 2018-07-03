@@ -26,34 +26,25 @@ export class UserService {
 		return this.http.post(this.loginUrl, JSON.stringify({ email, password }), { headers })
 	}
 
+	register(data: any): Observable<any> {
+
+		let formData = new FormData();
+		formData.append('first_name', data['first_name']);
+		formData.append('last_name', data['last_name']);
+		formData.append('email', data['email']);
+		formData.append('password', data['password']);
+		formData.append('mobile', data['mobile']);
+		formData.append('is_customer', data['is_customer']);
+
+		return this.http.post(this.registerUrl, formData)
+	}
+
 	logout(): Observable<any> {
 
 		let headers = new HttpHeaders({ 'Authorization': 'JWT ' + this.authToken })
 
-		return this.http.post(this.logoutUrl, {}, {headers})
+		return this.http.post(this.logoutUrl, {}, { headers })
 	}
 
-
-	// logout() {
-	// 	let v = this.page_header();
-	// 	// localStorage.clear();
-	// 	// this.router.navigate(['/login']);
-
-	// 	this.http.post(this.logoutUrl, {}, v).subscribe(res => {
-	// 		localStorage.clear();
-	// 		this.loggedIn = false;
-	// 		this.router.navigate(['/login']);
-	// 	}, (err) => {
-	// 		localStorage.clear();
-	// 		this.router.navigate(['/login']);
-
-	// 	})
-
-	// };
-
-	register(data: any): Observable<any> {
-		
-		return this.http.post(this.registerUrl, data)
-	}
 
 }

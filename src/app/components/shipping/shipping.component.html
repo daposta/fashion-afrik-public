@@ -2,61 +2,56 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<form (ngSubmit)="saveShipping()" novalidate>
+				<form (ngSubmit)="saveShipping()" class="shippingForm" novalidate>
 					<div class="row">
 						<div class="col-sm-6">
 							<h5 style="margin-bottom: 20px" class="boldest">Shipping/Delivery Information</h5>
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">First Name</label>
-									<input type="text" class="form-control" [(ngModel)]="shipping.first_name" name="first_name" required>
+									<input type="text" placeholder="First Name" class="form-control" [(ngModel)]="shipping.first_name" name="first_name" required>
 
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Last Name</label>
-									<input type="text" class="form-control" [(ngModel)]="shipping.last_name" name="last_name" required>
+									<input type="text" placeholder="Last Name" class="form-control" [(ngModel)]="shipping.last_name" name="last_name" required>
 
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Address Line 1</label>
-									<input type="text" class="form-control" [(ngModel)]="shipping.address_1" name="address_1" required>
+									<input type="text" placeholder="Address 1" class="form-control" [(ngModel)]="shipping.address_1" name="address_1" required>
 								</div>
 
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Address Line 2(optional)</label>
-									<input type="text" class="form-control" [(ngModel)]="shipping.address_2" name="address_2">
+									<input type="text" placeholder="Address 2 (Optional)" class="form-control" [(ngModel)]="shipping.address_2" name="address_2">
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Email</label>
-									<input type="email" class="form-control" [(ngModel)]="shipping.email" name="email" required>
+									<input type="email" placeholder="Email" class="form-control" [(ngModel)]="shipping.email" name="email" required>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Phone Number</label>
-									<input type="text" class="form-control" [(ngModel)]="shipping.phone" name="phone" required>
+									<input type="tel" placeholder="Phone Number" style="width: 100%; padding-left: 50px;" class="form-control" [(ngModel)]="shipping.phone"
+									 name="phone" required>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Choose Country</label>
 									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.country" name="country" (change)="fetchRegions($event)"
 									 required>
 
+										<option [ngValue]="undefined" disabled selected>Country</option>
 										<option *ngFor="let item of countrys" [value]="item.country_code">{{item.name}}</option>
 									</select>
 								</div>
@@ -64,9 +59,9 @@
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">State/Region/Province</label>
 									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.region" name="region" required>
 
+										<option [ngValue]="undefined" disabled selected>Region</option>
 										<option *ngFor="let region of regions" [value]="region.slug">{{region.name}}</option>
 									</select>
 
@@ -75,66 +70,64 @@
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">ZipCode</label>
-									<input type="text" class="form-control" [(ngModel)]="shipping.zipcode" name="zipcode">
+									<input type="text" placeholder="ZipCode" class="form-control" [(ngModel)]="shipping.zipcode" name="zipcode">
 								</div>
 							</div>
 						</div>
 
 						<div class="col-sm-6">
 							<h5 style="margin-bottom: 20px; display: inline-block" class="boldest">Billing Information</h5>
-							<input type="checkbox" (change)="setBillingToShipping()">
+							<span style="color: #EB5757;">
+								(
+									<label for="billToShip">Same as Billing</label>
+									<input type="checkbox" (change)="setBillingToShipping()" name="billToShip" style="position: relative; top: 2px;">
+								)
+							</span>
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">First Name</label>
-									<input type="text" class="form-control" [(ngModel)]="billing.first_name" name="first_name" required>
+									<input type="text" placeholder="First Name" class="form-control" [(ngModel)]="billing.first_name" name="first_name" required>
 
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Last Name</label>
-									<input type="text" class="form-control" [(ngModel)]="billing.last_name" name="last_name" required>
+									<input type="text" placeholder="Last Name" class="form-control" [(ngModel)]="billing.last_name" name="last_name" required>
 
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Address Line 1</label>
-									<input type="text" class="form-control" [(ngModel)]="billing.address_1" name="address_1" required>
+									<input type="text" placeholder="Address 1" class="form-control" [(ngModel)]="billing.address_1" name="address_1" required>
 								</div>
 
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Address Line 2(optional)</label>
-									<input type="text" class="form-control" [(ngModel)]="billing.address_2" name="address_2">
+									<input type="text" placeholder="Address 2 (Optional)" class="form-control" [(ngModel)]="billing.address_2" name="address_2">
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Email</label>
-									<input type="email" class="form-control" [(ngModel)]="billing.email" name="email" required>
+									<input type="email" placeholder="Email" class="form-control" [(ngModel)]="billing.email" name="email" required>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Phone Number</label>
-									<input type="text" class="form-control" [(ngModel)]="billing.phone" name="phone" required>
+									<input type="tel" placeholder="Phone Number" class="form-control" style="width: 100%; padding-left: 50px;" [(ngModel)]="billing.phone" name="phone" required>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">Choose Country</label>
 									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="billing.country" name="country" (change)="fetchRegions($event)"
 									 required>
 
+										<option [ngValue]="undefined" selected disabled>Country</option>
 										<option *ngFor="let item of countrys" [value]="item.country_code">{{item.name}}</option>
 									</select>
 								</div>
@@ -142,9 +135,9 @@
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">State/Region/Province</label>
 									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="billing.region" name="region" required>
 
+										<option [ngValue]="undefined" selected disabled>Region</option>
 										<option *ngFor="let region of regions" [value]="region.slug">{{region.name}}</option>
 									</select>
 
@@ -153,8 +146,7 @@
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<label for="">ZipCode</label>
-									<input type="text" class="form-control" [(ngModel)]="billing.zipcode" name="zipcode">
+									<input type="text" placeholder="ZipCode" class="form-control" [(ngModel)]="billing.zipcode" name="zipcode">
 								</div>
 							</div>
 						</div>

@@ -1,3 +1,19 @@
+.jumbotron {
+	margin: 0;
+
+	h3 {
+		color: #000;
+		font-weight: bold;
+	}
+}
+
+.jumbotron::after {
+	background: #C4C4C4;
+	opacity: 1;
+}
+
+
+
 .padded {
 	background: #E0E0E0;
 

@@ -43,7 +43,7 @@
 		</div>
 	</div>
 </div>
-<div id="shipping" *ngIf='loggedIn===true && shipping===false' style="background-color: #fff;" class="padded">
+<div id="shipping" *ngIf='loggedIn===true && shipping===false' class="padded">
 	<app-shipping (notifyShipping)=orderShippingFilled($event)></app-shipping>
 </div>
 

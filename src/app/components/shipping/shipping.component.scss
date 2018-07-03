@@ -1,0 +1,55 @@
+form.loginForm {
+    margin-bottom: 80px;
+}
+
+form {
+
+    .boldest {
+        color: #EB5757 !important;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+        
+        .form-control::placeholder {
+            font-style: normal;
+            text-transform: unset;
+            letter-spacing: 1.5px;
+            word-spacing: 1px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 0;
+            outline: none;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        select {
+            border: none;
+            border-radius: 0;
+            height: 50px;
+        }
+
+        select:required:invalid {
+            color: #999;
+        }
+        
+        option {
+            color: #000;
+        }
+    }
+}
+
+:host ::ng-deep .intl-tel-input {
+    width: 100% !important;
+}
+
+:host ::ng-deep .flag-container {
+    left: 5px;
+}
