@@ -27,12 +27,12 @@
 							</select>
 						</span>
 						<span class="" style="margin-right: 10px">
-							<span>{{t.getItem('currency')}}</span> {{product.sale_price * t.getItem('rate') | number}}
+							<span>{{t.getItem('currency')}}</span> {{product.sale_price / t.getItem('rate') | number}}
 						</span>
 
 						<span class="" style="text-decoration: line-through; opacity: 0.2">
 							<small>
-								<span>{{t.getItem('currency')}}</span> {{product.discount_price * t.getItem('rate')|number}}
+								<span>{{t.getItem('currency')}}</span> {{product.discount_price / t.getItem('rate')|number}}
 							</small>
 						</span>
 					</div>
