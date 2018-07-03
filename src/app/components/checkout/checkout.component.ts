@@ -88,7 +88,17 @@ export class CheckoutComponent implements OnInit {
     this.rateSrv.fetchRates().subscribe((res: any) => {
       this.exchange_rates = res.results;
       let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
-      localStorage.setItem('rate', selected_currency.rate);
+      //localStorage.setItem('rate', selected_currency.rate);
+       if(this.product && this.product['currency  ']){
+          if (!(this.product['currency']['code']== selected_currency['currency']['code'])){
+             
+      
+            localStorage.setItem('rate', selected_currency['rate']);
+         }else{
+             localStorage.setItem('rate', String(1) );
+         }
+        
+      }
 
     }, err => {
       console.log(err);
@@ -98,7 +108,13 @@ export class CheckoutComponent implements OnInit {
   changeCurrency(evt) {
     localStorage.setItem('currency', evt.target.value);
     let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
-    localStorage.setItem('rate', selected_currency.rate);
+    //localStorage.setItem('rate', selected_currency.rate);
+    if (!(this.product['currency']['code']== selected_currency['currency']['code'])){
+
+        localStorage.setItem('rate', selected_currency['rate']);
+     }else{
+         localStorage.setItem('rate', String(1) );
+     }
 
   };
 

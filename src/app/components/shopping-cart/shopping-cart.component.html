@@ -26,7 +26,7 @@
                     <td>
                         <span>{{t.getItem('currency')}}</span>
                         <span>
-                            {{item.sale_price * t.getItem('rate') | number}}
+                            {{item.sale_price / t.getItem('rate') | number}}
                         </span>
                     </td>
                     <td>
@@ -48,7 +48,7 @@
                     <td>
                         <span>{{t.getItem('currency')}}</span>
                         <span>
-                            {{item.cost * t.getItem('rate') | number}}
+                            {{item.cost / t.getItem('rate') | number}}
                         </span>
                     </td>
                     <td>
