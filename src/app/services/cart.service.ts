@@ -94,16 +94,17 @@ export class CartService {
   };
 
   removeFromCart(data: any) {
+    console.log(data);
 
-    let productId = data['product'].id;
+    let productId = data.product_id;
     if (localStorage.getItem('cart')) {
       let cart: any = JSON.parse(localStorage.getItem('cart'));
       let index: number = -1;
       for (var i = 0; i < cart.length; i++) {
 
-        let item = cart[i];//JSON.parse(cart[i]);
+        let item = cart[i];
 
-        if (item['product']['id'] == productId) {
+        if (item.product_id == productId) {
 
           index = i;
           break;

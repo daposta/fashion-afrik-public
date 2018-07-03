@@ -171,7 +171,7 @@ export class ProductDetailComponent implements OnInit {
       .subscribe(
         res => {
           this.product = res;
-          // console.log(this.product);
+          console.log(this.product);
           let product_imgs = [];
 
           for (let i = 0; i < this.product['other_images'].length; i++) {
@@ -198,7 +198,7 @@ export class ProductDetailComponent implements OnInit {
 
     this.currencySrv.fetchCurrencys().subscribe(
       res => {
-        this.currencys = res;
+        this.currencys = res.results;
         // console.log(this.currencys);
       }, err => {
         console.log(err);
@@ -207,7 +207,7 @@ export class ProductDetailComponent implements OnInit {
 
   fetchExchangeRates() {
     this.rateSrv.fetchRates().subscribe((res: any) => {
-      this.exchange_rates = res;
+      this.exchange_rates = res.results;
       // console.log(this.exchange_rates);
 
       let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));

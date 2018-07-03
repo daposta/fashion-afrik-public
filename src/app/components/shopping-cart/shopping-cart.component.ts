@@ -2,7 +2,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { Globals } from '../../shared/api';
 import { Router } from '@angular/router';
-import { count } from 'rxjs/operator/count';
 
 declare var $: any;
 
@@ -15,17 +14,12 @@ declare var $: any;
 export class ShoppingCartComponent implements OnInit {
   t = localStorage;
   cart: any = [];
-  // qty: number;
-  // @Input() count: number;
-  // @Output() update = new EventEmitter<any>();
   host_address: string = this.globals.HOST_URL;
   constructor(private cartSrv: CartService, private router: Router, private globals: Globals) { }
 
   ngOnInit() {
 
     this.getCart();
-
-
   }
 
 
@@ -37,16 +31,7 @@ export class ShoppingCartComponent implements OnInit {
 
   getCart() {
     this.cart = this.cartSrv.loadCart();
-    console.log(this.cart);
-
-    // let count = this.count;
-    // this.count = this.cart.qty;
-
-    // this.cart.forEach(item => {
-    //   let count = this.count;
-    //   this.count = item.qty;
-    //   console.log(this.count);
-    // })
+    // console.log(this.cart);
   }
 
   clear() {

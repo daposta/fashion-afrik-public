@@ -63,16 +63,11 @@
                 <tr>
                     <td colspan="12">
                         <button style="cursor: pointer;" class="btn btn-secondary boldest" (click)="goHome()">Continue Shopping</button>
-                        <!-- <button style="cursor: pointer;" class="btn btn-light boldest" (click)="clear()">&times; Clear Shopping Cart</button> -->
-                        <button style="cursor: pointer;" type="button" (click)="proceed()" [disabled]="!cart" class="btn btn-accent boldest ladda-button" data-style="expand-right">
+                        <button style="cursor: pointer;" type="button" (click)="proceed()" [disabled]="!cart" class="btn btn-accent boldest ladda-button"
+                            data-style="expand-right">
                             <span class="ladda-label">Proceed To Checkout &raquo;</span>
                         </button>
                     </td>
-
-                    <!-- <td class="boldest" style="vertical-align: middle;"></td> -->
-                    <!-- <td>
-
-                    </td> -->
                 </tr>
             </tfoot>
         </table>
@@ -82,85 +77,3 @@
         <div class="clearfix"></div>
     </div>
 </section>
-<!--
-<section id="shipping" class="padded">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-5">
-				<h4 class="boldest">Calculate Shipping</h4> <br>
-				<form>
-  
-
-  <div class="form-group">
-    
-  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0">
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-  </div>
-
-  <div class="form-group">
-   
-  	<select class="custom-select mb-2 mr-sm-2 mb-sm-0">
-        <option selected>City</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
-  </div>
-
-  <div class="form-group">
-    <label for="">Enter PostCode</label>
-    <input type="text" class="form-control" placeholder="PostCode / Zip">
-  </div>
- <div class="form-actions">
-      <button type="submit" class="btn btn-accent">Submit</button>
- </div>
-</form>
-			</div>
-
-
-          
-                <div class="col-sm-5 offset-md-2">
-                <h4 class="boldest">Cart Totals</h4> <br>
-               <table class="table table-striped">
-                   <tbody>
-                       <tr>
-                           <td>Subtotal</td>
-                           <td>$20.00</td>
-                       </tr>
-
-                       <tr>
-                           <td>Shipping</td>
-                           <td>
-                               <ul id="shipping_method" class="list-unstyled">
-<li>
-<input type="radio" name="shipping_method" id="shipping_method_flat_rate1" value="1" class="shipping_method" checked="checked">
-<label for="shipping_method_flat_rate1">Flat rate: <span class="amount">$5.00</span></label> </li>
-<li>
-<input type="radio" name="shipping_method" id="shipping_method_free_shipping2" value="2" class="shipping_method">
-<label for="shipping_method_free_shipping2">Free shipping</label> </li>
-</ul>
-                           </td>
-                       </tr>
-
-
-                   </tbody>
-
-                   <tfoot>
-                       <tr>
-                           <th>Subtotal</th>
-                           <th class="color-accent">$425.00</th>
-                       </tr>
-                   </tfoot>
-               </table>
-                    </div>
-           
-
-		</div>
-	</div>
-</section>
- End Cart Totals -->
-<!-- <app-footer>
-</app-footer> -->

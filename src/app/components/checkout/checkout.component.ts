@@ -45,38 +45,25 @@ export class CheckoutComponent implements OnInit {
   }
 
   ngOnInit() {
-    // localStorage.removeItem('customer');
-    // localStorage.removeItem('cart');
-    //  localStorage.removeItem('auth_token');
-    // localStorage.removeItem('checkout');
-
 
     if (localStorage.getItem('customer')) {
+
       this.loggedIn = true;
       this.anonymous = false;
       this.customer = JSON.parse(localStorage.getItem('customer'));
-      //create order
-      this.order = JSON.parse(localStorage.getItem('cart'));
-      // if (order) {
-      //   this.saveOrder(order)
-
-      //   console.log(order);
-
-      // }
-
-
+      this.order = JSON.parse(localStorage.getItem('order'));
     }
 
-    if (localStorage.getItem('checkout')) {
-      let checkout = JSON.parse(localStorage.getItem('checkout'));
-      if (checkout['shipping']) {
+    if (localStorage.getItem('order')) {
+      let order = JSON.parse(localStorage.getItem('checkout'));
+      if (order) {
         this.shipping = true;
       }
-      if (checkout['paid']) {
-        this.paid = true;
-        localStorage.removeItem('checkout');
-        location.href = '/';
-      }
+      // if (checkout['paid']) {
+      //   this.paid = true;
+      //   localStorage.removeItem('checkout');
+      //   location.href = '/';
+      // }
     };
 
     this.fetchCurrencys();
@@ -99,7 +86,7 @@ export class CheckoutComponent implements OnInit {
 
   fetchExchangeRates() {
     this.rateSrv.fetchRates().subscribe((res: any) => {
-      this.exchange_rates = res;
+      this.exchange_rates = res.results;
       let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
       localStorage.setItem('rate', selected_currency.rate);
 
@@ -115,46 +102,20 @@ export class CheckoutComponent implements OnInit {
 
   };
 
-
-  saveOrder(order) {
-    this.orderSrv.saveOrder(order).subscribe(order => {
-      console.log(order);
-
-      localStorage.removeItem('cart');
-      if (!localStorage.getItem('checkout')) {
-        localStorage.setItem('checkout', JSON.stringify({}));
-      }
-      let checkout = JSON.parse(localStorage.getItem('checkout'));
-      checkout['order'] = order;
-      localStorage.setItem('checkout', JSON.stringify(checkout));
-
-    }, err => {
-      console.log(err);
-    });
-  }
-
-
   userLoggedIn(_loggedIn: Boolean) {
 
     this.loggedIn = _loggedIn;
+    console.log(this.loggedIn);
     this.customer = JSON.parse(localStorage.getItem('customer'));
-
-    let order = JSON.parse(localStorage.getItem('cart'));
-    if (order) {
-      this.saveOrder(order)
-      console.log(order);
-
-    }
-
-
   }
 
-  orderShippingFilled(shippingField: Boolean) {
+  orderShippingFilled(_shippingField: Boolean) {
 
-    this.shipping = shippingField;
+    this.shipping = _shippingField;
   }
 
   paymentComplete(_paid: Boolean) {
+    
     this.paid = _paid;
   }
 
@@ -165,7 +126,6 @@ export class CheckoutComponent implements OnInit {
 
       this.userSrv.login(this.loginUser).subscribe(res => {
 
-        // console.log(res);
         if (res) {
 
           localStorage.setItem('token', res.data.token);
@@ -174,7 +134,6 @@ export class CheckoutComponent implements OnInit {
           this.loggedIn = true;
           this.notifyLogin.emit(this.loggedIn);
         }
-        // this.router.navigateByUrl('/payment');
         this.loading = false;
       }, err => {
 
@@ -184,11 +143,4 @@ export class CheckoutComponent implements OnInit {
       this.loading = false;
     }
   }
-
-
-
-
-
-
-
 }

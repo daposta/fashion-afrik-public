@@ -53,7 +53,7 @@ export class LandingComponent implements OnInit {
   fetchWomen(){
     this.productSrv.fetchHer()
     .subscribe(res =>{
-      this.hers = res;
+      this.hers = res.results;
       // console.log(this.hers);
     }, err =>{
       console.log(err);
@@ -63,7 +63,7 @@ export class LandingComponent implements OnInit {
   fetchMen() {
     this.productSrv.fetchHim()
     .subscribe(res => {
-      this.his = res;
+      this.his = res.results;
       // console.log(this.his);
     }, err => {
       console.log(err);

@@ -1,4 +1,4 @@
-<app-header [cart] ="cart"></app-header>
+<app-header [cart]="cart"></app-header>
 <section class="jumbotron">
 	<div class="inner-content text-center">
 		<h4 class="boldest">My Account</h4>
@@ -9,98 +9,167 @@
 		<div class="row">
 			<div class="col-sm-3">
 				<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Dashboard</a>
-  <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Orders</a>
-  <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Personal Information</a>
-  <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Account Details</a>
 
-    <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Log out</a>
-</div>
+					<a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home"
+					 aria-selected="true">Dashboard</a>
+
+					<a class="nav-link" id="v-pills-orders-tab" data-toggle="pill" href="#v-pills-orders" role="tab" aria-controls="v-pills-orders"
+					 aria-selected="false">Orders</a>
+
+					<a class="nav-link" id="v-pills-information-tab" data-toggle="pill" href="#v-pills-information" role="tab" aria-controls="v-pills-information"
+					 aria-selected="false">Personal Information</a>
+
+					<!-- <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings"
+					 aria-selected="false">Account Details</a> -->
+
+					<a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings"
+					 aria-selected="false" (click)="logout()">Log out</a>
+
+				</div>
 
 			</div>
 
 			<div class="col-sm-8 offset-md-1">
 				<div class="tab-content" id="v-pills-tabContent">
-  <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-  	<div class="alert alert-info">
-					<strong>Hi User.</strong> You have a pending order. click here to update your cart.
+
+					<div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+						home tab
+					</div>
+
+					<div class="tab-pane fade" id="v-pills-orders" role="tabpanel" aria-labelledby="v-pills-orders-tab">
+						<div class="row">
+							<div class="col-md-6" *ngFor="let order of orders">
+								<div class="card">
+									<div class="card-header">
+										<div class="row">
+											<div class="col-md-8">
+												<p>Order#: {{order?.id}}</p>
+												<span>{{order?.timestamp | date: 'mediumDate'}}</span>
+											</div>
+											<div class="col-md-4">
+												<p>Order Status</p>
+												<span>{{order?.order_status}}</span>
+											</div>
+										</div>
+									</div>
+									<div class="card-body">
+										<div class="row">
+											<div class="col-md-12">
+												<span>
+													<small style="position: relative; left: 5px;">{{order?.items.length}} items</small>
+													<small style="color: #EB5757; float: right; margin-top: 5px; cursor: pointer; opacity: .9; position: relative; right: 10px;">view details</small>
+												</span>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<div class="order-img">
+													<img [src]="" alt="">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-pane fade" id="v-pills-information" role="tabpanel" aria-labelledby="v-pills-information-tab">
+
+						<div class="profile-container">
+							<h3 style="display: inline-block">My Information</h3>
+							<a routerLink="/" style="float: right; position: relative; top: 5px;">edit profile</a>
+							<hr>
+							<h5>Account Information</h5>
+							<p>
+								Name:
+								<span>{{customer?.first_name}} {{customer?.last_name}}</span>
+							</p>
+							<p>
+								Email:
+								<span>{{customer?.email}}</span>
+							</p>
+							<p>
+								Mobile:
+								<span>{{customer?.mobile}}</span>
+							</p>
+
+							<hr>
+
+							<h5>Shipping Information</h5>
+							<p>
+								Name:
+								<span>Jane Doe</span>
+							</p>
+							<p>
+								Email:
+								<span>jane@doe.com</span>
+							</p>
+							<p>
+								Address 1:
+								<span>T4 Marimpex Estate</span>
+							</p>
+							<p>
+								Address 2:
+								<span></span>
+							</p>
+							<p>
+								Country:
+								<span>United Kingdom</span>
+							</p>
+							<p>
+								Region:
+								<span>Accrington</span>
+							</p>
+							<p>
+								Zip Code:
+								<span>12338</span>
+							</p>
+						</div>
+
+
+						<!-- <form action="">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label for="">First Name</label>
+									<input type="text" class="form-control" placeholder="Enter Firstname">
+								</div>
+
+								<div class="form-group col-sm-6">
+									<label for="">Last Name</label>
+									<input type="text" class="form-control" placeholder="Enter Lastname">
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-12">
+									<label for="">Email Address</label>
+									<input type="email" class="form-control" placeholder="E.g Edwin@gmail.com">
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-sm-4">
+									<label for="">Current Password</label>
+									<input type="text" class="form-control" placeholder="Enter Password">
+								</div>
+
+								<div class="form-group col-sm-4">
+									<label for="">New Password</label>
+									<input type="text" class="form-control" placeholder="Enter Password">
+								</div>
+
+								<div class="form-group col-sm-4">
+									<label for="">Confirm New Password</label>
+									<input type="text" class="form-control" placeholder="Confirm Password">
+								</div>
+							</div>
+
+							<button class="btn btn-accent" type="submit">Save Changes</button>
+						</form> -->
+					</div>
+
+					<!-- <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"></div> -->
 				</div>
-
-				<div class="row">
-				<div class="col-md-4">
-					<div class="card">
-				  <div class="card-body text-center">
-				    Orders : <span class="boldest">4</span>
-				  </div>
-				</div>
-			</div>
-
-				<div class="col-md-4">
-					<div class="card">
-				  <div class="card-body text-center">
-				    Orders : <span class="boldest">4</span>
-				  </div>
-				</div>
-			</div>
-
-				<div class="col-md-4">
-					<div class="card">
-				  <div class="card-body text-center">
-				    Orders : <span class="boldest">4</span>
-				  </div>
-				</div>
-			</div>
-				</div>
-
-
-
-  </div>
-  <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-  	
-  </div>
-  <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-  	<form action="">
-  		<div class="row">
-  			<div class="form-group col-sm-6">
-  			<label for="">First Name</label>
-  			<input type="text" class="form-control" placeholder="Enter Firstname">
-  		</div>
-
-  		<div class="form-group col-sm-6">
-  			<label for="">Last Name</label>
-  			<input type="text" class="form-control" placeholder="Enter Lastname">
-  		</div>
-  		</div>
-  		<div class="row">
-  			<div class="form-group col-md-12">
-  			<label for="">Email Address</label>
-  			<input type="email" class="form-control" placeholder="E.g Edwin@gmail.com">
-  		</div>
-  		</div>
-			<div class="row">
-  			<div class="form-group col-sm-4">
-  			<label for="">Current Password</label>
-  			<input type="text" class="form-control" placeholder="Enter Password">
-  		</div>
-
-  		<div class="form-group col-sm-4">
-  			<label for="">New Password</label>
-  			<input type="text" class="form-control" placeholder="Enter Password">
-  		</div>
-
-  		<div class="form-group col-sm-4">
-  			<label for="">Confirm New Password</label>
-  			<input type="text" class="form-control" placeholder="Confirm Password">
-  		</div>
-  		</div>
-
-  		<button class="btn btn-accent" type="submit">Save Changes</button>
-  	</form>
-  </div>
-  <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"></div>
-</div>
 			</div>
 		</div>
 	</div>
 </section>
-<app-footer></app-footer>

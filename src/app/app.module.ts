@@ -94,12 +94,17 @@ const appRoutes: Routes = [
     FaqsComponent,
     SignInComponent,
     SignUpComponent,
-    ContactComponent
+    ContactComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule, HttpModule, FormsModule, ReactiveFormsModule, RouterModule.forRoot(appRoutes, {}),
-    MomentModule, TabModule,
+    HttpClientModule,
+    HttpModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes, {}),
+    MomentModule,
+    TabModule,
   ],
   providers: [Globals,],
   bootstrap: [AppComponent]

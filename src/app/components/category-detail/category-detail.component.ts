@@ -42,12 +42,13 @@ export class CategoryDetailComponent implements OnInit {
       this.productSrv.fetchProductsByCategory(params['category'], params['productType'], params['sub']))
       .subscribe(
         res => {
-          this.products = res;
+
+          this.products = res.results;
           this.productType = t.snapshot.params['productType'];
           this.category = t.snapshot.params['category'];
           this.sub = t.snapshot.params['sub'];
-          console.log(this.category, this.productType, this.sub);
-          console.log(this.products);
+          // console.log(this.category, this.productType, this.sub);
+          // console.log(this.products);
           a.fetchProductTypes(this.category);
         });
 
@@ -132,8 +133,10 @@ export class CategoryDetailComponent implements OnInit {
       this.productSrv.fetchProductsByCategory(params['category'], params['productType'], params['sub'], this.theFilter))
       .subscribe(
         res => {
-          this.products = res;
+
+          this.products = res.results;
         }, err => {
+
           console.log(err);
         });
   }
@@ -141,9 +144,11 @@ export class CategoryDetailComponent implements OnInit {
   fetchProductTypes(pt) {
     this.productTypeSrv.fetchProductTypes(pt).subscribe(
       res => {
-        this.productTypes = res;
-        console.log(this.productTypes);
+
+        this.productTypes = res.results;
+        // console.log(this.productTypes);
       }, err => {
+
         console.log(err)
       });
   }
@@ -151,13 +156,12 @@ export class CategoryDetailComponent implements OnInit {
   fetchCategories() {
     this.categorySrv.fetchCategories().subscribe(
       res => {
-        this.categorys = res;
-        console.log(this.categorys);
-      }, err => {
-        console.log(err);
-        // let msg = JSON.parse(error._body)['message'];
 
-        // this.error = msg;
+        this.categorys = res.results;
+        // console.log(this.categorys);
+      }, err => {
+
+        console.log(err);
       });
 
   }

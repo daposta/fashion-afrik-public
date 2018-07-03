@@ -1,45 +1,30 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import {Router} from '@angular/router';
 import { Globals } from '../shared/api';
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
 export class PaymentService {
 
-    private ordersUrl = this.globals.PAYMENTS_URL;
+  private ordersUrl = this.globals.PAYMENTS_URL;
+  private paymentsUrl = this.globals.CARDPAYMENT_URL;
+  authToken = localStorage.getItem('token');
 
-  constructor(private http: Http, private globals: Globals,  private router:Router) { }
+  constructor(private http: HttpClient, private globals: Globals) { }
 
-  processPayment(info:any){
-  	   let v = this.page_header();
-     return  this.http.post(this.ordersUrl, info, v)
-       .map(this.extractData)
-        .catch(this.handleErrorObservable);
+  processPayment(info: any): Observable<any> {
+
+    const headers = new HttpHeaders({ 'Authorization': 'JWT ' + this.authToken })
+
+    return this.http.post(this.ordersUrl, info, { headers })
   }
 
-     private extractData(res: Response) {
-        let body = res.json();
-        return body || {};
-    }
+  makePayment(payment: any): Observable<any> {
 
+    const headers = new HttpHeaders({ 'Authorization': 'JWT ' + this.authToken })
 
-     private handleErrorObservable (error: Response | any) {
-      console.error(error.message || error);
-      return Observable.throw(error.message || error);
-    }
-
-
-     private page_header(){
-     let data =  localStorage.getItem('auth_token');
-      let headers = new Headers();
-      let opt: RequestOptions;
-      headers.append('Authorization', 'JWT ' + data );
-      opt = new RequestOptions({headers: headers})  ;
-      return opt;
-  };
+    return this.http.post(this.paymentsUrl, payment, { headers })
+  }
 
 }

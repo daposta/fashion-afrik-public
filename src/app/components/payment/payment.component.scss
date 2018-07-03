@@ -1,0 +1,35 @@
+.container .row .col {
+    margin: 0 auto;
+    background: #525F7F;
+    padding: 60px;
+    min-height: 300px;
+    border-radius: 10px;
+
+    input {
+        width: 100%;
+        padding: 10px;
+        padding-left: 15px;
+        border-radius: 20px;
+        border: 0;
+        background: #7488AA;
+        outline: none;
+        color: #FFF;
+    }
+    
+    input::placeholder {
+        color: #FFF;
+        opacity: .7;
+    }
+    
+    input:focus {
+        color: #474C73;
+        background: #FFF;
+    }
+
+    button {
+        width: 100%;
+        border: 0;
+        padding: 10px;
+        border-radius: 20px;        
+    }
+}

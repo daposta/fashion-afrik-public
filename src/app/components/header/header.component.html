@@ -162,14 +162,13 @@
         </a>
       </li>
 
-      <li class="nav-item dropdown avatar-dd">
-        <a class="nav-link dropdown-toggle" routerLink="/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+      <li class="nav-item dropdown avatar-dd" *ngIf="customer">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
           aria-expanded="false">
           <img src="/assets/img/avatar.png" width="30" alt="avatar">
-          <!-- <span>{{customer?.first_name}}</span> -->
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" routerLink="">Profile</a>
+          <a class="dropdown-item" routerLink="/me">Profile</a>
           <a class="dropdown-item" routerLink="">Orders</a>
           <a class="dropdown-item" routerLink="">Wishlist</a>
           <a class="dropdown-item" (click)="logout()">Log out</a>

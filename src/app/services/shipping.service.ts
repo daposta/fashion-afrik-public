@@ -1,74 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
-import { Router } from '@angular/router';
 import { Globals } from '../shared/api';
-import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs';
-
-declare var $: any;
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 
 @Injectable()
 export class ShippingService {
 
   private shippingUrl = this.globals.SHIPPING_URL;
+  authToken = localStorage.getItem('token');
 
 
-  constructor(private http: Http, private globals: Globals, private router: Router) { }
+  constructor(private http: HttpClient, private globals: Globals) { }
 
 
-  saveShippingInfo(shipping: any) {
+  saveShippingInfo(shipping: any): Observable<any> {
 
-    //  headers.append('Content-Type', 'multipart/form-data');
-    let formData = new FormData();
-    formData.append("addressline1", shipping['addressLine1']);
-    formData.append('addressline2', shipping['addressLine2']);
-    formData.append('city', shipping['city']);
-    formData.append('country', shipping['country']);
-    formData.append('zipcode', shipping['zipCode']);
-    formData.append('recipient', shipping['recipient']);
-    let order = JSON.parse(localStorage.getItem('checkout'))['order'].data;
-    console.log(order);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW', 'Authorization': 'JWT ' + this.authToken
+      })
+    }
 
-    formData.append('order', order);
-
-
-    let v = this.page_header();
-
-
-
-    return this.http.post(this.shippingUrl, formData, v).map(this.extractData)
-      .catch(this.handleErrorObservable);
+    return this.http.post(this.shippingUrl, shipping, httpOptions)
 
   }
-
-  private extractData(res: Response) {
-    let body = res.json();
-    return body || {};
-  }
-
-
-  private handleErrorObservable(error: Response | any) {
-    console.error(error.message || error);
-    return Observable.throw(error.message || error);
-  }
-
-
-  private page_header() {
-    let data = localStorage.getItem('auth_token');
-    let headers = new Headers();
-    let opt: RequestOptions;
-    headers.append('Authorization', 'JWT ' + data);
-    opt = new RequestOptions({ headers: headers });
-    return opt;
-  };
-
-
-  private handleError(error: any) {
-    console.error('An error occurred', error);
-    return Promise.reject(error.message || error);
-  };
-
 
 }

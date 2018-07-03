@@ -90,7 +90,14 @@
     <!-- new arrivals images -->
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6" *ngFor="let item of newArrivals">
+            <div class="col-md-6">
+                <div style="background-image: url('/assets/img/banner/women-category-banner.jpg'); height: 300px; width: 100%; background-size: contain; background-repeat: no-repeat;"></div>
+            </div>
+
+            <div class="col-md-6">
+                <div style="background-image: url('/assets/img/banner/women-category-banner.jpg'); height: 300px; width: 100%; background-size: contain; background-repeat: no-repeat;"></div>
+            </div>
+            <!-- <div class="col-md-3 col-sm-6" *ngFor="let item of newArrivals">
                 <div class="item">
                     <a routerLink="/product/{{item.id}}/{{item.slug}}" class="">
                         <img src="{{ item.feature_image}}" class="img-fluid">
@@ -101,7 +108,7 @@
                     </a>
                 </div>
 
-            </div>
+            </div> -->
 
             <!-- <div class="w-100"></div> -->
 
@@ -112,29 +119,19 @@
 
 
 
-<section class="padded" id="new-arrivals">
+<section class="padded">
+
+    <div class="section-header text-center font-2">
+        # For her
+        <span class="big-dot">
+            ...
+        </span>
+    </div>
 
     <div class="container">
-        <div class="row" style="height: 350px; outline: 1px solid">
-            <div class="col-md-6">
-                <div class="section-header text-center font-2">
-                    # For her
-                    <span class="big-dot">
-                        ...
-                    </span>
-                </div>
-                women images
-            </div>
-            <div class="col-md-6">
-                women categories
-                <tabs>
-                    <tab tabTitle="Foo">
-                        I am the foo content
-                    </tab>
-                    <tab tabTitle="Bar">
-                        I am the bar content
-                    </tab>
-                </tabs>
+        <div class="row">
+            <div class="col-md-4" *ngFor="let her of hers | slice:0:2; let i = index" style="height: 400px;">
+                <div [ngStyle]="{'background-image': 'url('+ her.banner_image +')'}" style="background-repeat: no-repeat; background-position: center; width: 100%; height: 100%; background-size: contain;"></div>
             </div>
 
             <!-- <div class="col-md-3 col-sm-6" *ngFor="let her of hers">
@@ -155,7 +152,7 @@
         </div>
     </div>
 </section>
-<section class="padded" id="new-arrivals">
+<section class="padded">
 
     <div class="section-header text-center font-2">
         # For him
@@ -166,7 +163,16 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-3 col-sm-6" *ngFor="let him of his">
+            <!-- <div class="col-md-4" *ngFor="let him of his | slice:0:2; let i = index">
+                <div [ngStyle]="{ 'background-image': 'url(' + him.banner_image + ')'}" style="height: 300px; width: 100%; background-size: contain; background-position: center center; background-repeat: no-repeat;"></div>
+            </div> -->
+
+            <div class="col-md-4" *ngFor="let him of his | slice:0:2; let i = index" style="height: 400px;">
+                <div [ngStyle]="{'background-image': 'url('+ him.banner_image +')'}" style="background-repeat: no-repeat; background-position: center; width: 100%; height: 100%; background-size: contain;"></div>
+            </div>
+
+
+            <!-- <div class="col-md-3 col-sm-6" *ngFor="let him of his">
                 <div class="item">
                     <a routerLink="/product/{{him.id}}/{{him.slug}}" class="">
 
@@ -179,7 +185,7 @@
 
                 </div>
 
-            </div>
+            </div> -->
 
             <!-- <div class="w-100"></div> -->
 

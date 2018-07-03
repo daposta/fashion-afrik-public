@@ -1,13 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
-import { PasswordValidation } from '../../validators/password-confirm-validator';
-
 import { UserService } from '../../services/user.service';
-
-declare var $: any;
-
 
 @Component({
   selector: 'app-login',
@@ -68,14 +62,12 @@ export class LoginComponent implements OnInit {
   login() {
 
     this.loginAttempt = true;
-    
     if (this.loginForm.valid) {
 
       this.loading = true;
 
       this.userSrv.login(this.loginUser).subscribe(res => {
 
-        console.log(res);
         if (res) {
 
           localStorage.setItem('token', res.data.token);
@@ -98,29 +90,24 @@ export class LoginComponent implements OnInit {
   register() {
     this.registerAttempt = true;
     if (this.registerForm.valid) {
+
       this.loading = true;
 
       this.userSrv.register(this.registerForm.value)
         .subscribe(res => {
-          console.log(res);
 
           if (res) {
-            // localStorage.setItem('auth_token', res.token);
-            // localStorage.setItem('customer', JSON.stringify(res.customer));
-            this.customer = res.customer;
+            localStorage.setItem('token', res.data.token);
+            localStorage.setItem('customer', JSON.stringify(res.data.user));
+            this.customer = res.data.user;
             this.loggedIn = true;
             this.notifyLogin.emit(this.loggedIn);
           }
-          this.registerForm.reset();
+          this.router.navigateByUrl('/');
           this.loading = false;
         }, err => {
-          console.log(err)
 
-          $.toast({
-            text: 'login failed',
-            position: 'top-center',
-            icon: 'error'
-          })
+          console.log(err)
           this.loading = false;
         });
       this.loading = false;

@@ -21,3 +21,35 @@ label {
 input {
 	border: 0
 }
+
+.jumbotron {
+    margin-bottom: 0 !important;
+}
+
+.padded {
+    background: #E0E0E0;
+    min-height: 500px;
+}
+
+.card {
+
+    .card-header {
+
+        p {
+            font-size: 13px;
+            color: #EB5757;
+            font-weight: bold;
+        }
+
+        span {
+            font-size: 12px;
+            font-weight: bold;
+            opacity: .7;
+        }
+    }
+
+    small {
+        font-weight: bold;
+        opacity: .7;
+    }
+}

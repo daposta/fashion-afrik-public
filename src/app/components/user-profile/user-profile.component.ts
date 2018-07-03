@@ -1,15 +1,53 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderService } from '../../services/order.service';
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.scss']
+  styleUrls: ['./user-profile.component.scss'],
+  providers: [OrderService, UserService]
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() { }
+  orders: any[] = [];
+  customer: any = {};
+
+  constructor(private orderSrv: OrderService, private userSrv: UserService, private router: Router) { }
 
   ngOnInit() {
+
+    this.fetchCustomer();
+    this.fetchOrders();
+  }
+
+  fetchOrders() {
+
+    this.orderSrv.getOrders().subscribe(res => {
+
+      this.orders = res.data;
+      console.log(this.orders);
+    }, err => {
+
+      console.log(err);
+    })
+  }
+
+  fetchCustomer() {
+
+    this.customer = JSON.parse(localStorage.getItem('customer'));
+    // console.log(this.customer);
+  }
+
+  logout() {
+    this.userSrv.logout().subscribe(res => {
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    }, err => {
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    })
   }
 
 }

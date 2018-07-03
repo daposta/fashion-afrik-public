@@ -2,7 +2,7 @@
 <section class="jumbotron">
 	<div class="inner-content text-center">
 		<h3 class="boldest" *ngIf='!loggedIn===true && shipping===false'>Checkout</h3>
-		<h3 *ngIf='loggedIn===true && shipping===false'>Hello {{customer?.first_name}}</h3>
+		<h3 *ngIf='loggedIn===true'>Hello {{customer?.first_name}}</h3>
 	</div>
 </section>
 <div id="login" *ngIf='anonymous && loggedIn==false'>
@@ -48,7 +48,7 @@
 </div>
 
 
-<div id="payment" *ngIf='loggedIn==true && shipping==true && paid==false'>
+<div id="payment" *ngIf='loggedIn===true && shipping===true && paid==false'>
 	<app-payment (notifyPayment)=paymentComplete($event)></app-payment>
 </div>
 <div id="confirmation" *ngIf='paid==true && shipping==true && loggedIn==true ' style="background-color: #fff;" class="padded">
