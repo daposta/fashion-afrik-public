@@ -124,46 +124,7 @@ export class ProductDetailComponent implements OnInit {
 
 
   ngOnInit() {
-    //localStorage.removeItem('cart');
-    //localStorage.removeItem('checkout');
-    //  console.log(localStorage);
-
-    // this.colorSrv.fetchColors().subscribe(
-    //   data => {
-    //     this.colors = data.results;
-
-    //   }, error => {
-    //     console.log(error);        
-    //     // let msg = JSON.parse(error._body)['message'];
-
-    //     // this.error = msg;
-
-    //   });
-
-    // this.fabricSrv.fetchFabrics().subscribe(
-    //   data => {
-    //     this.fabrics = data.results;
-
-    //   }, error => {
-    //     console.log(error);
-    //     // let msg = JSON.parse(error._body)['message'];
-
-    //     // this.error = msg;
-
-    //   });
-    // this.sizeSrv.fetchSizes().subscribe(
-    //   data => {
-    //     this.sizes = data.results;
-
-    //   }, error => {
-    //     console.log(error);        
-
-    //     // let msg = JSON.parse(error._body)['message'];
-
-    //     // this.error = msg;
-
-    //   });
-
+    
 
 
     this.route.params.switchMap((params: Params) =>
@@ -190,6 +151,7 @@ export class ProductDetailComponent implements OnInit {
     this.fetchExchangeRates()
     if (!localStorage.getItem('currency')) {
       localStorage.setItem('currency', 'GBP');
+      
     }
     //  $('.summernote').summernote();
   }
@@ -211,19 +173,36 @@ export class ProductDetailComponent implements OnInit {
       // console.log(this.exchange_rates);
 
       let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
-      localStorage.setItem('rate', selected_currency.rate);
+      //localStorage.setItem('rate', selected_currency.rate);
+    
+      if(this.product && this.product['currency  ']){
+          if (!(this.product['currency']['code']== selected_currency['currency']['code'])){
+             
+      
+            localStorage.setItem('rate', selected_currency['rate']);
+         }else{
+             localStorage.setItem('rate', String(1) );
+         }
+        
+      }
     }, err => {
       console.log(err);
     })
 
   }
-
+ 
   changeCurrency(evt) {
     localStorage.setItem('currency', evt.target.value);
     let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
-    localStorage.setItem('rate', selected_currency.rate);
+    
+     if (!(this.product['currency']['code']== selected_currency['currency']['code'])){
 
-  }
+        localStorage.setItem('rate', selected_currency['rate']);
+     }else{
+         localStorage.setItem('rate', String(1) );
+     }
+
+  };
 
   numbersOnly(event: any) {
     const pattern = /[0-9\+\-\ ]/;

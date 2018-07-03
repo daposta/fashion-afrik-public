@@ -113,7 +113,7 @@
                 </h6>
                 <span class="text-center">
                   <span>{{t.getItem('currency')}}</span>
-                  <b>{{product.sale_price * t.getItem('rate') |number}}</b>
+                  <b>{{product.sale_price / t.getItem('rate') |number}}</b>
                 </span>
               </div>
             </div>
