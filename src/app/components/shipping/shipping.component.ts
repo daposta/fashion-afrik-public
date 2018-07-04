@@ -46,6 +46,15 @@ export class ShippingComponent implements OnInit {
     this.fetchCurrencys();
   }
 
+  numbersOnly(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
   loadCountries() {
     this.countrySrv.fetchCountrys().subscribe(res => {
       this.countrys = res.results;

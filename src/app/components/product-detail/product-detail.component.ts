@@ -31,6 +31,7 @@ export class ProductDetailComponent implements OnInit {
   t = localStorage;
   currencys: any[];
   exchange_rates: any[];
+  exchange_rate: number;
   product: Object = {};
   review: Object = {};
   host_address: string = this.globals.HOST_URL;
@@ -180,8 +181,10 @@ export class ProductDetailComponent implements OnInit {
              
       
             localStorage.setItem('rate', selected_currency['rate']);
+            this.exchange_rate = parseInt(localStorage.getItem('rate'));
          }else{
              localStorage.setItem('rate', String(1) );
+             this.exchange_rate = parseInt(localStorage.getItem('rate'));
          }
         
       }
@@ -198,8 +201,10 @@ export class ProductDetailComponent implements OnInit {
      if (!(this.product['currency']['code']== selected_currency['currency']['code'])){
 
         localStorage.setItem('rate', selected_currency['rate']);
+        this.exchange_rate = parseInt(localStorage.getItem('rate'));
      }else{
          localStorage.setItem('rate', String(1) );
+         this.exchange_rate = parseInt(localStorage.getItem('rate'));
      }
 
   };
@@ -222,8 +227,9 @@ export class ProductDetailComponent implements OnInit {
       let nProduct: any = {};
       nProduct = this.product;
 
-      let data = { 'product_id': nProduct.id, 'product_name':  nProduct.name, 'product_image': nProduct.banner_image, 'sale_price': nProduct.sale_price, 'cost': nProduct.sale_price * parseInt(t['qty'], 10), 'qty': parseInt(t['qty'], 10), 'size': t['size'], 'color': t['color'] };
-      // console.log(data);
+      let data = { 'product_id': nProduct.id, 'product_name':  nProduct.name, 'product_image': nProduct.banner_image, 'sale_price': nProduct.sale_price, 'cost': nProduct.sale_price * parseInt(t['qty'], 10), 'qty': parseInt(t['qty'], 10), 'size': t['size'], 'color': t['color'], 'price': nProduct.sale_price / JSON.parse(localStorage.getItem('rate')) };
+      console.log(data);
+      console.log(nProduct.sale_price, JSON.parse(localStorage.getItem('rate')));
 
       this.cartSrv.addToCart(data);
       this.getCart();

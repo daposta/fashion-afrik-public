@@ -2,157 +2,245 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<form (ngSubmit)="saveShipping()" class="shippingForm" novalidate>
+				<form (ngSubmit)="saveShipping()" class="shippingForm" #shippingForm="ngForm" novalidate>
 					<div class="row">
 						<div class="col-sm-6">
 							<h5 style="margin-bottom: 20px" class="boldest">Shipping/Delivery Information</h5>
 							<div class="row">
 								<div class="form-group col-md-12">
-									<input type="text" placeholder="First Name" class="form-control" [(ngModel)]="shipping.first_name" name="first_name" required>
+									<input type="text" placeholder="First Name" class="form-control" [(ngModel)]="shipping.first_name" name="shipping_first_name"
+									 #shipping_first_name="ngModel" required>
+
+									<div class="form-error" *ngIf="shipping_first_name.invalid && (shipping_first_name.dirty || shipping_first_name.touched)">
+										first name is required
+									</div>
 
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<input type="text" placeholder="Last Name" class="form-control" [(ngModel)]="shipping.last_name" name="last_name" required>
+									<input type="text" placeholder="Last Name" class="form-control" [(ngModel)]="shipping.last_name" name="shipping_last_name"
+									 #shipping_last_name="ngModel" required>
+
+									<div class="form-error" *ngIf="shipping_last_name.invalid && (shipping_last_name.dirty || shipping_last_name.touched)">
+										last name is required
+									</div>
 
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<input type="text" placeholder="Address 1" class="form-control" [(ngModel)]="shipping.address_1" name="address_1" required>
-								</div>
+									<input type="email" placeholder="Email" class="form-control" [(ngModel)]="shipping.email" name="shipping_email" #shipping_email="ngModel"
+									 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
 
-							</div>
-
-							<div class="row">
-								<div class="form-group col-md-12">
-									<input type="text" placeholder="Address 2 (Optional)" class="form-control" [(ngModel)]="shipping.address_2" name="address_2">
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="form-group col-md-12">
-									<input type="email" placeholder="Email" class="form-control" [(ngModel)]="shipping.email" name="email" required>
+									<div class="form-error" *ngIf="shipping_email.invalid && (shipping_email.dirty || shipping_email.touched)">
+										<div *ngIf="shipping_email.errors?.required">
+											email is required
+										</div>
+										<div *ngIf="shipping_email.errors?.pattern && shipping_email.touched">
+											email is invalid
+										</div>
+									</div>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
 									<input type="tel" placeholder="Phone Number" style="width: 100%; padding-left: 50px;" class="form-control" [(ngModel)]="shipping.phone"
-									 name="phone" required>
+									 name="shipping_phone" #shipping_phone="ngModel" (keypress)="numbersOnly($event)" required>
+
+									<div class="form-error" *ngIf="shipping_phone.invalid && (shipping_phone.dirty || shipping_phone.touched)">
+										phone number is required
+									</div>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.country" name="country" (change)="fetchRegions($event)"
-									 required>
+									<input type="text" placeholder="Address 1" class="form-control" [(ngModel)]="shipping.address_1" name="shipping_address_1"
+									 #shipping_address_1="ngModel" required>
+
+									<div class="form-error" *ngIf="shipping_address_1.invalid && (shipping_address_1.dirty || shipping_address_1.touched)">
+										address is required
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-12">
+									<input type="text" placeholder="Address 2 (Optional)" class="form-control" [(ngModel)]="shipping.address_2" name="shipping_address_2">
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-12">
+									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.country" name="shipping_country" #shipping_country="ngModel"
+									 (change)="fetchRegions($event)" required>
 
 										<option [ngValue]="undefined" disabled selected>Country</option>
 										<option *ngFor="let item of countrys" [value]="item.country_code">{{item.name}}</option>
 									</select>
+
+									<div class="form-error" *ngIf="shipping_country.invalid && (shipping_country.dirty || shipping_country.touched)">
+										country is required
+									</div>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.region" name="region" required>
+									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.region" name="shipping_region" #shipping_region="ngModel"
+									 required>
 
 										<option [ngValue]="undefined" disabled selected>Region</option>
 										<option *ngFor="let region of regions" [value]="region.slug">{{region.name}}</option>
 									</select>
 
+									<div class="form-error" *ngIf="shipping_region.invalid && (shipping_region.dirty || shipping_region.touched)">
+										region is required
+									</div>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<input type="text" placeholder="ZipCode" class="form-control" [(ngModel)]="shipping.zipcode" name="zipcode">
+									<input type="text" placeholder="ZipCode" class="form-control" [(ngModel)]="shipping.zipcode" name="shipping_zipcode" #shipping_zipcode="ngModel"
+									 required>
+
+									<div class="form-error" *ngIf="shipping_zipcode.invalid && (shipping_zipcode.dirty || shipping_zipcode.touched)">
+										zipcode is required
+									</div>
 								</div>
+
 							</div>
 						</div>
 
 						<div class="col-sm-6">
 							<h5 style="margin-bottom: 20px; display: inline-block" class="boldest">Billing Information</h5>
 							<span style="color: #EB5757;">
-								(
-									<label for="billToShip">Same as Billing</label>
-									<input type="checkbox" (change)="setBillingToShipping()" name="billToShip" style="position: relative; top: 2px;">
-								)
+								<input type="checkbox" (change)="setBillingToShipping()" name="billToShip" id="billToShip">
+								<label for="billToShip" class="checkboxLabel">
+									<span></span>
+									(Same as Billing Address)
+								</label>
 							</span>
 							<div class="row">
 								<div class="form-group col-md-12">
-									<input type="text" placeholder="First Name" class="form-control" [(ngModel)]="billing.first_name" name="first_name" required>
+									<input type="text" placeholder="First Name" class="form-control" [(ngModel)]="billing.first_name" name="billing_first_name"
+									 #billing_first_name="ngModel" required>
 
+									<div class="form-error" *ngIf="billing_first_name.invalid && (billing_first_name.dirty || billing_first_name.touched)">
+										first name is required
+									</div>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<input type="text" placeholder="Last Name" class="form-control" [(ngModel)]="billing.last_name" name="last_name" required>
+									<input type="text" placeholder="Last Name" class="form-control" [(ngModel)]="billing.last_name" name="billing_last_name"
+									 #billing_last_name="ngModel" required>
 
+									<div class="form-error" *ngIf="billing_last_name.invalid && (billing_last_name.dirty || billing_last_name.touched)">
+										last name is required
+									</div>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<input type="text" placeholder="Address 1" class="form-control" [(ngModel)]="billing.address_1" name="address_1" required>
+									<input type="email" placeholder="Email" class="form-control" [(ngModel)]="billing.email" name="email" #billing_email="ngModel"
+									 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required>
+
+									<div class="form-error" *ngIf="billing_email.invalid && (billing_email.dirty || billing_email.touched)">
+										<div *ngIf="billing_email.errors?.required">
+											email is required
+										</div>
+										<div *ngIf="billing_email.errors?.pattern && billing_email.touched">
+											email is invalid
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-12">
+									<input type="tel" placeholder="Phone Number" class="form-control" style="width: 100%; padding-left: 50px;" [(ngModel)]="billing.phone"
+									 name="billing_phone" #billing_phone="ngModel" (keypress)="numbersOnly($event)" required>
+
+									<div class="form-error" *ngIf="billing_phone.invalid && (billing_phone.dirty || billing_phone.touched)">
+										phone number is required
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="form-group col-md-12">
+									<input type="text" placeholder="Address 1" class="form-control" [(ngModel)]="billing.address_1" name="billing_address_1"
+									 #billing_address_1="ngModel" required>
+
+									<div class="form-error" *ngIf="billing_address_1.invalid && (billing_address_1.dirty || billing_address_1.touched)">
+										address is required
+									</div>
 								</div>
 
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<input type="text" placeholder="Address 2 (Optional)" class="form-control" [(ngModel)]="billing.address_2" name="address_2">
+									<input type="text" placeholder="Address 2 (Optional)" class="form-control" [(ngModel)]="billing.address_2" name="billing_address_2">
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<input type="email" placeholder="Email" class="form-control" [(ngModel)]="billing.email" name="email" required>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="form-group col-md-12">
-									<input type="tel" placeholder="Phone Number" class="form-control" style="width: 100%; padding-left: 50px;" [(ngModel)]="billing.phone" name="phone" required>
-								</div>
-							</div>
-
-							<div class="row">
-								<div class="form-group col-md-12">
-									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="billing.country" name="country" (change)="fetchRegions($event)"
-									 required>
+									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="billing.country" name="billing_country" #billing_country="ngModel"
+									 (change)="fetchRegions($event)" required>
 
 										<option [ngValue]="undefined" selected disabled>Country</option>
 										<option *ngFor="let item of countrys" [value]="item.country_code">{{item.name}}</option>
 									</select>
+
+									<div class="form-error" *ngIf="billing_country.invalid && (billing_country.dirty || billing_country.touched)">
+										country is required
+									</div>
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="billing.region" name="region" required>
+									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="billing.region" name="billing_region" #billing_region="ngModel"
+									 required>
 
 										<option [ngValue]="undefined" selected disabled>Region</option>
 										<option *ngFor="let region of regions" [value]="region.slug">{{region.name}}</option>
 									</select>
 
+									<div class="form-error" *ngIf="billing_region.invalid && (billing_region.dirty || billing_region.touched)">
+										region is required
+									</div>
+
 								</div>
 							</div>
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<input type="text" placeholder="ZipCode" class="form-control" [(ngModel)]="billing.zipcode" name="zipcode">
+									<input type="text" placeholder="ZipCode" class="form-control" [(ngModel)]="billing.zipcode" name="billing_zipcode" #billing_zipcode="ngModel"
+									 required>
+
+									<div class="form-error" *ngIf="billing_zipcode.invalid && (billing_zipcode.dirty || billing_zipcode.touched)">
+										zip code is required
+									</div>
 								</div>
+
 							</div>
 						</div>
 					</div>
 
-					<button type="submit" class="btn  btn-accent">Save and Proceed</button>
+					<button type="submit" class="btn  btn-accent" [disabled]="!shippingForm.form.valid">
+						Save and Proceed
+					</button>
 				</form>
 			</div>
 
