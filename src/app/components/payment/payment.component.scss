@@ -1,6 +1,6 @@
 .container .row .col {
     margin: 0 auto;
-    background: #525F7F;
+    background: #EB5757;
     padding: 60px;
     min-height: 300px;
     border-radius: 10px;
@@ -11,7 +11,7 @@
         padding-left: 15px;
         border-radius: 20px;
         border: 0;
-        background: #7488AA;
+        background: #f29494;
         outline: none;
         color: #FFF;
     }
@@ -31,5 +31,11 @@
         border: 0;
         padding: 10px;
         border-radius: 20px;        
+        margin-top: 30px;
+        background: #fabb05;
+        color: #FFF;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        outline: none !important;
     }
 }

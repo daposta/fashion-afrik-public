@@ -13,12 +13,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 import { Globals } from '../../shared/api';
-// import 'assets/summernote';
 import 'jquery-zoom';
 
 declare var $: any;
-
-// import  'slick-carousel';
 
 @Component({
   selector: 'app-product-detail',
@@ -58,6 +55,7 @@ export class ProductDetailComponent implements OnInit {
     private cartSrv: CartService, private colorSrv: ColorService, private sizeSrv: SizeService,
     private fabricSrv: FabricService, fb: FormBuilder, private currencySrv: CurrencyService,
     private rateSrv: ExchangeRateService) {
+
     this.cartForm = fb.group({
       'qty': ['', Validators.required],
       'size': ['', Validators.required],
@@ -79,9 +77,6 @@ export class ProductDetailComponent implements OnInit {
       'insideLegs': ['', Validators.required],
       'upperBodyLength': ['', Validators.required],
     });
-
-
-
 
     $(function () {
       $('.responsive').slick({
@@ -119,14 +114,7 @@ export class ProductDetailComponent implements OnInit {
 
   }
 
-
-
-
-
-
   ngOnInit() {
-    
-
 
     this.route.params.switchMap((params: Params) =>
       this.productSrv.findProductByUUID(params['id']))
@@ -221,15 +209,11 @@ export class ProductDetailComponent implements OnInit {
   addToCart(t) {
     this.formSubmitAttempt = true;
     if (this.cartForm.valid && this.product) {
-      // console.log(this.product);
-      // console.log(this.cartForm.value);
 
       let nProduct: any = {};
       nProduct = this.product;
 
       let data = { 'product_id': nProduct.id, 'product_name':  nProduct.name, 'product_image': nProduct.banner_image, 'sale_price': nProduct.sale_price, 'cost': nProduct.sale_price * parseInt(t['qty'], 10), 'qty': parseInt(t['qty'], 10), 'size': t['size'], 'color': t['color'], 'price': nProduct.sale_price / JSON.parse(localStorage.getItem('rate')) };
-      console.log(data);
-      console.log(nProduct.sale_price, JSON.parse(localStorage.getItem('rate')));
 
       this.cartSrv.addToCart(data);
       this.getCart();
@@ -240,7 +224,7 @@ export class ProductDetailComponent implements OnInit {
 
   getCart() {
 
-    this.cart = this.cartSrv.loadCart()//.then(response => this.cart = response)
+    this.cart = this.cartSrv.loadCart()
 
 
   }
@@ -262,7 +246,6 @@ export class ProductDetailComponent implements OnInit {
         this.reviewForm.reset();
       }, error => {
         console.log(error);
-        // let msg = JSON.parse(error._body)['message'];
       });
     }
   };

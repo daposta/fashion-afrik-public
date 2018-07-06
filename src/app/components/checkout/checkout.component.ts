@@ -14,22 +14,23 @@ import { ExchangeRateService } from '../../services/exchange-rate.service';
 })
 export class CheckoutComponent implements OnInit {
 
+  registerView: boolean = false;
+  loginView: boolean = true;
   t = localStorage;
   currencys: any[];
   exchange_rates: any[];
-  //registered:Boolean=true;
   anonymous: Boolean = true;
-
   loggedIn: Boolean = false;
-
   shipping: Boolean = false;
-
   paid: Boolean = false;
-
   loginForm: FormGroup;
+  registerForm: FormGroup;
   loginUser: Object = {};
+  registerUser: Object = {};
   loginAttempt: boolean;
+  registerAttempt: boolean;
   loading: boolean;
+  not_customer: boolean = false;
   product: any = {};
   customer: Object = {};
   order: any;
@@ -39,9 +40,26 @@ export class CheckoutComponent implements OnInit {
     private rateSrv: ExchangeRateService, private userSrv: UserService, private router: Router) {
 
     this.loginForm = fb.group({
-      'email': ['', Validators.required,],
+      'email': ['', Validators.required],
       'password': ['', Validators.required],
     });
+    
+    this.registerForm = fb.group({
+      'first_name': ['', Validators.required],
+      'last_name': ['', Validators.required],
+      'email': ['', Validators.required,],
+      'password': ['', [Validators.required, Validators.minLength(8)]],
+      'confirmPassword': ['', [Validators.required, Validators.minLength(8)]],
+      'mobile': ['', Validators.required],
+    }, { validator: this.checkPasswords }
+  )}
+
+  checkPasswords(group: FormGroup) {
+
+    let pass = group.controls['password'].value;
+    let confirmPass = group.controls['confirmPassword'].value;
+
+    return pass === confirmPass ? null : { notSame: true }
   }
 
   ngOnInit() {
@@ -49,6 +67,7 @@ export class CheckoutComponent implements OnInit {
     if (localStorage.getItem('customer')) {
 
       this.loggedIn = true;
+      this.loginView = false;
       this.anonymous = false;
       this.customer = JSON.parse(localStorage.getItem('customer'));
       this.order = JSON.parse(localStorage.getItem('order'));
@@ -72,6 +91,16 @@ export class CheckoutComponent implements OnInit {
       localStorage.setItem('currency', 'GBP');
     }
   };
+
+  toRegister() {
+    this.loginView = false;
+    this.registerView = true;
+  }
+
+  toLogin() {
+    this.registerView = false;
+    this.loginView = true;
+  }
 
   fetchCurrencys() {
 
@@ -142,21 +171,59 @@ export class CheckoutComponent implements OnInit {
 
       this.userSrv.login(this.loginUser).subscribe(res => {
 
-        if (res) {
+        if (res.data.user.is_customer === true) {
 
           localStorage.setItem('token', res.data.token);
           localStorage.setItem('customer', JSON.stringify(res.data.user));
           this.customer = res.data.user;
           this.loggedIn = true;
           this.notifyLogin.emit(this.loggedIn);
+          this.router.navigateByUrl('/');
+          this.loading = false;
+        } else {
+
+          this.not_customer = true;
         }
-        this.loading = false;
       }, err => {
+        this.notifyLogin.emit(this.loggedIn);
 
         console.log(err);
         this.loading = false;
       });
       this.loading = false;
     }
+  }
+
+  register() {
+
+    this.registerAttempt = true;
+    if (this.registerForm.valid) {
+
+      this.loading = true;
+
+      this.userSrv.register(this.registerForm.value)
+        .subscribe(res => {
+
+          if (res.data.user.is_customer === true) {
+
+            localStorage.setItem('token', res.data.token);
+            localStorage.setItem('customer', JSON.stringify(res.data.user));
+            this.customer = res.data.user;
+            this.loggedIn = true;
+            this.notifyLogin.emit(this.loggedIn);
+            this.router.navigateByUrl('/');
+            this.loading = false;
+          } else {
+  
+            this.not_customer = true;
+          }
+        }, err => {
+          this.notifyLogin.emit(this.loggedIn);
+
+          console.log(err)
+          this.loading = false;
+        });
+      this.loading = false;
+    };
   }
 }

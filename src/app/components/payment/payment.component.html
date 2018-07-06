@@ -13,22 +13,13 @@
         <div class="row">
             <div class="col-md-6 col">
                 <form novalidate (ngSubmit)="pay($event)">
-                    <div class="row">
-    
+                    <div class="row">    
                         <div class="form-group col-md-12">
                             <input type="text" placeholder="1234 1234 1234 1234" [(ngModel)]="cardnumber" name="cardnumber" size="20" data-stripe="number">
-    
-                            <!-- <div *ngIf="cardForm.controls['cardnumber'].hasError('required') && cardSubmitAttempt">
-                                card number is required
-                            </div> -->
                         </div>
     
                         <div class="form-group col-md-4">
                             <input type="text" placeholder="MM" [(ngModel)]="cardmonth" name="cardmonth" size="2" data-stripe="exp_month">
-    
-                            <!-- <div class="form-error" *ngIf="cardForm.controls['cardexpiry'].hasError('required') && cardSubmitAttempt">
-                                card expiry is required
-                            </div> -->
                         </div>
 
                         <div class="form-group col-md-4">
@@ -37,14 +28,12 @@
     
                         <div class="form-group col-md-4">
                             <input type="text" placeholder="CVV" [(ngModel)]="cardcvv" name="cardcvv" size="4" data-stripe="cvc">
-    
-                            <!-- <div class="form-error" *ngIf="cardForm.controls['cardcvv'].hasError('required') && cardSubmitAttempt">
-                                card cvv is required
-                            </div> -->
                         </div>
 
                         <div class="col-md-12">
-                            <button>PAY </button>
+                            <button>
+                                {{currency}}&nbsp;{{amount | number : '1.2-2'}}
+                            </button>
                         </div>
 
                     </div>
@@ -52,13 +41,5 @@
 
             </div>
         </div>
-
-        <!-- <form novalidate (ngSubmit)="buy($event)" [formGroup]="stripeTest">
-            <input type="text" formControlName="name" placeholder="Jane Doe">
-            <div id="card-element" class="field"></div>
-            <button type="submit">
-                BUY
-            </button>
-        </form> -->
     </div>
 </section>

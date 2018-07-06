@@ -15,7 +15,7 @@
 
 
 .padded {
-	background: #E0E0E0;
+	background: #E0E0E0 !important;
 
 	.form-title {
 		color: #000;
@@ -72,4 +72,8 @@
 
 .jumbotron {
     margin-bottom: 0 !important;
+}
+
+:host ::ng-deep .intl-tel-input {
+    width: 100% !important;
 }

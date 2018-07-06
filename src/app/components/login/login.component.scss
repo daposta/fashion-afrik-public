@@ -179,3 +179,7 @@ input[type='checkbox']:checked + label > span:before{
         transform: translate3d(0,-.5em,0) rotate(45deg);
     }
 }
+
+:host ::ng-deep .intl-tel-input {
+    width: 100% !important;
+}

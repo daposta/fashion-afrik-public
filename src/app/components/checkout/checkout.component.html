@@ -3,14 +3,18 @@
 	<div class="inner-content text-center">
 		<h3 class="boldest" *ngIf='!loggedIn===true && shipping===false'>Checkout</h3>
 		<h3 *ngIf='loggedIn===true'>Hello {{customer?.first_name}}</h3>
+
+		<span *ngIf="not_customer" style="color: #FFF; background: #EB5757; padding: 10px; position: relative; top: 20px;">
+			account does not have permission for this site
+		</span>
 	</div>
 </section>
 <div id="login" *ngIf='anonymous && loggedIn==false'>
 	<!-- <app-login (notifyLogin)= userLoggedIn($event) ></app-login> -->
 
 	<div class="row padded" (notifyLogin)=userLoggedIn($event) style="margin-right: 0;">
-		<div class="col-md-4" style="margin: 0 auto;">
-			<h1 style="font-size: 27px; text-align: center; margin: 20px">Signin to continue</h1>
+		<div class="col-md-4" style="margin: 0 auto;" *ngIf="loginView">
+			<h1 style="font-size: 27px; text-align: center; margin: 20px">Sign In to continue</h1>
 			<form [formGroup]="loginForm" (ngSubmit)="login()" class="loginForm" novalidate>
 				<div class="row">
 					<div class="form-group col-md-12">
@@ -28,6 +32,10 @@
 
 						<div *ngIf="loginForm.controls['password'].hasError('required') && loginAttempt" style="color: red">Password is required</div>
 
+						<p class="float-left">
+							<a style="font-size: 14px; margin: 10px 0; display: inline-block; color: #fff; cursor: pointer;" (click)="toRegister()">Register Here</a>
+						</p>
+
 						<p class="float-right">
 							<a routerLink="/" style="font-size: 14px; margin: 10px 0; display: inline-block; color: #fff">
 								Forgot your Password?
@@ -41,6 +49,80 @@
 				</button>
 			</form>
 		</div>
+
+		<div class="col-md-4" style="margin: 0 auto;" *ngIf="registerView">
+			<h1 style="font-size: 27px; text-align: center; margin: 20px">Sign Up to continue</h1>
+			<form [formGroup]="registerForm" (ngSubmit)="register()" class="loginForm" novalidate>
+				<div class="row">
+					<div class="form-group col-md-6">
+						<input type="text" class="form-control" [(ngModel)]="registerUser.first_name" [formControl]="registerForm.controls['first_name']"
+						 placeholder="First Name">
+
+						<div *ngIf="registerForm.controls['first_name'].hasError('required') && registerAttempt" style="color: red">First Name is required</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<input type="text" class="form-control" [(ngModel)]="registerUser.last_name" [formControl]="registerForm.controls['last_name']"
+						 placeholder="Last Name">
+
+						<div *ngIf="registerForm.controls['last_name'].hasError('required') && registerAttempt" style="color: red">Last Name is required</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<input type="email" class="form-control" [(ngModel)]="registerUser.email" [formControl]="registerForm.controls['email']"
+						 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" placeholder="Email Address">
+
+						<div *ngIf="registerForm.controls['email'].hasError('required') && registerAttempt" style="color: red">Email is required</div>
+
+						<div *ngIf="registerForm.controls['email'].hasError('pattern')  && registerAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<input type="password" class="form-control" [(ngModel)]="registerUser.password" [formControl]="registerForm.controls['password']"
+						 placeholder="Password" required>
+
+						<div *ngIf="registerForm.controls['password'].hasError('required') && registerAttempt" style="color: red">Password is required</div>
+
+						<div *ngIf="registerForm.controls['password'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<input type="password" name="confirmPassword" class="form-control" [(ngModel)]="registerUser.confirmPassword" [formControl]="registerForm.controls['confirmPassword']"
+						 placeholder="Confirm Password" required>
+
+						<div *ngIf="registerForm.controls['confirmPassword'].hasError('required') && registerAttempt" style="color: red">Confirm Password is required</div>
+
+						<div *ngIf="registerForm.hasError('notSame') && registerAttempt" style="color: red">Password fields should match</div>
+
+						<div *ngIf="registerForm.controls['confirmPassword'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-12">
+						<input type="tel" name="mobile" class="form-control" [(ngModel)]="registerUser.mobile" [formControl]="registerForm.controls['mobile']"
+						 placeholder="Mobile" style="width: 100%; padding-left: 50px;" required>
+
+						<div *ngIf="registerForm.controls['mobile'].hasError('required') && registerAttempt" style="color: red">Mobile is required</div>
+
+					</div>
+
+				</div>
+				<p class="float-left">
+					<a style="font-size: 14px; margin: 10px 0; display: inline-block; color: #fff; cursor: pointer;" (click)="toLogin()">Login Here</a>
+				</p>
+				<button type="submit" class="btn btn-block btn-accent" [disabled]="loading">
+					Register
+					<i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+				</button>
+			</form>
+		</div>
 	</div>
 </div>
 <div id="shipping" *ngIf='loggedIn===true && shipping===false' class="padded">
@@ -48,9 +130,9 @@
 </div>
 
 
-<div id="payment" *ngIf='loggedIn===true && shipping===true && paid==false'>
+<div id="payment" *ngIf='loggedIn===true && shipping===true && paid==false' style="background: #E0E0E0;">
 	<app-payment (notifyPayment)=paymentComplete($event)></app-payment>
 </div>
-<div id="confirmation" *ngIf='paid==true && shipping==true && loggedIn==true ' style="background-color: #fff;" class="padded">
+<div id="confirmation" *ngIf='paid==true && shipping==true && loggedIn==true ' style="background-color: #E0E0E0;" class="padded">
 	<app-confirmation></app-confirmation>
 </div>

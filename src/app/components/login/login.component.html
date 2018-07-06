@@ -4,6 +4,9 @@
 		<h4 class="boldest">
 			Account
 		</h4>
+		<span *ngIf="not_customer" style="color: #FFF; background: #EB5757; padding: 10px; position: relative; top: 20px;">
+			account does not have permission for this site
+		</span>
 	</div>
 </section>
 <section class="padded">
@@ -97,7 +100,7 @@
 					</div>
 
 					<div class="row">
-						<div class="form-group col-md-6">
+						<div class="form-group col-md-12">
 							<input type="tel" name="mobile" class="form-control" [(ngModel)]="registerUser.mobile" [formControl]="registerForm.controls['mobile']"
 							 placeholder="Mobile" style="width: 100%; padding-left: 50px;" required>
 

@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   loggedIn: Boolean = false;
   loading: boolean = false;
   is_customer: boolean = false;
+  not_customer: boolean = false;
   @Output() notifyLogin: EventEmitter<Boolean> = new EventEmitter<Boolean>();
 
 
@@ -67,16 +68,22 @@ export class LoginComponent implements OnInit {
 
       this.userSrv.login(this.loginUser).subscribe(res => {
 
-        if (res) {
+        console.log(res);
+
+        if (res.data.user.is_customer === true) {
 
           localStorage.setItem('token', res.data.token);
           localStorage.setItem('customer', JSON.stringify(res.data.user));
           this.customer = res.data.user;
           this.loggedIn = true;
           this.notifyLogin.emit(this.loggedIn);
+          this.router.navigateByUrl('/');
+          this.loading = false;
+        } else {
+
+          this.not_customer = true;
         }
-        this.router.navigateByUrl('/');
-        this.loading = false;
+
       }, err => {
 
         console.log(err);
@@ -96,15 +103,19 @@ export class LoginComponent implements OnInit {
       this.userSrv.register(this.registerForm.value)
         .subscribe(res => {
 
-          if (res) {
+          if (res.data.user.is_customer === true) {
+
             localStorage.setItem('token', res.data.token);
             localStorage.setItem('customer', JSON.stringify(res.data.user));
             this.customer = res.data.user;
             this.loggedIn = true;
             this.notifyLogin.emit(this.loggedIn);
+            this.router.navigateByUrl('/');
+            this.loading = false;
+          } else {
+  
+            this.not_customer = true;
           }
-          this.router.navigateByUrl('/');
-          this.loading = false;
         }, err => {
 
           console.log(err)

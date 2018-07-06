@@ -4,14 +4,9 @@ import { HttpModule, Http } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { MomentModule } from 'angular2-moment';
 
-
 import { Globals } from './shared/api';
-import { TabModule } from 'angular-tabs-component';
-
-
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -98,7 +93,6 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes, {}),
     MomentModule,
-    TabModule,
   ],
   providers: [Globals,],
   bootstrap: [AppComponent]

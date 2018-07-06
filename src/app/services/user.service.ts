@@ -34,7 +34,7 @@ export class UserService {
 		formData.append('email', data['email']);
 		formData.append('password', data['password']);
 		formData.append('mobile', data['mobile']);
-		formData.append('is_customer', data['is_customer']);
+		formData.append('is_customer', 'true');
 
 		return this.http.post(this.registerUrl, formData)
 	}

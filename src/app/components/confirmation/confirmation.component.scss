@@ -1,0 +1,28 @@
+.padded {
+    
+    .container {
+
+        .card {
+            background: -moz-linear-gradient(45deg, #f08585 0%, #e31b1b 100%); /* ff3.6+ */
+            background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, #f08585), color-stop(100%, #e31b1b)); /* safari4+,chrome */
+            background: -webkit-linear-gradient(45deg, #f08585 0%, #e31b1b 100%); /* safari5.1+,chrome10+ */
+            background: -o-linear-gradient(45deg, #f08585 0%, #e31b1b 100%); /* opera 11.10+ */
+            background: -ms-linear-gradient(45deg, #f08585 0%, #e31b1b 100%); /* ie10+ */
+            background: linear-gradient(45deg, #f08585 0%, #e31b1b 100%); /* w3c */
+            border: 0 !important;
+
+            h3 {
+                color: #FFF;
+                font-size: 32px;
+                font-family: 'Rajdhani', sans-serif;
+            }
+            
+            p {
+                color: #FFF;
+                font-size: 16px;
+                font-weight: bold;
+                font-family: 'Roboto Mono', monospace;
+            }
+        }
+    }
+}
