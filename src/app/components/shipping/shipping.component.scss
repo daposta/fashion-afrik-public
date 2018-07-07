@@ -50,6 +50,15 @@ form {
         option {
             color: #000;
         }
+
+        .shippingFee {
+          position: absolute;
+          color: red;
+          font-size: 14px;
+          top: -20px;
+          opacity: .8;
+      
+        }
     }
 
     .btn {

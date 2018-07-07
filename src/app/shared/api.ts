@@ -23,6 +23,7 @@ export class Globals{
     FOR_HIM_URL =  this.HOST_URL + '/customers/for_him/';
     FOR_HER_URL =  this.HOST_URL + '/customers/for_her/';
     SHIPPING_URL =  this.HOST_URL + '/customers/shipping/';
+    SHIPPINGRATE_URL = this.HOST_URL + '/customers/shipping_rates/';
     COLORS_URL =  this.HOST_URL + '/customers/colors/';
     CARDPAYMENT_URL = this.HOST_URL + '/customers/payment/';
     

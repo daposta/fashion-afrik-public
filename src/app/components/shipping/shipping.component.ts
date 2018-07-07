@@ -25,6 +25,9 @@ export class ShippingComponent implements OnInit {
   country: any = {};
   regions: any[] = [];
   currencys: any[] = [];
+  countryCode: number;
+  shippingFee: number;
+  code: string;
   error: any;
   shippingField: Boolean = false;
   private shippingAttempt: boolean;
@@ -34,7 +37,7 @@ export class ShippingComponent implements OnInit {
   shipping: any;
   billing: any;
 
-  constructor(fb: FormBuilder, private countrySrv: CountryService, private shippingSrv: ShippingService, public currencySrv: CurrencyService, public orderSrv: OrderService, public router: Router) {
+  constructor(fb: FormBuilder, private countrySrv: CountryService, public currencySrv: CurrencyService, public orderSrv: OrderService, public router: Router, public shippingSrv: ShippingService) {
 
     this.shipping = {};
     this.billing = {};
@@ -86,6 +89,7 @@ export class ShippingComponent implements OnInit {
       shipping: this.shipping,
       billing: this.billing,
       currency: currency,
+      shipping_cost: this.shippingFee,
     }
 
     console.log(data);
@@ -99,7 +103,7 @@ export class ShippingComponent implements OnInit {
       this.notifyShipping.emit(this.shippingField);
     }, err => {
 
-      console.log(err.data);
+      console.log(err);
     })
   }
 
@@ -113,15 +117,42 @@ export class ShippingComponent implements OnInit {
 
   fetchRegions(event) {
 
+    this.fetchShippingCost(event);
+    
     this.country = event.target.value;
-
+    
     this.countrySrv.fetchRegion(this.country).subscribe(res => {
-
+      
       this.regions = res.data;
     }, err => {
 
       console.log(err);
     })
+  }
+  
+  fetchShippingCost(event) {
+
+    this.countryCode = event.target.value;
+
+    this.shippingSrv.getShippingRate().subscribe(res => {
+
+      res.results.forEach(item => {
+
+        if (this.countryCode === item['country'].country_code) {
+
+          this.shippingFee = item.amount;
+
+          this.code = item['currency'].code;
+          console.log(this.shippingFee);
+          console.log(this.code);
+        }
+      })
+    }, err => {
+      
+      console.log(err);
+    })
+
+    // console.log('fetching shipping cost');
   }
 
 }

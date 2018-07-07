@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { OrderService } from '../../services/order.service';
@@ -6,36 +6,44 @@ import { UserService } from '../../services/user.service'
 
 import { CurrencyService } from '../../services/currency.service';
 import { ExchangeRateService } from '../../services/exchange-rate.service';
+
+declare var $: any;
+
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.scss'],
   providers: [OrderService, CurrencyService, ExchangeRateService, UserService]
 })
-export class CheckoutComponent implements OnInit {
+export class CheckoutComponent implements OnInit, AfterViewInit {
 
-  registerView: boolean = false;
   loginView: boolean = true;
-  t = localStorage;
-  currencys: any[];
-  exchange_rates: any[];
   anonymous: Boolean = true;
+  registerView: boolean = false;
   loggedIn: Boolean = false;
   shipping: Boolean = false;
   paid: Boolean = false;
+  not_customer: boolean = false;
+  loginAttempt: boolean = false;
+  registerAttempt: boolean = false;
+  loading: boolean = false;
+
   loginForm: FormGroup;
   registerForm: FormGroup;
+
   loginUser: Object = {};
   registerUser: Object = {};
-  loginAttempt: boolean;
-  registerAttempt: boolean;
-  loading: boolean;
-  not_customer: boolean = false;
-  product: any = {};
   customer: Object = {};
+
+  currencys: any[];
+  exchange_rates: any[];
+  product: any = {};
+  t = localStorage;
   order: any;
-  @Output() notifyLogin: EventEmitter<Boolean> = new EventEmitter<Boolean>();
   error: any;
+
+  @Output() notifyLogin: EventEmitter<Boolean> = new EventEmitter<Boolean>();
+  
   constructor(fb: FormBuilder, private orderSrv: OrderService, private currencySrv: CurrencyService,
     private rateSrv: ExchangeRateService, private userSrv: UserService, private router: Router) {
 
@@ -92,14 +100,22 @@ export class CheckoutComponent implements OnInit {
     }
   };
 
+  ngAfterViewInit() {
+    $("[type=tel]").intlTelInput({
+      autoplaceholder: 'aggressive'
+    });
+  }
+
   toRegister() {
     this.loginView = false;
     this.registerView = true;
+    this.ngOnInit();
   }
 
   toLogin() {
     this.registerView = false;
     this.loginView = true;
+    this.ngOnInit();
   }
 
   fetchCurrencys() {

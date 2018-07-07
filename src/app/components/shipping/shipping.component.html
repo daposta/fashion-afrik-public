@@ -76,6 +76,7 @@
 
 							<div class="row">
 								<div class="form-group col-md-12">
+									<span *ngIf="code && shippingFee" class="shippingFee">shipping fee: {{code}}&nbsp;{{shippingFee}}</span>
 									<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="shipping.country" name="shipping_country" #shipping_country="ngModel"
 									 (change)="fetchRegions($event)" required>
 
@@ -189,7 +190,7 @@
 
 							<div class="row">
 								<div class="form-group col-md-12">
-									<input type="text" placeholder="Address 2 (Optional)" class="form-control" [(ngModel)]="billing.address_2" name="billing_address_2" value="">
+									<input type="text" placeholder="Address 2 (Optional)" class="form-control" [(ngModel)]="billing.address_2" name="billing_address_2">
 								</div>
 							</div>
 

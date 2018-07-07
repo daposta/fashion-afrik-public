@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 export class ShippingService {
 
   private shippingUrl = this.globals.SHIPPING_URL;
+  private shippingRateUrl = this.globals.SHIPPINGRATE_URL;
   authToken = localStorage.getItem('token');
 
 
@@ -24,6 +25,11 @@ export class ShippingService {
 
     return this.http.post(this.shippingUrl, shipping, httpOptions)
 
+  };
+
+  getShippingRate(): Observable<any> {
+
+    return this.http.get(this.shippingRateUrl)
   }
 
 }
