@@ -135,8 +135,9 @@ export class ShippingComponent implements OnInit {
     this.countryCode = event.target.value;
 
     this.shippingSrv.getShippingRate().subscribe(res => {
+      // console.log(res);
 
-      res.results.forEach(item => {
+      res.data.forEach(item => {
 
         if (this.countryCode === item['country'].country_code) {
 

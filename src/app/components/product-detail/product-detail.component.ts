@@ -28,7 +28,6 @@ export class ProductDetailComponent implements OnInit {
   t = localStorage;
   currencys: any[];
   exchange_rates: any[];
-  exchange_rate: number;
   product: Object = {};
   review: Object = {};
   host_address: string = this.globals.HOST_URL;
@@ -169,10 +168,8 @@ export class ProductDetailComponent implements OnInit {
              
       
             localStorage.setItem('rate', selected_currency['rate']);
-            this.exchange_rate = parseInt(localStorage.getItem('rate'));
          }else{
              localStorage.setItem('rate', String(1) );
-             this.exchange_rate = parseInt(localStorage.getItem('rate'));
          }
         
       }
@@ -189,10 +186,8 @@ export class ProductDetailComponent implements OnInit {
      if (!(this.product['currency']['code']== selected_currency['currency']['code'])){
 
         localStorage.setItem('rate', selected_currency['rate']);
-        this.exchange_rate = parseInt(localStorage.getItem('rate'));
      }else{
          localStorage.setItem('rate', String(1) );
-         this.exchange_rate = parseInt(localStorage.getItem('rate'));
      }
 
   };

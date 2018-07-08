@@ -1,34 +1,99 @@
 <section class="padded">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col">
-                <form novalidate (ngSubmit)="pay($event)">
-                    <div class="row">    
-                        <div class="form-group col-md-12">
-                            <input type="text" placeholder="1234 1234 1234 1234" [(ngModel)]="cardnumber" name="cardnumber" size="20" data-stripe="number">
-                        </div>
-    
-                        <div class="form-group col-md-4">
-                            <input type="text" placeholder="MM" [(ngModel)]="cardmonth" name="cardmonth" size="2" data-stripe="exp_month">
-                        </div>
 
-                        <div class="form-group col-md-4">
-                            <input type="text" placeholder="YY" [(ngModel)]="cardyear" name="cardyear" size="2" data-stripe="exp_year">
-                        </div>
-    
-                        <div class="form-group col-md-4">
-                            <input type="text" placeholder="CVV" [(ngModel)]="cardcvv" name="cardcvv" size="4" data-stripe="cvc">
-                        </div>
-
-                        <div class="col-md-12">
-                            <button>
-                                {{currency}}&nbsp;{{amount | number : '1.2-2'}}
-                            </button>
-                        </div>
-
+            <div class="col-md-5 card">
+                <div class="card-header">
+                    <h3>Pay Invoice</h3>
+                </div>
+                <div class="card-body">
+                    <div class="img-container">
+                        <img src="../../../assets/img/payOptions.png" alt="">
                     </div>
-                </form>
+                    <form novalidate (ngSubmit)="pay($event)">
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <label for="cardnumber">Card number</label>
+                                <input type="text" placeholder="1234 1234 1234 1234" [(ngModel)]="cardnumber" name="cardnumber" maxlength="14" data-stripe="number" (keypress)="numbersOnly($event)">
+                            </div>
 
+                            <div class="form-group col-md-4">
+                                <label for="cardmonth">Card month</label>
+                                <input type="text" placeholder="MM" [(ngModel)]="cardmonth" name="cardmonth" maxlength="2" data-stripe="exp_month" (keypress)="numbersOnly($event)">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="cardyear">Card year</label>
+                                <input type="text" placeholder="YY" [(ngModel)]="cardyear" name="cardyear" maxlength="2" data-stripe="exp_year" (keypress)="numbersOnly($event)">
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="cardcvv">CVV</label>
+                                <input type="text" placeholder="CVV" [(ngModel)]="cardcvv" name="cardcvv" maxlength="4" data-stripe="cvc" (keypress)="numbersOnly($event)">
+                            </div>
+
+                            <div class="col-md-12">
+                                <button>
+                                    {{currency}}&nbsp;{{amount | number : '1.2'}}
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-5 card">
+                <div class="card-header">
+                    <h3>Order Summary</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row" *ngFor="let c of cart">
+                        <div class="col-lg-8">
+                            <p class="ptext">{{c.product_name}}</p>
+                        </div>
+                        <div class="col-lg-1">
+                            <p class="ptext">{{c.qty}}</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p class="ptext">{{currency}}&nbsp;{{c.sale_price}}</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <p class="otext">Subtotal</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p class="otext">{{currency}}&nbsp;{{sub_total}}.00</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <p class="otext">Discount</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p class="otext">{{currency}}&nbsp;0.00</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <p class="otext">Shipping Cost</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p class="otext">{{currency}}&nbsp;{{shipping_cost}}.00</p>
+                        </div>
+                        <hr style="border-color: rgba(1, 25, 54, 0.6); opacity: .7;">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-9">
+                            <p class="otext">Total Cost</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p class="otext">{{currency}}{{amount}}.00</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

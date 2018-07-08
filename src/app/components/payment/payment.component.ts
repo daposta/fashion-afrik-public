@@ -2,15 +2,17 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef, NgZone 
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 import { PaymentService } from '../../services/payment.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.scss'],
-  providers: [PaymentService,]
+  providers: [PaymentService, CartService]
 })
 export class PaymentComponent implements OnInit {
 
+  cart: any[] = [];
   cost: Number;
   paid: Boolean = false;
   @Output() notifyPayment: EventEmitter<Boolean> = new EventEmitter<Boolean>();
@@ -24,17 +26,39 @@ export class PaymentComponent implements OnInit {
   order_id: any;
   txn_id: any;
   currency: any;
+  sub_total: any;
+  shipping_cost: any;
 
-  constructor(private paymentSrv: PaymentService, private fb: FormBuilder, private _zone: NgZone) { }
+  constructor(private paymentSrv: PaymentService, private fb: FormBuilder, private _zone: NgZone, private cartSrv: CartService) { }
 
 
   ngOnInit() {
 
+    this.loadCart();
 
     let order = JSON.parse(localStorage.getItem('order'));
-    this.amount = order.amount;
+    this.amount = Math.round(order.amount.toFixed(2) * 100 / 100);
+    this.sub_total = Math.round(order.sub_total.toFixed(2) * 100 / 100);
     this.order_id = order.order_id;
     this.currency = order.currency;
+    this.shipping_cost = order.shipping_cost;
+
+    // console.log(this.amount);
+  }
+
+  numbersOnly(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
+  loadCart() {
+
+    this.cart = this.cartSrv.loadCart()
+    console.log(this.cart);
   }
 
   pay() {

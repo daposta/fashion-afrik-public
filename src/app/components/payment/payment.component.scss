@@ -1,41 +1,96 @@
-.container .row .col {
+.container .row .card {
+    // background: #FFF;
     margin: 0 auto;
-    background: #EB5757;
-    padding: 60px;
-    min-height: 300px;
+    padding: 0;
+    height: 100%;
     border-radius: 10px;
+    border-radius: 10px;
+    // border: 1px solid #EB5757 !important;
 
-    input {
-        width: 100%;
-        padding: 10px;
-        padding-left: 15px;
-        border-radius: 20px;
-        border: 0;
-        background: #f29494;
-        outline: none;
-        color: #FFF;
+    .card-header {
+        text-align: center;
+        height: 50px;
+        // background: #EB5757 !important;
+        // border: 1px solid #EB5757 !important;
+        
+        h3 {
+            font-size: 18px;
+            margin: 0;
+            color: rgba(1, 25, 54, 0.6) !important;
+            font-weight: bold;
+        }
     }
-    
-    input::placeholder {
-        color: #FFF;
-        opacity: .7;
-    }
-    
-    input:focus {
-        color: #474C73;
+
+    .card-body {
+        border-radius: 0 0 10px 10px;
         background: #FFF;
+        width: 90%;
+        margin: 0 auto;
+        padding: 30px !important;
+
+        .img-container {
+            width: 100%;
+
+            img {
+                width: 102%;
+            }
+        }
+
+
+        form {
+            // outline: 1px solid;
+
+            .form-group {
+
+                label {
+                    display: block;
+                    font-size: 14px;
+                    color: rgba(1, 25, 54, 0.6) !important;
+                }
+
+                input {
+                    width: 100%;
+                    padding: 10px;
+                    outline: none;
+                    border-radius: 5px;
+                    border: 1px solid rgba(1, 25, 54, 0.22) !important;
+                    color: rgba(1, 25, 54, 0.6)
+                }
+            
+            }
+
+            button {
+                width: 100%;
+                border: 0;
+                border-radius: 5px;
+                color: #FFF;
+                background: #EB5757;
+                padding: 10px;
+                cursor: pointer;
+            }
+            
+        }
+
+        .row {
+
+            .ptext {
+                color: #95A0AE;
+                font-size: 14px;
+            }
+
+            .otext {
+                color: rgba(1, 25, 54, 0.6);
+                font-weight: bold;
+                font-size: 14px;
+            }
+            
+            hr {
+                width: 100%;
+                margin: 10px;
+                margin-bottom: 20px;
+            }
+        }
+        
     }
 
-    button {
-        width: 100%;
-        border: 0;
-        padding: 10px;
-        border-radius: 20px;        
-        margin-top: 30px;
-        background: #fabb05;
-        color: #FFF;
-        font-weight: bold;
-        letter-spacing: 1.5px;
-        outline: none !important;
-    }
 }
