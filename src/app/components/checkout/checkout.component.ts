@@ -21,7 +21,7 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
   anonymous: Boolean = true;
   registerView: boolean = false;
   loggedIn: Boolean = false;
-  shipping: Boolean = true;
+  shipping: Boolean = false;
   paid: Boolean = false;
   not_customer: boolean = false;
   loginAttempt: boolean = false;

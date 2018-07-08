@@ -22,6 +22,7 @@ export class PaymentComponent implements OnInit {
   cardmonth;
   cardcvv;
 
+  order: any = {};
   amount: any;
   order_id: any;
   txn_id: any;
@@ -36,14 +37,14 @@ export class PaymentComponent implements OnInit {
 
     this.loadCart();
 
-    let order = JSON.parse(localStorage.getItem('order'));
-    this.amount = Math.round(order.amount.toFixed(2) * 100 / 100);
-    this.sub_total = Math.round(order.sub_total.toFixed(2) * 100 / 100);
-    this.order_id = order.order_id;
-    this.currency = order.currency;
-    this.shipping_cost = order.shipping_cost;
+    this.order = JSON.parse(localStorage.getItem('order'));
+    this.amount = Math.round(this.order.amount.toFixed(2) * 100 / 100);
+    this.sub_total = Math.round(this.order.sub_total.toFixed(2) * 100 / 100);
+    this.order_id = this.order.order_id;
+    this.currency = this.order.currency;
+    this.shipping_cost = this.order.shipping_cost;
 
-    // console.log(this.amount);
+    console.log(this.order);
   }
 
   numbersOnly(event: any) {
