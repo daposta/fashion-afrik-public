@@ -194,7 +194,6 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
           this.customer = res.data.user;
           this.loggedIn = true;
           this.notifyLogin.emit(this.loggedIn);
-          this.router.navigateByUrl('/');
           this.loading = false;
         } else {
 
@@ -227,7 +226,6 @@ export class CheckoutComponent implements OnInit, AfterViewInit {
             this.customer = res.data.user;
             this.loggedIn = true;
             this.notifyLogin.emit(this.loggedIn);
-            this.router.navigateByUrl('/');
             this.loading = false;
           } else {
   

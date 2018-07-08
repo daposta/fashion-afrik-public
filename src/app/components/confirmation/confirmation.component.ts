@@ -10,6 +10,8 @@ export class ConfirmationComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    localStorage.removeItem('cart');
+    localStorage.removeItem('order');
   }
 
 }
