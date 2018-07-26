@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
@@ -24,7 +24,7 @@ declare var $: any;
   providers: [ProductService, CartService, ColorService, FabricService, SizeService,
     CurrencyService, ExchangeRateService]
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, AfterViewInit {
   t = localStorage;
   currencys: any[];
   exchange_rates: any[];
@@ -47,6 +47,8 @@ export class ProductDetailComponent implements OnInit {
   colors: any[];
   fabrics: any[];
   sizes: any[];
+  allImages: any[] = [];
+  imgWindex: any[] = [];
 
   private formSubmitAttempt: boolean;
 
@@ -78,33 +80,22 @@ export class ProductDetailComponent implements OnInit {
     });
 
     $(function () {
-      $('.responsive').slick({
-        dots: true,
-        infinite: false,
-        speed: 300,
-        slidesToShow: 5,
-        slidesToScroll: 5
-      });
 
       $('.slider-for').slick({
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false,
+        arrows: true,
         fade: true,
-        centerMode: true,
         asNavFor: '.slider-nav'
       });
       $('.slider-nav').slick({
-        slidesToShow: 3,
+        slidesToShow: 5,
         slidesToScroll: 1,
-        asNavFor: '.slider-for',
-        // centerMode: true,
-        arrows: true,
+        // asNavFor: '.slider-for',
+        dots: false,
+        centerMode: true,
         focusOnSelect: true
       });
-
-      // product slider zoom
-      $('.slider-nav .slider-item').zoom({ url: '/assets/img/denim1.jpg' });
     });
 
     $('.filter').click(function (e) {
@@ -125,12 +116,24 @@ export class ProductDetailComponent implements OnInit {
 
           for (let i = 0; i < this.product['other_images'].length; i++) {
             product_imgs.push(this.product['other_images'][i].image);
+            this.allImages.push({
+              id: i,
+              image: this.product['other_images'][i].image,
+              slide: 'slide_' + i,
+            });
           }
+          let length = this.allImages.length;
+          this.allImages.push({
+            id: length,
+            image: this.product['banner_image'],
+            slide: 'slide_' + length,
+          });
           this.reps = product_imgs;
           this.title = this.product['name'];
           this.description = this.product['description'];
-          this.img_url = this.product['feature_image'];
+          this.img_url = this.product['banner_image'];
           this.url = document.location.href;
+          console.log(this.allImages);
         }, err => {
           console.log(err);
         });
@@ -139,9 +142,48 @@ export class ProductDetailComponent implements OnInit {
     this.fetchExchangeRates()
     if (!localStorage.getItem('currency')) {
       localStorage.setItem('currency', 'GBP');
-      
+
     }
-    //  $('.summernote').summernote();
+
+    $(function () {
+
+      $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        fade: true,
+        asNavFor: '.slider-nav'
+      });
+      $('.slider-nav').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        // asNavFor: '.slider-for',
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true
+      });
+    });
+  }
+
+  ngAfterViewInit() {
+    $(function () {
+
+      $('.slider-for').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        fade: true,
+        asNavFor: '.slider-nav'
+      });
+      $('.slider-nav').slick({
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        // asNavFor: '.slider-for',
+        dots: false,
+        centerMode: true,
+        focusOnSelect: true
+      });
+    });
   }
 
   fetchCurrencys() {
@@ -162,33 +204,33 @@ export class ProductDetailComponent implements OnInit {
 
       let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
       //localStorage.setItem('rate', selected_currency.rate);
-    
-      if(this.product && this.product['currency  ']){
-          if (!(this.product['currency']['code']== selected_currency['currency']['code'])){
-             
-      
-            localStorage.setItem('rate', selected_currency['rate']);
-         }else{
-             localStorage.setItem('rate', String(1) );
-         }
-        
+
+      if (this.product && this.product['currency  ']) {
+        if (!(this.product['currency']['code'] == selected_currency['currency']['code'])) {
+
+
+          localStorage.setItem('rate', selected_currency['rate']);
+        } else {
+          localStorage.setItem('rate', String(1));
+        }
+
       }
     }, err => {
       console.log(err);
     })
 
   }
- 
+
   changeCurrency(evt) {
     localStorage.setItem('currency', evt.target.value);
     let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
-    
-     if (!(this.product['currency']['code']== selected_currency['currency']['code'])){
 
-        localStorage.setItem('rate', selected_currency['rate']);
-     }else{
-         localStorage.setItem('rate', String(1) );
-     }
+    if (!(this.product['currency']['code'] == selected_currency['currency']['code'])) {
+
+      localStorage.setItem('rate', selected_currency['rate']);
+    } else {
+      localStorage.setItem('rate', String(1));
+    }
 
   };
 
@@ -208,7 +250,7 @@ export class ProductDetailComponent implements OnInit {
       let nProduct: any = {};
       nProduct = this.product;
 
-      let data = { 'product_id': nProduct.id, 'product_name':  nProduct.name, 'product_image': nProduct.banner_image, 'sale_price': nProduct.sale_price, 'cost': nProduct.sale_price * parseInt(t['qty'], 10), 'qty': parseInt(t['qty'], 10), 'size': t['size'], 'color': t['color'], 'price': nProduct.sale_price / JSON.parse(localStorage.getItem('rate')) };
+      let data = { 'product_id': nProduct.id, 'product_name': nProduct.name, 'product_image': nProduct.banner_image, 'sale_price': nProduct.sale_price, 'cost': nProduct.sale_price * parseInt(t['qty'], 10), 'qty': parseInt(t['qty'], 10), 'size': t['size'], 'color': t['color'], 'price': nProduct.sale_price / JSON.parse(localStorage.getItem('rate')) };
 
       this.cartSrv.addToCart(data);
       this.getCart();

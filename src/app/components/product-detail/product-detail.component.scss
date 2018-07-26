@@ -32,7 +32,8 @@
 }
 
 .slick-track {
-transform: none
+transform: none;
+width: 100% !important;
 }
 
 .slick-list {
@@ -188,3 +189,17 @@ button.slick-next:before {
 	cursor: pointer;
 	outline: none;
 }
+
+// :host /deep/ .slider-nav .slick-track {
+// 	width: auto !important;
+// 	width: 100% !important;
+// }
+
+// .slider-nav-thumbnails .slick-slide {
+// 	opacity: 0.5;
+// }
+
+// .slider-nav-thumbnails .slick-slide.slick-active {
+// 	opacity: 1;
+//   background: green;
+// }

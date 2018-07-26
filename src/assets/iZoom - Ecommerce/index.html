@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>PDP iZoom - iCodefy</title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="js/Vendor/fancybox/jquery.fancybox.css" />
+	<link rel="stylesheet" href="js/Vendor/fancybox/helpers/jquery.fancybox-thumbs.css" />
+	<link href="css/zoom.css" rel="stylesheet" />
+	<script src="js/Vendor/jquery/jquery-1.8.3.min.js"></script>
+
+</head>
+
+<body>
+
+
+	<div class="pdp-image-gallery-block">
+		<!-- Gallery  Thumbnail Images-->
+		<div class="gallery_pdp_container">
+			<div id="gallery_pdp">
+				<a href="#" data-image="images/small/image1.png" data-zoom-image="images/large/image1.jpg">
+					<img id="" src="images/thumb/image1.jpg" />
+				</a>
+				<a href="#" data-image="images/small/image2.png" data-zoom-image="images/large/image2.jpg">
+					<img id="" src="images/thumb/image2.jpg" />
+				</a>
+				<a href="#" data-image="images/small/image3.png" data-zoom-image="images/large/image3.jpg">
+					<img id="" src="images/thumb/image3.jpg" />
+				</a>
+				<a href="#" data-image="images/small/image4.png" data-zoom-image="images/large/image4.jpg">
+					<img id="" src="images/thumb/image4.jpg" />
+				</a>
+				<a href="#" data-image="images/small/image1.png" data-zoom-image="images/large/image1.jpg">
+					<img id="" src="images/thumb/image1.jpg" />
+				</a>
+				<a href="#" data-image="images/small/image2.png" data-zoom-image="images/large/image2.jpg">
+					<img id="" src="images/thumb/image2.jpg" />
+				</a>
+				<a href="#" data-image="images/small/image3.png" data-zoom-image="images/large/image3.jpg">
+					<img id="" src="images/thumb/image3.jpg" />
+				</a>
+				<a href="#" data-image="images/small/image4.png" data-zoom-image="images/large/image4.jpg">
+					<img id="" src="images/thumb/image4.jpg" />
+				</a>
+			</div>
+			<!-- Up and down button for vertical carousel -->
+			<a href="#" id="ui-carousel-next" style="display: inline;"></a>
+			<a href="#" id="ui-carousel-prev" style="display: inline;"></a>
+		</div>
+
+		<!-- Gallery -->
+
+		<!-- gallery Viewer medium image -->
+		<div class="gallery-viewer">
+			<img id="zoom_10" src="images/small/image1.png" data-zoom-image="images/large/image1.jpg" />
+			<p class="hint-pdp-img">Roll over the image to zoom in</p>
+		</div>
+
+		<!-- gallery Viewer -->
+	</div>
+<!-- Product Details Section -->
+	<div class="product-details">
+		<a href="http://icodefy.com"><h1>iCodefy </h1></a>
+		<h3>iZoom - Free JQuery E-commerce Product Zoom implementation wiht mega enlarge option</h3>
+		<h4></h4>
+		<p><strong> Plugins used to create this zoom functionality </strong></p>
+		<ul>
+			<li>jquery</li>
+			<li>Jquery UI</li>
+			<li>Fancybox - Large image gallery view</li>
+			<li><a href="http://www.elevateweb.co.uk/image-zoom/configuration" target="_blank">ElevateZoom</a> - Product Zoom</li>
+			<li>PanZoom - megaEnlarge PanZoom view</li>
+			<li>ui-carousel - Vertical carousel</li>
+		</ul>
+		<a class="button" href="http://www.mediafire.com/file/m5icabpypip2cm7/iZoom.zip">Download Demo </a>
+	</div>
+
+	<div id="enlarge_gallery_pdp">
+		<div class="enl_butt">
+			<a class="enl_but enl_fclose" title="Close"></a>
+			<a class="enl_but enl_fright" title="Next"></a>
+			<a class="enl_but enl_fleft" title="Prev"></a>
+		</div>
+		<div class="mega_enl"></div>
+	</div>
+</body>
+<script src="js/Vendor/jquery/jquery-ui.min.js"></script>
+<script src="js/Vendor/fancybox/jquery.fancybox.js"></script>
+<script src="js/Vendor/elevatezoom/jquery.elevatezoom.js"></script>
+<script src="js/Vendor/panZoom/panZoom.js"></script>
+<script src="js/Vendor/ui-carousel/ui-carousel.js"></script>
+
+<script src="js/zoom.js"></script>
+
+</html>

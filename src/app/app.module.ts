@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MomentModule } from 'angular2-moment';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { Globals } from './shared/api';
 
@@ -94,6 +95,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes, {}),
     MomentModule,
+    TextMaskModule,
   ],
   providers: [Globals,],
   bootstrap: [AppComponent]

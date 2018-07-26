@@ -36,6 +36,16 @@
             }
         }
 
+        .notif-container {
+            background: red;
+            color: #FFF;
+            text-align: center;
+            opacity: .6;
+            padding: 5px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
 
         form {
             // outline: 1px solid;
@@ -67,6 +77,11 @@
                 background: #EB5757;
                 padding: 10px;
                 cursor: pointer;
+            }
+
+            button.disabled {
+                cursor: not-allowed;
+                background: grey !important;
             }
             
         }

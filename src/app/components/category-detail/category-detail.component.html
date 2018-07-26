@@ -33,35 +33,6 @@
               </div>
             </div>
           </div>
-          <!-- end filter box -->
-          <!--  <div class="card">
-    <div class="card-header" role="tab" id="headingOne">
-      <h5 class="mb-0">
-        <a class="boldest" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-         Categories
-        </a>
-        <span class="icon float-right"><i class="ion-plus-round"></i></span>
-      </h5>
-    </div>
-
-    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-      <div class="card-body">
-      <ul class="nav flex-column">
-      <li class="nav-item" >
-        <div *ngFor="let item of categorys">
-          <label for="{{item.slug}}">
-            <input type="checkbox" id="{{item.slug}}"   value="{{item.slug}}" (change)="addCategoryFilter($event)"> &nbsp;
-                  {{item.name}}
-            </label>
-        </div>
-
-
-      </li>
-
-    </ul>
-      </div>
-    </div>
-  </div> -->
           <div class="card">
             <div class="card-header" role="tab" id="headingTwo">
               <h5 class="mb-0">
@@ -99,8 +70,7 @@
           <b>{{products?.length || '0'}}</b> Item(s) found</p>
         <div class="row">
 
-          <div class="col-md-6 col-lg-4" *ngFor="let product of products">
-            <!-- overall link for product and title -->
+          <!-- <div class="col-md-6 col-lg-4" *ngFor="let product of products">
             <div class="product-component text-center">
               <div class="product-image">
                 <a routerLink="/product/{{product.id}}/{{product.slug}}">
@@ -117,11 +87,28 @@
                 </span>
               </div>
             </div>
-          </div>
+          </div> -->
+
+          <ul class="listing">
+            <li class="product" *ngFor="let product of products">
+              <a class="img-wrapper" routerLink="/product/{{product.id}}/{{product.slug}}">
+                <img src="{{product.banner_image}}" alt="{{product.slug}}" />
+              </a>
+
+              <div class="info">
+                <div class="title">{{product.name}}</div>
+                <div class="price">{{t.getItem('currency')}}{{product.sale_price / t.getItem('rate') | number}}</div>
+              </div>
+
+              <div class="actions-wrapper">
+                <a href="#" class="add-btn wishlist">Wishlist</a>
+                <a href="#" class="add-btn cart">Cart</a>
+              </div>
+            </li>
+          </ul>
+
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- <app-footer></app-footer> -->

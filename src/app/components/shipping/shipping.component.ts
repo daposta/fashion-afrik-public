@@ -152,8 +152,6 @@ export class ShippingComponent implements OnInit {
       
       console.log(err);
     })
-
-    // console.log('fetching shipping cost');
   }
 
 }

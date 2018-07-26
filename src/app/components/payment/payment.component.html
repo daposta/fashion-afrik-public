@@ -7,33 +7,36 @@
                     <h3>Pay Invoice</h3>
                 </div>
                 <div class="card-body">
-                    <div class="img-container">
-                        <img src="../../../assets/img/payOptions.png" alt="">
+                    <div class="notif-container" *ngIf="errMessage">
+                        <span>{{errMessage}}</span>
                     </div>
-                    <form novalidate (ngSubmit)="pay($event)">
+                    <div class="img-container">
+                        <img src="assets/img/payOptions.png" alt="">
+                    </div>
+                    <form (ngSubmit)="pay($event)" #paymentForm="ngForm">
                         <div class="row">
                             <div class="form-group col-md-12">
                                 <label for="cardnumber">Card number</label>
-                                <input type="text" placeholder="1234 1234 1234 1234" [(ngModel)]="cardnumber" name="cardnumber" maxlength="16" data-stripe="number" (keypress)="numbersOnly($event)">
+                                <input type="text" placeholder="1234-1234-1234-1234" [(ngModel)]="cardnumber" [textMask]="{mask: masks.cardNumber}" #pay_cardnumber="ngModel" name="pay_cardnumber" data-stripe="number" (keypress)="numbersOnly($event)" required>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="cardmonth">Card month</label>
-                                <input type="text" placeholder="MM" [(ngModel)]="cardmonth" name="cardmonth" maxlength="2" data-stripe="exp_month" (keypress)="numbersOnly($event)">
+                                <input type="text" placeholder="MM" [(ngModel)]="cardmonth" [textMask]="{mask: masks.cardMonth}" name="cardmonth" data-stripe="exp_month" (keypress)="numbersOnly($event)" required>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="cardyear">Card year</label>
-                                <input type="text" placeholder="YY" [(ngModel)]="cardyear" name="cardyear" maxlength="2" data-stripe="exp_year" (keypress)="numbersOnly($event)">
+                                <input type="text" placeholder="YY" [(ngModel)]="cardyear" [textMask]="{mask: masks.cardYear}" name="cardyear" data-stripe="exp_year" (keypress)="numbersOnly($event)" required>
                             </div>
 
                             <div class="form-group col-md-4">
                                 <label for="cardcvv">CVV</label>
-                                <input type="text" placeholder="CVV" [(ngModel)]="cardcvv" name="cardcvv" maxlength="4" data-stripe="cvc" (keypress)="numbersOnly($event)">
+                                <input type="text" placeholder="CVV" [(ngModel)]="cardcvv" [textMask]="{mask: masks.cardCVV}" name="cardcvv" data-stripe="cvc" (keypress)="numbersOnly($event)" required>
                             </div>
 
                             <div class="col-md-12">
-                                <button>
+                                <button [ngClass]="{'disabled': !paymentForm.form.valid}">
                                     {{currency}}&nbsp;{{amount | number : '1.2'}}
                                 </button>
                             </div>

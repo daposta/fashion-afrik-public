@@ -22,6 +22,9 @@ export class PaymentComponent implements OnInit {
   cardmonth;
   cardcvv;
 
+  errMessage: any;
+  masks: any;
+
   order: any = {};
   amount: any;
   order_id: any;
@@ -30,7 +33,15 @@ export class PaymentComponent implements OnInit {
   sub_total: any;
   shipping_cost: any;
 
-  constructor(private paymentSrv: PaymentService, private fb: FormBuilder, private _zone: NgZone, private cartSrv: CartService) { }
+  constructor(private paymentSrv: PaymentService, private fb: FormBuilder, private _zone: NgZone, private cartSrv: CartService) {
+
+    this.masks = {
+      cardNumber: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+      cardMonth: [/\d/, /\d/],
+      cardYear: [/\d/, /\d/],
+      cardCVV: [/\d/, /\d/, /\d/]
+    };
+  }
 
 
   ngOnInit() {
@@ -65,10 +76,10 @@ export class PaymentComponent implements OnInit {
   pay() {
 
     (<any>window).Stripe.card.createToken({
-      number: this.cardnumber,
-      exp_month: this.cardmonth,
-      exp_year: this.cardyear,
-      cvc: this.cardcvv
+      number: this.cardnumber.replace(/\D+/g, ''),
+      exp_month: this.cardmonth.replace(/\D+/g, ''),
+      exp_year: this.cardyear.replace(/\D+/g, ''),
+      cvc: this.cardcvv.replace(/\D+/g, '')
     }, (status: number, response: any) => {
 
       // Wrapping inside the Angular zone
@@ -96,7 +107,7 @@ export class PaymentComponent implements OnInit {
             console.log(err);
           })
         } else {
-          // this.message = response.error.message;
+          this.errMessage = response.error.message;
           console.log(response.error.message);
         }
       });

@@ -5,13 +5,27 @@
 			<div class="col-lg-6">
 				<!-- slider -->
 				<div class="slider-element">
-					<div class="slider-nav" style="display: inherit;">
-						<div *ngFor="let rp of reps" class="slider-item" [attr.data-url]="rp" [ngStyle]="{ 'background-image': 'url(' + rp + ')'}"></div>
+					<div class="slider-nav" style="display: none;">
+						<!-- <div *ngFor="let rp of allImages" class="slider-item" [attr.data-url]="rp.slide" [ngStyle]="{ 'background-image': 'url(' + rp.image + ')'}"></div> -->
 					</div>
 					<div class="slider-for">
-						<div class="slider-item" [attr.data-url]="product.banner_image" [ngStyle]="{'background-image': 'url(' + product.banner_image + ')'}"></div>
+						<div *ngFor="let rp of allImages">
+							<div class="slider-item" [attr.data-url]="rp.slide" [ngStyle]="{ 'background-image': 'url(' + rp.image + ')'}"></div>
+						</div>
 					</div>
 				</div>
+
+				<!-- <div class="slider">
+					<div *ngFor="let img of allImages" data-index="img.id">
+						<img src="{{img.image}}" alt="One">
+					</div>
+				</div>
+
+				<div class="slider-nav-thumbnails">
+					<div *ngFor="let img of allImages" style="height: 200px; width: 200px;">
+						<img src="{{img.image}}" slide="img.slide" style="height: 100%; width: 100%; object-fit: cover;">
+					</div>
+				</div> -->
 			</div>
 
 			<div class="col-md-5 offset-md-1">
