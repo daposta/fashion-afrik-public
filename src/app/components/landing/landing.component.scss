@@ -8,6 +8,33 @@
     max-height: 400px;
 }
 
+ul.new-arrival-container {
+    margin: 0 auto;
+
+    li {
+        margin: 0 10px 0 0;
+        list-style: none;
+        float: left;
+        max-width: 350px;
+        max-height: 200px;
+        text-align: center;
+        padding: 15px 0 0 0;
+
+        a {
+            max-width: 350px;
+            max-height: 200px;
+
+            img {
+                margin: 0;
+                display: block;
+                max-width: 350px;
+                max-height: 200px;
+            }
+        }
+
+    }
+}
+
 #new-arrivals {
     .item {
         position: relative;

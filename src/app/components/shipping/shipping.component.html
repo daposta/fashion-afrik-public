@@ -1,30 +1,16 @@
 <section class="padded">
 	<div class="container">
 		<div class="row">
-			<!-- <div class="col-sm-6">
-				<div class="card" style="text-align: center; padding: 20px;">
-					<input type="radio" name="shipping-radio" id="shipping-radio">
-					<label for="shipping-radio" class="shipping-radio"></label>
-					shipping
-				</div>
+			<div class="col-sm-6">
+				<input type="radio" id="sShipping" name="radios" value="shipping" (click)="setRadio('shipping')" checked>
+				<label for="sShipping">Standard Shipping</label>
 			</div>
 			<div class="col-sm-6">
-				<div class="card" style="text-align: center; padding: 20px;">
-					<input type="radio" name="home-radio" id="home-radio">
-					<label for="home-radio" class="home-radio"></label>
-					home
-				</div>
-			</div> -->
-			<!-- <div class="col-sm-6">
-				<input type="radio" id="shipping" name="radios" value="shipping" checked>
-				<label for="shipping">Shipping</label>
+				<input type="radio" id="pickup" name="radios" value="pickup" (click)="setRadio('pickup')">
+				<label for="pickup">Pickup Station</label>
 			</div>
-			<div class="col-sm-6">
-				<input type="radio" id="home" name="radios" value="home">
-				<label for="home">Home Delivery</label>
-			</div> -->
 		</div>
-		<div class="row">
+		<div class="row shipping-container" *ngIf="isSelected('shipping')">
 			<div class="col-sm-12">
 				<form (ngSubmit)="saveShipping()" class="shippingForm" #shippingForm="ngForm" novalidate>
 					<div class="row">
@@ -145,7 +131,7 @@
 						<div class="col-sm-6">
 							<h5 style="margin-bottom: 20px; display: inline-block" class="boldest">Billing Information</h5>
 							<span style="color: #EB5757;">
-								<input type="checkbox" (change)="setBillingToShipping()" name="billToShip" id="billToShip">
+								<input type="checkbox" class="billToShip" (change)="setBillingToShipping()" name="billToShip" id="billToShip">
 								<label for="billToShip" class="checkboxLabel">
 									<span></span>
 									(Same as Billing Address)
@@ -269,6 +255,71 @@
 				</form>
 			</div>
 
+		</div>
+
+		<div class="row pickup-container" *ngIf="isSelected('pickup')">
+			<div class="col-sm-12">
+				<form (ngSubmit)="savePickup" class="pickupForm" #pickupForm="ngForm" novalidate>
+					<h5 style="margin-bottom: 20px" class="boldest">Select a Pickup Station</h5>
+					<div class="row">
+						<div class="form-group col-sm-4">
+							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="pickup_country" (change)="fetchRegions($event)" name="pickupd_country"
+							 #pickupd_country="ngModel" required>
+
+								<option [ngValue]="undefined" selected disabled>Select Country</option>
+								<option *ngFor="let item of countrys" [value]="item.country_code">{{item.name}}</option>
+							</select>
+						</div>
+						<div class="form-group col-sm-4">
+							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="pickup_region" name="pickupd_region" #pickupd_region="ngModel"
+							 (change)="fetchPickupPoints($event)" required>
+
+								<option [ngValue]="undefined" selected disabled>Select Region</option>
+								<option *ngFor="let region of regions" [value]="region.slug">{{region.name}}</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="pickup_points" name="pickupd_points" #pickupd_points="ngModel"
+							 (change)="showAddress($event)" required>
+
+								<option [ngValue]="undefined" selected disabled>Select City</option>
+								<option *ngFor="let point of pickup_address" [value]="point.city.slug">{{point.city.name}}</option>
+							</select>
+						</div>
+					</div>
+					<h6>Pickup Stations Near You:</h6>
+					<div class="row">
+						<div class="form-group col-md-12" *ngIf="address" style="display: flex;">
+							<input type="checkbox" class="addressCheck" name="{{address.city.slug}}" id="{{address.city.slug}}">
+							<label for="{{address.city.slug}}" class="checkboxLabel">
+								<span></span>
+								<div>
+									<p>Address: {{address.addressline1}}</p>
+									<p>City: {{address.city.name}}</p>
+									<p>Region: {{address.region.name}}</p>
+								</div>
+							</label>
+						</div>
+
+						<!-- <div class="col-md-12" style="display: flex">
+							<input type="checkbox" class="addressCheck" name="address" id="address">
+							<label for="address" class="checkboxLabel">
+								<span></span>
+								<div>
+									<p>Address: sjkjsjd</p>
+									<p>City: ciskjs</p>
+									<p>Region: rejkdfjd</p>
+								</div>
+							</label>
+						</div> -->
+
+
+						<!-- <div class="col-md-12" *ngIf="!address" style="text-align: center;">
+							<h4>Unfortunately there are no Pickup Stations available in the city indicated in your address</h4>
+						</div> -->
+					</div>
+				</form>
+			</div>
 		</div>
 
 

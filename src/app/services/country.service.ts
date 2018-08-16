@@ -1,11 +1,3 @@
-// import { Injectable } from '@angular/core';
-// import { Http, Headers, RequestOptions, Response } from '@angular/http';
-// import { Globals } from '../shared/api';
-// import 'rxjs/add/operator/toPromise';
-// import 'rxjs/add/operator/map';
-// import 'rxjs/add/operator/catch';
-// import { Observable } from 'rxjs';
-
 import { Injectable } from '@angular/core';
 import { Globals } from '../shared/api';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -16,6 +8,7 @@ export class CountryService {
  
   private countrysUrl = this.globals.COUNTRYS_URL; 
   private regionsUrl = this.globals.REGIONS_URL;
+  private pickupUrl = this.globals.PICKUP_POINT_URL;
 
   constructor(private http: HttpClient, private globals: Globals) { }
 
@@ -30,6 +23,11 @@ export class CountryService {
     let params = new HttpParams().set('country', country);
 
     return this.http.get(this.regionsUrl, {params})
+  }
+
+  fetchPickupPoints(country, region): Observable<any> {
+
+    return this.http.get(this.pickupUrl + '?country=' + country + '&region=' + region);
   }
 
 }

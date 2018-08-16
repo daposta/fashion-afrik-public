@@ -26,6 +26,7 @@ export class Globals{
     SHIPPINGRATE_URL = this.HOST_URL + '/customers/shipping_rates/';
     COLORS_URL =  this.HOST_URL + '/customers/colors/';
     CARDPAYMENT_URL = this.HOST_URL + '/customers/payment/';
+    PICKUP_POINT_URL = this.HOST_URL + '/customers/pickup_points/';
     
     
     

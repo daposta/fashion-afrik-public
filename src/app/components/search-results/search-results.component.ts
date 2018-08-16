@@ -23,6 +23,7 @@ export class SearchResultsComponent implements OnInit {
   	this.productSrv.searchProduct(query).subscribe(res =>{
         
       this.search_results = res.results
+      console.log(this.search_results);
     }, err =>{
         
         // let msg = JSON.parse(error._body)['message'];

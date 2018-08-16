@@ -21,30 +21,13 @@ export class LandingComponent implements OnInit {
     this.fetchWomen();
     this.fetchMen();
   	this.fetchNewArrivals();
-
-  	// this.fetchTopFiveStores();
-    // localStorage.removeItem('cart');
-    // localStorage.removeItem('auth_token');
-    // localStorage.removeItem('checkout');
-    // localStorage.removeItem('customer');
-
-
   }
-
-  // fetchTopFiveStores(){
-
-  // }
-
-  // fetchNewArrivals(){
-  //     this.productSrv.fetchNewArrivals().then(response => this.newArrivals = response.results)
-  //   //.catch(err => this.error = err)
-  // }
 
   fetchNewArrivals() {
     this.productSrv.fetchNewArrivals()
     .subscribe(res => {
-      this.newArrivals = res;
-      // console.log(this.newArrivals);
+      this.newArrivals = res.results;
+      console.log(this.newArrivals);
     }, err => {
       console.log(err);
     })

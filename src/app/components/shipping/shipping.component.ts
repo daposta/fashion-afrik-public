@@ -18,8 +18,6 @@ export class ShippingComponent implements OnInit {
   shippingForm: FormGroup;
   shippingBillingFormGroup: FormGroup;
   product_cost: number;
-  // shipping: Object = {};
-  // billing: Object = {};
   order: Object = {};
   countrys: any[];
   country: any = {};
@@ -34,19 +32,41 @@ export class ShippingComponent implements OnInit {
   @Output() notifyShipping: EventEmitter<Boolean> = new EventEmitter<Boolean>();
   billing_shipping_same: boolean;
 
+  isShipping: boolean = false;
+  isPickup: boolean = false;
+  selectedLink: string;
+
   shipping: any;
   billing: any;
+  pickup_country: any;
+  pickup_region: any;
+  pickup_address: any;
+  address: any;
 
   constructor(fb: FormBuilder, private countrySrv: CountryService, public currencySrv: CurrencyService, public orderSrv: OrderService, public router: Router, public shippingSrv: ShippingService) {
 
     this.shipping = {};
     this.billing = {};
+
+    this.selectedLink = 'shipping';
+
   }
 
   ngOnInit() {
 
     this.loadCountries();
     this.fetchCurrencys();
+  }
+
+  setRadio(e: string): void {
+    this.selectedLink = e;
+  }
+
+  isSelected(name: string): boolean {
+    if (!this.selectedLink) {
+      return false;
+    }
+    return (this.selectedLink === name);
   }
 
   numbersOnly(event: any) {
@@ -61,7 +81,7 @@ export class ShippingComponent implements OnInit {
   loadCountries() {
     this.countrySrv.fetchCountrys().subscribe(res => {
       this.countrys = res.results;
-      console.log(this.countrys);
+      // console.log(this.countrys);
     }, err => {
       console.log(err);
     })
@@ -92,11 +112,11 @@ export class ShippingComponent implements OnInit {
       shipping_cost: this.shippingFee,
     }
 
-    console.log(data);
+    // console.log(data);
 
     this.orderSrv.postOrder(data).subscribe(res => {
 
-      console.log(res.data);
+      // console.log(res.data);
 
       localStorage.setItem('order', JSON.stringify(res.data));
       this.shippingField = true;
@@ -113,6 +133,33 @@ export class ShippingComponent implements OnInit {
     if (this.billing_shipping_same) {
       this.billing = this.shipping;
     }
+  }
+
+  fetchPickupPoints(event) {
+    let region = event.target.value;
+    let country = this.country;
+
+    this.countrySrv.fetchPickupPoints(country, region).subscribe((res) => {
+
+      console.log(res.data);
+
+      this.pickup_address = res.data;
+    }, (err) => {
+
+      console.log(err);
+    })
+  }
+
+  showAddress(event) {
+    let city = event.target.value;
+
+    this.pickup_address.forEach(item => {
+      if (city === item['city'].slug) {
+        this.address = item;
+
+        console.log(this.address);
+      }
+    })
   }
 
   fetchRegions(event) {
@@ -144,8 +191,8 @@ export class ShippingComponent implements OnInit {
           this.shippingFee = item.amount;
 
           this.code = item['currency'].code;
-          console.log(this.shippingFee);
-          console.log(this.code);
+          // console.log(this.shippingFee);
+          // console.log(this.code);
         }
       })
     }, err => {
