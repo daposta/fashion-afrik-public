@@ -137,7 +137,7 @@ input.billToShip[type='checkbox'] + label > span {
 input.addressCheck[type='checkbox'] + label > span {
   display: inline-block;
   position: relative;
-  bottom: 55px;
+  bottom: 48px;
   justify-content: center;
   align-items: center;
   margin-right: 9px;
@@ -158,7 +158,7 @@ input.addressCheck[type='checkbox'] + label > span {
 //   height: 100%; color: #EB5757;
 // }
 
-input.billToShip[type='checkbox']:checked + label > span:before, input.addressCheck[type='checkbox']:checked + label > span:before {
+input.billToShip[type='checkbox']:checked + label > span:before {
   content: "\f00c";
   position: absolute;
   font-family: FontAwesome;
@@ -166,6 +166,18 @@ input.billToShip[type='checkbox']:checked + label > span:before, input.addressCh
   font-weight: normal;
   text-decoration: inherit;
   color: #EB5757;
+}
+
+input.addressCheck[type='checkbox']:checked + label > span:before {
+  content: "\f00c";
+  position: absolute;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  color: #EB5757;
+  font-size: 12px;
+  bottom: -4px;
 }
     
     @keyframes shrink-bounce{
@@ -253,4 +265,15 @@ input.billToShip[type='checkbox']:checked + label > span:before, input.addressCh
 		  background: -ms-linear-gradient(top, #f29494 0%,#eb5757 100%); /* IE10+ */
 		  background: linear-gradient(to bottom, #f29494 0%,#eb5757 100%); /* W3C */
 		  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f29494', endColorstr='#eb5757',GradientType=0 ); /* IE6-9 */
+    }
+
+    .no-address {
+      text-align: center;
+
+      h4 {
+        color: grey;
+        opacity: .8;
+        text-align: center;
+        padding: 15px;
+      }
     }

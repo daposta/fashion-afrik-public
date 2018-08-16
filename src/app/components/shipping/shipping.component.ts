@@ -43,7 +43,12 @@ export class ShippingComponent implements OnInit {
   pickup_address: any;
   address: any;
 
-  constructor(fb: FormBuilder, private countrySrv: CountryService, public currencySrv: CurrencyService, public orderSrv: OrderService, public router: Router, public shippingSrv: ShippingService) {
+  constructor(fb: FormBuilder,
+    private countrySrv: CountryService,
+    public currencySrv: CurrencyService,
+    public orderSrv: OrderService,
+    public router: Router,
+    public shippingSrv: ShippingService) {
 
     this.shipping = {};
     this.billing = {};
@@ -72,8 +77,8 @@ export class ShippingComponent implements OnInit {
   numbersOnly(event: any) {
     const pattern = /[0-9\+\-\ ]/;
 
-    let inputChar = String.fromCharCode(event.charCode);
-    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+    const inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode !== 8 && !pattern.test(inputChar)) {
       event.preventDefault();
     }
   }
@@ -127,6 +132,35 @@ export class ShippingComponent implements OnInit {
     })
   }
 
+  savePickup() {
+    let data: any = {};
+    let cart: any[] = [];
+    let currency: any;
+
+    cart = JSON.parse(localStorage.getItem('cart'));
+    currency = localStorage.getItem('currency');
+
+    data = {
+      cart: cart,
+      pickup_point: this.address.id,
+      currency: currency,
+      shipping_cost: 0.00,
+    }
+    console.log(data);
+
+    this.orderSrv.postOrder(data).subscribe(res => {
+
+      console.log(res.data);
+
+      localStorage.setItem('order', JSON.stringify(res.data));
+      this.shippingField = true;
+      this.notifyShipping.emit(this.shippingField);
+    }, err => {
+
+      console.log(err);
+    })
+  }
+
   setBillingToShipping() {
     this.billing_shipping_same = !this.billing_shipping_same;
 
@@ -136,8 +170,8 @@ export class ShippingComponent implements OnInit {
   }
 
   fetchPickupPoints(event) {
-    let region = event.target.value;
-    let country = this.country;
+    const region = event.target.value;
+    const country = this.country;
 
     this.countrySrv.fetchPickupPoints(country, region).subscribe((res) => {
 
@@ -151,7 +185,7 @@ export class ShippingComponent implements OnInit {
   }
 
   showAddress(event) {
-    let city = event.target.value;
+    const city = event.target.value;
 
     this.pickup_address.forEach(item => {
       if (city === item['city'].slug) {
@@ -165,18 +199,14 @@ export class ShippingComponent implements OnInit {
   fetchRegions(event) {
 
     this.fetchShippingCost(event);
-    
     this.country = event.target.value;
-    
     this.countrySrv.fetchRegion(this.country).subscribe(res => {
-      
       this.regions = res.data;
     }, err => {
 
       console.log(err);
     })
-  }
-  
+  };
   fetchShippingCost(event) {
 
     this.countryCode = event.target.value;
@@ -196,7 +226,6 @@ export class ShippingComponent implements OnInit {
         }
       })
     }, err => {
-      
       console.log(err);
     })
   }

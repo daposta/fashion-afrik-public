@@ -258,8 +258,8 @@
 		</div>
 
 		<div class="row pickup-container" *ngIf="isSelected('pickup')">
-			<div class="col-sm-12">
-				<form (ngSubmit)="savePickup" class="pickupForm" #pickupForm="ngForm" novalidate>
+			<div class="col-md-12">
+				<form (ngSubmit)="savePickup()" class="pickupForm" #pickupForm="ngForm" novalidate>
 					<h5 style="margin-bottom: 20px" class="boldest">Select a Pickup Station</h5>
 					<div class="row">
 						<div class="form-group col-sm-4">
@@ -269,6 +269,10 @@
 								<option [ngValue]="undefined" selected disabled>Select Country</option>
 								<option *ngFor="let item of countrys" [value]="item.country_code">{{item.name}}</option>
 							</select>
+
+							<div class="form-error" *ngIf="pickupd_country.invalid && (pickupd_country.dirty || pickupd_country.touched)">
+								country is required
+							</div>
 						</div>
 						<div class="form-group col-sm-4">
 							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="pickup_region" name="pickupd_region" #pickupd_region="ngModel"
@@ -277,6 +281,10 @@
 								<option [ngValue]="undefined" selected disabled>Select Region</option>
 								<option *ngFor="let region of regions" [value]="region.slug">{{region.name}}</option>
 							</select>
+
+							<div class="form-error" *ngIf="pickupd_region.invalid && (pickupd_region.dirty || pickupd_region.touched)">
+								region is required
+							</div>
 						</div>
 						<div class="form-group col-md-4">
 							<select class="custom-select mb-2 mr-sm-2 mb-sm-0" [(ngModel)]="pickup_points" name="pickupd_points" #pickupd_points="ngModel"
@@ -285,6 +293,10 @@
 								<option [ngValue]="undefined" selected disabled>Select City</option>
 								<option *ngFor="let point of pickup_address" [value]="point.city.slug">{{point.city.name}}</option>
 							</select>
+
+							<div class="form-error" *ngIf="pickupd_points.invalid && (pickupd_points.dirty || pickupd_points.touched)">
+								city is required
+							</div>
 						</div>
 					</div>
 					<h6>Pickup Stations Near You:</h6>
@@ -294,9 +306,9 @@
 							<label for="{{address.city.slug}}" class="checkboxLabel">
 								<span></span>
 								<div>
-									<p>Address: {{address.addressline1}}</p>
-									<p>City: {{address.city.name}}</p>
-									<p>Region: {{address.region.name}}</p>
+									<p style="font-size: 16px;">Address: {{address.addressline1}}</p>
+									<p style="font-size: 16px;">City: {{address.city.name}}</p>
+									<p style="font-size: 16px;">Region: {{address.region.name}}</p>
 								</div>
 							</label>
 						</div>
@@ -313,12 +325,22 @@
 							</label>
 						</div> -->
 
+						<!-- <div class="row"> -->
+							<div class="col-md-12">
+								<div class="col-md-12" *ngIf="!address" class="no-address">
+									<h4>Unfortunately there are no Pickup Stations available in the city indicated in your address</h4>
+								</div>
+							</div>
 
-						<!-- <div class="col-md-12" *ngIf="!address" style="text-align: center;">
-							<h4>Unfortunately there are no Pickup Stations available in the city indicated in your address</h4>
-						</div> -->
+							<div class="col-md-12">
+								<button type="submit" class="btn  btn-accent" [disabled]="!pickupForm.form.valid">
+									Save and Proceed
+								</button>
+							</div>
+						<!-- </div> -->
 					</div>
 				</form>
+
 			</div>
 		</div>
 
