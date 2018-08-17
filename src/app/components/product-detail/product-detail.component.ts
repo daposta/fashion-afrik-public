@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { EcomProductZoomModalImage, EcomProductZoomModalService } from '@plency/ecom-product-zoom-modal';
 
 import { ProductService } from '../../services/product.service';
 import { CartService } from '../../services/cart.service';
@@ -49,13 +50,28 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   sizes: any[];
   allImages: any[] = [];
   imgWindex: any[] = [];
+  image: any;
 
   private formSubmitAttempt: boolean;
+
+  images: EcomProductZoomModalImage[] = [{
+    img: this.allImages['image'],
+    thumb: this.allImages['image'],
+
+  //   img: 'large-1.jpg',
+  //   thumb: 'small-1.jpg'
+  // }, {
+  //   img: 'large-2.jpg',
+  //   thumb: 'small-2.jpg'
+  // }, {
+  //   img: 'large-3.jpg',
+  //   thumb: 'small-3.jpg'
+  }];
 
   constructor(private productSrv: ProductService, private route: ActivatedRoute, private globals: Globals,
     private cartSrv: CartService, private colorSrv: ColorService, private sizeSrv: SizeService,
     private fabricSrv: FabricService, fb: FormBuilder, private currencySrv: CurrencyService,
-    private rateSrv: ExchangeRateService) {
+    private rateSrv: ExchangeRateService, private prodZoomModalService: EcomProductZoomModalService) {
 
     this.cartForm = fb.group({
       'qty': ['', Validators.required],
@@ -112,21 +128,22 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
         res => {
           this.product = res;
           console.log(this.product);
-          let product_imgs = [];
+          const product_imgs = [];
+          this.image = this.product['banner_image'];
 
           for (let i = 0; i < this.product['other_images'].length; i++) {
             product_imgs.push(this.product['other_images'][i].image);
             this.allImages.push({
-              id: i,
+              id: i + 1,
               image: this.product['other_images'][i].image,
-              slide: 'slide_' + i,
+              slide: 'slide_' + (i + 1),
             });
           }
-          let length = this.allImages.length;
-          this.allImages.push({
-            id: length,
+          // const length = this.allImages.length;
+          this.allImages.unshift({
+            id: 0,
             image: this.product['banner_image'],
-            slide: 'slide_' + length,
+            slide: 'slide_' + 0,
           });
           this.reps = product_imgs;
           this.title = this.product['name'];
@@ -147,43 +164,48 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
 
     $(function () {
 
-      $('.slider-for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        fade: true,
-        asNavFor: '.slider-nav'
-      });
-      $('.slider-nav').slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        // asNavFor: '.slider-for',
-        dots: false,
-        centerMode: true,
-        focusOnSelect: true
-      });
+      // $('.slider-for').slick({
+      //   slidesToShow: 1,
+      //   slidesToScroll: 1,
+      //   arrows: true,
+      //   fade: true,
+      //   asNavFor: '.slider-nav'
+      // });
+      // $('.slider-nav').slick({
+      //   slidesToShow: 5,
+      //   slidesToScroll: 1,
+      //   // asNavFor: '.slider-for',
+      //   dots: false,
+      //   centerMode: true,
+      //   focusOnSelect: true
+      // });
     });
   }
 
   ngAfterViewInit() {
-    $(function () {
+    // $(function () {
 
-      $('.slider-for').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        fade: true,
-        asNavFor: '.slider-nav'
-      });
-      $('.slider-nav').slick({
-        slidesToShow: 5,
-        slidesToScroll: 1,
-        // asNavFor: '.slider-for',
-        dots: false,
-        centerMode: true,
-        focusOnSelect: true
-      });
-    });
+    //   $('.slider-for').slick({
+    //     slidesToShow: 1,
+    //     slidesToScroll: 1,
+    //     arrows: true,
+    //     fade: true,
+    //     asNavFor: '.slider-nav'
+    //   });
+    //   $('.slider-nav').slick({
+    //     slidesToShow: 5,
+    //     slidesToScroll: 1,
+    //     // asNavFor: '.slider-for',
+    //     dots: false,
+    //     centerMode: true,
+    //     focusOnSelect: true
+    //   });
+    // });
+  }
+
+  viewImage(_image) {
+    console.log(_image);
+    this.image = _image;
   }
 
   fetchCurrencys() {
@@ -202,11 +224,11 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       this.exchange_rates = res.results;
       // console.log(this.exchange_rates);
 
-      let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
-      //localStorage.setItem('rate', selected_currency.rate);
+      const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
+      // localStorage.setItem('rate', selected_currency.rate);
 
       if (this.product && this.product['currency  ']) {
-        if (!(this.product['currency']['code'] == selected_currency['currency']['code'])) {
+        if (!(this.product['currency']['code'] === selected_currency['currency']['code'])) {
 
 
           localStorage.setItem('rate', selected_currency['rate']);
@@ -223,9 +245,9 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
 
   changeCurrency(evt) {
     localStorage.setItem('currency', evt.target.value);
-    let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
+    const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
 
-    if (!(this.product['currency']['code'] == selected_currency['currency']['code'])) {
+    if (!(this.product['currency']['code'] === selected_currency['currency']['code'])) {
 
       localStorage.setItem('rate', selected_currency['rate']);
     } else {
@@ -237,8 +259,8 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
   numbersOnly(event: any) {
     const pattern = /[0-9\+\-\ ]/;
 
-    let inputChar = String.fromCharCode(event.charCode);
-    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+    const inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode !== 8 && !pattern.test(inputChar)) {
       event.preventDefault();
     }
   }
@@ -250,11 +272,14 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
       let nProduct: any = {};
       nProduct = this.product;
 
-      let data = { 'product_id': nProduct.id, 'product_name': nProduct.name, 'product_image': nProduct.banner_image, 'sale_price': nProduct.sale_price, 'cost': nProduct.sale_price * parseInt(t['qty'], 10), 'qty': parseInt(t['qty'], 10), 'size': t['size'], 'color': t['color'], 'price': nProduct.sale_price / JSON.parse(localStorage.getItem('rate')) };
+      const data = { 'product_id': nProduct.id, 'product_name': nProduct.name,
+      'product_image': nProduct.banner_image, 'sale_price': nProduct.sale_price,
+      'cost': nProduct.sale_price * parseInt(t['qty'], 10), 'qty': parseInt(t['qty'], 10),
+      'size': t['size'], 'color': t['color'], 'price': nProduct.sale_price / JSON.parse(localStorage.getItem('rate')) };
 
       this.cartSrv.addToCart(data);
       this.getCart();
-      $("html, body").animate({ scrollTop: 0 }, "slow");
+      $('html, body').animate({ scrollTop: 0 }, 'slow');
     }
 
   };
@@ -276,7 +301,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
 
           this.product['reviews'].unshift(res);
           $('html, body').animate({
-            scrollTop: $(".review-block").offset().top
+            scrollTop: $('.review-block').offset().top
           }, 2000);
 
         }
@@ -297,7 +322,7 @@ export class ProductDetailComponent implements OnInit, AfterViewInit {
 
   goToAddReview() {
     $('html, body').animate({
-      scrollTop: $("#product-description").offset().top
+      scrollTop: $('#product-description').offset().top
     }, 2000);
   }
 

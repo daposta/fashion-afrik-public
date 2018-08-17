@@ -4,28 +4,16 @@
 		<div class="row">
 			<div class="col-lg-6">
 				<!-- slider -->
+
 				<div class="slider-element">
-					<div class="slider-nav" style="display: none;">
-						<!-- <div *ngFor="let rp of allImages" class="slider-item" [attr.data-url]="rp.slide" [ngStyle]="{ 'background-image': 'url(' + rp.image + ')'}"></div> -->
+					<div class="slider-nav" style="display: inherit;">
+						<div *ngFor="let rp of allImages" class="slider-item" [attr.data-url]="rp.image" [ngStyle]="{ 'background-image': 'url(' + rp.image + ')'}" (click)="viewImage(rp.image)"></div>
 					</div>
 					<div class="slider-for">
-						<div *ngFor="let rp of allImages">
-							<div class="slider-item" [attr.data-url]="rp.slide" [ngStyle]="{ 'background-image': 'url(' + rp.image + ')'}"></div>
-						</div>
+						<!-- <div class="slider-item" [attr.data-url]="product.banner_image" [ngStyle]="{'background-image': 'url(' + product.banner_image + ')'}"></div> -->
+						<div class="slider-item" [attr.data-url]="image" [ngStyle]="{'background-image': 'url(' + image + ')'}" ></div>
 					</div>
 				</div>
-
-				<!-- <div class="slider">
-					<div *ngFor="let img of allImages" data-index="img.id">
-						<img src="{{img.image}}" alt="One">
-					</div>
-				</div>
-
-				<div class="slider-nav-thumbnails">
-					<div *ngFor="let img of allImages" style="height: 200px; width: 200px;">
-						<img src="{{img.image}}" slide="img.slide" style="height: 100%; width: 100%; object-fit: cover;">
-					</div>
-				</div> -->
 			</div>
 
 			<div class="col-md-5 offset-md-1">
@@ -71,7 +59,8 @@
 								<label for="quantity">Quantity</label>
 								<input type="text" class="form-control" [formControl]="cartForm.controls['qty']" (keypress)="numbersOnly($event)">
 
-								<div *ngIf="cartForm.controls['qty'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Quantity is required</div>
+								<div *ngIf="cartForm.controls['qty'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Quantity
+									is required</div>
 							</div>
 
 
@@ -81,7 +70,8 @@
 									<option selected></option>
 									<option *ngFor="let size of product.sizes" [value]="size.slug">{{size.name}}</option>
 								</select>
-								<div *ngIf="cartForm.controls['size'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Size is required</div>
+								<div *ngIf="cartForm.controls['size'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Size
+									is required</div>
 							</div>
 
 							<div class="form-group col-md-3">
@@ -91,7 +81,8 @@
 									<option selected></option>
 									<option *ngFor="let color of product.colors" [value]="color.slug">{{color.name}}</option>
 								</select>
-								<div *ngIf="cartForm.controls['color'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Color is required</div>
+								<div *ngIf="cartForm.controls['color'].hasError('required') && formSubmitAttempt" class="small form-error" style="color: red">Color
+									is required</div>
 							</div>
 
 							<div class="col-md-3">
@@ -147,15 +138,6 @@
 			</div>
 			<div class="modal-body">
 				<form [formGroup]="customizeProductForm" (ngSubmit)="saveCustomRequest(customizeProductForm.value)" novalidate>
-					<!-- <div class="row">
-       			<div class="form-group col-sm-6">
-       				<label for="">General Build</label>
-       				<select name="GB" id="GB" class="form-control">
-       					<option value="">Average</option>
-       					<option value="Normal">Normal</option>
-       				</select>
-       			</div>
-       		</div> -->
 					<div class="text-info alert alert-info" style="padding: 3px 20px">
 						<small>Enter values in inches</small>
 					</div>
@@ -263,14 +245,16 @@
 
 						<div *ngIf="reviewForm.controls['email'].hasError('required') && reviewSubmitAttempt" style="color: red">Email is required</div>
 
-						<div *ngIf="reviewForm.controls['email'].hasError('pattern')  && reviewSubmitAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
+						<div *ngIf="reviewForm.controls['email'].hasError('pattern')  && reviewSubmitAttempt" style="color: red">Email is invalid.
+							Format should be john@doe.com.</div>
 					</div>
 
 					<div class="form-group">
 						<label for="">Comment</label>
 						<textarea class="form-control" [(ngModel)]="review.comment" [formControl]="reviewForm.controls['comment']" required></textarea>
 
-						<div *ngIf="reviewForm.controls['comment'].hasError('required') && reviewSubmitAttempt" style="color: red">Comment is required</div>
+						<div *ngIf="reviewForm.controls['comment'].hasError('required') && reviewSubmitAttempt" style="color: red">Comment
+							is required</div>
 					</div>
 
 					<div class="form-actions">
@@ -400,10 +384,8 @@
 				</div>
 			</div>
 		</div>
-		<!-- .................. -->
 		<div class="text-center">
 			<!-- <button class="btn btn-outline-accent btn-rounded load-more btn-accent">Load-more</button> -->
 		</div>
 	</div>
 </section>
-<!-- <app-footer></app-footer> -->

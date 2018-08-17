@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MomentModule } from 'angular2-moment';
 import { TextMaskModule } from 'angular2-text-mask';
+import { EcomProductZoomModalModule } from '@plency/ecom-product-zoom-modal';
 
 import { Globals } from './shared/api';
 
@@ -96,8 +97,9 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes, {}),
     MomentModule,
     TextMaskModule,
+    EcomProductZoomModalModule,
   ],
-  providers: [Globals,],
+  providers: [Globals],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
