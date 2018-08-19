@@ -190,10 +190,12 @@ input::-webkit-search-cancel-button {
 
 
 input[type=search] {
-	background: #FFFFFF url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  // background: #FFFFFF url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  background: #FFFFFF url(../../../assets/img/magnifier2.png) no-repeat 9px center;
 	border: 2px solid #D15419;
 	padding: 9px 10px 9px 32px;
-	width: 55px;
+  width: 55px;
+  // color: #D15419;
 
 	-webkit-border-radius: 10em;
 	-moz-border-radius: 10em;
