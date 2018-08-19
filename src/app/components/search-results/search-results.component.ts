@@ -12,31 +12,19 @@ import {Router, ActivatedRoute, Params} from '@angular/router';
 })
 export class SearchResultsComponent implements OnInit {
   t = localStorage;
-  search_results:any[];
-  q :any;
+  search_results: any[];
+  q: any;
   error: any;
-  constructor( private route: ActivatedRoute, private productSrv :ProductService) { }
+  constructor( private route: ActivatedRoute, private productSrv: ProductService) { }
 
   ngOnInit() {
-  	
-  	let query = this.route.snapshot.queryParams['q'];
-  	this.productSrv.searchProduct(query).subscribe(res =>{
-        
+    const query = this.route.snapshot.queryParams['q'];
+    this.productSrv.searchProduct(query).subscribe(res => {
       this.search_results = res.results
       console.log(this.search_results);
-    }, err =>{
-        
-        // let msg = JSON.parse(error._body)['message'];
-        
-        // this.error = msg;
+    }, err => {
         console.log(err);
-        
     })
-    //.then(response => this.search_results = response.results);
-  	this.q = query;
-  	
-
-  	
+    this.q = query;
   }
-
 }

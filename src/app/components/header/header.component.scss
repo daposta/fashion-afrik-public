@@ -100,7 +100,7 @@ header {
         margin-right: 15px;
     }
 }
-// 
+//
 .dropdown-toggle {
     &::after {
         content: "\F3D0";
@@ -134,7 +134,7 @@ li {
     }
     }
 }
-// 
+//
 .navbar {
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
@@ -143,38 +143,114 @@ li {
         font-family: 'Montserrat', sans-serif;
         font-size: 14px;
     }
-    [type=search] {
-        font-family: $primary-font;
-        font-size: 14px;
-        font-weight: 600;
-        padding: 8px 20px;
-        text-transform: lowercase;
-        outline: 0;
-        border-radius: 50px;
-        background: #e0e0e0;
-        border: 0;
-        transition: 0.2s ease-in;
-        &:focus {
-            box-shadow: 0 0 0 1px #d35400;
-            background: #fff;
-        }
-    }
+    // [type=search] {
+    //     font-family: $primary-font;
+    //     font-size: 14px;
+    //     font-weight: 600;
+    //     padding: 8px 20px;
+    //     text-transform: lowercase;
+    //     outline: 0;
+    //     border-radius: 50px;
+    //     background: #e0e0e0;
+    //     border: 0;
+    //     transition: 0.2s ease-in;
+    //     &:focus {
+    //         box-shadow: 0 0 0 1px #d35400;
+    //         background: #fff;
+    //     }
+    // }
 }
-.search-form {
-    .search-group {
-        position: relative;
-    }
-    button {
-        border: 0;
-        position: absolute;
-        top: 4px;
-        right: 20px;
-        font-size: 20px;
-        color: #7a8999;
-        background: transparent;
-    }
+// .search-form {
+//     .search-group {
+//         position: relative;
+//     }
+//     button {
+//         border: 0;
+//         position: absolute;
+//         top: 4px;
+//         right: 20px;
+//         font-size: 20px;
+//         color: #7a8999;
+//         background: transparent;
+//     }
+// }
+
+
+input[type=search] {
+	-webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+	font-family: inherit;
+  font-size: 100%;
+  outline: none;
 }
-// cart bubble
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button {
+	display: none;
+}
+
+
+input[type=search] {
+	background: #FFFFFF url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	border: 2px solid #D15419;
+	padding: 9px 10px 9px 32px;
+	width: 55px;
+
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	transition: all .5s;
+}
+input[type=search]:focus {
+	width: 130px;
+	background-color: #fff;
+	border-color: #66CC75;
+
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+
+
+input:-moz-placeholder {
+	color: #999;
+}
+input::-webkit-input-placeholder {
+	color: #999;
+}
+
+/* Demo 2 */
+#demo-2 input[type=search] {
+  // width: 15px;
+  width: 35px;
+  height: 35px;
+  border: 2px solid #D15419;
+	// padding-left: 10px;
+	color: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+#demo-2 input[type=search]:hover {
+	background-color: #fff;
+}
+#demo-2 input[type=search]:focus {
+	width: 130px;
+	padding-left: 32px;
+	color: #000;
+	background-color: #fff;
+	cursor: auto;
+}
+#demo-2 input:-moz-placeholder {
+	color: transparent;
+}
+#demo-2 input::-webkit-input-placeholder {
+	color: transparent;
+}
+
+
+
 .cart-bubble {
     width: 20px;
     text-align: center;
@@ -188,7 +264,7 @@ li {
     color: #fff;
 }
 
-@media (max-width: 420px) { 
+@media (max-width: 420px) {
 
 
 #top-header  .inner {
@@ -212,7 +288,7 @@ li {
 
 .dd-options {
     img {
-       
+
     }
 }
 
@@ -249,8 +325,19 @@ select {
     color: #eb5757;
     top: 1px;
   }
-  
+
 .avatar-dd .dropdown-menu {
     top: 35px;
     left: -50px;
+}
+
+.logo-container {
+  width: 100%;
+  text-align: center;
+
+  img {
+    height: 75px;
+    cursor: pointer;
+    padding: 10px;
+  }
 }

@@ -137,7 +137,7 @@ export class HeaderComponent implements OnInit {
 
       this.exchange_rates = res.results;
       // console.log(this.exchange_rates);
-      let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
+      const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
       localStorage.setItem('rate', selected_currency.rate);
     }, err => {
 
@@ -158,7 +158,7 @@ export class HeaderComponent implements OnInit {
 
   changeCurrency(evt) {
     localStorage.setItem('currency', evt.target.value);
-    let selected_currency = this.exchange_rates.find(x => x['currency']['code'] == localStorage.getItem('currency'));
+    const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
     localStorage.setItem('rate', selected_currency.rate);
 
   }

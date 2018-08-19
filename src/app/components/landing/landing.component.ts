@@ -9,18 +9,17 @@ import { ProductService } from '../../services/product.service';
   providers: [ ProductService]
 })
 export class LandingComponent implements OnInit {
-  
-  newArrivals:any[];
-  hers:any[];
-  his:any[];
+  newArrivals: any[];
+  hers: any[];
+  his: any[];
   error: any;
 
-  constructor( private productSrv :ProductService) { }
+  constructor( private productSrv: ProductService) { }
 
   ngOnInit() {
     this.fetchWomen();
     this.fetchMen();
-  	this.fetchNewArrivals();
+    this.fetchNewArrivals();
   }
 
   fetchNewArrivals() {
@@ -33,12 +32,12 @@ export class LandingComponent implements OnInit {
     })
   }
 
-  fetchWomen(){
+  fetchWomen() {
     this.productSrv.fetchHer()
-    .subscribe(res =>{
+    .subscribe(res => {
       this.hers = res.results;
       // console.log(this.hers);
-    }, err =>{
+    }, err => {
       console.log(err);
     })
   }

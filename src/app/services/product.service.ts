@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, RequestOptions, Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Globals } from '../shared/api';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ProductService {
@@ -104,7 +104,7 @@ export class ProductService {
 
   searchProduct(data: string) {
 
-    return this.http.get(this.searchUrl + '?search=' + data)
+    return this.http.get(this.searchUrl + '?q=' + data)
       .map(this.extractData)
       .catch(this.handleErrorObservable);
 
@@ -113,8 +113,8 @@ export class ProductService {
   saveNewReview(review: any) {
 
     //  headers.append('Content-Type', 'multipart/form-data');
-    let formData = new FormData();
-    formData.append("reviewer_email", review['email']);
+    const formData = new FormData();
+    formData.append('reviewer_email', review['email']);
     formData.append('reviewer_name', review['name']);
     formData.append('comment', review['comment']);
     formData.append('product', review['product']);
@@ -127,7 +127,7 @@ export class ProductService {
   }
 
   private extractData(res: Response) {
-    let body = res.json();
+    const body = res.json();
     return body || {};
   }
 
