@@ -1,38 +1,61 @@
-<app-header [cart] ="cart"></app-header>
-<section class="padded" style="">
-	<div class="container">
-		<div class="row">
-			
-			<div class="col-sm-12 offset-md-1">
-				<h5 class="boldest">
-					You searched for "{{q}}"
-				</h5>
-				<p style="font-size: 12px"><b>{{search_results?.length|number}}</b> Items found</p>
-				<!--  -->
-				<div class="row">
-					<div class="col-sm-4"  *ngFor="let item of search_results">
-						<!-- overall link for product and title -->
-						<a href="">
-							<div class="product-component text-center">
-						<div class="product-image">
-						<a style="color: #011936" href="/product/{{item.id}}/{{item.slug}}">
-							<img src="{{ item.feature_image}}" alt="product image" class="img-fluid">
-						</a>
-						</div>
-						<div class="product-title">
-							<h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;"><a style="color: #011936" href="/product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h6>
-							<span class="text-center">
-								<span>{{t.getItem('currency')}}</span><b>{{item.regular_price / t.getItem('rate') |number }} </b>
-							</span>
-							</div>
-						</div>
-						</a>
-					</div>
+<app-header [cart]="cart"></app-header>
+<section class="padded">
+  <div class="container">
+    <div class="row" style="padding: 0 15px;">
+      <div class="col-md-12">
+        <h5 class="boldest">
+          You searched for "{{q}}"
+        </h5>
+        <p style="font-size: 12px"><b>{{search_results?.length|number}}</b> Items found</p>
+      </div>
+    </div>
+  </div>
 
-				
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="row newArrivals-container">
+    <div class="col-md-4 newArrival-container" *ngFor="let item of search_results" style="text-align: center; color: #E9585B; margin-bottom: 25px;">
+      <p class="price"><span [innerHTML]="item['currency'].html_code"></span> {{item.sale_price}}</p>
+      <p class="name">{{item.name}}</p>
+
+      <div class="img-container" style="height: 300px;">
+        <img src="{{item.feature_image}}" alt="" style="height: 100%; width: 100%; object-fit: contain;">
+      </div>
+
+      <a routerLink="/product/{{item.id}}/{{item.slug}}">
+        <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- <div class="container">
+    <div class="row">
+
+      <div class="col-sm-12 offset-md-1">
+        <h5 class="boldest">
+          You searched for "{{q}}"
+        </h5>
+        <p style="font-size: 12px"><b>{{search_results?.length|number}}</b> Items found</p>
+        <div class="row">
+          <div class="col-sm-4" *ngFor="let item of search_results">
+            <a href="">
+              <div class="product-component text-center">
+                <div class="product-image">
+                  <a style="color: #011936" href="/product/{{item.id}}/{{item.slug}}">
+                    <img src="{{ item.feature_image}}" alt="product image" class="img-fluid">
+                  </a>
+                </div>
+                <div class="product-title">
+                  <h6 class="" style="text-align: center;margin: 0;padding: 10px 0 0;"><a style="color: #011936" href="/product/{{item.id}}/{{item.slug}}">{{item.name}}</a></h6>
+                  <span class="text-center">
+                    <span>{{t.getItem('currency')}}</span><b>{{item.regular_price / t.getItem('rate') |number }} </b>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div> -->
 </section>
-<!-- <app-footer></app-footer> -->
