@@ -1,55 +1,42 @@
-@import '../../../sass/variables';
-footer {
-	font-family: $primary-font;
-	background: $site-blue;
-	min-height: 200px;
-	padding: 40px 0;
+.top-footer{
+    background-color: #2b2e32;
+    color: white;
+    font-weight: bold;
+    padding: 10px 10px;
+    a{
+      color: white;
+      text-decoration: none;
+      padding-bottom: 15px;
+    }
+    a:hover{
+      color: rgb(71, 71, 196);
+    }
+    hr{
+      margin: 0px ;
+      border-top: 1px solid rgb(56, 54, 54);
+    }
+    .col-md-4{
+      padding: 15px 5px;
+    }
+  
+  }
+  .row-top{
+    padding: 20px 0px;
+    padding-left: 100px ;
+  }
+  .bottom-footer{
+    background-color: #1d1f22;
+    color: white;
+    padding: 50px 0px;
+    a{
+      color: white;
+      text-decoration: none;
+    }
+    .center-img{
+      margin: 0px 40%;
+    }
+  }
 
-	.title {
-		font-weight: 700;
-		color: #fff;
-		margin-bottom: 25px;
-	}
-	.nav {
-		a {
-			font-weight: 400;
-			font-size: 12px;
-			padding: 0;
-			margin-bottom: 15px;
-			color: $site-accent;
-		}
-	}
-}
-
-#partners {
-	img {
-		width: 40px;
-		height: 40px;
-		margin-right: 50px;
-
-		&:last-of-type {
-			margin-right: 0;
-		}
-	}
-}
-
-#subscription {
-	padding: 60px;
-	.title {
-		font-weight: 700;
-		font-size: 20px;
-		margin-bottom: 20px;
-	}
-
-	input {
-		border: 0;
-		padding: 12px 20px;
-	}
-	button {
-		background: $site-accent;
-		font-weight: 700;
-		color: #fff;
-		border: 0;
-		padding: 12px 20px;
-	}
+.img-responsive{
+    display: inline;
 }

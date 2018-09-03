@@ -1,193 +1,86 @@
 <app-header [cart]="cart"></app-header>
-<!-- <div class="row"> -->
-<div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
-
+<div id="myCarousel" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
   <ol class="carousel-indicators">
-    <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators">
-    </li>
-    <li data-slide-to="1" data-target="#carouselExampleIndicators">
-    </li>
-    <li data-slide-to="2" data-target="#carouselExampleIndicators">
-    </li>
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
   </ol>
 
-  <div class="carousel-inner">
-    <div class="carousel-item active" style="background-image: url('/assets/img/banner/women-category-banner.jpg');">
-      <a href="">
-        <div class="carousel-caption d-none d-md-block">
-          <h3 class="boldest">The Liya Lisafi Collection</h3>
-          <p>collection description goes here</p>
-        </div>
-      </a>
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" >
+    <div class="item active">
+      <img src="http://dokadots.com/skin/frontend/default/CF/img/slide/banner.jpg" width="100%" alt="Los Angeles">
     </div>
-    <div class="carousel-item" style="background-image: url('/assets/img/banner/women-category-banner.jpg');">
-      <a href="">
-        <div class="carousel-caption d-none d-md-block">
-          <h3 class="boldest">Amal &amp; Nikolina</h3>
-          <p>collection description goes here</p>
-        </div>
-      </a>
+
+    <div class="item">
+      <img src="https://zoafia-image-bucket-p.s3.amazonaws.com/shops/banners/000/000/042/original/aina_smith.jpg?1524669968" width="100%" alt="Chicago">
     </div>
-    <div class="carousel-item" style="background-image: url('/assets/img/banner/women-category-banner.jpg');">
-      <a href="">
-        <div class="carousel-caption d-none d-md-block">
-          <h3 class="boldest">Mena</h3>
-          <p>collection description goes here</p>
-        </div>
-      </a>
+
+    <div class="item">
+      <img src="https://i0.wp.com/styleafrique.com/wp-content/uploads/2017/04/Nana-Clothing-Banner-1.jpg?resize=1000%2C500&ssl=1" width="100%" alt="New York">
     </div>
   </div>
-  <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button">
-    <span aria-hidden="true" class="carousel-control-prev-icon">
-    </span>
-    <!-- <span class="sr-only">Previous</span> -->
+
+  <!-- Left and right controls -->
+  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button">
-    <span aria-hidden="true" class="carousel-control-next-icon">
-    </span>
-    <!-- <span class="sr-only">Next</span> -->
+  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
   </a>
 </div>
 
-<section id="top-stores" class="">
-  <div class="d-flex flex-row justify-content-center flex-wrap">
-    <div class="col-sm rank">
-      <h3 class="boldest text-left" style=" color: #fff;">
-        <span>Top</span>
-        <br>
-        <span>Stores</span>
-      </h3>
-    </div>
-    <div class="col-md rank">
-      <span class="center">Odeku Stores</span>
-    </div>
-    <div class="col-md rank">
-      <span class="center">Cossly Wears</span>
-    </div>
-    <div class="col-md rank">
-      <span class="center">Liya Lisafi</span>
-    </div>
-    <div class="col-md rank">
-      <span class="center">Amal &amp; Nicole</span>
-    </div>
-    <div class="col-md rank">
-      <span class="center">Eyez Shoes</span>
-    </div>
-  </div>
-</section>
 
-<!-- Top Ranked stores -->
+<div class="container" style="margin-top: 50px">
+  <hr>
+  <br>
+  <div class="row text-center">
+    <div class="col-md-6">
+      <img src="https://cdn.primedia.co.za/primedia-broadcasting/image/upload/c_pad,h_437,w_700/v1/Gallery_Builder/kdirtoyz584doenh5x61" style="width:70%;height: 300px;" alt="woman"><br>
+        <h4>SHOP FOR HER</h4>
+        <button class="d-block btn btn-default">VIEW COLLECTION</button>
+    </div>
 
-<!-- </div> -->
-
-<section class="padded" id="new-arrivals">
-  <div class="section-header text-center font-2">
-    # new arrivals
-    <span class="big-dot">
-      ...
-    </span>
-  </div>
-  <!-- new arrivals images -->
-
-  <div class="row newArrivals-container">
-    <!-- <div class="col-md-4 newArrival-container" *ngFor="let item of newArrivals | slice:0:3; let i = index" style="text-align: center; color: #E9585B">
-      <p class="price"><span [innerHTML]="item['currency'].html_code"></span> {{item.sale_price}}</p>
-      <p class="name">{{item.name}}</p>
-
-      <div class="img-container" style="height: 300px;">
-        <img src="{{item.feature_image}}" alt="" style="height: 100%; width: 100%; object-fit: contain;">
+    <div class="col-md-6">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuNK9oJG9XB19hEqF5vhWeqLNkiunq7TEQdnkwbhQo9nqdPvbv" style="width:70%;height: 300px;" alt="man"><br>
+        <h4>SHOP FOR HIM</h4>
+        <button class="d-block btn btn-default">VIEW COLLECTION</button>
       </div>
 
-      <a routerLink="/product/{{item.id}}/{{item.slug}}">
-        <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
-      </a>
-    </div> -->
-
-    <div class="col-md-4 newArrival-container" style="text-align: center; color: #E9585B">
-      <p class="price">&pound; 94.00</p>
-      <p class="name">Ankara Material</p>
-
-      <div class="img-container" style="height: 300px;">
-        <img src="/assets/img/deola3.jpg" alt="" style="height: 100%; width: 100%; object-fit: contain;">
-      </div>
-
-      <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
-    </div>
-
-    <div class="col-md-4 newArrival-container" style="text-align: center; color: #E9585B">
-      <p class="price">&pound; 94.00</p>
-      <p class="name">Ankara Material</p>
-
-      <div class="img-container" style="height: 300px;">
-        <img src="/assets/img/deola1.jpg" alt="" style="height: 100%; width: 100%; object-fit: contain;">
-      </div>
-
-      <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
-    </div>
-
-    <div class="col-md-4 newArrival-container" style="text-align: center; color: #E9585B">
-      <p class="price">&pound; 94.00</p>
-      <p class="name">Ankara Material</p>
-
-      <div class="img-container" style="height: 300px;">
-        <img src="/assets/img/deola1.jpg" alt="" style="height: 100%; width: 100%; object-fit: contain;">
-      </div>
-
-      <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="padded">
-
-  <div class="section-header text-center font-2">
-    # For her
-    <span class="big-dot">
-      ...
-    </span>
   </div>
 
-  <div class="row newArrivals-container">
-    <div class="col-md-4 newArrival-container" *ngFor="let item of hers | slice:0:3; let i = index" style="text-align: center; color: #E9585B">
-      <p class="price"><span [innerHTML]="item['currency'].html_code"></span> {{item.sale_price}}</p>
-      <p class="name">{{item.name}}</p>
+</div>
 
-      <div class="img-container" style="height: 300px;">
-        <img src="{{item.feature_image}}" alt="" style="height: 100%; width: 100%; object-fit: contain;">
-      </div>
 
-      <a routerLink="/product/{{item.id}}/{{item.slug}}">
-        <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
-      </a>
+
+<div class=" ">
+  <div class="row">
+    <p class="head">#new arrivals</p>
+  </div>
+
+  <div class="row con">
+    <div class="col-md-3 ">
+      <img class="img-thumbnail img-responsive" src='../../../../assets/content-header/pix1.png'alt="pix1">
     </div>
-  </div>
-</section>
-<section class="padded">
-
-  <div class="section-header text-center font-2">
-    # For him
-    <span class="big-dot">
-      ...
-    </span>
-  </div>
-
-  <div class="row newArrivals-container">
-    <div class="col-md-4 newArrival-container" *ngFor="let item of his | slice:0:3; let i = index" style="text-align: center; color: #E9585B">
-      <p class="price"><span [innerHTML]="item['currency'].html_code"></span> {{item.sale_price | currency}}</p>
-      <p class="name">{{item.name}}</p>
-
-      <div class="img-container" style="height: 300px;">
-        <img src="{{item.feature_image}}" alt="" style="height: 100%; width: 100%; object-fit: contain;">
+    <div class="col-md-3">
+        <img class="img-thumbnail img-responsive" src='../../../../assets/content-header/pix2.png'alt="pix2">
       </div>
-
-      <a routerLink="/product/{{item.id}}/{{item.slug}}">
-        <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
-      </a>
-    </div>
+      <div class="col-md-3">
+          <img class="img-thumbnail img-responsive" src='../../../../assets/content-header/pix3.png'alt="pix3">
+        </div>
+        <div class="col-md-3">
+            <img class="img-thumbnail img-responsive" src='../../../../assets/content-header/pix4.png'alt="pix4">
+          </div>
   </div>
-</section>
+
+  <div class="bmt text-center">
+      <button class="d-block btn btn-default" style="margin-bottom: 40px;">VIEW ALL PRODUECTS</button>
+  </div>
+</div>
+
 
 <section id="promo-banner">
   <div class="label">
