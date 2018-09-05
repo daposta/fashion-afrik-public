@@ -22,299 +22,237 @@
 <!--New Header-->
 
 
-  <nav class="navbar navbar-default" style="padding:0px">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <!-- <a class="navbar-brand" href="#">WebSiteName</a> -->
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#"><span class="fa fa-facebook fa-lg"></span></a></li>
-          <li><a href="#"><span class="fa fa-twitter fa-lg"></span></a></li>
-          <li><a href="#"><span class="fa fa-instagram fa-lg"></span></a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right" style="margin-right: 50px">
-          <li><a href="#" target="_blank" href="http://stores.vogueafriq.com"> Sell on VogueAfriq</a></li>
-          <li style="border-left: 1px solid grey; border-right: 1px solid grey; "><a href="#"> <span class="fa fa-user-circle"></span> My Account <span class="caret" ></span> </a></li>
-          <li><a href="#"> <span class="fa fa-shopping-cart"></span> CART <span class="caret"></span> </a></li>
-        </ul>
+<nav class="navbar navbar-default" style="padding:0px">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <!-- <a class="navbar-brand" href="#">WebSiteName</a> -->
       </div>
-    </nav>
-
-    <nav class="navbar navbar-inverse" >
-   
-      <div class="container">
-          
-      <div class="bottom-border">
-          <div class="navbar-header ">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" routerLink="/"><span class="text-brand"><img src="https://vogueafriq.com/assets/img/vogueBg3.png" width="60px" alt="logo" ></span><i class="fa fa-circle"></i></a>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#"><span class="fa fa-facebook fa-lg"></span></a></li>
+        <li><a href="#"><span class="fa fa-twitter fa-lg"></span></a></li>
+        <li><a href="#"><span class="fa fa-instagram fa-lg"></span></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" style="margin-right: 50px" >
+        <li><a href="#" style="font-weight:bold;" target="_blank" href="http://stores.vogueafriq.com"> Sell on VogueAfriq</a></li>
+        <li style="border-left: 1px solid grey; border-right: 1px solid grey; " ><a href="#"> 
+            <b><span class="greeting" *ngIf="customer; else login">Hi {{ customer?.first_name }}</span></b>
+            <ng-template #login>
+              <a style="color:grey;text-decoration:none" routerLink="/login">Login/Register</a>
+            </ng-template>
+      </a></li>
+        <li><a   [routerLink]="cart ? '/cart' : null"> 
+          <span class="fa fa-shopping-cart fa-2x"></span>  
+          <span *ngIf="cart?.length > 0" class="cart-bubble">{{cart?.length}}</span>
+        </a></li>
+        <li class="nav-item dropdown avatar-dd" *ngIf="customer">
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img src="/assets/img/avatar.png" alt="avatar" style="height: 25px; width: 25px;">
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="/me">Profile</a>
+              <a class="dropdown-item" routerLink="">Orders</a>
+              <a class="dropdown-item" routerLink="">Wishlist</a>
+              <a class="dropdown-item" (click)="logout()">Log out</a>
             </div>
+          </li>
+        <li><a href="#">
+            <span class="select-wrapper">
+                <select name="currency" id="currency_selector" (change)="changeCurrency($event)" style="height: 18px; font-size: 12px; margin-left: 5px">
+                  <option *ngFor="let item of currencys" [selected]="t.getItem('currency')===item.code" [value]="item.code">{{item.name}}</option>
+                </select>
+              </span>  
+            </a>   
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <nav class="navbar " >
+ 
+    <div class="container">
         
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav " style="color:white;font-weight:bold;">
-                <li class="" >
-                  <a href="#"  >Home <i class=""></i> </a>
-                </li>
-                <li >
-                   <a href="#">
-                      <div class="dropdown">
-                          <button class="dropbtn">Catergory <span class="caret"></span> </button>
-                          <div class="dropdown-content">
-                            <div class="row">
-                              <div class="col-md-4">
-                                  <a href="#">Kids</a>
-                              </div>
-                              <div class="col-md-4">
-                                  <a href="#">Men</a>
-                              </div>
-                              <div class="col-md-4">
-                                  <a href="#">Woman</a>
-                              </div>
-                           
-                              
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <a href="#">Kids</a>
-                                    <a href="#">Kids</a>
-                                    <a href="#">Kids</a>
-                                     <a href="#">Kids</a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="#">Men</a>
-                                    <a href="#">Men</a>
-                                    <a href="#">Men</a>
-                                    <a href="#">Men</a>
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="#">Woman</a>
-                                    <a href="#">Woman</a>
-                                    <a href="#">Woman</a>
-                                    <a href="#">Woman</a>
-                                </div>
-                                
-                                
-                              </div>
-    
-                                       </div>
+    <div class="bottom-border">
+        <div class="navbar-header ">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+              aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" routerLink="/"><span class="text-brand"><img src="https://vogueafriq.com/assets/img/vogueBg3.png" width="60px" alt="logo" ></span><i class="fa fa-circle"></i></a>
+          </div>
+      
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav " style="color:white;font-weight:bold;font-size: 17px;">
+              <li class="" >
+                <a href="#"  >Home <i class=""></i> </a>
+              </li>
+             
+<li >
+    <a href="#">
+       <div class="dropdown">
+           <button class="dropbtn cat" style="color:steelblue;">Catergory <span class="caret"></span> </button>
+           <div class="dropdown-content">
+             <div class="row"  >
+               <div class="col-md-4" *ngFor="let l1categories of categorys">
+                   <a href="#" (mouseover)="setCategory(l1categories.slug)">
+                     <button class="dropbtn " style="display:none;">
+                     {{l1categories.name}}
+                    </button>
+                    </a>
+                   <div class="dropdown">
+                      <div class="dropdown-content">
+                        <div class="col-md-12" *ngFor="let l2Categories of l1categories.l2Categories">
+                          <a href="#" (mouseover)="setProductType(l2Categories.slug)">
+                              <button class="dropbtn " style="display:none;">
+                                  {{l2Categories.name}}
+                                 </button> 
+                                 <div class="dropdown">
+                                    <div class="dropdown-content">
+                                      <div class="col-md-12" *ngFor="let l3Categories of l2Categories.l3Categories">
+                                        <a href="#" (mouseover)="setProductType(l2Categories.slug)">
+                                            <a routerLink="/category/{{selectedCategory}}/{{selectedProductType}}/{{l3Categories.slug}}">{{l3Categories.name}}</a>                             
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </div>                             
+                          </a>
                         </div>
-                   </a>
+                      </div>
+                    </div>
+
+               </div>
+       
+              
+            
+               
+             </div>
+             <hr>
+             <!-- <div class="row" *ngFor="let l1categories of categorys">
+                 <div class="col-md-4">
+                     <a href="#">Kids</a>
+                     <a href="#">Kids</a>
+                     <a href="#">Kids</a>
+                      <a href="#">Kids</a>
+                 </div>
+                 <div class="col-md-4">
+                     <a href="#">Men</a>
+                     <a href="#">Men</a>
+                     <a href="#">Men</a>
+                     <a href="#">Men</a>
+                 </div>
+                 <div class="col-md-4">
+                     <a href="#">Woman</a>
+                     <a href="#">Woman</a>
+                     <a href="#">Woman</a>
+                     <a href="#">Woman</a>
+                 </div>
+                 
+                 
+               </div> -->
+
+                        </div>
+         </div>
+    </a>
+   </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                      style="font-family: 'Muli', sans-serif;">
+                      Clearance Sales
+                    </a>
+                    <ul class="dropdown-menu">
+                      <li *ngFor="let l1categories of categorys" class="dropdown-submenu">
+                        <a class="nav-link dropdown-toggle" (mouseover)="setCategory(l1categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
+                          aria-haspopup="true" aria-expanded="false"> {{l1categories.name}} </a>
+                        <ul class="dropdown-menu">
+          
+          
+                          <li *ngFor="let l2Categories of l1categories.l2Categories" class="dropdown-submenu">
+                            <a class="nav-link dropdown-toggle" (mouseover)="setProductType(l2Categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
+                              aria-haspopup="true" aria-expanded="false"> {{l2Categories.name}}</a>
+          
+                            <ul class="dropdown-menu">
+                              <li *ngFor="let l3Categories of l2Categories.l3Categories">
+                                <a routerLink="/clearance/{{selectedCategory}}/{{selectedProductType}}/{{l3Categories.slug}}"> {{l3Categories.name}}</a>
+                              </li>
+          
+                            </ul>
+                          </li>
+          
+                        </ul>
+          
+                      </li>
+          
+                    </ul>
+          
                   </li>
-                  <li >
-                      <a href="#" >    <div class="dropdown">
-                        <button class="dropbtn">Clearance Sales<span class="caret"></span> </button>
-                        <div class="dropdown-content">
-                          <div class="row">
-                            <div class="col-md-4">
-                                <a href="#">Kids</a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="#">Men</a>
-                            </div>
-                            <div class="col-md-4">
-                                <a href="#">Woman</a>
-                            </div>
-                         
-                            
-                          </div>
-                          <hr>
-                          <div class="row">
-                              <div class="col-md-4">
-                                  <a href="#">Kids</a>
-                                  <a href="#">Kids</a>
-                                  <a href="#">Kids</a>
-                                   <a href="#">Kids</a>
-                              </div>
-                              <div class="col-md-4">
-                                  <a href="#">Men</a>
-                                  <a href="#">Men</a>
-                                  <a href="#">Men</a>
-                                  <a href="#">Men</a>
-                              </div>
-                              <div class="col-md-4">
-                                  <a href="#">Woman</a>
-                                  <a href="#">Woman</a>
-                                  <a href="#">Woman</a>
-                                  <a href="#">Woman</a>
-                              </div>
-                              
-                              
-                            </div>
-    
-                                     </div>
-                      </div> </a>
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        style="font-family: 'Muli', sans-serif;">New Arrivals </a>
+                      <ul class="dropdown-menu">
+                        <li *ngFor="let l1categories of categorys" class="dropdown-submenu">
+                          <a class="nav-link dropdown-toggle" (mouseover)="setCategory(l1categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"> {{l1categories.name}} </a>
+                          <ul class="dropdown-menu">
+            
+            
+                            <li *ngFor="let l2Categories of l1categories.l2Categories" class="dropdown-submenu">
+                              <a class="nav-link dropdown-toggle" (mouseover)="setProductType(l2Categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false"> {{l2Categories.name}}</a>
+            
+                              <ul class="dropdown-menu">
+                                <li *ngFor="let l3Categories of l2Categories.l3Categories">
+                                  <a routerLink="//new-arrivals/{{selectedCategory}}/{{selectedProductType}}/{{l3Categories.slug}}"> {{l3Categories.name}}</a>
+                                </li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
                     </li>
                     <li >
-                        <a href="#" >New Arrivals <i class="caret"></i> </a>
+                        <a href="#" >Blog <i class="fa fa-book"></i> </a>
                       </li>
-                      <li >
-                          <a href="#" >Blog <i class=""></i> </a>
-                        </li>
-             
-                </ul>
-              <div class="desktop-query">
-                <input placeholder="Search" class="desktop-searchBar form-control" >
-    
-                <a class="desktop-submit">
-                  <span class="web-sprite desktop-iconSearch sprites-search"></span>
-                </a>
-              </div>
-            </div>
-      </div>
-      <br>
-      
-      </div>
-     
-    </nav>
+           
+              </ul>
+            <div class="desktop-query">
+              <form id="demo-2">
+                  <input type="search" placeholder="Search" #search (keyup.enter)="searchProduct(search.value)" class="desktop-searchBar form-control" >
+              </form>
+              
   
-    <!-- Collect the nav links, forms, and other content for toggling -->
+              <a class="desktop-submit">
+                <span class="web-sprite desktop-iconSearch sprites-search"></span>
+              </a>
+            </div>
+          </div>
+    </div>
+    <br>
     
+    </div>
+   
+  </nav>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  
 
 
 <!--end of my design-->
 <!-- 
 <div class="logo-container">
-  <img [routerLink]="['/']" routerLinkActive="router-link-active" src="assets/img/vogueBg3.png" alt="">
+<img [routerLink]="['/']" routerLinkActive="router-link-active" src="assets/img/vogueBg3.png" alt="">
 </div>
 
 <section class="nav-container">
-  <nav class="navbar navbar-expand navbar-light bg-light">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto main-nav">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="/" style="font-family: 'Muli', sans-serif;">Home
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            style="font-family: 'Muli', sans-serif;">
-            Category
-          </a>
-          <ul class="dropdown-menu">
-            <li *ngFor="let l1categories of categorys" class="dropdown-submenu">
-              <a class="nav-link dropdown-toggle" (mouseover)="setCategory(l1categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false">{{l1categories.name}} </a>
-              <ul class="dropdown-menu">
-                <li class="dropdown-submenu" *ngFor="let l2Categories of l1categories.l2Categories">
-                  <a class="nav-link dropdown-toggle" (mouseover)="setProductType(l2Categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">{{l2Categories.name}}</a>
-                  <ul class="dropdown-menu">
-                    <li *ngFor="let l3Categories of l2Categories.l3Categories">
-                      <a routerLink="/category/{{selectedCategory}}/{{selectedProductType}}/{{l3Categories.slug}}">{{l3Categories.name}}</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            style="font-family: 'Muli', sans-serif;">
-            Clearance Sales
-          </a>
-          <ul class="dropdown-menu">
-            <li *ngFor="let l1categories of categorys" class="dropdown-submenu">
-              <a class="nav-link dropdown-toggle" (mouseover)="setCategory(l1categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"> {{l1categories.name}} </a>
-              <ul class="dropdown-menu">
-
-
-                <li *ngFor="let l2Categories of l1categories.l2Categories" class="dropdown-submenu">
-                  <a class="nav-link dropdown-toggle" (mouseover)="setProductType(l2Categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"> {{l2Categories.name}}</a>
-
-                  <ul class="dropdown-menu">
-                    <li *ngFor="let l3Categories of l2Categories.l3Categories">
-                      <a routerLink="/clearance/{{selectedCategory}}/{{selectedProductType}}/{{l3Categories.slug}}"> {{l3Categories.name}}</a>
-                    </li>
-
-                  </ul>
-                </li>
-
-              </ul>
-
-            </li>
-
-          </ul>
-
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-            style="font-family: 'Muli', sans-serif;">New Arrivals</a>
-          <ul class="dropdown-menu">
-            <li *ngFor="let l1categories of categorys" class="dropdown-submenu">
-              <a class="nav-link dropdown-toggle" (mouseover)="setCategory(l1categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
-                aria-haspopup="true" aria-expanded="false"> {{l1categories.name}} </a>
-              <ul class="dropdown-menu">
-
-
-                <li *ngFor="let l2Categories of l1categories.l2Categories" class="dropdown-submenu">
-                  <a class="nav-link dropdown-toggle" (mouseover)="setProductType(l2Categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false"> {{l2Categories.name}}</a>
-
-                  <ul class="dropdown-menu">
-                    <li *ngFor="let l3Categories of l2Categories.l3Categories">
-                      <a routerLink="//new-arrivals/{{selectedCategory}}/{{selectedProductType}}/{{l3Categories.slug}}"> {{l3Categories.name}}</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-      </ul>
-
-      <form id="demo-2">
-        <input type="search" placeholder="Search" #search (keyup.enter)="searchProduct(search.value)">
-      </form>
-
-      <ul class="navbar-nav pull-right" style="position: relative;z-index: 999">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="cart ? '/cart' : null" style="position: relative;">
-            <img src="/assets/img/carrt.png" alt="cart" style="height: 25px; width: 25px; margin-left: 10px;">
-            <span *ngIf="cart?.length > 0" class="cart-bubble">{{cart?.length}}</span>
-          </a>
-        </li>
-
-        <li class="nav-item dropdown avatar-dd" *ngIf="customer">
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="/assets/img/avatar.png" alt="avatar" style="height: 25px; width: 25px;">
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" routerLink="/me">Profile</a>
-            <a class="dropdown-item" routerLink="">Orders</a>
-            <a class="dropdown-item" routerLink="">Wishlist</a>
-            <a class="dropdown-item" (click)="logout()">Log out</a>
-          </div>
-        </li>
-
-      </ul>
-    </div>
-  </nav>
-</section> -->
-
-
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto main-nav">
       <li class="nav-item active">
@@ -323,7 +261,8 @@
         </a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: 'Muli', sans-serif;">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          style="font-family: 'Muli', sans-serif;">
           Category
         </a>
         <ul class="dropdown-menu">
@@ -346,7 +285,8 @@
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: 'Muli', sans-serif;">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          style="font-family: 'Muli', sans-serif;">
           Clearance Sales
         </a>
         <ul class="dropdown-menu">
@@ -376,7 +316,8 @@
 
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: 'Muli', sans-serif;">New Arrivals</a>
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+          style="font-family: 'Muli', sans-serif;">New Arrivals</a>
         <ul class="dropdown-menu">
           <li *ngFor="let l1categories of categorys" class="dropdown-submenu">
             <a class="nav-link dropdown-toggle" (mouseover)="setCategory(l1categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -413,8 +354,7 @@
       </li>
 
       <li class="nav-item dropdown avatar-dd" *ngIf="customer">
-        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <img src="/assets/img/avatar.png" alt="avatar" style="height: 25px; width: 25px;">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -427,4 +367,125 @@
 
     </ul>
   </div>
+</nav>
+</section> -->
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+  aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto main-nav">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="/" style="font-family: 'Muli', sans-serif;">Home
+        <span class="sr-only">(current)</span>
+      </a>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: 'Muli', sans-serif;">
+        Category
+      </a>
+      <ul class="dropdown-menu">
+        <li *ngFor="let l1categories of categorys" class="dropdown-submenu">
+          <a class="nav-link dropdown-toggle" (mouseover)="setCategory(l1categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">{{l1categories.name}} </a>
+          <ul class="dropdown-menu">
+            <li class="dropdown-submenu" *ngFor="let l2Categories of l1categories.l2Categories">
+              <a class="nav-link dropdown-toggle" (mouseover)="setProductType(l2Categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">{{l2Categories.name}}</a>
+              <ul class="dropdown-menu">
+                <li *ngFor="let l3Categories of l2Categories.l3Categories">
+                  <a routerLink="/category/{{selectedCategory}}/{{selectedProductType}}/{{l3Categories.slug}}">{{l3Categories.name}}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: 'Muli', sans-serif;">
+        Clearance Sales
+      </a>
+      <ul class="dropdown-menu">
+        <li *ngFor="let l1categories of categorys" class="dropdown-submenu">
+          <a class="nav-link dropdown-toggle" (mouseover)="setCategory(l1categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"> {{l1categories.name}} </a>
+          <ul class="dropdown-menu">
+
+
+            <li *ngFor="let l2Categories of l1categories.l2Categories" class="dropdown-submenu">
+              <a class="nav-link dropdown-toggle" (mouseover)="setProductType(l2Categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"> {{l2Categories.name}}</a>
+
+              <ul class="dropdown-menu">
+                <li *ngFor="let l3Categories of l2Categories.l3Categories">
+                  <a routerLink="/clearance/{{selectedCategory}}/{{selectedProductType}}/{{l3Categories.slug}}"> {{l3Categories.name}}</a>
+                </li>
+
+              </ul>
+            </li>
+
+          </ul>
+
+        </li>
+
+      </ul>
+
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-family: 'Muli', sans-serif;">New Arrivals</a>
+      <ul class="dropdown-menu">
+        <li *ngFor="let l1categories of categorys" class="dropdown-submenu">
+          <a class="nav-link dropdown-toggle" (mouseover)="setCategory(l1categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false"> {{l1categories.name}} </a>
+          <ul class="dropdown-menu">
+
+
+            <li *ngFor="let l2Categories of l1categories.l2Categories" class="dropdown-submenu">
+              <a class="nav-link dropdown-toggle" (mouseover)="setProductType(l2Categories.slug)" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false"> {{l2Categories.name}}</a>
+
+              <ul class="dropdown-menu">
+                <li *ngFor="let l3Categories of l2Categories.l3Categories">
+                  <a routerLink="//new-arrivals/{{selectedCategory}}/{{selectedProductType}}/{{l3Categories.slug}}"> {{l3Categories.name}}</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <form id="demo-2">
+    <input type="search" placeholder="Search" #search (keyup.enter)="searchProduct(search.value)">
+  </form>
+
+  <ul class="navbar-nav pull-right" style="position: relative;z-index: 999">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="cart ? '/cart' : null" style="position: relative;">
+        <img src="/assets/img/carrt.png" alt="cart" style="height: 25px; width: 25px; margin-left: 10px;">
+        <span *ngIf="cart?.length > 0" class="cart-bubble">{{cart?.length}}</span>
+      </a>
+    </li>
+
+    <li class="nav-item dropdown avatar-dd" *ngIf="customer">
+      <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        <img src="/assets/img/avatar.png" alt="avatar" style="height: 25px; width: 25px;">
+      </a>
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" routerLink="/me">Profile</a>
+        <a class="dropdown-item" routerLink="">Orders</a>
+        <a class="dropdown-item" routerLink="">Wishlist</a>
+        <a class="dropdown-item" (click)="logout()">Log out</a>
+      </div>
+    </li>
+
+  </ul>
+</div>
 </nav> -->

@@ -1,122 +1,135 @@
 <app-header [cart]="cart"></app-header>
-<section class="jumbotron">
-	<div class="inner-content text-center">
-		<h4 class="boldest">
-			Account
-		</h4>
-		<span *ngIf="not_customer" style="color: #FFF; background: #EB5757; padding: 10px; position: relative; top: 20px;">
-			account does not have permission for this site
-		</span>
-	</div>
-</section>
-<section class="padded">
+<div class="jumbotron">
+		<h1 class="text-center text-uppercase">Registration</h1>
+	  </div>
+	  
 	<div class="container">
-		<div class="row">
-			<div class="col-md-5">
-				<h4 class="form-title">LOGIN</h4>
-				<form [formGroup]="loginForm" (ngSubmit)="login()" class="loginForm" novalidate>
+			<div class="bodycus">
 					<div class="row">
-						<div class="form-group col-md-12">
-							<input type="text" class="form-control" name="email" [(ngModel)]="loginUser.email" [formControl]="loginForm.controls['email']"
-							 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" placeholder="Email Address">
-
-							<div *ngIf="loginForm.controls['email'].hasError('required') && loginAttempt" style="color: red">Email is required</div>
-
-							<div *ngIf="loginForm.controls['email'].hasError('pattern')  && loginAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
+						<div class="col-md-12">
+								<span *ngIf="not_customer" style="color: #FFF; background: #EB5757; padding: 10px; position: relative; top: 20px;">
+										account does not have permission for this site
+									</span>
+						  <header>LOGIN</header>
 						</div>
+					  </div>
+					  
+					  <div class="row">
+						<div class="col-md-6 left">
+							<form class="login-login-form"[formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+								<fieldset class="login-input-container">
+								  <div class="login-input-item">
+									<input type="email" class="login-user-input-email login-user-input" name="email" [(ngModel)]="loginUser.email" [formControl]="loginForm.controls['email']"
+									pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" placeholder="Email Address">
+									<div *ngIf="loginForm.controls['email'].hasError('required') && loginAttempt" style="color: red">Email is required</div>
 
-						<div class="form-group col-md-12">
-							<input type="password" class="form-control" name="password" [(ngModel)]="loginUser.password" [formControl]="loginForm.controls['password']"
-							 placeholder="Password">
+									<div *ngIf="loginForm.controls['email'].hasError('pattern')  && loginAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
+					
+								  </div>
+								  <div class="login-input-item">
+									<input type="password" class="login-user-input-password login-user-input"name="password" [(ngModel)]="loginUser.password" [formControl]="loginForm.controls['password']"
+									placeholder="Password">
+									<div *ngIf="loginForm.controls['password'].hasError('required') && loginAttempt" style="color: red">Password is required</div>
 
-							<div *ngIf="loginForm.controls['password'].hasError('required') && loginAttempt" style="color: red">Password is required</div>
+								  </div>
+								</fieldset>
+								<fieldset class="login-login-button-container">
+								  <button type="submit" class="btn btn-danger login-login-button"  [disabled]="loading">Log in
 
-							<p class="float-right">
-								<a routerLink="/" style="font-size: 14px; margin: 10px 0; display: inline-block; color: #fff">
-									Forgot your Password?
-								</a>
-							</p>
+										<i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+								  </button>
+								</fieldset>
+							  </form>
+							
+							  <div class="login-link-container">
+								<small>
+								  <a class="login-link text-danger" routerLink="/">Recover password</a>
+							
+								</small>
+							  </div>
+						
 						</div>
-					</div>
-					<button type="submit" class="btn btn-block btn-accent" [disabled]="loading">
-						Login
-						<i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
-					</button>
-				</form>
-			</div>
-
-			<div class="col-md-5 offset-md-2">
-				<h4 class="form-title">Sign Up</h4>
-				<form [formGroup]="registerForm" (ngSubmit)="register()" class="registerForm" novalidate>
-					<div class="row">
-						<div class="form-group col-md-6">
-							<input type="text" class="form-control" [(ngModel)]="registerUser.first_name" [formControl]="registerForm.controls['first_name']"
-							 placeholder="First Name">
-
+					   
+					  
+						<div class="col-md-6 pull-right conts">
+							<div class="row">
+								<div class="col-sm-12">
+								  <header>REGISTER</header>
+								</div>
+							  </div>
+					
+							  <form class="register-register-form" novalidate (ngSubmit)="register()">
+								 
+							  
+												  <fieldset class="register-input-container">
+												   
+													  <div class="register-input-item">
+														  <input type="text" class="register-user-input-email register-user-input" [(ngModel)]="registerUser.first_name" [formControl]="registerForm.controls['first_name']"
+														  placeholder="First Name">
+														 
 							<div *ngIf="registerForm.controls['first_name'].hasError('required') && registerAttempt" style="color: red">First Name is required</div>
+						
+												  </div>
+												  <div class="register-input-item">
+														<input type="text" class="register-user-input-email register-user-input" [(ngModel)]="registerUser.last_name" [formControl]="registerForm.controls['last_name']"
+														placeholder="Last Name">
+					
+														<div *ngIf="registerForm.controls['last_name'].hasError('required') && registerAttempt" style="color: red">Last Name is required</div>
+					
+												</div>
+											<div class="register-input-item">
+													<input type="email" class="register-user-input-email register-user-input"  [(ngModel)]="registerUser.email" [formControl]="registerForm.controls['email']"
+													pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" placeholder="Email Address">
+													<div *ngIf="registerForm.controls['email'].hasError('required') && registerAttempt" style="color: red">Email is required</div>
+
+													<div *ngIf="registerForm.controls['email'].hasError('pattern')  && registerAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
+										
+											</div>
+											<div class="register-input-item">
+												<input type="password" class="register-user-input-email register-user-input" [(ngModel)]="registerUser.password" [formControl]="registerForm.controls['password']"
+												placeholder="Password" required>
+												<div *ngIf="registerForm.controls['password'].hasError('required') && registerAttempt" style="color: red">Password is required</div>
+
+												<div *ngIf="registerForm.controls['password'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
+					
+										</div>
+										<div class="register-input-item">
+											<input type="password" class="register-user-input-email register-user-input" [(ngModel)]="registerUser.confirmPassword" [formControl]="registerForm.controls['confirmPassword']"
+											placeholder="Confirm Password" required>
+															
+											<div *ngIf="registerForm.controls['confirmPassword'].hasError('required') && registerAttempt" style="color: red">Confirm Password is required</div>
+
+											<div *ngIf="registerForm.hasError('notSame') && registerAttempt" style="color: red">Password fields should match</div>
+
+											<div *ngIf="registerForm.controls['confirmPassword'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
+									</div>
+									<div class="register-input-item">
+											<input type="tel" name="mobile" class="register-user-input-email register-user-input"[(ngModel)]="registerUser.mobile" [formControl]="registerForm.controls['mobile']"
+											placeholder="Mobile" required>
+										   
+			 								
+										<div *ngIf="registerForm.controls['mobile'].hasError('required') && registerAttempt" style="color: red">Mobile is required</div>
+
+									</div>
+									
+									 
+									  
+												</fieldset>
+												<fieldset class="register-register-button-container">
+												  <button type="submit" class="btn btn-danger register-register-button" [disabled]="loading">
+														Create an account
+													  <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
+													</button>
+							
+									  </fieldset>
+				
+								  
+					
+							 </form>
+							  
+						 
 						</div>
+					  </div>
+				 </div>
 
-						<div class="form-group col-md-6">
-							<input type="text" class="form-control" [(ngModel)]="registerUser.last_name" [formControl]="registerForm.controls['last_name']"
-							 placeholder="Last Name">
-
-							<div *ngIf="registerForm.controls['last_name'].hasError('required') && registerAttempt" style="color: red">Last Name is required</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-12">
-							<input type="email" class="form-control" [(ngModel)]="registerUser.email" [formControl]="registerForm.controls['email']"
-							 pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,6})+$" placeholder="Email Address">
-
-							<div *ngIf="registerForm.controls['email'].hasError('required') && registerAttempt" style="color: red">Email is required</div>
-
-							<div *ngIf="registerForm.controls['email'].hasError('pattern')  && registerAttempt" style="color: red">Email is invalid. Format should be john@doe.com.</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-12">
-							<input type="password" class="form-control" [(ngModel)]="registerUser.password" [formControl]="registerForm.controls['password']"
-							 placeholder="Password" required>
-
-							<div *ngIf="registerForm.controls['password'].hasError('required') && registerAttempt" style="color: red">Password is required</div>
-
-							<div *ngIf="registerForm.controls['password'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-12">
-							<input type="password" name="confirmPassword" class="form-control" [(ngModel)]="registerUser.confirmPassword" [formControl]="registerForm.controls['confirmPassword']"
-							 placeholder="Confirm Password" required>
-
-							<div *ngIf="registerForm.controls['confirmPassword'].hasError('required') && registerAttempt" style="color: red">Confirm Password is required</div>
-
-							<div *ngIf="registerForm.hasError('notSame') && registerAttempt" style="color: red">Password fields should match</div>
-
-							<div *ngIf="registerForm.controls['confirmPassword'].hasError('minlength') && registerAttempt" style="color: red">Password field must have a minimum of 8 characters</div>
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-12">
-							<input type="tel" name="mobile" class="form-control" [(ngModel)]="registerUser.mobile" [formControl]="registerForm.controls['mobile']"
-							 placeholder="Mobile" style="width: 100%; padding-left: 50px;" required>
-
-							<div *ngIf="registerForm.controls['mobile'].hasError('required') && registerAttempt" style="color: red">Mobile is required</div>
-
-						</div>
-					</div>
-
-					<div class="form-actions">
-						<button type="submit" class="btn btn-block btn-accent" [disabled]="loading">
-							Create an account
-							<i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
-						</button>
-					</div>
-				</form>
-			</div>
-		</div>
 	</div>
-</section>
