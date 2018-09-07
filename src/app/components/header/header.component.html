@@ -18,9 +18,7 @@
     </nav>
   </div>
 </header>
-<div class="logo-container">
-  <img [routerLink]="['/']" routerLinkActive="router-link-active" src="assets/img/vogueBg3.png" alt="">
-</div>
+
 
 <section class="nav-container">
   <nav class="navbar navbar-expand navbar-light bg-light">
@@ -30,7 +28,12 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto main-nav">
+      <ul class="navbar-nav mr-auto main-nav pull-left">
+          <li>
+              <div class="logo-container">
+                  <img [routerLink]="['/']" routerLinkActive="router-link-active" src="assets/img/vogueBg3.png" alt="">
+                </div>
+          </li>
         <li class="nav-item active">
           <a class="nav-link" routerLink="/" style="font-family: 'Muli', sans-serif;">Home
             <span class="sr-only">(current)</span>
@@ -159,14 +162,13 @@
         </li>
       </ul>
 
-      <form id="demo-2">
-        <input type="search" placeholder="Search" #search (keyup.enter)="searchProduct(search.value)">
-      </form>
+     
 
-      <ul class="navbar-nav pull-right" style="position: relative;z-index: 999">
+      <ul class="navbar-nav pull-right" >
+    
         <li class="nav-item">
           <a class="nav-link" [routerLink]="cart ? '/cart' : null" style="position: relative;">
-            <img src="/assets/img/carrt.png" alt="cart" style="height: 25px; width: 25px; margin-left: 10px;">
+            <img src="/assets/img/carrt.png" alt="cart" style="height: 25px; width: 25px; margin-bottom: 20px">
             <span *ngIf="cart?.length > 0" class="cart-bubble">{{cart?.length}}</span>
           </a>
         </li>
@@ -182,8 +184,13 @@
             <a class="dropdown-item" (click)="logout()">Log out</a>
           </div>
         </li>
-
+        <li class="mt-2">
+            <form id="demo-2" class="pull-right">
+                <input type="search" placeholder="Search" #search (keyup.enter)="searchProduct(search.value)">
+              </form>
+        </li>
       </ul>
+     
     </div>
   </nav>
 </section>

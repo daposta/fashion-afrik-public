@@ -60,8 +60,8 @@ const appRoutes: Routes = [
   { path: 'faqs', component: FaqsComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'contact-us', component: ContactComponent },
-  { path: 'forher', component: ForherComponent},
-  { path: 'forhim', component: ForhimComponent}
+  { path: 'for-her', component: ForherComponent},
+  { path: 'for-him', component: ForhimComponent}
 ]
 
 

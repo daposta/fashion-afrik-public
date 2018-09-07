@@ -84,9 +84,9 @@ ul.new-arrival-container {
     margin-top: 100px;
     background-color: rgba(245, 245, 245, 0.719)
 }
-.row  .padded .section-header img:hover{
+.img-hover img:hover{
     background-color: grey;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 .filter-nav {
     font-family: 'Montserrat', sans-serif;
@@ -307,3 +307,4 @@ $toppers-height: $top-ranked-height/3.2;
 .well {
     
 }
+
