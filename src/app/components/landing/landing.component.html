@@ -1,68 +1,92 @@
 <app-header [cart]="cart"></app-header>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
+<!-- <div class="row"> -->
+<div class="container">
+    <div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" >
-    <div class="item active">
-      <img src="http://dokadots.com/skin/frontend/default/CF/img/slide/banner.jpg" width="100%" alt="Los Angeles">
-    </div>
+        <ol class="carousel-indicators">
+          <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators">
+          </li>
+          <li data-slide-to="1" data-target="#carouselExampleIndicators">
+          </li>
+          <li data-slide-to="2" data-target="#carouselExampleIndicators">
+          </li>
+        </ol>
+      
+        <div class="carousel-inner">
+          <div class="carousel-item active" style="background-image: url('/assets/img/banner/women-category-banner.jpg');">
+            <a href="">
+              <div class="carousel-caption d-none d-md-block">
+                <h3 class="boldest">The Liya Lisafi Collection</h3>
+                <p>collection description goes here</p>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item" style="background-image: url('/assets/img/banner/women-category-banner.jpg');">
+            <a href="">
+              <div class="carousel-caption d-none d-md-block">
+                <h3 class="boldest">Amal &amp; Nikolina</h3>
+                <p>collection description goes here</p>
+              </div>
+            </a>
+          </div>
+          <div class="carousel-item" style="background-image: url('/assets/img/banner/women-category-banner.jpg');">
+            <a href="">
+              <div class="carousel-caption d-none d-md-block">
+                <h3 class="boldest">Mena</h3>
+                <p>collection description goes here</p>
+              </div>
+            </a>
+          </div>
+        </div>
+        <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button">
+          <span aria-hidden="true" class="carousel-control-prev-icon">
+          </span>
+          <!-- <span class="sr-only">Previous</span> -->
+        </a>
+        <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button">
+          <span aria-hidden="true" class="carousel-control-next-icon">
+          </span>
+          <!-- <span class="sr-only">Next</span> -->
+        </a>
+      </div>
+      <div class="well bg-secondary text-light" style="padding: 5px 10px">
+        <div class="row ">
+          <div class="col-md-3">
+            <h6>FREE EXPRESS SHIPPING | US ORDERS $77+ | UK ORDERS £60+</h6>
+          </div>
+          <div class="col-md-3">
+            <h6>EASY RETURN | UK & US</h6>
+            </div>
+            <div class="col-md-3">
+              <h6>UK/US NEXT DAY DELIVERY | FOR ORDERS PLACED BEFORE 1 PM
+                </h6>
+              </div>
+              <div class="col-md-3">
+                <h6 class="text-capitalize">Free 2-3 working days delivery with any headwrap purchased </h6>
+                </div>
 
-    <div class="item">
-      <img src="https://zoafia-image-bucket-p.s3.amazonaws.com/shops/banners/000/000/042/original/aina_smith.jpg?1524669968" width="100%" alt="Chicago">
-    </div>
+        </div>
 
-    <div class="item">
-      <img src="https://i0.wp.com/styleafrique.com/wp-content/uploads/2017/04/Nana-Clothing-Banner-1.jpg?resize=1000%2C500&ssl=1" width="100%" alt="New York">
-    </div>
-  </div>
 
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
+      </div>
+
 </div>
 
 
-<div class="container" style="margin-top: 50px">
-  <hr>
-  <br>
-  <div class="row text-center">
-    <div class="col-md-6">
-      <img src="https://cdn.shopify.com/s/files/1/0684/2619/products/skirts-toyin-stretch-african-print-peplum-pencil-skirt-blue-orange-flowers-1_grande.jpeg?v=1532383468" style="width:70%;height: 500px;" alt="woman"><br>
-      <a href="/forher" role="button" class="d-block btn btn-default">SHOP FOR HER</a>
-        <div class="row newArrivals-container">
-            <div class="col-md-4 newArrival-container" *ngFor="let item of hers | slice:0:3; let i = index" style="text-align: center; color: #E9585B">
-              <p class="price"><span [innerHTML]="item['currency'].html_code"></span> {{item.sale_price}}</p>
-              <p class="name">{{item.name}}</p>
-        
-              <div class="img-container" style="height: 300px;">
-                <img src="{{item.feature_image}}" alt="" style="height: 100%; width: 100%; object-fit: contain;">
-              </div>
-        
-              <a routerLink="/product/{{item.id}}/{{item.slug}}">
-                <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
-              </a>
-            </div>
-          </div>
-    </div>
 
-    <div class="col-md-6">
-      <img src="https://cdn.shopify.com/s/files/1/0684/2619/products/tops-keyon-button-up-african-print-shirt-tan-kente-1_grande.jpg?v=1528235338" style="width:70%;height: 500px;" alt="man"><br>
-        <a href="/forhim" role="button" class="d-block btn btn-default">SHOP FOR HIM</a>
-          <div class="row newArrivals-container">
-    <div class="col-md-4 newArrival-container" *ngFor="let item of his | slice:0:3; let i = index" style="text-align: center; color: #E9585B">
-      <p class="price"><span [innerHTML]="item['currency'].html_code"></span> {{item.sale_price | currency}}</p>
+<!-- Top Ranked stores -->
+
+<!-- </div> -->
+
+<section class="padded" id="new-arrivals">
+  <div class="section-header text-center font-2">
+    <h1 style="font-size:1.5em;"># new arrivals</h1>
+  </div>
+  <!-- new arrivals images -->
+
+  <div class="row newArrivals-container" style="padding:5px 40px;">
+    <!-- <div class="col-md-4 newArrival-container" *ngFor="let item of newArrivals | slice:0:3; let i = index" style="text-align: center; color: #E9585B">
+      <p class="price"><span [innerHTML]="item['currency'].html_code"></span> {{item.sale_price}}</p>
       <p class="name">{{item.name}}</p>
 
       <div class="img-container" style="height: 300px;">
@@ -72,61 +96,152 @@
       <a routerLink="/product/{{item.id}}/{{item.slug}}">
         <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
       </a>
-    </div>
-  </div>
+    </div> -->
+
+    <div class="col-md-4 newArrival-container" style="text-align: center; color: #E9585B">
+        <span class="price">&pound; 94.00</span><br>
+        <span class="name">Ankara Material</span>
+
+      <div class="img-container" >
+        <img src="../../../assets/img/her.jpg" alt="" width="100%" >
       </div>
 
+      <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
+    </div>
+
+    <div class="col-md-4 newArrival-container" style="text-align: center; color: #E9585B">
+        <span class="price">&pound; 94.00</span><br>
+        <span class="name">Ankara Material</span>
+
+      <div class="img-container" >
+        <img src="../../../assets/img/her2.jpeg" alt="" width="100%" >
+      </div>
+
+      <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
+    </div>
+
+    <div class="col-md-4 newArrival-container" style="text-align: center; color: #E9585B">
+      <span class="price">&pound; 94.00</span><br>
+      <span class="name">Ankara Material</span>
+
+      <div class="img-container" >
+        <img src="../../../assets/img/her3.jpeg" alt="" width="100%" >
+      </div>
+
+      <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
+    </div>
+
   </div>
+</section>
+
+
+<div class="">
+    <div class="row">
+        
+        <div class="col-md-9">
+            <section class="padded">
+      
+                <div class="section-header  font-2">
+                    <h1 class="text-center" style="margin-left:20px"><i># For her</i></h1>
+                <a routerLink="/forher" > <img src="../../../assets/img/forher.PNG" style="height:510px;width:400px;float: right" alt="for her"></a>
+                <div class="  text" style="float:right;font-family: sans-serif;">
+                    <h6 >CLOTHING FOR ANY OCCASSION,</h6>
+                    <h6>ALWAYS FEMININE,</h6>
+                    <h6>WITH HIGH ATTENTION TO DETAILS</h6>
+  
+                  </div>
+                </div>
+              
+                <div class="row newArrivals-container">
+                  <div class="col-md-4 newArrival-container" *ngFor="let item of hers | slice:0:3; let i = index" style="text-align: center; color: #E9585B">
+                    <p class="price"><span [innerHTML]="item['currency'].html_code"></span> {{item.sale_price}}</p>
+                    <p class="name">{{item.name}}</p>
+              
+                    <div class="img-container" style="height: 300px;">
+                      <img src="{{item.feature_image}}" alt="" style="height: 100%; width: 100%; object-fit: contain;">
+                    </div>
+              
+                    <a routerLink="/product/{{item.id}}/{{item.slug}}">
+                      <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
+                    </a>
+                  </div>
+                </div>
+              
+              </section>
+          
+              <div >
+             
+
+              </div>
+      
+        </div>
+        <div class="col-md-9" style="margin-bottom:40px">
+            <section class="padded" >
+      
+                <div class="section-header  font-2" style="margin-left:200px; ">
+                    <h1 class="text-center" style="margin-left:20px"><i># For him</i></h1>
+                <a routerLink="/forhim" > <img src="https://i.pinimg.com/originals/39/b3/85/39b3851386510f8130757914ffe759a5.jpg" style="height:510px;width:400px;float: left" alt="for him"></a>
+                <div class="  text" style="float:left;font-family: sans-serif;">
+                    <h6 >CLOTHING FOR ANY OCCASSION,</h6>
+                    <h6>ALWAYS MEN,</h6>
+                    <h6>WITH HIGH ATTENTION TO DETAILS</h6>
+  
+                  </div>
+                </div>
+              
+                <div class="row newArrivals-container">
+                  <div class="col-md-4 newArrival-container" *ngFor="let item of hers | slice:0:3; let i = index" style="text-align: center; color: #E9585B">
+                    <p class="price"><span [innerHTML]="item['currency'].html_code"></span> {{item.sale_price}}</p>
+                    <p class="name">{{item.name}}</p>
+              
+                    <div class="img-container" style="height: 300px;">
+                      <img src="{{item.feature_image}}" alt="" style="height: 100%; width: 100%; object-fit: contain;">
+                    </div>
+              
+                    <a routerLink="/product/{{item.id}}/{{item.slug}}">
+                      <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
+                    </a>
+                  </div>
+                </div>
+              
+              </section>
+          
+              <div >
+             
+
+              </div>
+      
+        </div>
+    
+      </div>
 
 </div>
 
-
-
-<div class=" ">
-  <div class="row">
-    <p class="head">#new arrivals</p>
-  </div>
-
-  <div class="row con">
-    <div class="col-md-3 ">
-      <img class="img-thumbnail img-responsive" src='../../../../assets/content-header/pix1.png'alt="pix1">
-    </div>
-    <div class="col-md-3">
-        <img class="img-thumbnail img-responsive" src='../../../../assets/content-header/pix2.png'alt="pix2">
+<section id="promo-banner">
+  <div class="label">
+    <div class="label-text">
+      <div class="bigger-text">
+        80% discount
       </div>
-      <div class="col-md-3">
-          <img class="img-thumbnail img-responsive" src='../../../../assets/content-header/pix3.png'alt="pix3">
-        </div>
-        <div class="col-md-3">
-            <img class="img-thumbnail img-responsive" src='../../../../assets/content-header/pix4.png'alt="pix4">
-          </div>
-  </div>
-
-<section class="subform">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          
-              <h2>
-                Subscribe for
-                 
-                newsletter 
-              </h2>
-              
-           <div class="well">
-                 <form action="#">
-                  <div class="input-group">
-                     <input class="btn btn-lg" name="email" id="email" type="email" placeholder="Your Email" required>
-                     <button class="btn btn-info btn-lg subform" type="submit">Submit</button>
-                  </div>
-                 </form>
-           </div>
-             
-        </div>
-      </div>
+      <small>#Embersales</small>
     </div>
-    </section>
-
+  </div>
+</section>
+<section id="subscription" class="padded">
+    <div class="container " >
+        <div class="text-center ">
+            <h3 class="title">Get Updates</h3>
+            <!-- <p>Get email notifications on price slashes</p> <br> -->
+            <form class="form-inline d-flex justify-content-center">
+              <div class="form-group mx-sm-3">
+                <label for="email" class="sr-only">Email</label>
+                <input type="password" class="form-control" id="email" placeholder="email address">
+              </div>
+              <button type="submit" class="btn btn-warning">Subscribe</button>
+            </form>
+        </div>
+    </div>
+</section>
 
 <!-- <app-footer>
 </app-footer> -->

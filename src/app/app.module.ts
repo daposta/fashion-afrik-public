@@ -35,6 +35,9 @@ import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-poli
 import { FaqsComponent } from './components/faqs/faqs.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ForherComponent } from './components/forher/forher.component';
+import { ForhimComponent } from './components/forhim/forhim.component';
+
 
 const appRoutes: Routes = [
 
@@ -57,6 +60,8 @@ const appRoutes: Routes = [
   { path: 'faqs', component: FaqsComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'contact-us', component: ContactComponent },
+  { path: 'forher', component: ForherComponent},
+  { path: 'forhim', component: ForhimComponent}
 ]
 
 
@@ -87,6 +92,8 @@ const appRoutes: Routes = [
     FaqsComponent,
     SignUpComponent,
     ContactComponent,
+    ForhimComponent,
+    ForherComponent,
   ],
   imports: [
     BrowserModule,
