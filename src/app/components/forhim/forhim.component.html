@@ -7,8 +7,15 @@
       </div>
      </div>
     <div class="row img-men">
+        <div class="col-md-4" *ngFor="let item of forhim">
+            <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
+            <span>{{item.currency.code}} {{item.sale_price}}</span><br>
+              <span>{{item.name}}</span>
+              
+              
+          </div>
       
-      <div class="col-md-4">
+      <!-- <div class="col-md-4">
         <img class="img-responsive" src="https://blog.jiji.ng/wp-content/uploads/2017/03/2_2-3.jpg" alt="men5">
         <span>&pound; 150.0</span><br>
           <span>Ankara Materials</span>
@@ -39,7 +46,7 @@
                 <img class="img-responsive" src="http://nigerianfabrics.com/71/colorful-men-s-native-wear.jpg" alt="men1">
                 <span>&pound; 120.0</span><br>
                 <span>Ankara Materials</span>
-              </div>
+              </div> -->
 
     </div>
 

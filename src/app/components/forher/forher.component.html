@@ -1,4 +1,5 @@
 <app-header [cart]="cart"></app-header>
+
 <div class="container">
   <header>
      <div class="row">
@@ -7,15 +8,16 @@
       </div>
      </div>
     <div class="row img-men">
-      
-      <div class="col-md-4">
-        <img class="img-responsive" src="../../../assets/img/her.jpg" alt="men5">
-        <span>&pound; 150.0</span><br>
-          <span>Ankara Materials</span>
+       <div class="col-md-4" *ngFor="let item of forher">
+        <a [routerLink]="['product/', item.id, item.slug]"> 
+          <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
+        </a>
+        <span>{{item.currency.code}} {{item.sale_price}}</span><br>
+          <span>{{item.name}}</span>
           
           
       </div>
-      <div class="col-md-4">
+   <!-- <div class="col-md-4">
         <img class="img-responsive" src="../../../assets/img/unspecified-12.jpeg" alt="men4">
         <span>&pound; 130.0</span><br>
         <span>Ankara Materials</span>
@@ -39,7 +41,14 @@
                 <img class="img-responsive" src="../../../assets/img/unspecified-134.jpeg" alt="men1">
                 <span>&pound; 120.0</span><br>
                 <span>Ankara Materials</span>
-              </div>
+              </div>   <div class="col-md-4">
+        <img class="img-responsive" src="../../../assets/img/her.jpg" alt="men5">
+        <span>&pound; 150.0</span><br>
+          <span>Ankara Materials</span>
+          
+          
+      </div> -->
+      
 
     </div>
 

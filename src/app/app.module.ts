@@ -37,6 +37,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ForherComponent } from './components/forher/forher.component';
 import { ForhimComponent } from './components/forhim/forhim.component';
+import { ForherdetailsComponent } from './components/forherdetails/forherdetails.component';
 
 
 const appRoutes: Routes = [
@@ -61,7 +62,8 @@ const appRoutes: Routes = [
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'contact-us', component: ContactComponent },
   { path: 'for-her', component: ForherComponent},
-  { path: 'for-him', component: ForhimComponent}
+  { path: 'for-him', component: ForhimComponent},
+  { path: 'for-her/:id', component: ForherdetailsComponent}
 ]
 
 
@@ -94,6 +96,7 @@ const appRoutes: Routes = [
     ContactComponent,
     ForhimComponent,
     ForherComponent,
+    ForherdetailsComponent,
   ],
   imports: [
     BrowserModule,
