@@ -198,9 +198,9 @@
 
       <ul class="navbar-nav pull-right" >
     
-        <li class="nav-item">
+        <li class="nav-item mr-2">
           <a class="nav-link" [routerLink]="cart ? '/cart' : null" style="position: relative;">
-            <img src="/assets/img/carrt.png" alt="cart" style="height: 25px; width: 25px; margin-bottom: 20px">
+            <img src="/assets/img/carrt.png" alt="cart" style="height: 25px; width: 25px; "/>
             <span *ngIf="cart?.length > 0" class="cart-bubble">{{cart?.length}}</span>
           </a>
         </li>

@@ -8,14 +8,13 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ExchangeRateService {
 
-  private ratesUrl = this.globals.EXCHANGE_RATES_URL; 
+  private ratesUrl = this.globals.EXCHANGE_RATES_URL;
 
   constructor(private http: HttpClient, private globals: Globals) { }
 
-  fetchRates(): Observable<any>{
+  fetchRates(): Observable<any> {
 
     return this.http.get(this.ratesUrl)
-  	 
     // return this.http.get(this.ratesUrl, )
     //           .toPromise()
     //           .then(response => response.json())

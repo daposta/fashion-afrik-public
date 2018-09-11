@@ -3,7 +3,7 @@ import { Globals } from './../shared/api';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
-import { catchError, tap, map } from 'rxjs/operators';
+
 
 @Injectable()
 export class ForherService {
@@ -13,8 +13,5 @@ export class ForherService {
 
   fetchForHer(): Observable<any> {
     return this.http.get(this.forHerURL)
-  }
-  fetchForHerDetail(id: any): Observable<any> {
-    return this.fetchForHer()
   }
 }
