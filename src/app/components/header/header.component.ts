@@ -70,7 +70,7 @@ export class HeaderComponent implements OnInit {
 
     this.currencySrv.fetchCurrencys()
       .subscribe(res => {
-        this.currencys = res.results;
+        this.currencys = res.data;
         // console.log(this.currencys);
       }, err => {
         console.log(err);
@@ -135,7 +135,7 @@ export class HeaderComponent implements OnInit {
 
     this.rateSrv.fetchRates().subscribe(res => {
 
-      this.exchange_rates = res.results;
+      this.exchange_rates = res.data;
        console.log(this.exchange_rates);
       const selected_currency = this.exchange_rates.find(x => x['currency']['code'] === localStorage.getItem('currency'));
       localStorage.setItem('rate', selected_currency.rate);
