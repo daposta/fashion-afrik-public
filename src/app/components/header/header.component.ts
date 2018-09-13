@@ -58,7 +58,7 @@ export class HeaderComponent implements OnInit {
   fetchCategories() {
     this.categorySrv.fetchCategories().subscribe(
       res => {
-        this.categorys = res.results;
+        this.categorys = res.data;
         // console.log(this.categorys);
       }, err => {
         console.log(err);
