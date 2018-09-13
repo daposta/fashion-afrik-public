@@ -45,11 +45,27 @@
           </a>
           <ul class="dropdown-menu">
             <li class="dropdown-submenu" style="min-width:500px">
-              <a class=" dropdown-toggle nac" id="navbarDropdown" role="button" data-toggle="dropdown"
+              <a class="  nac" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
-             
 
-                  <div class="row">
+                <div class="row">
+                    <div class="col-md-4"   *ngFor="let cats of categorys; ">
+                      <div style="border-bottom:3px solid rgb(184, 33, 33);">
+                          <h3><a href="#" > {{cats.name}}</a></h3>
+                      </div>
+                        <div *ngFor="let catss of cats.l2Categories " (mouseover)="setCategory(cats.slug)">
+                           <div style="border-bottom:1px solid white;margin:10px 0px;">
+                              <a style="font-size: 15px;" href="#"> {{catss.name}}</a>
+                           </div>
+                            
+                            <div *ngFor="let art of catss.l3Categories" class="hov" (mouseover)="setProductType(catss.slug)">
+                               <a style="font-size:13px" routerLink="/category/{{selectedCategory}}/{{selectedProductType}}/{{art.slug}}">{{art.name}}</a> 
+                            </div>
+                        </div>
+                    </div>
+    
+                  </div>
+                  <!-- <div class="row">
                     <div class="col-md-3">
                       <div class="col-md-12">
                           <h5><a href="#">Woman</a></h5>
@@ -100,7 +116,7 @@
 
                           </div>
 
-                  </div>
+                  </div> -->
               </a>
          
             </li>
@@ -160,21 +176,34 @@
           </ul> -->
 
           <ul class="dropdown-menu">
-            <li *ngFor="let cat of categorys; " class="dropdown-submenu"  style="ma-width:300px">
-              <a class="" id="navbarDropdown" role="button" data-toggle="dropdown"
+            <li class="dropdown-submenu"  style="min-width:200px">
+              <div class="row">
+                <div class="col-md-4"   *ngFor="let cats of categorys; ">
+                    {{cats.name}}
+                    <div *ngFor="let catss of cats.l2Categories " (mouseover)="setCategory(cats.slug)">
+                       <b> {{catss.name}}</b>
+                        <hr>
+                        <div *ngFor="let art of catss.l3Categories " (mouseover)="setProductType(catss.slug)">
+                           <a routerLink="/category/{{selectedCategory}}/{{selectedProductType}}/{{art.slug}}">{{art.name}}</a> 
+                        </div>
+                    </div>
+                </div>
+
+              </div>
+              <!-- <a class="" id="navbarDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false"> 
                 <div *ngFor="let cats of cat.l2Categories ">
                     <div  class="row" >
                         <div class="col-md-4" *ngFor="let art of cats.l3Categories ">
                            
-                              {{art.name}}
+                           
                            
                         </div>
                      </div>
                   
                 </div>
                 
-              </a>
+              </a> -->
             <ul class="dropdown-menu">
 
 <!-- 

@@ -365,7 +365,12 @@ select {
         .dropdown-submenu .row a{
             color: white;
             opacity: 1.0;
+            
         }
+        .dropdown-submenu .row a:hover{
+            color: white;
+        }
+
         .dropdown-submenu .row hr{
             border-bottom: 1px solid white;
         }
