@@ -3,16 +3,16 @@
   <div class="container">
     <div class="row" style="padding: 0 15px;">
       <div class="col-md-12">
-        <h5 class="boldest">
+        <h3 class="boldest">
           You searched for "{{q}}"
-        </h5>
-        <p style="font-size: 12px"><b>{{search_results?.length|number}}</b> Items found</p>
+        </h3>
+        <p style="font-size: 17px"><b>{{search_results?.length|number}}</b> Items found</p>
       </div>
     </div>
   </div>
 
-  <div class="row newArrivals-container">
-    <div class="col-md-4 newArrival-container" *ngFor="let item of search_results" style="text-align: center; color: #E9585B; margin-bottom: 25px;">
+
+    <!-- <div class="col-md-4 newArrival-container" *ngFor="let item of search_results" style="text-align: center; color: #E9585B; margin-bottom: 25px;">
       <p class="price"><span [innerHTML]="item['currency'].html_code"></span> {{item.sale_price}}</p>
       <p class="name">{{item.name}}</p>
 
@@ -23,8 +23,34 @@
       <a routerLink="/product/{{item.id}}/{{item.slug}}">
         <button style="margin: 10px; background:#E9585B; padding: 10px; width: 80px; color: #FFF; border: 0; cursor: pointer;">View</button>
       </a>
-    </div>
+    </div> -->
+
+
+<div class="container">
+  <div class="row " *ngIf="search_results?.length>1" >
+    <div class="col-md-4"  *ngFor="let item of search_results">
+     <div class="card" >
+       <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
+         <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} style="width: 100%" >
+       </a>
+       <div class="card-footer">
+         <span class="price">{{item.currency.code}} {{item.sale_price}}</span><br>
+         <span class="name">{{item.name}}</span> <a routerLink="/product/{{item.id}}/{{item.slug}}" class="btn btn-secondary text-light btn-sm pull-right"> <span class="fa fa-shopping-bag"></span> BUY NOW</a>
+
+       </div>
+     </div>   
+   </div>
+
+ </div>
+ <div *ngIf="search_results?.length<1" class="row ">
+  <div class="col-md-12 text-center">
+    <img class="img-responsive" src="http://store.vijaidental.com/assets/no-product-33dc3c65b6963555d6e7f92d0ace54bd.jpg" alt="">
   </div>
+ </div>  
+</div>
+  
+
+
 
   <!-- <div class="container">
     <div class="row">

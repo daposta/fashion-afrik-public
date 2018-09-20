@@ -7,7 +7,21 @@
     min-height: 400px;
     max-height: 400px;
 }
+.img-men .col-md-4 img{
+    width: 100%;
+    height: 500px;
 
+}
+.img-men {
+    margin-bottom: 20px
+}
+.img-men span{
+    font-weight: bold;
+}
+.card-footer .btn-secondary{
+    background-color: #E91E63;
+    border: 1px solid #E91E63;
+}
 ul.new-arrival-container {
     margin: 0 auto;
 
@@ -307,4 +321,22 @@ $toppers-height: $top-ranked-height/3.2;
 .well .row .col-md-3 h6{
     font-size: 13px
 }
+.mb-text{
+    display: none;
+}
 
+@media(max-width:500px){
+    .well{
+        display: none;
+    }
+    .div-text{
+        display: none;
+    }
+    .mb-text{
+        display: block;
+    }
+    .mb-btn-sub{
+        margin-top: 18px;
+      
+    }
+}

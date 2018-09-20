@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
+import { NewArrivalsService } from '../../services/new-arrivals.service';
+
 
 
 @Component({
   selector: 'app-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss'],
-  providers: [ ProductService]
+  providers: [ ProductService, NewArrivalsService]
 })
 export class LandingComponent implements OnInit {
   newArrivals: any[];
@@ -14,7 +16,7 @@ export class LandingComponent implements OnInit {
   his: any[];
   error: any;
 
-  constructor( private productSrv: ProductService) { }
+  constructor( private productSrv: ProductService, private newArrivalSrv: NewArrivalsService ) { }
 
   ngOnInit() {
     this.fetchWomen();
@@ -23,7 +25,7 @@ export class LandingComponent implements OnInit {
   }
 
   fetchNewArrivals() {
-    this.productSrv.fetchNewArrivals()
+    this.newArrivalSrv.fetchNewArrivals()
     .subscribe(res => {
       this.newArrivals = res.results;
       console.log(this.newArrivals);
@@ -31,6 +33,7 @@ export class LandingComponent implements OnInit {
       console.log(err);
     })
   }
+
 
   fetchWomen() {
     this.productSrv.fetchHer()

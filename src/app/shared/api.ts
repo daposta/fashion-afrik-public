@@ -27,6 +27,7 @@ export class Globals{
     COLORS_URL =  this.HOST_URL + '/customers/colors/';
     CARDPAYMENT_URL = this.HOST_URL + '/customers/payment/';
     PICKUP_POINT_URL = this.HOST_URL + '/customers/pickup_points/';
+    NEW_ARRIVALS_URL =  this.HOST_URL + '/customers/new_arrivals_shortlist/'
     
     
     
@@ -40,7 +41,7 @@ export class Globals{
     
     ACCOUNT_ACTIVATION_URL =  this.HOST_URL + '/customers/api/activate/';
     
-    NEW_ARRIVALS_URL =  this.HOST_URL + '/customers/new_arrivals/';
+   ;
     SEARCH_URL =  this.HOST_URL + '/customers/search/';
     
     

@@ -36,7 +36,7 @@
 </head>
 
 <body>
-
+<!-- 
   <div class="customloader">
     <div class="sk-fading-circle">
       <div class="sk-circle1 sk-circle"></div>
@@ -52,7 +52,7 @@
       <div class="sk-circle11 sk-circle"></div>
       <div class="sk-circle12 sk-circle"></div>
     </div>
-  </div>
+  </div> -->
   <app-root>
 
   </app-root>
@@ -82,17 +82,12 @@
   </script>
   <!-- End of Async Drift Code -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
   <!-- <script src="/assets/js/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
     crossorigin="anonymous"></script> -->
 
-  <script src="./assets/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
-    crossorigin="anonymous"></script>
-
-    <script src="./assets/js/popper.min.js"  integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-    crossorigin="anonymous"></script>
-
+<!-- 
   <script src="/assets/raty/jquery.raty.js"></script>
   <script src="/assets/toast/jquery.toast.js"></script>
   <script src="/assets/js/slick.min.js"></script>
@@ -101,17 +96,18 @@
   <script src="/assets/iCheck/icheck.min.js"></script>
   <script src="/assets/awsel/awselect.min.js"></script>
   <script src="/assets/summernote/dist/summernote.min.js"></script>
-  <script src="/assets/js/jquery.ddslick.min.js"></script>
+  <script src="/assets/js/jquery.ddslick.min.js"></script> -->
 
-  <script src="https://cdn.jsdelivr.net/npm/goodshare.js@4/goodshare.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/goodshare.js@4/goodshare.min.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ion-rangeslider/2.2.0/js/ion.rangeSlider.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.8/js/utils.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.8/js/intlTelInput.min.js"></script>
   <script src="https://checkout.stripe.com/checkout.js"></script>
-  <script src="https://js.stripe.com/v2/"></script>
+  <script src="https://js.stripe.com/v2/"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 
-  <script>
+  <!-- <script>
     // $.toast('Here you can put the text of the toast')
     $(function () {
 
@@ -138,60 +134,59 @@
         starType: 'img'
       });
 
-      // $.toast('Here you can put the text of the toast');
+      $.toast('Here you can put the text of the toast');
 
-      // product sliders and few carousels
-      // $('.slider-for').slick({
-      //     slidesToShow: 1,
-      //     slidesToScroll: 1,
-      //     arrows: false,
-      //     fade: true,
-      //     centerMode: true,
-      //     asNavFor: '.slider-nav'
-      //   });
-      //   $('.slider-nav').slick({
-      //     slidesToShow: 3,
-      //     slidesToScroll: 1,
-      //     asNavFor: '.slider-for',
-      //     // centerMode: true,
-      //     arrows: true,
-      //     focusOnSelect: true
-      //   });
+     // product sliders and few carousels
+      $('.slider-for').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          fade: true,
+          centerMode: true,
+          asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          asNavFor: '.slider-for',
+          // centerMode: true,
+          arrows: true,
+          focusOnSelect: true
+        });
 
-      //   var l = Ladda.create( document.querySelector( '.ladda-button' ) );
-      //   // l.start()
-      //   Ladda.bind( 'button[type=button]' );
+        var l = Ladda.create( document.querySelector( '.ladda-button' ) );
+        // l.start()
+        Ladda.bind( 'button[type=button]' );
 
 
-      // $(".range-slider").ionRangeSlider({
-      //   'type': 'double',
-      //   onStart: function (data) {
-      //       console.log("onStart");
-      //   },
-      //   onChange: function (data) {
-      //       console.log("onChange");
-      //   }
-      // });
+      $(".range-slider").ionRangeSlider({
+        'type': 'double',
+        onStart: function (data) {
+            console.log("onStart");
+        },
+        onChange: function (data) {
+            console.log("onChange");
+        }
+      });
 
       $('.summernote').summernote();
 
 
-      // $('#currency_selector').ddslick({
-      //  width: '170px'
-      // });
+      $('#currency_selector').ddslick({
+       width: '170px'
+      }); 
 
 
 
     });
     $('.is-loading').html('Loading...');
-  </script>
+  </script> -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+   <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   Stripe.setPublishableKey('pk_test_rc3kF517lh5pGOR8wRdRiekO');
-</script>
+</script> -->
 
 </body>
 

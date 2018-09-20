@@ -85,9 +85,10 @@
               <div class="col-md-6" >
                   <div class="" >
                       <div class="col-md-4 img-hover">
+                        <h3 class="mb-text text-center"><i>For Her</i></h3>
                          <a routerLink="/for-her"> <img src="../../../assets/img/forher.PNG" style="height:500px;width:350px;float: left;" alt="for her"></a>
                       </div>
-                      <div class="col-md-2 bg-light  " style="float:left;margin-top: 25%;padding: 40px 10px;min-width: 170px;">
+                      <div class="col-md-2 bg-light  div-text" style="float:left;margin-top: 25%;padding: 40px 10px;min-width: 170px;">
                           <h6 >CLOTHING FOR ANY OCCASSION,</h6>
                           <h6>ALWAYS FEMININE,</h6>
                           <h6>WITH HIGH ATTENTION TO DETAILS</h6>
@@ -99,12 +100,13 @@
             <div class="col-md-6" >
               <div class="" >
                   <div class="col-md-4 img-hover">
+                      <h3 class="mb-text text-center"><i>For Him</i></h3>
                       <a routerLink="/for-him">
                         <img src="https://i.pinimg.com/originals/39/b3/85/39b3851386510f8130757914ffe759a5.jpg" style="height:500px;width:350px;float: left;" alt="for him">
 
                       </a>
                   </div>
-                  <div class="col-md-2 bg-light " style="float:left;margin-top: 25%;padding: 40px 10px;min-width: 170px;">
+                  <div class="col-md-2 bg-light div-text" style="float:left;margin-top: 25%;padding: 40px 10px;min-width: 170px;">
                       <h6 >CLOTHING FOR ANY OCCASSION,</h6>
                       <h6>ALWAYS MEN,</h6>
                       <h6>WITH HIGH ATTENTION TO DETAILS</h6>
@@ -124,34 +126,20 @@
                 </h1>
               </div>
             </div>
-      <div class="card-deck  mb-5">
-      
-          <div class="card">
-            <img class="card-img-top" src="../../../assets/img/her.jpg" width="100%" alt="Card image cap">
-       
-            <div class="card-footer">
-              <span class="price">&pound; 94.00</span><br>
-              <span class="name">Ankara Material</span><br
-
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="../../../assets/img/her2.jpeg" width="100%" alt="Card image cap">
-       
-            <div class="card-footer">
-              <span class="price">&pound; 94.00</span><br>
-              <span class="name">Ankara Material</span><br>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="../../../assets/img/her3.jpeg" width="100%" alt="Card image cap">
-       
-            <div class="card-footer">
-              <span class="price">&pound; 94.00</span><br>
-              <span class="name">Ankara Material</span><br>
-            </div>
-          </div>
-        </div>  
+            <div class="row img-men">
+              <div class="col-md-4" *ngFor="let item of newArrivals">
+               <div class="card" >
+                 <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
+                   <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
+                 </a>
+                 <div class="card-footer">
+                   <span class="price">{{item.currency.code}} {{item.sale_price}}</span><br>
+                   <span class="name">{{item.name}}</span> <a routerLink="/product/{{item.id}}/{{item.slug}}" class="btn btn-secondary text-light btn-sm pull-right"> <span class="fa fa-shopping-bag"></span> BUY NOW</a>
+         
+                 </div>
+               </div>     
+             </div>
+           </div> 
 </div>
 
 <section id="promo-banner">
@@ -172,9 +160,9 @@
             <form class="form-inline d-flex justify-content-center">
               <div class="form-group mx-sm-3">
                 <label for="email" class="sr-only">Email</label>
-                <input type="password" class="form-control" id="email" placeholder="email address">
+                <input type="password" class="form-control mb-btn-sub" id="email" placeholder="email address">
               </div>
-              <button type="submit" class="btn btn-warning">Subscribe</button>
+              <button type="submit" class="btn btn-warning ">Subscribe</button>
             </form>
         </div>
     </div>

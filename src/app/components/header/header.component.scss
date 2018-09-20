@@ -383,3 +383,34 @@ select {
 
     }
 }
+
+// MOBILE CSS
+
+
+  @media (max-width:500px){
+      .mobile-head{
+          display: inline-block;
+          background-color: #011936;
+          color: white;
+          padding: 10px 0px;
+          padding-left: 20px;
+          nav a{
+              color: white;
+              font-size: 12px;
+              padding: 0px 3px;
+          }
+          nav .select-wrapper select {
+              font-size: 13px;
+          }
+      }
+      #top-header{
+          display: none;
+      }
+        .dropdown .dropdown-menu .sub{
+          min-width: 70px !important;
+      }
+
+    
+    
+   
+}

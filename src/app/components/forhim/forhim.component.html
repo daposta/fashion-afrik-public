@@ -1,33 +1,45 @@
 <app-header [cart]="cart"></app-header>
+
 <div class="container">
   <header>
      <div class="row">
       <div class="col-md-12 text-center">
-        <i><h1>For Him</h1></i>
+        <i><h1>For Her</h1></i>
       </div>
      </div>
-     <div class="row img-men">
-      <div class="col-md-4" *ngFor="let item of forhim">
-       <div class="card" >
-         <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
-           <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
-         </a>
-         <div class="card-footer">
+    <div class="row img-men">
+       <div class="col-md-4" *ngFor="let item of forhim">
+        <div class="card" >
+          <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
+            <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
+          </a>
+          <div class="card-footer">
+            <span class="price">{{item.currency.code}} {{item.sale_price}}</span><br>
+            <span class="name">{{item.name}}</span> <a routerLink="/product/{{item.id}}/{{item.slug}}" class="btn btn-secondary text-light btn-sm pull-right"> <span class="fa fa-shopping-bag"></span> BUY NOW</a>
+  
+          </div>
+        </div>     
+      </div>
+    </div>
+  
+    <div *ngIf="!forhim" class="col-md-12 text-center">
+      <img src="assets/gif/blue-spinner.gif" alt="">
+      <h3>Loading .......</h3>
+    </div>
+    <!-- <div class="card-deck mt-5 mb-5">
+      <div class="card" *ngFor="let item of forher">
+        <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
+          <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} >
+        </a>
+        <div class="card-footer">
           <span class="price">{{item.currency.code}} {{item.sale_price}}</span><br>
-          <span class="name">{{item.name}}</span> <a routerLink="/product/{{item.id}}/{{item.slug}}" class="btn btn-secondary text-light btn-sm pull-right"> <span class="fa fa-shopping-bag"></span> BUY NOW</a>
+          <span class="name">{{item.name}}</span><br>
 
         </div>
-       </div>     
-     </div>
-
-     <div *ngIf="!forhim" class="col-md-4">
-        <img src="assets/gif/blue-spinner.gif" alt="">
-        <h3>Loading .......</h3>
-     </div>
-
-   </div>
-
+      </div>
+    </div>  -->
   </header>
+
   <section>
 
   </section>
