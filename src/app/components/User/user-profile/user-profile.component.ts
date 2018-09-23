@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from '../../services/order.service';
-import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { OrderService } from '../services/order.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.scss'],
-  providers: [OrderService, UserService]
+
 })
 export class UserProfileComponent implements OnInit {
 

@@ -1,0 +1,40 @@
+body {
+    background: $body-color;
+}
+.font-2 {
+    font-family: $secondary-font;
+}
+section {
+    &.padded {
+        padding: 30px 0;
+    }
+    .section-header {
+        font-size: 2rem;
+        color: $site-blue;
+        margin-bottom: 30px;
+    }
+}
+.img-placeholder {
+    background: #e2e8ef;
+	margin-bottom: 30px;
+    max-width: 270px;
+    height: 300px;
+
+    &::before {
+    	 content: '';
+    	 background: url('/assets/img/img-placeholder.png');
+    	 display: block;
+    }
+}
+ul {
+    ul {
+        padding-left: 15px;
+    }
+}
+li {
+    li {
+        list-style: none;
+        padding: 0;
+        margin: 0
+    }
+}

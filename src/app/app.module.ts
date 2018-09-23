@@ -16,11 +16,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { UserProfileComponent } from './components/user-profile/user-profile.component';
+
 import { CategoryDetailComponent } from './components/category-detail/category-detail.component';
 import { StoreDetailComponent } from './components/store-detail/store-detail.component';
 import { ClearanceSalesComponent } from './components/clearance-sales/clearance-sales.component';
-import { LoginComponent } from './components/login/login.component';
+
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
 import { NewArrivalsComponent } from './components/new-arrivals/new-arrivals.component';
@@ -28,13 +28,11 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
-import { ForherComponent } from './components/forher/forher.component';
-import { ForhimComponent } from './components/forhim/forhim.component';
-import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 
 // routing
 import { appRoutes } from './routing'
 import { SharedModule } from './shared/shared.module';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
 
 
@@ -48,11 +46,9 @@ import { SharedModule } from './shared/shared.module';
     ProductDetailComponent,
     LandingComponent,
     ShoppingCartComponent,
-    UserProfileComponent,
     CategoryDetailComponent,
     StoreDetailComponent,
     ClearanceSalesComponent,
-    LoginComponent,
     CheckoutComponent,
     SearchResultsComponent,
     NewArrivalsComponent,
@@ -60,9 +56,7 @@ import { SharedModule } from './shared/shared.module';
     ShippingComponent,
     ConfirmationComponent,
     WishlistComponent,
-    ForhimComponent,
-    ForherComponent,
-    ForgetPasswordComponent,
+    NotFoundPageComponent,
   ],
   imports: [
     BrowserModule,

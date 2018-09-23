@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ForhimService } from '../../services/forhim.service'
+import { ForhimService } from '../services/forhim.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-forhim',
   templateUrl: './forhim.component.html',
   styleUrls: ['./forhim.component.scss'],
-  providers: [ ForhimService ]
 })
 export class ForhimComponent implements OnInit {
   forhim: any[]
@@ -13,7 +14,7 @@ export class ForhimComponent implements OnInit {
   constructor(private forHimSrv: ForhimService) { }
 
   ngOnInit() {
-
+    $("html, body").animate({ scrollTop: 0 }, "slow");
     this.getForHim();
   }
   getForHim() {
