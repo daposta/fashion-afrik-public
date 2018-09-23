@@ -94,7 +94,6 @@
               <a class="img-wrapper" routerLink="/product/{{product.id}}/{{product.slug}}">
                 <img src="{{product.banner_image}}" alt="{{product.slug}}" />
               </a>
-
               <div class="info">
                 <div class="title">{{product.name}}</div>
                 <div class="price">{{t.getItem('currency')}}{{product.sale_price / t.getItem('rate') | number}}</div>

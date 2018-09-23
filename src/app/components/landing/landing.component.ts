@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Title, Meta } from '@angular/platform-browser';
+
 import { ProductService } from '../../services/product.service';
 import { NewArrivalsService } from '../../services/new-arrivals.service';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/RX';
 
 
 
@@ -20,9 +22,17 @@ export class LandingComponent implements OnInit , OnDestroy{
   womenClean: Subscription;
   arrivalClean: Subscription
 
-  constructor( private productSrv: ProductService, private newArrivalSrv: NewArrivalsService ) { }
+  constructor(
+    private productSrv: ProductService,
+    private newArrivalSrv: NewArrivalsService,
+    private title: Title,
+    private meta: Meta ) { }
 
   ngOnInit() {
+    this.title.setTitle('Home / VogueAfriq');
+    this.meta.updateTag({
+        'description': 'E-commerce shopping site for ankara'
+    });
     this.fetchWomen();
     this.fetchMen();
     this.fetchNewArrivals();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { ProductTypesService } from '../../services/product-types.service';
-import { CategoryService } from '../../services/category.service';
+import { ProductService } from '../services/product.service';
+import { ProductTypesService } from '../services/product-types.service';
+import { CategoryService } from '../services/category.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 declare var $: any;
 

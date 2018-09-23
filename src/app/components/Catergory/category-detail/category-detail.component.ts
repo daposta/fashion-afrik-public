@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { ProductTypesService } from '../../services/product-types.service';
-import { CategoryService } from '../../services/category.service';
 
 import { Router, ActivatedRoute, Params, NavigationEnd } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import 'rxjs/add/operator/switchMap';
-import { Globals } from '../../shared/api';
+import { Globals } from '../../../shared/api';
+import { ProductService } from '../services/product.service';
+import { ProductTypesService } from '../services/product-types.service';
+import { CategoryService } from '../services/category.service';
 declare var $: any;
 
 @Component({
   selector: 'app-category-detail',
   templateUrl: './category-detail.component.html',
   styleUrls: ['./category-detail.component.scss'],
-  providers: [ProductService, ProductTypesService, CategoryService]
 })
 export class CategoryDetailComponent implements OnInit {
   t = localStorage;

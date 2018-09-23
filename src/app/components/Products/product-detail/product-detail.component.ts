@@ -1,20 +1,22 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { EcomProductZoomModalImage, EcomProductZoomModalService } from '@plency/ecom-product-zoom-modal';
 
-import { ProductService } from '../../services/product.service';
-import { CartService } from '../../services/cart.service';
-import { ColorService } from '../../services/color.service';
-import { FabricService } from '../../services/fabric.service';
-import { SizeService } from '../../services/size.service';
-import { CurrencyService } from '../../services/currency.service';
-import { ExchangeRateService } from '../../services/exchange-rate.service';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
-import { Globals } from '../../shared/api';
+import { Globals } from '../../../shared/api';
 import 'jquery-zoom';
+
+// services
+import { ProductService } from '../services/product.service';
+import { CartService } from '../services/cart.service';
+import { ColorService } from '../services/color.service';
+import { FabricService } from '../services/fabric.service';
+import { SizeService } from '../services/size.service';
+import { CurrencyService } from '../services/currency.service';
+import { ExchangeRateService } from '../services/exchange-rate.service';
 
 declare var $: any;
 
@@ -22,8 +24,14 @@ declare var $: any;
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
-  providers: [ProductService, CartService, ColorService, FabricService, SizeService,
-    CurrencyService, ExchangeRateService]
+  providers: [
+    ProductService,
+    CartService,
+    ColorService,
+    FabricService,
+    SizeService,
+    CurrencyService,
+    ExchangeRateService]
 })
 export class ProductDetailComponent implements OnInit, AfterViewInit {
   t = localStorage;
