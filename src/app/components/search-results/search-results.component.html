@@ -4,7 +4,7 @@
     <div class="row" style="padding: 0 15px;">
       <div class="col-md-12">
         <h3 class="boldest">
-          You searched for "{{q}}"
+          You searched for "{{ sx}}"
         </h3>
         <p style="font-size: 17px"><b>{{search_results?.length|number}}</b> Items found</p>
       </div>
@@ -27,8 +27,8 @@
 
 
 <div class="container">
-  <div class="row " *ngIf="search_results?.length>1" >
-    <div class="col-md-4"  *ngFor="let item of search_results">
+  <div class="row " *ngIf="productCheck?.length>1" >
+    <div class="col-md-4"  *ngFor="let item of productCheck">
      <div class="card" >
        <a routerLink="/product/{{item.id}}/{{item.slug}}"> 
          <img class="img-responsive" src={{item.feature_image}} alt={{item.name}} style="width: 100%" >
@@ -42,14 +42,14 @@
    </div>
 
  </div>
- <div *ngIf="search_results?.length<1" class="row ">
+ <div *ngIf="productCheck?.length<1" class="row ">
   <div class="col-md-12 text-center">
     <img class="img-responsive" src="http://store.vijaidental.com/assets/no-product-33dc3c65b6963555d6e7f92d0ace54bd.jpg" alt="">
   </div>
  </div>  
 </div>
   
-
+<!-- <p>Search for {{ sx}}</p> -->
 
 
   <!-- <div class="container">

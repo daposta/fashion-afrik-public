@@ -103,13 +103,11 @@ export class ProductService {
   }
 
   searchProduct(data: string) {
-
+    console.log(this.searchUrl + '?q=' + data);
     return this.http.get(this.searchUrl + '?q=' + data)
       .map(this.extractData)
       .catch(this.handleErrorObservable);
-
   }
-
   saveNewReview(review: any) {
 
     //  headers.append('Content-Type', 'multipart/form-data');

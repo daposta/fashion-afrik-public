@@ -4,7 +4,11 @@ import { Injectable } from '@angular/core';
 Injectable()
 export class Globals{
     HOST_URL =  'https://vogueafriq.com/api';
-    
+    FAKE_URL = 'customers/category/'
+
+    // fake endpoint
+    FAKE_PRODUCT_URL = this.FAKE_URL
+
     // Verified endpoints
     REGISTER_URL =  this.HOST_URL + '/register/';
     LOGIN_URL =  this.HOST_URL + '/login/';

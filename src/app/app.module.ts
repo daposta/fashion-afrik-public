@@ -9,7 +9,7 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { EcomProductZoomModalModule } from '@plency/ecom-product-zoom-modal';
 
 import { Globals } from './shared/api';
-
+// components
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -28,47 +28,22 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { ShippingComponent } from './components/shipping/shipping.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
-import { TermsConditionsComponent } from './components/terms-conditions/terms-conditions.component';
-import { ShippingReturnsComponent } from './components/shipping-returns/shipping-returns.component';
-import { AboutComponent } from './components/about/about.component';
-import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
-import { FaqsComponent } from './components/faqs/faqs.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { ContactComponent } from './components/contact/contact.component';
 import { ForherComponent } from './components/forher/forher.component';
 import { ForhimComponent } from './components/forhim/forhim.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+
+// routing
+import { appRoutes } from './routing'
+import { SharedModule } from './shared/shared.module';
 
 
-const appRoutes: Routes = [
 
-  { path: '', component: LandingComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: SignUpComponent },
-  { path: 'me', component: UserProfileComponent },
-  { path: 'search', component: SearchResultsComponent },
-  { path: 'product/:id/:slug', component: ProductDetailComponent },
-  { path: 'store/:store', component: StoreDetailComponent },
-  { path: 'category/:category/:productType/:sub', component: CategoryDetailComponent },
-  { path: 'cart', component: ShoppingCartComponent },
-  { path: 'user-profile', component: UserProfileComponent },
-  { path: 'clearance/:category/:productType/:sub', component: ClearanceSalesComponent },
-  { path: 'new-arrivals/:category/:productType/:sub', component: NewArrivalsComponent },
-  { path: 'checkout', component: CheckoutComponent },
-  { path: 'terms-conditions', component: TermsConditionsComponent },
-  { path: 'shipping-returns', component: ShippingReturnsComponent },
-  { path: 'about-us', component: AboutComponent },
-  { path: 'faqs', component: FaqsComponent },
-  { path: 'privacy-policy', component: PrivacyPolicyComponent },
-  { path: 'contact-us', component: ContactComponent },
-  { path: 'for-her', component: ForherComponent},
-  { path: 'for-him', component: ForhimComponent},
-]
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+  //  HeaderComponent,
     FooterComponent,
     ProductDetailComponent,
     LandingComponent,
@@ -85,20 +60,15 @@ const appRoutes: Routes = [
     ShippingComponent,
     ConfirmationComponent,
     WishlistComponent,
-    TermsConditionsComponent,
-    ShippingReturnsComponent,
-    AboutComponent,
-    PrivacyPolicyComponent,
-    FaqsComponent,
-    SignUpComponent,
-    ContactComponent,
     ForhimComponent,
     ForherComponent,
+    ForgetPasswordComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     HttpModule,
+    SharedModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes, {}),
@@ -106,6 +76,9 @@ const appRoutes: Routes = [
     TextMaskModule,
     EcomProductZoomModalModule,
   ],
+  exports: [
+    // HeaderComponent,
+],
   providers: [Globals],
   bootstrap: [AppComponent]
 })

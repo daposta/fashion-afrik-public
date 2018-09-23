@@ -1,0 +1,550 @@
+{
+
+    "results": [
+        {
+            "id": "8e8b13cd-bdb5-46a1-8af1-c7766a287108",
+            "feature_image": "http://vogueafriq.com/media/products/african_print_green_white_men_s_wear_ankara_african_clothes_for_men_afrilege_12_j1Iqp2p.jpg",
+            "other_product_images": [
+                {
+                    "doc": "http://vogueafriq.com/media/products/african_print_green_white_men_s_wear_ankara_african_clothes_for_men_afrilege_1200x630.jpg",
+                    "id": 71
+                }
+            ],
+            "timestamp": "2018-09-10T21:15:13Z",
+            "name": "ankara top",
+            "slug": "ankara-top",
+            "description": "t-shirt for men",
+            "banner_image": "/media/products/african_print_green_white_men_s_wear_ankara_african_clothes_for_men_afrilege_12_j1Iqp2p.jpg",
+            "sale_price": 250,
+            "discount_price": 0,
+            "updated": "2018-09-10T21:16:28Z",
+            "is_clearance": false,
+            "is_new_arrival": true,
+            "status": "APPROVED",
+            "in_stock": true,
+            "store": {
+                "id": "e31f2546-2dd9-4818-9c8a-e128d3cbd471",
+                "name": "Kairo",
+                "slug": "kairo",
+                "description": "Ankara",
+                "address": "No 12, kairo market oshodi lagos",
+                "status": "PENDING",
+                "user": {
+                    "id": "438a6694-d133-4faa-a293-0f00ade31778",
+                    "password": "pbkdf2_sha256$36000$QmlzE5qXwHpr$NFUXz1JXUicGgmJch+eKlyUlwMe4vQXlkuCGUMRK5Gc=",
+                    "last_login": null,
+                    "is_superuser": false,
+                    "first_name": "Alabi",
+                    "last_name": "Sodiq",
+                    "email": "adisco4420@gmail.com",
+                    "date_joined": "2018-09-01T07:15:00Z",
+                    "is_active": true,
+                    "is_admin": false,
+                    "is_customer": false,
+                    "is_store": true,
+                    "mobile": "9064155137",
+                    "groups": [],
+                    "user_permissions": []
+                },
+                "preferred_currency": null
+            },
+            "currency": {
+                "id": 2,
+                "name": "British Pound",
+                "code": "GBP",
+                "html_code": "&pound;"
+            },
+            "l1category": {
+                "id": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c",
+                "name": "Men",
+                "slug": "men"
+            },
+            "l2category": {
+                "id": "cdab8660-1796-43d8-9657-a961986cba75",
+                "name": "Clothes",
+                "slug": "clothes",
+                "l1category": {
+                    "id": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c",
+                    "name": "Men",
+                    "slug": "men"
+                }
+            },
+            "l3category": {
+                "id": "d035782f-5d16-4a21-a06f-ad9597e0acd5",
+                "name": "T-Shirts",
+                "slug": "t-shirts",
+                "l2category": {
+                    "id": "cdab8660-1796-43d8-9657-a961986cba75",
+                    "name": "Clothes",
+                    "slug": "clothes",
+                    "l1category": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c"
+                }
+            },
+            "sizes": [
+                {
+                    "id": 3,
+                    "name": "L",
+                    "slug": "l"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "b569deb6-943f-4dae-a498-f7fa3560ce1b",
+                    "name": "Casuals",
+                    "slug": "casuals"
+                }
+            ],
+            "other_images": [
+                {
+                    "id": 71,
+                    "image": "/media/products/african_print_green_white_men_s_wear_ankara_african_clothes_for_men_afrilege_1200x630.jpg"
+                }
+            ],
+            "reviews": [],
+            "colors": [
+                {
+                    "id": 3,
+                    "name": "Grey",
+                    "slug": "grey"
+                }
+            ],
+            "mixed_colors": []
+        },
+        {
+            "id": "f1db81f9-a3b6-4cbc-81c5-a2ba4d1fffc8",
+            "feature_image": "http://vogueafriq.com/media/products/516f64a38a62c538e6794f3b825d28d4--african-clothing-for-men-ankara-clothing_MFtdkr8.jpg",
+            "other_product_images": [
+                {
+                    "doc": "http://vogueafriq.com/media/products/516f64a38a62c538e6794f3b825d28d4--african-clothing-for-men-ankara-clothing.jpg",
+                    "id": 70
+                }
+            ],
+            "timestamp": "2018-09-10T21:10:57Z",
+            "name": "guinea designer",
+            "slug": "guinea-designer",
+            "description": "up and down guinea for men",
+            "banner_image": "/media/products/516f64a38a62c538e6794f3b825d28d4--african-clothing-for-men-ankara-clothing_MFtdkr8.jpg",
+            "sale_price": 10425,
+            "discount_price": 0,
+            "updated": "2018-09-10T21:17:15Z",
+            "is_clearance": false,
+            "is_new_arrival": false,
+            "status": "APPROVED",
+            "in_stock": true,
+            "store": {
+                "id": "e31f2546-2dd9-4818-9c8a-e128d3cbd471",
+                "name": "Kairo",
+                "slug": "kairo",
+                "description": "Ankara",
+                "address": "No 12, kairo market oshodi lagos",
+                "status": "PENDING",
+                "user": {
+                    "id": "438a6694-d133-4faa-a293-0f00ade31778",
+                    "password": "pbkdf2_sha256$36000$QmlzE5qXwHpr$NFUXz1JXUicGgmJch+eKlyUlwMe4vQXlkuCGUMRK5Gc=",
+                    "last_login": null,
+                    "is_superuser": false,
+                    "first_name": "Alabi",
+                    "last_name": "Sodiq",
+                    "email": "adisco4420@gmail.com",
+                    "date_joined": "2018-09-01T07:15:00Z",
+                    "is_active": true,
+                    "is_admin": false,
+                    "is_customer": false,
+                    "is_store": true,
+                    "mobile": "9064155137",
+                    "groups": [],
+                    "user_permissions": []
+                },
+                "preferred_currency": null
+            },
+            "currency": {
+                "id": 1,
+                "name": "Naira",
+                "code": "NGN",
+                "html_code": "&#8358;"
+            },
+            "l1category": {
+                "id": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c",
+                "name": "Men",
+                "slug": "men"
+            },
+            "l2category": {
+                "id": "cdab8660-1796-43d8-9657-a961986cba75",
+                "name": "Clothes",
+                "slug": "clothes",
+                "l1category": {
+                    "id": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c",
+                    "name": "Men",
+                    "slug": "men"
+                }
+            },
+            "l3category": {
+                "id": "e737194c-d011-46a9-b246-4e964fdc2347",
+                "name": "Shirts",
+                "slug": "shirts",
+                "l2category": {
+                    "id": "cdab8660-1796-43d8-9657-a961986cba75",
+                    "name": "Clothes",
+                    "slug": "clothes",
+                    "l1category": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c"
+                }
+            },
+            "sizes": [
+                {
+                    "id": 3,
+                    "name": "L",
+                    "slug": "l"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "75745d15-be7a-4254-9969-0bf1ec0f0c66",
+                    "name": "fashion",
+                    "slug": "fashion"
+                }
+            ],
+            "other_images": [
+                {
+                    "id": 70,
+                    "image": "/media/products/516f64a38a62c538e6794f3b825d28d4--african-clothing-for-men-ankara-clothing.jpg"
+                }
+            ],
+            "reviews": [],
+            "colors": [
+                {
+                    "id": 3,
+                    "name": "Grey",
+                    "slug": "grey"
+                }
+            ],
+            "mixed_colors": []
+        },
+        {
+            "id": "75c5088f-3a10-4e34-a2a0-df578ff34c47",
+            "feature_image": "http://vogueafriq.com/media/products/colorful-men-s-native-wear_Ma1nB10.jpg",
+            "other_product_images": [
+                {
+                    "doc": "http://vogueafriq.com/media/products/colorful-men-s-native-wear.jpg",
+                    "id": 69
+                }
+            ],
+            "timestamp": "2018-09-10T21:06:47Z",
+            "name": "ankara shirt",
+            "slug": "ankara-shirt",
+            "description": "t- shirt ankara",
+            "banner_image": "/media/products/colorful-men-s-native-wear_Ma1nB10.jpg",
+            "sale_price": 9375,
+            "discount_price": 0,
+            "updated": "2018-09-10T21:16:40Z",
+            "is_clearance": true,
+            "is_new_arrival": false,
+            "status": "APPROVED",
+            "in_stock": true,
+            "store": {
+                "id": "e31f2546-2dd9-4818-9c8a-e128d3cbd471",
+                "name": "Kairo",
+                "slug": "kairo",
+                "description": "Ankara",
+                "address": "No 12, kairo market oshodi lagos",
+                "status": "PENDING",
+                "user": {
+                    "id": "438a6694-d133-4faa-a293-0f00ade31778",
+                    "password": "pbkdf2_sha256$36000$QmlzE5qXwHpr$NFUXz1JXUicGgmJch+eKlyUlwMe4vQXlkuCGUMRK5Gc=",
+                    "last_login": null,
+                    "is_superuser": false,
+                    "first_name": "Alabi",
+                    "last_name": "Sodiq",
+                    "email": "adisco4420@gmail.com",
+                    "date_joined": "2018-09-01T07:15:00Z",
+                    "is_active": true,
+                    "is_admin": false,
+                    "is_customer": false,
+                    "is_store": true,
+                    "mobile": "9064155137",
+                    "groups": [],
+                    "user_permissions": []
+                },
+                "preferred_currency": null
+            },
+            "currency": {
+                "id": 1,
+                "name": "Naira",
+                "code": "NGN",
+                "html_code": "&#8358;"
+            },
+            "l1category": {
+                "id": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c",
+                "name": "Men",
+                "slug": "men"
+            },
+            "l2category": {
+                "id": "cdab8660-1796-43d8-9657-a961986cba75",
+                "name": "Clothes",
+                "slug": "clothes",
+                "l1category": {
+                    "id": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c",
+                    "name": "Men",
+                    "slug": "men"
+                }
+            },
+            "l3category": {
+                "id": "d035782f-5d16-4a21-a06f-ad9597e0acd5",
+                "name": "T-Shirts",
+                "slug": "t-shirts",
+                "l2category": {
+                    "id": "cdab8660-1796-43d8-9657-a961986cba75",
+                    "name": "Clothes",
+                    "slug": "clothes",
+                    "l1category": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c"
+                }
+            },
+            "sizes": [
+                {
+                    "id": 2,
+                    "name": "M",
+                    "slug": "m"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "b569deb6-943f-4dae-a498-f7fa3560ce1b",
+                    "name": "Casuals",
+                    "slug": "casuals"
+                }
+            ],
+            "other_images": [
+                {
+                    "id": 69,
+                    "image": "/media/products/colorful-men-s-native-wear.jpg"
+                }
+            ],
+            "reviews": [],
+            "colors": [
+                {
+                    "id": 6,
+                    "name": "Yellow",
+                    "slug": "yellow"
+                }
+            ],
+            "mixed_colors": []
+        },
+        {
+            "id": "9bd1459e-4f04-4232-9d71-0f6748970260",
+            "feature_image": "http://vogueafriq.com/media/products/gala-9-ankara-print-suit-designers-men-can-wear-to-water-is-life-africa-gives-b_4LKe2OF.jpg",
+            "other_product_images": [
+                {
+                    "doc": "http://vogueafriq.com/media/products/gala-9-ankara-print-suit-designers-men-can-wear-to-water-is-life-africa-gives-b_i67qZTS.jpg",
+                    "id": 68
+                }
+            ],
+            "timestamp": "2018-09-10T15:19:15Z",
+            "name": "ankara suir",
+            "slug": "ankara-suir",
+            "description": "ankara suit",
+            "banner_image": "/media/products/gala-9-ankara-print-suit-designers-men-can-wear-to-water-is-life-africa-gives-b_4LKe2OF.jpg",
+            "sale_price": 10000,
+            "discount_price": 0,
+            "updated": "2018-09-10T15:19:54Z",
+            "is_clearance": false,
+            "is_new_arrival": true,
+            "status": "APPROVED",
+            "in_stock": true,
+            "store": {
+                "id": "e31f2546-2dd9-4818-9c8a-e128d3cbd471",
+                "name": "Kairo",
+                "slug": "kairo",
+                "description": "Ankara",
+                "address": "No 12, kairo market oshodi lagos",
+                "status": "PENDING",
+                "user": {
+                    "id": "438a6694-d133-4faa-a293-0f00ade31778",
+                    "password": "pbkdf2_sha256$36000$QmlzE5qXwHpr$NFUXz1JXUicGgmJch+eKlyUlwMe4vQXlkuCGUMRK5Gc=",
+                    "last_login": null,
+                    "is_superuser": false,
+                    "first_name": "Alabi",
+                    "last_name": "Sodiq",
+                    "email": "adisco4420@gmail.com",
+                    "date_joined": "2018-09-01T07:15:00Z",
+                    "is_active": true,
+                    "is_admin": false,
+                    "is_customer": false,
+                    "is_store": true,
+                    "mobile": "9064155137",
+                    "groups": [],
+                    "user_permissions": []
+                },
+                "preferred_currency": null
+            },
+            "currency": {
+                "id": 1,
+                "name": "Naira",
+                "code": "NGN",
+                "html_code": "&#8358;"
+            },
+            "l1category": {
+                "id": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c",
+                "name": "Men",
+                "slug": "men"
+            },
+            "l2category": {
+                "id": "cdab8660-1796-43d8-9657-a961986cba75",
+                "name": "Clothes",
+                "slug": "clothes",
+                "l1category": {
+                    "id": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c",
+                    "name": "Men",
+                    "slug": "men"
+                }
+            },
+            "l3category": {
+                "id": "e737194c-d011-46a9-b246-4e964fdc2347",
+                "name": "Shirts",
+                "slug": "shirts",
+                "l2category": {
+                    "id": "cdab8660-1796-43d8-9657-a961986cba75",
+                    "name": "Clothes",
+                    "slug": "clothes",
+                    "l1category": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c"
+                }
+            },
+            "sizes": [
+                {
+                    "id": 2,
+                    "name": "M",
+                    "slug": "m"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "75745d15-be7a-4254-9969-0bf1ec0f0c66",
+                    "name": "fashion",
+                    "slug": "fashion"
+                }
+            ],
+            "other_images": [
+                {
+                    "id": 68,
+                    "image": "/media/products/gala-9-ankara-print-suit-designers-men-can-wear-to-water-is-life-africa-gives-b_i67qZTS.jpg"
+                }
+            ],
+            "reviews": [],
+            "colors": [
+                {
+                    "id": 1,
+                    "name": "Black",
+                    "slug": "black"
+                }
+            ],
+            "mixed_colors": []
+        },
+        {
+            "id": "ebdb1522-3e5a-4d7c-aa2a-ca94d2b9cf5e",
+            "feature_image": "http://vogueafriq.com/media/products/african-print-men-fashion-ankara-suit_1ChuIXR.jpg",
+            "other_product_images": [
+                {
+                    "doc": "http://vogueafriq.com/media/products/african-print-men-fashion-ankara-suit.jpg",
+                    "id": 60
+                }
+            ],
+            "timestamp": "2018-09-10T07:42:28Z",
+            "name": "ankara suit",
+            "slug": "ankara-suit",
+            "description": "ankara suit for executive men",
+            "banner_image": "/media/products/african-print-men-fashion-ankara-suit_1ChuIXR.jpg",
+            "sale_price": 7500,
+            "discount_price": 0,
+            "updated": "2018-09-10T07:57:24Z",
+            "is_clearance": false,
+            "is_new_arrival": true,
+            "status": "APPROVED",
+            "in_stock": true,
+            "store": {
+                "id": "e31f2546-2dd9-4818-9c8a-e128d3cbd471",
+                "name": "Kairo",
+                "slug": "kairo",
+                "description": "Ankara",
+                "address": "No 12, kairo market oshodi lagos",
+                "status": "PENDING",
+                "user": {
+                    "id": "438a6694-d133-4faa-a293-0f00ade31778",
+                    "password": "pbkdf2_sha256$36000$QmlzE5qXwHpr$NFUXz1JXUicGgmJch+eKlyUlwMe4vQXlkuCGUMRK5Gc=",
+                    "last_login": null,
+                    "is_superuser": false,
+                    "first_name": "Alabi",
+                    "last_name": "Sodiq",
+                    "email": "adisco4420@gmail.com",
+                    "date_joined": "2018-09-01T07:15:00Z",
+                    "is_active": true,
+                    "is_admin": false,
+                    "is_customer": false,
+                    "is_store": true,
+                    "mobile": "9064155137",
+                    "groups": [],
+                    "user_permissions": []
+                },
+                "preferred_currency": null
+            },
+            "currency": {
+                "id": 1,
+                "name": "Naira",
+                "code": "NGN",
+                "html_code": "&#8358;"
+            },
+            "l1category": {
+                "id": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c",
+                "name": "Men",
+                "slug": "men"
+            },
+            "l2category": {
+                "id": "cdab8660-1796-43d8-9657-a961986cba75",
+                "name": "Clothes",
+                "slug": "clothes",
+                "l1category": {
+                    "id": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c",
+                    "name": "Men",
+                    "slug": "men"
+                }
+            },
+            "l3category": {
+                "id": "e737194c-d011-46a9-b246-4e964fdc2347",
+                "name": "Shirts",
+                "slug": "shirts",
+                "l2category": {
+                    "id": "cdab8660-1796-43d8-9657-a961986cba75",
+                    "name": "Clothes",
+                    "slug": "clothes",
+                    "l1category": "ebf6aebe-74af-4457-bf4f-a73387cf1b3c"
+                }
+            },
+            "sizes": [
+                {
+                    "id": 2,
+                    "name": "M",
+                    "slug": "m"
+                }
+            ],
+            "tags": [
+                {
+                    "id": "75745d15-be7a-4254-9969-0bf1ec0f0c66",
+                    "name": "fashion",
+                    "slug": "fashion"
+                }
+            ],
+            "other_images": [
+                {
+                    "id": 60,
+                    "image": "/media/products/african-print-men-fashion-ankara-suit.jpg"
+                }
+            ],
+            "reviews": [],
+            "colors": [
+                {
+                    "id": 2,
+                    "name": "Red",
+                    "slug": "red"
+                }
+            ],
+            "mixed_colors": []
+        }
+    ]
+}
